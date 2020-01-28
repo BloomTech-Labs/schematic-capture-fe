@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
+import axios from "axios";
 
 class SignUp extends Component {
   state = {
     email: '',
     password: '',
     confirmPassword: '',
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     phone: null,
     organizationID: null,
     roleID: null
@@ -21,6 +22,12 @@ class SignUp extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
+    axios
+        .post('http://localhost:5000/api/auth/register', this.state)
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(error => console.log(error.response))
   };
 
   render() {

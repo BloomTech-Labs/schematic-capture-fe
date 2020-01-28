@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 
 class SignIn extends Component {
   state = {
@@ -15,6 +16,12 @@ class SignIn extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
+    axios
+        .post('http://localhost:5000/api/auth/login', this.state)
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(error => console.log(error.response))
   };
 
   render() {
