@@ -9,6 +9,7 @@ function App() {
             <NormalizeStyles />
             <BaseStyles />
             <h1>Hello, Lambda</h1>
+            <button onClick={methodDoesNotExist}>Break the world</button>;
         </>
     );
 }
