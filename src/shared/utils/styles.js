@@ -8,8 +8,9 @@ export const color = {
 
     // Background
     //
-    // Setting for the `<body>` element.
+    // Setting background elements.
     backgroundBody: "#ffffff",
+    backgroundLight: "#ffffff",
 
     // Text
     //
@@ -28,5 +29,6 @@ export const color = {
 export const font = {
     regular:
         'font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; font-weight: normal;',
-    size: size => `font-size: ${size}px;`
+    bold: 'font-family: "Open Sans"; font-weight: 700;',
+    size: size => `font-size: ${size}rem;`
 };
