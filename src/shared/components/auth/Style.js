@@ -3,12 +3,18 @@ import styled from "styled-components";
 import { color, font } from "../../../shared/utils/styles";
 
 export const Container = styled.div`
-    background: url("https://images.unsplash.com/photo-1455165814004-1126a7199f9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80")
-        no-repeat center center fixed;
+    background: ${props => `url(${props.background})`} no-repeat center center
+        fixed;
     background-color: #000000;
     background-size: cover;
     height: 100vh;
     width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 500px) {
+        background: none;
+    }
 `;
 
 export const FormContainer = styled.div`
@@ -16,10 +22,18 @@ export const FormContainer = styled.div`
     border: 1px solid ${color.borderColor};
     border-radius: 0.5rem;
     padding: 3rem;
-    max-width: 350px;
-    position: relative;
-    left: 50vw;
-    top: 15vh;
+    width: 400px;
+    max-width: 500px;
+    max-height: 550px;
+    position: absolute;
+    @media (min-width: 1200px) {
+        right: 370px;
+    }
+    @media (max-width: 500px) {
+        width: 80%;
+        height: 100%;
+        border: none;
+    }
 `;
 
 export const FormGroup = styled.div`
@@ -30,6 +44,21 @@ export const FieldLabel = styled.label`
     display: block;
     color: ${color.textDark};
     font-family: ${font.bold};
+`;
+
+export const StyledField = styled.input`
+    background: ${color.inputBackground};
+    border: 0.25px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    color: ${color.inputColor};
+    display: block;
+    width: 100%;
+    padding: 10px 10px;
+    margin-top: 8px;
+    &:focus {
+        background-color: #f7f7fa;
+    }
 `;
 
 export const LineOr = styled.div`
@@ -57,17 +86,6 @@ export const LineOr = styled.div`
     }
 `;
 
-export const StyledField = styled.input`
-    background: #f7f7fa;
-    border: 0.25px solid #ccc;
-    box-sizing: border-box;
-    border-radius: 0.5rem;
-    display: block;
-    width: 100%;
-    padding: 10px 10px;
-    margin-top: 8px;
-`;
-
 export const FieldError = styled.div`
     color: ${color.danger};
 `;
@@ -90,12 +108,22 @@ export const PrimaryButton = styled(Button)`
     color: ${color.textLight};
     background-color: ${color.primary};
     border-color: ${color.primary};
+    width: 40%;
+
     &:hover {
-        background-color: #000;
+        background-color: darken(${color.primary}, 25%);
     }
 `;
 
 export const SecondaryButton = styled(Button)`
     color: ${color.textDark};
     border-color: ${color.secondary};
+    width: 100%;
+`;
+
+export const TheButtons = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 8px;
+    width: 100%;
 `;

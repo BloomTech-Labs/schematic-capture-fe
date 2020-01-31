@@ -13,7 +13,7 @@ const App = () => {
             <BrowserRouter>
                 <NormalizeStyles />
                 <BaseStyles />
-                <Navbar />
+                {/* <Navbar /> */}
                 <Router />
             </BrowserRouter>
         </Fragment>

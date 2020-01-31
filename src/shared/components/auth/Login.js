@@ -3,8 +3,6 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useHistory, Link } from "react-router-dom";
 
-// import { GLogin } from "./googleLogin";
-
 // utils
 import {
     Container,
@@ -13,14 +11,20 @@ import {
     FieldLabel,
     StyledField,
     FieldError,
+    TheButtons,
     PrimaryButton,
+    SecondaryButton,
     LineOr
 } from "./Style";
 
 // actions
 import { actions } from "../../actions/authActions";
 
-const Login = () => {
+type props = {
+    background: "https://images.unsplash.com/photo-1455165814004-1126a7199f9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+};
+
+const Login = props => {
     const { register, handleSubmit, errors } = useForm();
     const dispatch = useDispatch();
     const history = useHistory();
@@ -32,7 +36,7 @@ const Login = () => {
     };
 
     return (
-        <Container>
+        <Container background="https://images.unsplash.com/photo-1455165814004-1126a7199f9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
             <FormContainer>
                 <form className="white" onSubmit={handleSubmit(onSubmit)}>
                     <h1 className="signin">Sign in</h1>
@@ -78,12 +82,14 @@ const Login = () => {
                                 </FieldError>
                             )}
                     </FormGroup>
-                    <PrimaryButton type="submit">Login</PrimaryButton>
+                    <TheButtons>
+                        <PrimaryButton type="submit">Login</PrimaryButton>
+                    </TheButtons>
                 </form>
                 <LineOr>
                     <p>or</p>
                 </LineOr>
-                {/* <GLogin /> */}
+                <SecondaryButton>Continue with Google</SecondaryButton>
             </FormContainer>
         </Container>
     );

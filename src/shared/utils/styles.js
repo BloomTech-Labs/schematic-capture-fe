@@ -23,7 +23,11 @@ export const color = {
     //
     // Define common styles and more.
     borderColor: "#dee2e6",
-    borderInputFocus: "#0d6efd"
+    borderInputFocus: "#0d6efd",
+
+    // Forms
+    inputBackground: "#ffffff",
+    inputColor: "#495057",
 };
 
 export const font = {
@@ -32,3 +36,8 @@ export const font = {
     bold: 'font-family: "Open Sans"; font-weight: 700;',
     size: size => `font-size: ${size}rem;`
 };
+
+export const mixin = {
+  darken: (colorValue, amount) =>
+
+}
