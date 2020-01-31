@@ -18,7 +18,7 @@ import {
 import GoogleIcon from "../../assets/google-icon";
 
 // actions
-import { actions } from "../../actions/authActions";
+import { dispatchers } from "../../actions/authActions";
 
 function Register({ gRedirect }) {
   const { register, handleSubmit, errors } = useForm();
@@ -26,16 +26,22 @@ function Register({ gRedirect }) {
   const history = useHistory();
   const params = useParams();
 
-  const { userRegistration, googleLogin } = actions;
+  const { userRegistration, googleLogin } = dispatchers;
 
   const onSubmit = data => {
+    if (gRedirect) {
+      data.token = params.idToken;
+    }
+
     dispatch(userRegistration(data, history));
   };
+
+  console.log("inviteToken", params.inviteToken, "idToken", params.idToken);
 
   const onGoogleLogin = event => {
     event.preventDefault();
 
-    dispatch(googleLogin(() => history));
+    dispatch(googleLogin(history, params.inviteToken));
   };
 
   return (
@@ -164,7 +170,6 @@ function Register({ gRedirect }) {
               name="inviteToken"
               ref={register({ required: !params.inviteToken })}
               defaultValue={params.inviteToken}
-              disabled={!!params.inviteToken}
             />
             {errors.inviteToken && errors.inviteToken.type === "required" && (
               <FieldError id="error-lastName-required">

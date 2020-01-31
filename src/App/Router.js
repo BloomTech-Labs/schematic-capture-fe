@@ -9,10 +9,9 @@ const Router = () => {
     <div>
       <Switch>
         <Route path="/login" component={Login} />
-        <Route path="/register/:inviteToken" component={Register} />
-        <Route path="/register" component={Register} />
+        <Route path="/register/:inviteToken?" component={Register} />
         <Route
-          path="/gredirect/:idToken"
+          path="/gredirect/:idToken/:inviteToken?"
           render={() => <Register gRedirect />}
         />
         <Route path="/dashboard" component={Dashboard} />

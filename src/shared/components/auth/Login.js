@@ -18,17 +18,13 @@ import {
 import GoogleIcon from "../../assets/google-icon";
 
 // actions
-import { actions } from "../../actions/authActions";
-
-type props = {
-  background: "https://images.unsplash.com/photo-1455165814004-1126a7199f9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-};
+import { dispatchers } from "../../actions/authActions";
 
 const Login = props => {
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
   const history = useHistory();
-  const { userLogin, googleLogin } = actions;
+  const { userLogin, googleLogin } = dispatchers;
 
   const onSubmit = data => {
     console.log(data);
