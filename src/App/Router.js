@@ -5,15 +5,21 @@ import Login from "../shared/components/auth/Login";
 import Dashboard from "../shared/components/Dashboard";
 
 const Router = () => {
-    return (
-        <div>
-            <Switch>
-                <Route path="/login" component={Login} />
-                <Route path="/register/:inviteToken" component={Register} />
-                <Route path="/dashboard" component={Dashboard} />
-            </Switch>
-        </div>
-    );
+  return (
+    <div>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/register/:inviteToken" component={Register} />
+        <Route path="/register" component={Register} />
+        <Route
+          path="/gredirect/:idToken"
+          render={() => <Register gRedirect />}
+        />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route exact path="/" component={Login} />
+      </Switch>
+    </div>
+  );
 };
 
 export default Router;
