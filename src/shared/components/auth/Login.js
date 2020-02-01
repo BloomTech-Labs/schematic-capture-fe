@@ -13,7 +13,8 @@ import {
   FieldError,
   Buttons,
   Button,
-  LineOr
+  LineOr,
+    HeadTitle
 } from "./Style";
 
 import GoogleIcon from "../../assets/google-icon";
@@ -45,11 +46,14 @@ const Login = props => {
   const forgottenPassword = event => {
     event.preventDefault();
     console.log(email);
-    dispatch(forgotPassword(email, history));
+    window.location = "/forgotpassword";
   };
 
   return (
     <Container>
+      <HeadTitle>
+        Schematic Capture
+      </HeadTitle>
       <FormContainer>
         <form className="white" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="signin">Sign in</h1>
@@ -93,18 +97,14 @@ const Login = props => {
               </FieldError>
             )}
           </FormGroup>
-          <Buttons>
-            <Button variant="primary" type="submit">
-              Continue
-            </Button>
-            <Button
-              onClick={forgottenPassword}
-              variant="secondary"
-              type="button"
-            >
-              Forgot Password?
-            </Button>
-          </Buttons>
+          {/*<Buttons>*/}
+          <Button variant="primary" type="submit">
+            Continue
+          </Button>
+          <Button onClick={forgottenPassword} variant="secondary" type="button">
+            Forgot Password?
+          </Button>
+          {/*</Buttons>*/}
         </form>
         <LineOr>
           <p>Or</p>

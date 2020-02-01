@@ -12,7 +12,7 @@ import {
   StyledField,
   FieldError,
   Button,
-  LineOr
+  LineOr, HeadTitle
 } from "./Style";
 
 import GoogleIcon from "../../assets/google-icon";
@@ -40,6 +40,9 @@ function Register({ gRedirect }) {
 
   return (
     <Container>
+      <HeadTitle>
+        Schematic Capture
+      </HeadTitle>
       <FormContainer>
         <form className="white" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="signup">Create an account</h1>
@@ -56,6 +59,7 @@ function Register({ gRedirect }) {
                   type="email"
                   name="email"
                   id="email"
+                  // placeholder="Email Address"
                   aria-invalid={errors.email ? "true" : "false"}
                   aria-describedby="error-email-required error-email-pattern"
                   ref={register({
@@ -75,6 +79,7 @@ function Register({ gRedirect }) {
                   type="password"
                   name="password"
                   id="password"
+                  // placeholder="Password"
                   aria-invalid={errors.password ? "true" : "false"}
                   aria-describedby="error-password-required"
                   ref={register({ required: !gRedirect })}
@@ -93,6 +98,7 @@ function Register({ gRedirect }) {
                   type="password"
                   name="confirmPassword"
                   id="confirmPassword"
+                  // placeholder="Confirm Password"
                   ref={register({ required: !gRedirect })}
                 />
                 {errors.confirmPassword &&
