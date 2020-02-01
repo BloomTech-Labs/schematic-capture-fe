@@ -16,13 +16,22 @@ export const Container = styled.div`
   @media (max-width: 500px) {
     background: none;
   }
+  @media (max-width: 650px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 export const HeadTitle = styled.h1`
   font-size: 72px;
   font-family: ${font.bold};
-  color: ghostwhite;
-  
+  color: ${Color(color.textLight)};
+  @media (max-width: 650px) {
+    text-align: center;
+  }
+  @media (max-width: 500px) {
+    color: ${Color(color.textDark)}
+  }
 `;
 
 export const FormContainer = styled.div`
