@@ -15,7 +15,7 @@ export const Container = styled.div`
   align-items: center;
   @media (max-width: 500px) {
     background: none;
-  }
+  }x
 `;
 
 export const FormContainer = styled.div`
@@ -49,6 +49,22 @@ export const FormContainer = styled.div`
   }
 `;
 
+export const FormRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+`;
+
+export const FormColumn = styled.div`
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+`;
+
 export const FormGroup = styled.div`
   margin-bottom: 1rem;
 `;
@@ -64,7 +80,7 @@ export const FieldLabel = styled.label`
 
 export const StyledField = styled.input`
   background: ${color.inputBackground};
-  border: 0.25px solid #ccc;
+  border: 1px solid #ccc;
   box-sizing: border-box;
   border-radius: 0.5rem;
   color: ${color.inputColor};
@@ -113,6 +129,13 @@ export const FieldError = styled.div`
   color: ${color.danger};
   ${font.size(1.25)}
 `;
+
+// export const Buttons = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   align-items: center;
+// `;
 
 export const Button = styled.button`
   display: flex;

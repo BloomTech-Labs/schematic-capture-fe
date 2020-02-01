@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useHistory, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -7,11 +8,12 @@ import { useForm } from "react-hook-form";
 import {
   Container,
   FormContainer,
+  FormRow,
+  FormColumn,
   FormGroup,
   FieldLabel,
   StyledField,
   FieldError,
-  Buttons,
   Button,
   LineOr
 } from "./Style";
@@ -93,18 +95,18 @@ const Login = props => {
               </FieldError>
             )}
           </FormGroup>
-          <Buttons>
-            <Button variant="primary" type="submit">
-              Continue
-            </Button>
-            <Button
-              onClick={forgottenPassword}
-              variant="secondary"
-              type="button"
-            >
-              Forgot Password?
-            </Button>
-          </Buttons>
+          <FormRow>
+            <FormColumn>
+              <Button variant="primary" type="submit">
+                Continue
+              </Button>
+            </FormColumn>
+            <FormColumn style={{ textAlign: "right" }}>
+              <Link to="/forgot_password" className="forg">
+                Forgot your password?
+              </Link>
+            </FormColumn>
+          </FormRow>
         </form>
         <LineOr>
           <p>Or</p>

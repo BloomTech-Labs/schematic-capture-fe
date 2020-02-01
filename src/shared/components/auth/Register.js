@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import {
   Container,
   FormContainer,
+  FormRow,
+  FormColumn,
   FormGroup,
   FieldLabel,
   StyledField,
@@ -48,6 +50,48 @@ function Register({ gRedirect }) {
           </p>
           {!gRedirect && (
             <>
+              <FormRow>
+                <FormColumn>
+                  <FormGroup>
+                    <FieldLabel htmlFor="firstName" id="first">
+                      First name
+                    </FieldLabel>
+                    <StyledField
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      className="column"
+                      aria-invalid={errors.firstName ? "true" : "false"}
+                      aria-describedby="error-firstName-required error-firstName-maxLength"
+                      ref={register({ required: true, maxLength: 80 })}
+                    />
+                    {errors.firstName &&
+                      errors.firstName.type === "required" && (
+                        <FieldError id="error-firstName-required">
+                          Please enter your first name.
+                        </FieldError>
+                      )}
+                  </FormGroup>
+                </FormColumn>
+                <FormColumn>
+                  <FormGroup>
+                    <FieldLabel htmlFor="lastName">Last name</FieldLabel>
+                    <StyledField
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      aria-invalid={errors.lastName ? "true" : "false"}
+                      aria-describedby="error-lastName-required error-lastName-maxLength"
+                      ref={register({ required: true, maxLength: 100 })}
+                    />
+                    {errors.lastName && errors.lastName.type === "required" && (
+                      <FieldError id="error-lastName-required">
+                        Please enter your last name.
+                      </FieldError>
+                    )}
+                  </FormGroup>
+                </FormColumn>
+              </FormRow>
               <FormGroup>
                 <FieldLabel htmlFor="email">Email address</FieldLabel>
                 {/* use aria-describedby to associate with error messages */}
@@ -104,38 +148,6 @@ function Register({ gRedirect }) {
               </FormGroup>
             </>
           )}
-          <FormGroup>
-            <FieldLabel htmlFor="firstName">First name</FieldLabel>
-            <StyledField
-              type="text"
-              id="firstName"
-              name="firstName"
-              aria-invalid={errors.firstName ? "true" : "false"}
-              aria-describedby="error-firstName-required error-firstName-maxLength"
-              ref={register({ required: true, maxLength: 80 })}
-            />
-            {errors.firstName && errors.firstName.type === "required" && (
-              <FieldError id="error-firstName-required">
-                Please enter your first name.
-              </FieldError>
-            )}
-          </FormGroup>
-          <FormGroup>
-            <FieldLabel htmlFor="lastName">Last name</FieldLabel>
-            <StyledField
-              type="text"
-              id="lastName"
-              name="lastName"
-              aria-invalid={errors.lastName ? "true" : "false"}
-              aria-describedby="error-lastName-required error-lastName-maxLength"
-              ref={register({ required: true, maxLength: 100 })}
-            />
-            {errors.lastName && errors.lastName.type === "required" && (
-              <FieldError id="error-lastName-required">
-                Please enter your last name.
-              </FieldError>
-            )}
-          </FormGroup>
           <FormGroup>
             <FieldLabel htmlFor="phone">Phone number</FieldLabel>
             <StyledField
