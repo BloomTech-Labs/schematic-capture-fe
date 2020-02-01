@@ -11,6 +11,7 @@ import {
   FieldLabel,
   StyledField,
   FieldError,
+  Buttons,
   Button,
   LineOr
 } from "./Style";
@@ -19,16 +20,16 @@ import GoogleIcon from "../../assets/google-icon";
 
 // actions
 import { actions } from "../../actions/authActions";
-
-type props = {
-  background: "https://images.unsplash.com/photo-1455165814004-1126a7199f9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-};
+import { noAuthActions } from "../../actions/actions";
 
 const Login = props => {
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, watch } = useForm();
   const dispatch = useDispatch();
   const history = useHistory();
   const { userLogin, googleLogin } = actions;
+  const { forgotPassword } = noAuthActions;
+
+  const email = watch("email");
 
   const onSubmit = data => {
     console.log(data);
@@ -41,8 +42,14 @@ const Login = props => {
     dispatch(googleLogin(history));
   };
 
+  const forgottenPassword = event => {
+    event.preventDefault();
+    console.log(email);
+    dispatch(forgotPassword(email, history));
+  };
+
   return (
-    <Container background="https://images.unsplash.com/photo-1455165814004-1126a7199f9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+    <Container>
       <FormContainer>
         <form className="white" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="signin">Sign in</h1>
@@ -86,9 +93,18 @@ const Login = props => {
               </FieldError>
             )}
           </FormGroup>
-          <Button variant="primary" type="submit">
-            Continue
-          </Button>
+          <Buttons>
+            <Button variant="primary" type="submit">
+              Continue
+            </Button>
+            <Button
+              onClick={forgottenPassword}
+              variant="secondary"
+              type="button"
+            >
+              Forgot Password?
+            </Button>
+          </Buttons>
         </form>
         <LineOr>
           <p>Or</p>
