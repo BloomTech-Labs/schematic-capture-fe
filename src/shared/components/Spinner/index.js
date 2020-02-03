@@ -1,6 +1,6 @@
 import React from "react";
 
-const Spinner = ({ className }) => (
+const Spinner = ({ className, size }) => (
   <span className={className}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9,8 +9,8 @@ const Spinner = ({ className }) => (
         background: "rgba(255, 255, 255, 0) none repeat scroll 0% 0%",
         display: "block"
       }}
-      width="80px"
-      height="80px"
+      width={size}
+      height={size}
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid"
     >
