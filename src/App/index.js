@@ -5,19 +5,17 @@ import NormalizeStyles from "./NormalizeStyles";
 import BaseStyles from "./BaseStyles";
 
 import Router from "./Router";
-import Navbar from "../shared/components/layout/Navbar";
 
 const App = () => {
-    return (
-        <Fragment>
-            <BrowserRouter>
-                <NormalizeStyles />
-                <BaseStyles />
-                {/* <Navbar /> */}
-                <Router />
-            </BrowserRouter>
-        </Fragment>
-    );
+  return (
+    <Fragment>
+      <BrowserRouter>
+        <NormalizeStyles />
+        <BaseStyles />
+        <Router />
+      </BrowserRouter>
+    </Fragment>
+  );
 };
 
 export default App;
