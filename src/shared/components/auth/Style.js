@@ -11,11 +11,27 @@ export const Container = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   @media (max-width: 500px) {
     background: none;
-  }x
+  }
+  @media (max-width: 650px) {
+    flex-direction: column;
+    justify-content: center;
+  }
+`;
+
+export const HeadTitle = styled.h1`
+  font-size: 72px;
+  font-family: ${font.bold};
+  color: ${Color(color.textLight)};
+  @media (max-width: 650px) {
+    text-align: center;
+  }
+  @media (max-width: 500px) {
+    color: ${Color(color.textDark)};
+  }
 `;
 
 export const FormContainer = styled.div`
@@ -25,7 +41,7 @@ export const FormContainer = styled.div`
   padding: 4rem;
   width: 400px;
   max-width: 500px;
-  position: absolute;
+  //position: absolute;
   h1 {
     margin-top: 0;
     margin-bottom: 0;
@@ -149,6 +165,7 @@ export const Button = styled.button`
   line-height: 1.5;
   transition: all 0.1s;
   border-radius: 0.5rem;
+  opacity: initial !important;
   ${font.bold}
 
   ${props =>

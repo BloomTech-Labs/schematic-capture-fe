@@ -4,9 +4,9 @@
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
-# 1️⃣ Title of project goes here
+# Schematic Capture
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+You can find the deployed project at [schematiccapture.com](https://www.schematiccapture.com).
 
 ## 4️⃣ Contributors
 
@@ -21,29 +21,25 @@
 <br>
 <br>
 
-🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
-
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
 ![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/97a78318-7c36-40d8-9c24-25137e79df06/deploy-status)](https://app.netlify.com/sites/schematic/deploys)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7780265919ee2de9ea46/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/schematic-capture-fe/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/7780265919ee2de9ea46/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/schematic-capture-fe/test_coverage)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 🚫 more info on using badges [here](https://github.com/badges/shields)
 
 ## Project Overview
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+[Trello Board](https://trello.com/b/Amx4wIKW/labs-20-schematic-capture)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+[Product Canvas](https://www.notion.so/Schematic-Capture-d4594ebf93ff4c6aba7942aea0546fea)
 
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
+[UX Design files](https://www.notion.so/Schematic-Capture-d4594ebf93ff4c6aba7942aea0546fea#b59c986612b64c98badcfca0169aaeef)
 
-🚫 Replace lorem ipsum with a description of your project
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+An iOS app for capturing and annotating huge machines in some of the countries larger steel manufacturing facilities 🔥 It needs offline capabilities to be able to capture photos and annotate them in facilities that often have no network or signal available to them.
 
 
 ### 4️⃣ Key Features
@@ -194,4 +190,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/schematic-capture-be/) for details on the backend of our project.

@@ -15,7 +15,8 @@ import {
   StyledField,
   FieldError,
   Button,
-  LineOr
+  LineOr,
+  HeadTitle
 } from "./Style";
 
 import GoogleIcon from "../../assets/google-icon";
@@ -47,11 +48,12 @@ const Login = props => {
   const forgottenPassword = event => {
     event.preventDefault();
     console.log(email);
-    dispatch(forgotPassword(email, history));
+    window.location = "/forgotpassword";
   };
 
   return (
     <Container>
+      <HeadTitle>Schematic Capture</HeadTitle>
       <FormContainer>
         <form className="white" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="signin">Sign in</h1>
