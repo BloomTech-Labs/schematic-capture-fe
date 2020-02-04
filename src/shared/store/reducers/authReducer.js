@@ -1,31 +1,22 @@
 import { actions } from "../../actions/authActions";
 
+const { CREATE_ACCOUNT_SUCCESS, LOGIN_SUCCESS } = actions;
+
 const initState = {
   user: JSON.parse(localStorage.getItem("user")) || {},
-  inviteToken: "",
-  token: "",
+  idToken: "",
   isLoading: false,
   error: null
 };
 
 const authReducer = (state = initState, action) => {
   switch (action.type) {
-    case actions.CREATE_ACCOUNT_LOADING:
-      return {
-        ...state,
-        isLoading: true
-      };
-    case actions.CREATE_ACCOUNT_SUCCESS:
+    case CREATE_ACCOUNT_SUCCESS:
+    case LOGIN_SUCCESS:
       return {
         ...state,
         ...action.payload,
         isLoading: false
-      };
-    case actions.CREATE_ACCOUNT_FAIL:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload
       };
     default:
       return state;
