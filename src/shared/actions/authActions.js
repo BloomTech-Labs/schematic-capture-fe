@@ -16,19 +16,7 @@ const userRegistration = (data, history) => dispatch => {
   dispatch({ type: CREATE_ACCOUNT_LOADING });
 
   // sets up request body to match backend requirements
-  const payload = {
-    email: data.email,
-    first_name: data.firstName,
-    last_name: data.lastName,
-    password: data.password,
-    confirmPassword: data.confirmPassword,
-    phone: data.phone,
-    invite_token: data.inviteToken
-  };
-
-  if (data.token) {
-    payload.token = data.token;
-  }
+  const { confirmPassword, ...payload } = data;
 
   axiosWithAuth()
     .post("/auth/register", payload)
@@ -73,23 +61,23 @@ const googleLogin = (history, inviteToken) => dispatch => {
       firebase // performs a nested chain to get the token of the user that just signed in
         .auth()
         .currentUser.getIdToken()
-        .then(token => {
+        .then(idToken => {
           axiosWithAuth()
-            .post("/auth/login", { token }) // sends the user's token to get decoded at backend to validate identity
+            .post("/auth/login", { idToken }) // sends the user's token to get decoded at backend to validate identity
             .then(res => {
               if (res.data.needRegister) {
-                /* 
+                /*
                   if the account is authenticated on Firebase but has not been
                   inserted into the Postgres DB, then the backend will return a
                   JSON object with { needRegister: true }. The user gets redirected
                   to the Register page component with less fields to complete the onboarding.
                 */
 
-                dispatch({ type: GOOGLE_AUTH_REDIRECT, payload: token });
+                dispatch({ type: GOOGLE_AUTH_REDIRECT, payload: idToken });
                 if (inviteToken) {
-                  history.push(`/gredirect/${token}/${inviteToken}`);
+                  history.push(`/gredirect/${idToken}/${inviteToken}`);
                 } else {
-                  history.push(`/gredirect/${token}`);
+                  history.push(`/gredirect/${idToken}`);
                 }
               } else {
                 dispatch({ type: GOOGLE_AUTH_SUCCESS, payload: res.data });
