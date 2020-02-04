@@ -4,14 +4,18 @@ import firebase, { GoogleProvider } from "../utils/firebase";
 const CREATE_ACCOUNT_LOADING = "CREATE_ACCOUNT_LOADING";
 const CREATE_ACCOUNT_SUCCESS = "CREATE_ACCOUNT_SUCCESS";
 const CREATE_ACCOUNT_FAIL = "CREATE_ACCOUNT_FAIL";
+const GOOGLE_AUTH_LOADING = "GOOGLE_AUTH_LOADING";
+const GOOGLE_AUTH_REDIRECT = "GOOGLE_AUTH_REDIRECT";
+const GOOGLE_AUTH_SUCCESS = "GOOGLE_AUTH_SUCCESS";
+const GOOGLE_AUTH_FAIL = "GOOGLE_AUTH_FAIL";
 const LOGIN_LOADING = "LOGIN_LOADING";
 const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 const LOGIN_FAIL = "LOGIN_FAIL";
 
 const userRegistration = (data, history) => dispatch => {
   dispatch({ type: CREATE_ACCOUNT_LOADING });
-  console.log(data);
 
+  // sets up request body to match backend requirements
   const payload = {
     email: data.email,
     first_name: data.firstName,
@@ -22,19 +26,23 @@ const userRegistration = (data, history) => dispatch => {
     invite_token: data.inviteToken
   };
 
+  if (data.token) {
+    payload.token = data.token;
+  }
+
   axiosWithAuth()
     .post("/auth/register", payload)
     .then(res => {
-      console.log(res.data);
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", res.data.user);
+      const { token, ...user } = res.data;
+
+      // stores token and user in localstorage for reducer to grab as initial state on page refresh;
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+
       dispatch({ type: CREATE_ACCOUNT_SUCCESS, payload: res.data });
       history.push("/dashboard");
     })
-    .catch(error => {
-      console.log(error.response);
-      dispatch({ type: CREATE_ACCOUNT_FAIL });
-    });
+    .catch(error => dispatch({ type: CREATE_ACCOUNT_FAIL }));
 };
 
 const userLogin = (data, history) => dispatch => {
@@ -43,43 +51,74 @@ const userLogin = (data, history) => dispatch => {
   axiosWithAuth()
     .post("/auth/login", data)
     .then(res => {
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+      const { token, ...user } = res.data;
+
+      // stores token and user in localstorage for reducer to grab as initial state on page refresh;
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
       history.push("/dashboard");
     })
-    .catch(error => {
-      console.log(error.response);
-      dispatch({ type: LOGIN_FAIL });
-    });
+    .catch(error => dispatch({ type: LOGIN_FAIL, payload: error.message }));
 };
 
-const googleLogin = history => dispatch => {
+const googleLogin = (history, inviteToken) => dispatch => {
+  dispatch({ type: GOOGLE_AUTH_LOADING });
+
   firebase
     .auth()
     .signInWithPopup(GoogleProvider)
-    .then(data => {
-      return firebase
+    .then(() => {
+      firebase // performs a nested chain to get the token of the user that just signed in
         .auth()
         .currentUser.getIdToken()
         .then(token => {
           axiosWithAuth()
-            .post("/auth/login", { token })
+            .post("/auth/login", { token }) // sends the user's token to get decoded at backend to validate identity
             .then(res => {
-              console.log(res);
               if (res.data.needRegister) {
-                history.push(`/gredirect/${token}`);
+                /* 
+                  if the account is authenticated on Firebase but has not been
+                  inserted into the Postgres DB, then the backend will return a
+                  JSON object with { needRegister: true }. The user gets redirected
+                  to the Register page component with less fields to complete the onboarding.
+                */
+
+                dispatch({ type: GOOGLE_AUTH_REDIRECT, payload: token });
+                if (inviteToken) {
+                  history.push(`/gredirect/${token}/${inviteToken}`);
+                } else {
+                  history.push(`/gredirect/${token}`);
+                }
               } else {
+                dispatch({ type: GOOGLE_AUTH_SUCCESS, payload: res.data });
                 history.push("/dashboard");
               }
             })
-            .catch(error => console.error(error));
+            .catch(error =>
+              dispatch({ type: GOOGLE_AUTH_FAIL, payload: error.message })
+            );
         });
     })
-    .catch(error => console.error(error));
+    .catch(error =>
+      dispatch({ type: GOOGLE_AUTH_FAIL, payload: error.message })
+    );
 };
 
 export const actions = {
+  CREATE_ACCOUNT_LOADING,
+  CREATE_ACCOUNT_SUCCESS,
+  CREATE_ACCOUNT_FAIL,
+  GOOGLE_AUTH_LOADING,
+  GOOGLE_AUTH_SUCCESS,
+  GOOGLE_AUTH_FAIL,
+  LOGIN_LOADING,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL
+};
+
+export const dispatchers = {
   userRegistration,
   userLogin,
   googleLogin

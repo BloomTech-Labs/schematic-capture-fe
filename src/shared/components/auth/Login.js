@@ -22,15 +22,13 @@ import {
 import GoogleIcon from "../../assets/google-icon";
 
 // actions
-import { actions } from "../../actions/authActions";
-import { noAuthActions } from "../../actions/actions";
+import { dispatchers } from "../../actions/authActions";
 
 const Login = props => {
   const { register, handleSubmit, errors, watch } = useForm();
   const dispatch = useDispatch();
   const history = useHistory();
-  const { userLogin, googleLogin } = actions;
-  const { forgotPassword } = noAuthActions;
+  const { userLogin, googleLogin } = dispatchers;
 
   const email = watch("email");
 
@@ -43,12 +41,6 @@ const Login = props => {
     event.preventDefault();
 
     dispatch(googleLogin(history));
-  };
-
-  const forgottenPassword = event => {
-    event.preventDefault();
-    console.log(email);
-    window.location = "/forgotpassword";
   };
 
   return (
