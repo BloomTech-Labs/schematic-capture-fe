@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Register from "../shared/components/auth/Register";
 import Login from "../shared/components/auth/Login";
 import Dashboard from "../shared/components/Dashboard";
+import ForgotPassword from "../shared/components/auth/ForgotPassword";
 
 const Router = () => {
   return (
@@ -14,6 +15,7 @@ const Router = () => {
           path="/gredirect/:idToken/:inviteToken?"
           render={() => <Register gRedirect />}
         />
+        <Route path="/forgotpassword" component={ForgotPassword} />
         <Route path="/dashboard" component={Dashboard} />
         <Route exact path="/" component={Login} />
       </Switch>

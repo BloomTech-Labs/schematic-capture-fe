@@ -7,12 +7,14 @@ import { useForm } from "react-hook-form";
 import {
   Container,
   FormContainer,
+  FormRow,
+  FormColumn,
   FormGroup,
   FieldLabel,
   StyledField,
   FieldError,
   Button,
-  LineOr
+  LineOr, HeadTitle
 } from "./Style";
 
 import GoogleIcon from "../../assets/google-icon";
@@ -46,6 +48,9 @@ function Register({ gRedirect }) {
 
   return (
     <Container>
+      <HeadTitle>
+        Schematic Capture
+      </HeadTitle>
       <FormContainer>
         <form className="white" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="signup">Create an account</h1>
@@ -54,6 +59,48 @@ function Register({ gRedirect }) {
           </p>
           {!gRedirect && (
             <>
+              <FormRow>
+                <FormColumn>
+                  <FormGroup>
+                    <FieldLabel htmlFor="firstName" id="first">
+                      First name
+                    </FieldLabel>
+                    <StyledField
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      className="column"
+                      aria-invalid={errors.firstName ? "true" : "false"}
+                      aria-describedby="error-firstName-required error-firstName-maxLength"
+                      ref={register({ required: true, maxLength: 80 })}
+                    />
+                    {errors.firstName &&
+                      errors.firstName.type === "required" && (
+                        <FieldError id="error-firstName-required">
+                          Please enter your first name.
+                        </FieldError>
+                      )}
+                  </FormGroup>
+                </FormColumn>
+                <FormColumn>
+                  <FormGroup>
+                    <FieldLabel htmlFor="lastName">Last name</FieldLabel>
+                    <StyledField
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      aria-invalid={errors.lastName ? "true" : "false"}
+                      aria-describedby="error-lastName-required error-lastName-maxLength"
+                      ref={register({ required: true, maxLength: 100 })}
+                    />
+                    {errors.lastName && errors.lastName.type === "required" && (
+                      <FieldError id="error-lastName-required">
+                        Please enter your last name.
+                      </FieldError>
+                    )}
+                  </FormGroup>
+                </FormColumn>
+              </FormRow>
               <FormGroup>
                 <FieldLabel htmlFor="email">Email address</FieldLabel>
                 {/* use aria-describedby to associate with error messages */}
@@ -62,6 +109,7 @@ function Register({ gRedirect }) {
                   type="email"
                   name="email"
                   id="email"
+                  // placeholder="Email Address"
                   aria-invalid={errors.email ? "true" : "false"}
                   aria-describedby="error-email-required error-email-pattern"
                   ref={register({
@@ -81,6 +129,7 @@ function Register({ gRedirect }) {
                   type="password"
                   name="password"
                   id="password"
+                  // placeholder="Password"
                   aria-invalid={errors.password ? "true" : "false"}
                   aria-describedby="error-password-required"
                   ref={register({ required: !gRedirect })}
@@ -99,6 +148,7 @@ function Register({ gRedirect }) {
                   type="password"
                   name="confirmPassword"
                   id="confirmPassword"
+                  // placeholder="Confirm Password"
                   ref={register({ required: !gRedirect })}
                 />
                 {errors.confirmPassword &&
@@ -110,38 +160,6 @@ function Register({ gRedirect }) {
               </FormGroup>
             </>
           )}
-          <FormGroup>
-            <FieldLabel htmlFor="firstName">First name</FieldLabel>
-            <StyledField
-              type="text"
-              id="firstName"
-              name="firstName"
-              aria-invalid={errors.firstName ? "true" : "false"}
-              aria-describedby="error-firstName-required error-firstName-maxLength"
-              ref={register({ required: true, maxLength: 80 })}
-            />
-            {errors.firstName && errors.firstName.type === "required" && (
-              <FieldError id="error-firstName-required">
-                Please enter your first name.
-              </FieldError>
-            )}
-          </FormGroup>
-          <FormGroup>
-            <FieldLabel htmlFor="lastName">Last name</FieldLabel>
-            <StyledField
-              type="text"
-              id="lastName"
-              name="lastName"
-              aria-invalid={errors.lastName ? "true" : "false"}
-              aria-describedby="error-lastName-required error-lastName-maxLength"
-              ref={register({ required: true, maxLength: 100 })}
-            />
-            {errors.lastName && errors.lastName.type === "required" && (
-              <FieldError id="error-lastName-required">
-                Please enter your last name.
-              </FieldError>
-            )}
-          </FormGroup>
           <FormGroup>
             <FieldLabel htmlFor="phone">Phone number</FieldLabel>
             <StyledField

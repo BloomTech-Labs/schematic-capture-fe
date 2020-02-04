@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useHistory, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -7,12 +8,15 @@ import { useForm } from "react-hook-form";
 import {
   Container,
   FormContainer,
+  FormRow,
+  FormColumn,
   FormGroup,
   FieldLabel,
   StyledField,
   FieldError,
   Button,
-  LineOr
+  LineOr,
+  HeadTitle
 } from "./Style";
 
 import GoogleIcon from "../../assets/google-icon";
@@ -21,10 +25,12 @@ import GoogleIcon from "../../assets/google-icon";
 import { dispatchers } from "../../actions/authActions";
 
 const Login = props => {
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, watch } = useForm();
   const dispatch = useDispatch();
   const history = useHistory();
   const { userLogin, googleLogin } = dispatchers;
+
+  const email = watch("email");
 
   const onSubmit = data => {
     console.log(data);
@@ -38,7 +44,8 @@ const Login = props => {
   };
 
   return (
-    <Container background="https://images.unsplash.com/photo-1455165814004-1126a7199f9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
+    <Container>
+      <HeadTitle>Schematic Capture</HeadTitle>
       <FormContainer>
         <form className="white" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="signin">Sign in</h1>
@@ -82,9 +89,18 @@ const Login = props => {
               </FieldError>
             )}
           </FormGroup>
-          <Button variant="primary" type="submit">
-            Continue
-          </Button>
+          <FormRow>
+            <FormColumn>
+              <Button variant="primary" type="submit">
+                Continue
+              </Button>
+            </FormColumn>
+            <FormColumn style={{ textAlign: "right" }}>
+              <Link to="/forgot_password" className="forg">
+                Forgot your password?
+              </Link>
+            </FormColumn>
+          </FormRow>
         </form>
         <LineOr>
           <p>Or</p>
