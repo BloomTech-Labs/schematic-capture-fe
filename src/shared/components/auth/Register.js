@@ -14,7 +14,8 @@ import {
   StyledField,
   FieldError,
   Button,
-  LineOr, HeadTitle
+  LineOr,
+  HeadTitle
 } from "./Style";
 
 import GoogleIcon from "../../assets/google-icon";
@@ -32,13 +33,11 @@ function Register({ gRedirect }) {
 
   const onSubmit = data => {
     if (gRedirect) {
-      data.token = params.idToken;
+      data.idToken = params.idToken;
     }
 
     dispatch(userRegistration(data, history));
   };
-
-  console.log("inviteToken", params.inviteToken, "idToken", params.idToken);
 
   const onGoogleLogin = event => {
     event.preventDefault();
@@ -48,9 +47,7 @@ function Register({ gRedirect }) {
 
   return (
     <Container>
-      <HeadTitle>
-        Schematic Capture
-      </HeadTitle>
+      <HeadTitle>Schematic Capture</HeadTitle>
       <FormContainer>
         <form className="white" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="signup">Create an account</h1>
