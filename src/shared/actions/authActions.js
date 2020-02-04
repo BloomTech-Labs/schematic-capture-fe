@@ -1,19 +1,17 @@
+import { actions as appActions } from "./appActions";
 import { axiosWithAuth } from "../utils";
 import firebase, { GoogleProvider } from "../utils/firebase";
 
-const CREATE_ACCOUNT_LOADING = "CREATE_ACCOUNT_LOADING";
 const CREATE_ACCOUNT_SUCCESS = "CREATE_ACCOUNT_SUCCESS";
-const CREATE_ACCOUNT_FAIL = "CREATE_ACCOUNT_FAIL";
-const GOOGLE_AUTH_LOADING = "GOOGLE_AUTH_LOADING";
+const FORGOT_PASSWORD_SUCCESS = "FORGOT_PASSWORD_SUCCESS";
+const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 const GOOGLE_AUTH_REDIRECT = "GOOGLE_AUTH_REDIRECT";
 const GOOGLE_AUTH_SUCCESS = "GOOGLE_AUTH_SUCCESS";
-const GOOGLE_AUTH_FAIL = "GOOGLE_AUTH_FAIL";
-const LOGIN_LOADING = "LOGIN_LOADING";
-const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-const LOGIN_FAIL = "LOGIN_FAIL";
+
+const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 
 const userRegistration = (data, history) => dispatch => {
-  dispatch({ type: CREATE_ACCOUNT_LOADING });
+  dispatch({ type: APP_LOADING });
 
   // sets up request body to match backend requirements
   const { confirmPassword, ...payload } = data;
@@ -21,38 +19,40 @@ const userRegistration = (data, history) => dispatch => {
   axiosWithAuth()
     .post("/auth/register", payload)
     .then(res => {
-      const { token, ...user } = res.data;
+      const { idToken, ...user } = res.data;
 
       // stores token and user in localstorage for reducer to grab as initial state on page refresh;
-      localStorage.setItem("token", token);
+      localStorage.setItem("idToken", idToken);
       localStorage.setItem("user", JSON.stringify(user));
 
+      dispatch({ type: APP_DONE_LOADING });
       dispatch({ type: CREATE_ACCOUNT_SUCCESS, payload: res.data });
       history.push("/dashboard");
     })
-    .catch(error => dispatch({ type: CREATE_ACCOUNT_FAIL }));
+    .catch(error => dispatch({ type: APP_ERROR, payload: error.message }));
 };
 
 const userLogin = (data, history) => dispatch => {
-  dispatch({ type: LOGIN_LOADING });
+  dispatch({ type: APP_LOADING });
 
   axiosWithAuth()
     .post("/auth/login", data)
     .then(res => {
-      const { token, ...user } = res.data;
+      const { idToken, ...user } = res.data;
 
       // stores token and user in localstorage for reducer to grab as initial state on page refresh;
-      localStorage.setItem("token", token);
+      localStorage.setItem("idToken", idToken);
       localStorage.setItem("user", JSON.stringify(user));
 
+      dispatch({ type: APP_DONE_LOADING });
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
       history.push("/dashboard");
     })
-    .catch(error => dispatch({ type: LOGIN_FAIL, payload: error.message }));
+    .catch(error => dispatch({ type: APP_ERROR, payload: error.message }));
 };
 
 const googleLogin = (history, inviteToken) => dispatch => {
-  dispatch({ type: GOOGLE_AUTH_LOADING });
+  dispatch({ type: APP_LOADING });
 
   firebase
     .auth()
@@ -73,6 +73,7 @@ const googleLogin = (history, inviteToken) => dispatch => {
                   to the Register page component with less fields to complete the onboarding.
                 */
 
+                dispatch({ type: APP_DONE_LOADING });
                 dispatch({ type: GOOGLE_AUTH_REDIRECT, payload: idToken });
                 if (inviteToken) {
                   history.push(`/gredirect/${idToken}/${inviteToken}`);
@@ -80,34 +81,45 @@ const googleLogin = (history, inviteToken) => dispatch => {
                   history.push(`/gredirect/${idToken}`);
                 }
               } else {
+                dispatch({ type: APP_DONE_LOADING });
                 dispatch({ type: GOOGLE_AUTH_SUCCESS, payload: res.data });
                 history.push("/dashboard");
               }
             })
             .catch(error =>
-              dispatch({ type: GOOGLE_AUTH_FAIL, payload: error.message })
+              dispatch({ type: APP_ERROR, payload: error.message })
             );
         });
     })
-    .catch(error =>
-      dispatch({ type: GOOGLE_AUTH_FAIL, payload: error.message })
-    );
+    .catch(error => dispatch({ type: APP_ERROR, payload: error.message }));
+};
+
+const forgotPassword = (data, history) => dispatch => {
+  dispatch({ type: APP_LOADING });
+
+  axiosWithAuth()
+    .post("/auth/forgotpassword", data)
+    .then(res => {
+      console.log("Password reset");
+      dispatch({ type: APP_DONE_LOADING });
+      dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: res.data.email });
+      history.push("/login");
+    })
+    .catch(error => {
+      dispatch({ type: APP_ERROR, payload: error.message });
+    });
 };
 
 export const actions = {
-  CREATE_ACCOUNT_LOADING,
   CREATE_ACCOUNT_SUCCESS,
-  CREATE_ACCOUNT_FAIL,
-  GOOGLE_AUTH_LOADING,
+  FORGOT_PASSWORD_SUCCESS,
   GOOGLE_AUTH_SUCCESS,
-  GOOGLE_AUTH_FAIL,
-  LOGIN_LOADING,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL
+  LOGIN_SUCCESS
 };
 
 export const dispatchers = {
   userRegistration,
   userLogin,
-  googleLogin
+  googleLogin,
+  forgotPassword
 };
