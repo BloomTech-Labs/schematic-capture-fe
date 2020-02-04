@@ -4,6 +4,7 @@ import Register from "../shared/components/auth/Register";
 import Login from "../shared/components/auth/Login";
 import Dashboard from "../shared/components/Dashboard";
 import ForgotPassword from "../shared/components/auth/ForgotPassword";
+import PageError from "../shared/components/PageError";
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
         <Route path="/forgotpassword" component={ForgotPassword} />
         <Route path="/dashboard" component={Dashboard} />
         <Route exact path="/" component={Login} />
+        <Route path="*" component={PageError} />
       </Switch>
     </div>
   );
