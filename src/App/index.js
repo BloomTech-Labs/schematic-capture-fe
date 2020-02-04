@@ -4,20 +4,27 @@ import { BrowserRouter } from "react-router-dom";
 import NormalizeStyles from "./NormalizeStyles";
 import BaseStyles from "./BaseStyles";
 
+import PageLoader from "../shared/components/PageLoader";
+
 import Router from "./Router";
-import Navbar from "../shared/components/layout/Navbar";
+
+// redux hooks
+import { useSelector } from "react-redux";
 
 const App = () => {
-    return (
-        <Fragment>
-            <BrowserRouter>
-                <NormalizeStyles />
-                <BaseStyles />
-                {/* <Navbar /> */}
-                <Router />
-            </BrowserRouter>
-        </Fragment>
-    );
+  // const { isLoading, error } = useSelector(state => state.app);
+  const isLoading = true;
+
+  return (
+    <Fragment>
+      {isLoading && <PageLoader />}
+      <BrowserRouter>
+        <NormalizeStyles />
+        <BaseStyles />
+        <Router />
+      </BrowserRouter>
+    </Fragment>
+  );
 };
 
 export default App;

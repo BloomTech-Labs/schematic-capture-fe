@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Color from "color";
 
-import { color, font } from "../../../shared/utils/styles";
+import { color, font } from "../../utils/styles";
 
 export const Container = styled.div`
   background: url("../../assets/8609f4b9daabe355452ccd4ea682f37e.jpg") no-repeat
@@ -23,14 +23,14 @@ export const Container = styled.div`
 `;
 
 export const HeadTitle = styled.h1`
-  font-size: 72px;
-  font-family: ${font.bold};
-  color: ${Color(color.textLight)};
+  ${font.size(4.5)}
+  ${font.bold}
+  color: ${color.textLight};
   @media (max-width: 650px) {
     text-align: center;
   }
   @media (max-width: 500px) {
-    color: ${Color(color.textDark)};
+    color: ${color.textDark};
   }
 `;
 
@@ -102,7 +102,7 @@ export const StyledField = styled.input`
   color: ${color.inputColor};
   display: block;
   width: 100%;
-  padding: 10px 10px;
+  padding: 14px 16px;
   margin-top: 8px;
   &:hover {
     border-color:
@@ -189,6 +189,11 @@ export const Button = styled.button`
         vertical-align: sub;
     }
 
+  &:active {
+    transform: scale(.98);
+    box-shadow: none;
+  }
+
   &:hover {
     background-color: ${({ variant }) =>
       variant === "primary" &&
@@ -200,5 +205,5 @@ export const Button = styled.button`
       Color(color.secondary)
         .darken(0.25)
         .string()};
-
+  }
 `;

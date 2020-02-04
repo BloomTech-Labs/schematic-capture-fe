@@ -22,17 +22,13 @@ import {
 import GoogleIcon from "../../assets/google-icon";
 
 // actions
-import { actions } from "../../actions/authActions";
-import { noAuthActions } from "../../actions/actions";
+import { dispatchers } from "../../actions/authActions";
 
 const Login = props => {
-  const { register, handleSubmit, errors, watch } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
   const history = useHistory();
-  const { userLogin, googleLogin } = actions;
-  const { forgotPassword } = noAuthActions;
-
-  const email = watch("email");
+  const { userLogin, googleLogin } = dispatchers;
 
   const onSubmit = data => {
     console.log(data);
@@ -43,12 +39,6 @@ const Login = props => {
     event.preventDefault();
 
     dispatch(googleLogin(history));
-  };
-
-  const forgottenPassword = event => {
-    event.preventDefault();
-    console.log(email);
-    window.location = "/forgotpassword";
   };
 
   return (
@@ -104,7 +94,7 @@ const Login = props => {
               </Button>
             </FormColumn>
             <FormColumn style={{ textAlign: "right" }}>
-              <Link to="/forgot_password" className="forg">
+              <Link to="/forgotpassword" className="forg">
                 Forgot your password?
               </Link>
             </FormColumn>
