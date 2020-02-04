@@ -30,7 +30,7 @@ export const HeadTitle = styled.h1`
     text-align: center;
   }
   @media (max-width: 500px) {
-    color: ${Color(color.textDark)}
+    color: ${Color(color.textDark)};
   }
 `;
 
@@ -63,6 +63,22 @@ export const FormContainer = styled.div`
       margin-top: 3rem;
     }
   }
+`;
+
+export const FormRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+`;
+
+export const FormColumn = styled.div`
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
 `;
 
 export const FormGroup = styled.div`
@@ -130,10 +146,11 @@ export const FieldError = styled.div`
   ${font.size(1.25)}
 `;
 
-// export const Buttons = styled.div `
+// export const Buttons = styled.div`
 //   display: flex;
 //   flex-direction: row;
-//   justify-content: space-evenly;
+//   justify-content: space-between;
+//   align-items: center;
 // `;
 
 export const Button = styled.button`
