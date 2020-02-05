@@ -1,4 +1,7 @@
 import styled from "styled-components";
+
+import { Link } from "react-router-dom";
+
 import Color from "color";
 
 import { color, font } from "../../utils/styles";
@@ -6,7 +9,7 @@ import { color, font } from "../../utils/styles";
 export const Container = styled.div`
   background: url("../../assets/8609f4b9daabe355452ccd4ea682f37e.jpg") no-repeat
     center center fixed;
-  background-color: #000000;
+  background-color: ${color.gray400};
   background-size: cover;
   height: 100vh;
   width: 100vw;
@@ -34,20 +37,22 @@ export const HeadTitle = styled.h1`
   }
 `;
 
+export const BackToLink = styled(Link)`
+  display: flex;
+`;
+
 export const FormContainer = styled.div`
   background: ${color.backgroundLight};
   border: 1px solid ${color.borderColor};
   border-radius: 0.5rem;
   padding: 4rem;
-  width: 400px;
-  max-width: 500px;
-  //position: absolute;
+  width: 440px;
   h1 {
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
   }
   p {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
   a {
     color: ${color.primary};
@@ -68,14 +73,14 @@ export const FormContainer = styled.div`
 export const FormRow = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: -5px;
+  margin-left: -5px;
 `;
 
 export const FormColumn = styled.div`
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 5px;
+  padding-left: 5px;
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
@@ -96,22 +101,25 @@ export const FieldLabel = styled.label`
 
 export const StyledField = styled.input`
   background: ${color.inputBackground};
-  border: 1px solid #ccc;
+  border: 1px solid ${color.gray100};
   box-sizing: border-box;
   border-radius: 0.5rem;
   color: ${color.inputColor};
   display: block;
   width: 100%;
   padding: 14px 16px;
-  margin-top: 8px;
   &:hover {
     border-color:
     ${Color(color.secondary)
       .darken(0.1)
-      .string()};}
+      .string()};
+    }
   }
   &:focus {
     border-color: ${color.primary};
+    &::placeholder {
+      color: ${color.gray100};
+    }
   }
 `;
 
@@ -129,12 +137,12 @@ export const LineOr = styled.div`
     width: 50%;
   }
   &:before {
-    top: 2.15em;
+    top: 1.15em;
     right: 1em;
     margin-left: -50%;
   }
   &:after {
-    bottom: 3.25em;
+    bottom: 2.8em;
     left: 1em;
     margin-right: -50%;
   }

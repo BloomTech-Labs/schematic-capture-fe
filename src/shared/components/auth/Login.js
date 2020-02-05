@@ -51,13 +51,15 @@ const Login = props => {
             New user? <Link to="/register">Create an account</Link>
           </p>
           <FormGroup>
-            <FieldLabel htmlFor="email">Email address</FieldLabel>
+            {/* <FieldLabel htmlFor="email">Email address</FieldLabel> */}
             {/* use aria-describedby to associate with error messages */}
             {/* the id field is used to associate with aria-describedby */}
             <StyledField
               type="email"
               name="email"
               id="email"
+              placeholder="Email"
+              aria-label="Email address"
               aria-invalid={errors.email ? "true" : "false"}
               aria-describedby="error-email-required error-email-pattern"
               ref={register({
@@ -72,11 +74,13 @@ const Login = props => {
             )}
           </FormGroup>
           <FormGroup>
-            <FieldLabel htmlFor="password">Password</FieldLabel>
+            {/* <FieldLabel htmlFor="password">Password</FieldLabel> */}
             <StyledField
               type="password"
               name="password"
               id="password"
+              placeholder="Password"
+              aria-label="Password"
               aria-invalid={errors.password ? "true" : "false"}
               aria-describedby="error-password-required"
               ref={register({ required: true })}
@@ -95,7 +99,7 @@ const Login = props => {
             </FormColumn>
             <FormColumn style={{ textAlign: "right" }}>
               <Link to="/forgotpassword" className="forg">
-                Forgot your password?
+                Forgot account?
               </Link>
             </FormColumn>
           </FormRow>
