@@ -12,8 +12,8 @@ import Router from "./Router";
 import { useSelector } from "react-redux";
 
 const App = () => {
-  // const { isLoading, error } = useSelector(state => state.app);
-  const isLoading = true;
+  const { isLoading, error } = useSelector(state => state.app);
+  // const isLoading = true;
 
   return (
     <Fragment>
