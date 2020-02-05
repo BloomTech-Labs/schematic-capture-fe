@@ -23,6 +23,8 @@ import GoogleIcon from "../../assets/google-icon";
 // actions
 import { dispatchers } from "../../actions/authActions";
 
+// TODO Print error on user account already exists.
+
 function Register({ gRedirect }) {
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
@@ -59,14 +61,16 @@ function Register({ gRedirect }) {
               <FormRow>
                 <FormColumn>
                   <FormGroup>
-                    <FieldLabel htmlFor="firstName" id="first">
+                    {/* <FieldLabel htmlFor="firstName" id="first">
                       First name
-                    </FieldLabel>
+                    </FieldLabel> */}
                     <StyledField
                       type="text"
                       id="firstName"
                       name="firstName"
                       className="column"
+                      placeholder="First name"
+                      aria-label="First name"
                       aria-invalid={errors.firstName ? "true" : "false"}
                       aria-describedby="error-firstName-required error-firstName-maxLength"
                       ref={register({ required: true, maxLength: 80 })}
@@ -81,11 +85,13 @@ function Register({ gRedirect }) {
                 </FormColumn>
                 <FormColumn>
                   <FormGroup>
-                    <FieldLabel htmlFor="lastName">Last name</FieldLabel>
+                    {/* <FieldLabel htmlFor="lastName">Last name</FieldLabel> */}
                     <StyledField
                       type="text"
                       id="lastName"
                       name="lastName"
+                      placeholder="Last name"
+                      aria-label="Last name"
                       aria-invalid={errors.lastName ? "true" : "false"}
                       aria-describedby="error-lastName-required error-lastName-maxLength"
                       ref={register({ required: true, maxLength: 100 })}
@@ -99,14 +105,15 @@ function Register({ gRedirect }) {
                 </FormColumn>
               </FormRow>
               <FormGroup>
-                <FieldLabel htmlFor="email">Email address</FieldLabel>
+                {/* <FieldLabel htmlFor="email">Email address</FieldLabel> */}
                 {/* use aria-describedby to associate with error messages */}
                 {/* the id field is used to associate with aria-describedby */}
                 <StyledField
                   type="email"
                   name="email"
                   id="email"
-                  // placeholder="Email Address"
+                  placeholder="Email"
+                  aria-label="Email"
                   aria-invalid={errors.email ? "true" : "false"}
                   aria-describedby="error-email-required error-email-pattern"
                   ref={register({
@@ -121,12 +128,13 @@ function Register({ gRedirect }) {
                 )}
               </FormGroup>
               <FormGroup>
-                <FieldLabel htmlFor="password">Password</FieldLabel>
+                {/* <FieldLabel htmlFor="password">Password</FieldLabel> */}
                 <StyledField
                   type="password"
                   name="password"
                   id="password"
-                  // placeholder="Password"
+                  placeholder="Password"
+                  aria-label="Password"
                   aria-invalid={errors.password ? "true" : "false"}
                   aria-describedby="error-password-required"
                   ref={register({ required: !gRedirect })}
@@ -138,14 +146,15 @@ function Register({ gRedirect }) {
                 )}
               </FormGroup>
               <FormGroup>
-                <FieldLabel htmlFor="confirmPassword">
+                {/* <FieldLabel htmlFor="confirmPassword">
                   Confirm password
-                </FieldLabel>
+                </FieldLabel> */}
                 <StyledField
                   type="password"
                   name="confirmPassword"
                   id="confirmPassword"
-                  // placeholder="Confirm Password"
+                  placeholder="Confirm password"
+                  aria-label="Confirm password"
                   ref={register({ required: !gRedirect })}
                 />
                 {errors.confirmPassword &&
@@ -158,11 +167,13 @@ function Register({ gRedirect }) {
             </>
           )}
           <FormGroup>
-            <FieldLabel htmlFor="phone">Phone number</FieldLabel>
+            {/* <FieldLabel htmlFor="phone">Phone number</FieldLabel> */}
             <StyledField
               type="tel"
               id="phone"
               name="phone"
+              placeholder="Phone number"
+              aria-label="Phone number"
               aria-invalid={errors.phone ? "true" : "false"}
               aria-describedby="error-phone-required error-phone-maxLength"
               ref={register({
@@ -178,11 +189,13 @@ function Register({ gRedirect }) {
             )}
           </FormGroup>
           <FormGroup hidden={!!params.inviteToken}>
-            <FieldLabel htmlFor="inviteToken">Invite token</FieldLabel>
+            {/* <FieldLabel htmlFor="inviteToken">Invite token</FieldLabel> */}
             <StyledField
               type="text"
               id="inviteToken"
               name="inviteToken"
+              placeholder="Invite token"
+              aria-label="Invite token"
               ref={register({ required: !params.inviteToken })}
               defaultValue={params.inviteToken}
             />
