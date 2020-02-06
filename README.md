@@ -1,4 +1,3 @@
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)&nbsp;
 [![Netlify Status](https://api.netlify.com/api/v1/badges/97a78318-7c36-40d8-9c24-25137e79df06/deploy-status)](https://app.netlify.com/sites/schematic/deploys)&nbsp;
 [![Maintainability](https://api.codeclimate.com/v1/badges/7780265919ee2de9ea46/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/schematic-capture-fe/maintainability) &nbsp;
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7780265919ee2de9ea46/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/schematic-capture-fe/test_coverage) &nbsp;
@@ -36,7 +35,7 @@ An iOS app for capturing and annotating huge machines in some of the countries l
 - feature four
 - feature five
 
-## 1️⃣ Tech Stack
+## Tech Stack
 
 ### Front end built using:
 
@@ -119,16 +118,18 @@ In order for the app to function correctly, the user must set up their own envir
 
 🚫Document what you used for testing and why
 
-# 4️⃣ Installation Instructions
+# Installation Instructions
 
 This project is setup using create-react-app (CRA). You will not need to install CRA in order to make this project work. Follow the steps below to setup the project with the proper dependencies.
 
 - [ ] Create a forked copy of this project.
 - [ ] Add your team lead as collaborator on Github.
 - [ ] Clone your OWN version of the repository in your terminal
-- [ ] CD into the project base directory `cd Rschematic-capture-fe`
+- [ ] CD into the project base directory `cd schematic-capture-fe`
 - [ ] Download project dependencies by running the command `yarn`
 - [ ] Using yarn, start up the app using `yarn start`
+- [ ] Create a new feature branch: git checkout -b `<new-feature>`. Implement the project on your newly created `<new-feature>` branch, committing changes regularly.
+- [ ] Push commits: git push origin `<new-feature>`.
 
 ## Other Scripts
 
