@@ -121,7 +121,14 @@ In order for the app to function correctly, the user must set up their own envir
 
 # 4️⃣ Installation Instructions
 
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+This project is setup using create-react-app (CRA). You will not need to install CRA in order to make this project work. Follow the steps below to setup the project with the proper dependencies.
+
+- [ ] Create a forked copy of this project.
+- [ ] Add your team lead as collaborator on Github.
+- [ ] Clone your OWN version of the repository in your terminal
+- [ ] CD into the project base directory `cd Rschematic-capture-fe`
+- [ ] Download project dependencies by running the command `yarn`
+- [ ] Using yarn, start up the app using `yarn start`
 
 ## Other Scripts
 
