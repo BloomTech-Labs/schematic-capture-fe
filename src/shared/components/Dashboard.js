@@ -26,7 +26,8 @@ const Dashboard = () => {
       <DropdownButton
         items={items}
         text="Create New"
-        // buttonProps={{ variant: "secondary" }}
+        aria-haspopup="true"
+        aria-expanded="false"
       />
     </Fragment>
   );
