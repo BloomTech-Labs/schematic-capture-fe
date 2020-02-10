@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import Color from "color";
 
-import { color, font } from "../../utils/styles";
+import { color, font } from "../../shared/utils/styles";
 
 export const Container = styled.div`
   background: url("../../assets/8609f4b9daabe355452ccd4ea682f37e.jpg") no-repeat

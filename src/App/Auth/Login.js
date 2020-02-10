@@ -19,10 +19,10 @@ import {
   HeadTitle
 } from "./Style";
 
-import GoogleIcon from "../../assets/google-icon";
+import GoogleIcon from "../../shared/assets/google-icon";
 
 // actions
-import { dispatchers } from "../../actions/authActions";
+import { dispatchers } from "../../shared/actions/authActions";
 
 const Login = props => {
   const { register, handleSubmit, errors } = useForm();

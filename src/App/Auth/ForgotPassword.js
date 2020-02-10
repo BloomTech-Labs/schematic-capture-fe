@@ -18,10 +18,10 @@ import {
 } from "./Style";
 
 // components
-import BackToLink from "../BackToLink";
+import BackToLink from "../../shared/components/BackToLink";
 
 // actions
-import { dispatchers } from "../../actions/authActions";
+import { dispatchers } from "../../shared/actions/authActions";
 
 const ForgotPassword = () => {
   const { register, handleSubmit, errors } = useForm();
