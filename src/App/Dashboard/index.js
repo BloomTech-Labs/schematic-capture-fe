@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
-import NavBar from "../components/layout/Navbar";
+import NavBar from "./Navbar";
 
-import DropdownButton from "./DropdownButton";
+import DropdownButton from "../../shared/components/DropdownButton";
 
 const items = [
   {
