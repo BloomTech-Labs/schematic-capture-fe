@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Register from "../shared/components/auth/Register";
-import Login from "../shared/components/auth/Login";
-import Dashboard from "../shared/components/Dashboard";
-import ForgotPassword from "../shared/components/auth/ForgotPassword";
+import Register from "../App/Auth/Register";
+import Login from "../App/Auth/Login";
+import ForgotPassword from "../App/Auth/ForgotPassword";
+import Dashboard from "../App/Dashboard";
 import PageError from "../shared/components/PageError";
 
 const Router = () => {
