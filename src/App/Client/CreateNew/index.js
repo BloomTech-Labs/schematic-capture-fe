@@ -1,17 +1,20 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 
-import Form from "../../../shared/components/Form";
-import schema from "./schema";
+import { schema } from "./schema";
 
-import { FormHeading } from "./Styles";
+import { StyledFields } from "./Styles";
 
-const CreateNew = () => {
+const CreateNewClient = () => {
+  const { handleSubmit, register, errors } = useForm();
+
   return (
-    <div>
-      <FormHeading>New Client</FormHeading>
-      <Form fields={schema} buttonText="Save" />
-    </div>
+    <form onSubmit={handleSubmit(data => console.log(data))}>
+      <StyledFields fields={schema} register={register} errors={errors} />
+      <button type="Submit">Save</button>
+      <button>Cancel</button>
+    </form>
   );
 };
 
-export default CreateNew;
+export default CreateNewClient;

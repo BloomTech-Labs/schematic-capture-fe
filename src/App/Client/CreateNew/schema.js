@@ -1,4 +1,4 @@
-const fields = [
+export const schema = [
   {
     fieldType: "input",
     name: "firstName",
@@ -58,5 +58,3 @@ const fields = [
     placeholder: "ZIP Code"
   }
 ];
-
-export default fields;
