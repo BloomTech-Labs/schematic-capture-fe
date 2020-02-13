@@ -20,7 +20,7 @@ export const color = {
   // Background
   //
   // Setting background elements.
-  backgroundBody: "#ffffff",
+  backgroundBody: "#f5f5f5",
   backgroundLight: "#ffffff",
 
   // Text
@@ -63,7 +63,8 @@ export const mixin = {
       .alpha(opacity)
       .string(),
   boxShadowMedium: css`
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.1),
+      0 10px 30px #d5d8dc;
   `,
   cover: css`
     position: absolute;
