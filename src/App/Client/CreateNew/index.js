@@ -1,15 +1,28 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 
 import { schema } from "./schema";
+import { dispatchers } from "../../../shared/actions/dashboardActions";
 
 import { StyledFields } from "./Styles";
 
 const CreateNewClient = () => {
   const { handleSubmit, register, errors } = useForm();
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const { addNewClient } = dispatchers;
+
+  // TODO use context + redux to pass setClient without redux
+
+  const onAddNewClient = data => {
+    dispatch(addNewClient(data, history));
+  };
 
   return (
-    <form onSubmit={handleSubmit(data => console.log(data))}>
+    <form onSubmit={handleSubmit(onAddNewClient)}>
       <StyledFields fields={schema} register={register} errors={errors} />
       <button type="Submit">Save</button>
       <button>Cancel</button>
