@@ -8,20 +8,18 @@ import PageError from "../shared/components/PageError";
 
 const Router = () => {
   return (
-    <div>
-      <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/register/:inviteToken?" component={Register} />
-        <Route
-          path="/gredirect/:idToken/:inviteToken?"
-          render={() => <Register gRedirect />}
-        />
-        <Route path="/forgotpassword" component={ForgotPassword} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route exact path="/" component={Login} />
-        <Route path="*" component={PageError} />
-      </Switch>
-    </div>
+    <Switch>
+      <Route path="/login" component={Login} />
+      <Route path="/register/:inviteToken?" component={Register} />
+      <Route
+        path="/gredirect/:idToken/:inviteToken?"
+        render={() => <Register gRedirect />}
+      />
+      <Route path="/forgotpassword" component={ForgotPassword} />
+      <Route path="/dashboard" component={Dashboard} />
+      <Route exact path="/" component={Login} />
+      <Route path="*" component={PageError} />
+    </Switch>
   );
 };
 

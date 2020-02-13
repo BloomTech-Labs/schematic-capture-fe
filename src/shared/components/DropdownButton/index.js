@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DropdownMenu from "../DropdownMenu";
-import { Button } from "../Button";
+import Button from "../Button";
 
 const DropdownButton = ({ text, items, buttonProps }) => {
   const [display, setDisplay] = useState(false);
