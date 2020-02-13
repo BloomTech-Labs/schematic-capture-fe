@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 
@@ -7,10 +7,7 @@ import { useForm } from "react-hook-form";
 import {
   Container,
   FormContainer,
-  FormRow,
-  FormColumn,
   FormGroup,
-  FieldLabel,
   StyledField,
   FieldError,
   Button,
@@ -40,9 +37,6 @@ const ForgotPassword = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <h1>Reset Password</h1>
           <FormGroup>
-            {/* <FieldLabel htmlFor="email">Email address</FieldLabel> */}
-            {/* use aria-describedby to associate with error messages */}
-            {/* the id field is used to associate with aria-describedby */}
             <StyledField
               type="email"
               name="email"

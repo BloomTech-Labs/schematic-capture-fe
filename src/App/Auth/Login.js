@@ -11,7 +11,6 @@ import {
   FormRow,
   FormColumn,
   FormGroup,
-  FieldLabel,
   StyledField,
   FieldError,
   Button,
@@ -51,9 +50,6 @@ const Login = props => {
             New user? <Link to="/register">Create an account</Link>
           </p>
           <FormGroup>
-            {/* <FieldLabel htmlFor="email">Email address</FieldLabel> */}
-            {/* use aria-describedby to associate with error messages */}
-            {/* the id field is used to associate with aria-describedby */}
             <StyledField
               type="email"
               name="email"
@@ -74,7 +70,6 @@ const Login = props => {
             )}
           </FormGroup>
           <FormGroup>
-            {/* <FieldLabel htmlFor="password">Password</FieldLabel> */}
             <StyledField
               type="password"
               name="password"
