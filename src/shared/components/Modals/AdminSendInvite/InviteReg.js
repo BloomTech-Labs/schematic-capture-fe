@@ -6,27 +6,26 @@ import { useForm } from "react-hook-form";
 
 // utils
 import {
-  Container,
-  FormContainer,
-  FormRow,
-  FormColumn,
   FormGroup,
-  FieldLabel,
   StyledField,
   FieldError,
   Button,
-  HeadTitle,
-  StyledSelect
-} from "./Style";
+  StyledSelect,
+} from "../../../../App/Auth/Style";
+
+import {
+    InviteContainer,
+    InviteForm
+} from "./Styles";
 
 // components
-import BackToLink from "../../shared/components/BackToLink";
+import BackToLink from "../../BackToLink";
 
 // actions
-import { dispatchers } from "../../shared/actions/authActions";
-import { axiosWithAuth } from "../../shared/utils";
+import { dispatchers } from "../../../actions/authActions";
+import { axiosWithAuth } from "../../../utils";
 
-const InviteReg = () => {
+const InviteReg = ({ handleClose, show, children}) => {
   const { register, handleSubmit, errors } = useForm();
   const [roles, setRoles] = useState([]);
   // const [roleId, setRoleId] = useState(null);
@@ -57,9 +56,8 @@ const InviteReg = () => {
   };
 
   return (
-    <Container>
-      <HeadTitle>Schematic Capture</HeadTitle>
-      <FormContainer>
+      <InviteContainer>
+          <InviteForm>
         <form onSubmit={handleSubmit(onSubmit)}>
           <h1>Send Registration Invitation</h1>
           <FormGroup>
@@ -119,7 +117,7 @@ const InviteReg = () => {
             )}
           </FormGroup>
           <FormGroup>
-            <Button variant="primary" submit="button" btnBlock>
+            <Button variant="primary" submit="button" onClick={handleClose}btnBlock>
               Send Invite Link
             </Button>
           </FormGroup>
@@ -127,8 +125,8 @@ const InviteReg = () => {
             <BackToLink to="/login" text="Login" />
           </FormGroup>
         </form>
-      </FormContainer>
-    </Container>
+          </InviteForm>
+      </InviteContainer>
   );
 };
 

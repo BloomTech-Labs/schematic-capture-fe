@@ -6,7 +6,7 @@ import ForgotPassword from "../App/Auth/ForgotPassword";
 import Dashboard from "../App/Dashboard";
 import PageError from "../shared/components/PageError";
 import PrivateRoute from "../shared/components/PrivateRoute";
-import InviteReg from "./Auth/InviteReg";
+import InviteReg from "../shared/components/Modals/AdminSendInvite/InviteReg";
 
 const Router = () => {
   return (
