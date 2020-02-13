@@ -21,7 +21,12 @@ const items = [
   {
     to: "/invite/technician",
     text: "Technician"
-  }
+  },
+    {
+        to: "/invitereg",
+        text: "Send Invite"
+    }
+
 ];
 
 const Dashboard = () => {

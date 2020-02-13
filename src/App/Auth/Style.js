@@ -99,6 +99,8 @@ export const FieldLabel = styled.label`
   ${font.size(1.25)}
 `;
 
+export const StyledSelect = styled.select``;
+
 export const StyledField = styled.input`
   background: ${color.inputBackground};
   border: 1px solid ${color.gray100};
