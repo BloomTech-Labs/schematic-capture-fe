@@ -45,23 +45,6 @@ const InviteReg = () => {
       .then(res => {
         console.log(res.data.roles) || setRoles(res.data.roles);
       })
-      //     .then(res => {
-      //       const roledata = res.data.roles;
-      //       {
-      //         roledata.map(role => {
-      //           console.log(role);
-      //           let theId = role.id;
-      //           let theType = role.type;
-      //           for (theId; theId < roledata.length; theId++) {
-      //             if (theId && theType) {
-      //               setRoleId(theId);
-      //               setRoleType(theType);
-      //               break;
-      //             }
-      //           }
-      //         });
-      //       }
-      //     })
       .catch(error => {
         console.log(error);
       });
@@ -80,16 +63,12 @@ const InviteReg = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <h1>Send Registration Invitation</h1>
           <FormGroup>
-            {/* <FieldLabel htmlFor="email">Email address</FieldLabel> */}
-            {/* use aria-describedby to associate with error messages */}
-            {/* the id field is used to associate with aria-describedby */}
             <StyledField
               type="string"
               name="name"
               id="name"
               placeholder="Full Name"
               aria-label="Full Name"
-              // aria-invalid={errors.name ? "true" : "false"}
               ref={register({
                 required: true
               })}
@@ -120,7 +99,6 @@ const InviteReg = () => {
                   <option
                     key={role.id + new Date()}
                     value={role.id}
-                    // onClick={getRole}
                   >
                     {role.name.toUpperCase()}
                   </option>
@@ -128,21 +106,6 @@ const InviteReg = () => {
               })}
             </StyledSelect>
             <br />
-
-            {/*<SegmentedControl*/}
-            {/*    name="roleId"*/}
-            {/*    id="roleId"*/}
-            {/*    ref={register({*/}
-            {/*        required: true*/}
-            {/*    })}*/}
-            {/*    options={[*/}
-            {/*        { label: "Admin", value: 1 },*/}
-            {/*        { label: "Technician", value: 2, default: true },*/}
-            {/*        { label: "Employee", value: 3 }*/}
-            {/*        ]}*/}
-            {/*>*/}
-            {/*</SegmentedControl>*/}
-
             {errors.email && errors.email.type === "required" && (
               <FieldError id="error-email-required">
                 Please enter an email address.
