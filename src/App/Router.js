@@ -5,6 +5,7 @@ import Login from "../App/Auth/Login";
 import ForgotPassword from "../App/Auth/ForgotPassword";
 import Dashboard from "../App/Dashboard";
 import PageError from "../shared/components/PageError";
+import PrivateRoute from "../shared/components/PrivateRoute";
 
 const Router = () => {
   return (
@@ -12,7 +13,7 @@ const Router = () => {
       <Route path="/login" component={Login} />
       <Route path="/register/:inviteToken?" component={Register} />
       <Route path="/forgotpassword" component={ForgotPassword} />
-      <Route path="/dashboard" component={Dashboard} />
+      <PrivateRoute path="/dashboard" component={Dashboard} />
       <Route exact path="/" component={Login} />
       <Route path="*" component={PageError} />
     </Switch>
