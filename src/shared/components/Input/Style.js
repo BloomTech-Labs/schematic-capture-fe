@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import Color from "color";
 
-import { color, font } from "../../utils/styles";
+import { color } from "../../utils/styles";
 
 export const StyledInput = styled.div``;
 

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Color from "color";
 import { color, font } from "../../utils/styles";
 
-export const Button = styled.button`
+export const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;

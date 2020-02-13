@@ -11,7 +11,6 @@ import {
   FormRow,
   FormColumn,
   FormGroup,
-  FieldLabel,
   StyledField,
   FieldError,
   Button,
@@ -19,20 +18,20 @@ import {
   HeadTitle
 } from "./Style";
 
-import GoogleIcon from "../../assets/google-icon";
+import GoogleIcon from "../../shared/assets/google-icon";
 
 // actions
-import { dispatchers } from "../../actions/authActions";
+import { dispatchers } from "../../shared/actions/authActions";
 
 const Login = props => {
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
   const history = useHistory();
-  const { userLogin, googleLogin } = dispatchers;
+  const { emailLogin, googleLogin } = dispatchers;
 
   const onSubmit = data => {
     console.log(data);
-    dispatch(userLogin(data, history));
+    dispatch(emailLogin(data, history));
   };
 
   const onGoogleLogin = event => {
@@ -51,9 +50,6 @@ const Login = props => {
             New user? <Link to="/register">Create an account</Link>
           </p>
           <FormGroup>
-            {/* <FieldLabel htmlFor="email">Email address</FieldLabel> */}
-            {/* use aria-describedby to associate with error messages */}
-            {/* the id field is used to associate with aria-describedby */}
             <StyledField
               type="email"
               name="email"
@@ -74,7 +70,6 @@ const Login = props => {
             )}
           </FormGroup>
           <FormGroup>
-            {/* <FieldLabel htmlFor="password">Password</FieldLabel> */}
             <StyledField
               type="password"
               name="password"

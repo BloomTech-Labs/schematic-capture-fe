@@ -1,14 +1,9 @@
-export * from "./Styles";
-// import React, { Fragment } from "react";
+import React from "react";
 
-// import { Button } from "./Styles";
+import { StyledButton } from "./Styles";
 
-// const Button = props => {
-//   return (
-//     <Fragment>
-//       <Button {...rest} />
-//     </Fragment>
-//   );
-// };
+const Button = ({ text, ...rest }) => {
+  return <StyledButton {...rest}>{text}</StyledButton>;
+};
 
-// export default Button;
+export default Button;
