@@ -27,11 +27,11 @@ const Login = props => {
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
   const history = useHistory();
-  const { userLogin, googleLogin } = dispatchers;
+  const { emailLogin, googleLogin } = dispatchers;
 
   const onSubmit = data => {
     console.log(data);
-    dispatch(userLogin(data, history));
+    dispatch(emailLogin(data, history));
   };
 
   const onGoogleLogin = event => {

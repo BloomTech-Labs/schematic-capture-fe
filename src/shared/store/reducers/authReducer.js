@@ -4,7 +4,7 @@ const { CREATE_ACCOUNT_SUCCESS, LOGIN_SUCCESS, STORE_GOOGLE_INFO } = actions;
 
 const initState = {
   user: JSON.parse(localStorage.getItem("user")) || {},
-  googleInfo: {},
+  googleInfo: null,
   isLoading: false,
   error: null
 };

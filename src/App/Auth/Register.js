@@ -24,24 +24,20 @@ import { dispatchers } from "../../shared/actions/authActions";
 
 // TODO Print error on user account already exists.
 
-function Register({ gRedirect }) {
+function Register() {
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
   const history = useHistory();
   const params = useParams();
 
   const googleInfo = useSelector(state => state.auth.googleInfo);
-  const { createUser, userRegistration, googleLogin } = dispatchers;
+  const { emailRegistration, googleRegistration, googleLogin } = dispatchers;
 
   const onSubmit = data => {
-    if (gRedirect) {
-      data.idToken = params.idToken;
-    }
-
-    if (gRedirect) {
-      dispatch(createUser(data, history));
+    if (googleInfo) {
+      dispatch(googleRegistration(data, history));
     } else {
-      dispatch(userRegistration(data, history));
+      dispatch(emailRegistration(data, history));
     }
   };
 
@@ -67,7 +63,7 @@ function Register({ gRedirect }) {
                   type="text"
                   id="firstName"
                   name="firstName"
-                  defaultValue={googleInfo.firstName}
+                  defaultValue={googleInfo && googleInfo.firstName}
                   className="column"
                   placeholder="First name"
                   aria-label="First name"
@@ -88,7 +84,7 @@ function Register({ gRedirect }) {
                   type="text"
                   id="lastName"
                   name="lastName"
-                  defaultValue={googleInfo.lastName}
+                  defaultValue={googleInfo && googleInfo.lastName}
                   placeholder="Last name"
                   aria-label="Last name"
                   aria-invalid={errors.lastName ? "true" : "false"}
@@ -110,11 +106,11 @@ function Register({ gRedirect }) {
               id="email"
               placeholder="Email"
               aria-label="Email"
-              defaultValue={googleInfo.email}
+              defaultValue={googleInfo && googleInfo.email}
               aria-invalid={errors.email ? "true" : "false"}
               aria-describedby="error-email-required error-email-pattern"
               ref={register({
-                required: !gRedirect,
+                required: !googleInfo,
                 pattern: /^\S+@\S+$/i
               })}
             />
@@ -124,7 +120,7 @@ function Register({ gRedirect }) {
               </FieldError>
             )}
           </FormGroup>
-          {!gRedirect && (
+          {!googleInfo && (
             <>
               <FormGroup>
                 <StyledField
@@ -135,7 +131,7 @@ function Register({ gRedirect }) {
                   aria-label="Password"
                   aria-invalid={errors.password ? "true" : "false"}
                   aria-describedby="error-password-required"
-                  ref={register({ required: !gRedirect })}
+                  ref={register({ required: !googleInfo })}
                 />
                 {errors.password && errors.password.type === "required" && (
                   <FieldError id="error-password-required">
@@ -150,7 +146,7 @@ function Register({ gRedirect }) {
                   id="confirmPassword"
                   placeholder="Confirm password"
                   aria-label="Confirm password"
-                  ref={register({ required: !gRedirect })}
+                  ref={register({ required: !googleInfo })}
                 />
                 {errors.confirmPassword &&
                   errors.confirmPassword.type === "required" && (
@@ -167,7 +163,7 @@ function Register({ gRedirect }) {
               id="phone"
               name="phone"
               placeholder="Phone number"
-              defaultValue={googleInfo.phone}
+              defaultValue={googleInfo && googleInfo.phone}
               aria-label="Phone number"
               aria-invalid={errors.phone ? "true" : "false"}
               aria-describedby="error-phone-required error-phone-maxLength"
@@ -201,11 +197,11 @@ function Register({ gRedirect }) {
           </FormGroup>
           <FormGroup>
             <Button variant="primary" type="submit">
-              {gRedirect ? "Continue" : "Create account"}
+              {googleInfo ? "Continue" : "Create account"}
             </Button>
           </FormGroup>
         </form>
-        {!gRedirect && (
+        {!googleInfo && (
           <>
             <LineOr>
               <p>Or</p>

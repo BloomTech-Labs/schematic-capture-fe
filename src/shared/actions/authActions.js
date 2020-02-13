@@ -9,7 +9,7 @@ const STORE_GOOGLE_INFO = "STORE_GOOGLE_INFO";
 
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 
-const createUser = (data, history) => dispatch => {
+const googleRegistration = (data, history) => dispatch => {
   dispatch({ type: APP_LOADING });
   axiosWithAuth()
     .post("/auth/register", data)
@@ -23,13 +23,10 @@ const createUser = (data, history) => dispatch => {
       dispatch({ type: CREATE_ACCOUNT_SUCCESS, payload: user });
       history.push("/dashboard");
     })
-    .catch(async error => {
-      if (error.response) await firebase.auth().currentUser.delete();
-      dispatch({ type: APP_ERROR, payload: error.message });
-    });
+    .catch(error => dispatch({ type: APP_ERROR, payload: error.message }));
 };
 
-const userRegistration = (data, history) => dispatch => {
+const emailRegistration = (data, history) => dispatch => {
   dispatch({ type: APP_LOADING });
 
   // sets up request body to match backend requirements
@@ -42,12 +39,27 @@ const userRegistration = (data, history) => dispatch => {
     })
     .then(idToken => {
       localStorage.setItem("idToken", idToken);
-      dispatch(createUser(payload, history));
+      axiosWithAuth()
+        .post("/auth/register", payload)
+        .then(res => {
+          const user = res.data;
+
+          // stores token and user in localstorage for reducer to grab as initial state on page refresh;
+          localStorage.setItem("user", JSON.stringify(user));
+
+          dispatch({ type: APP_DONE_LOADING });
+          dispatch({ type: CREATE_ACCOUNT_SUCCESS, payload: user });
+          history.push("/dashboard");
+        })
+        .catch(async error => {
+          await firebase.auth().currentUser.delete();
+          dispatch({ type: APP_ERROR, payload: error.message });
+        });
     })
     .catch(error => dispatch({ type: APP_ERROR, payload: error.message }));
 };
 
-const userLogin = (data, history) => dispatch => {
+const emailLogin = (data, history) => dispatch => {
   dispatch({ type: APP_LOADING });
 
   const { email, password } = data;
@@ -73,25 +85,26 @@ const userLogin = (data, history) => dispatch => {
           history.push("/dashboard");
         })
         .catch(error => dispatch({ type: APP_ERROR, payload: error.message }));
-    });
+    })
+    .catch(error => dispatch({ type: APP_ERROR, payload: error.message }));
 };
 
 const googleLogin = (history, inviteToken) => dispatch => {
   dispatch({ type: APP_LOADING });
+  let googleInfo;
 
   firebase
     .auth()
     .signInWithPopup(GoogleProvider)
     .then(data => {
       const fullName = data.user.displayName.split(" ");
-      const googleInfo = {
+      googleInfo = {
         email: data.user.email,
         firstName: fullName[0],
         lastName: fullName[fullName.length - 1],
         phone: data.user.phoneNumber
       };
 
-      dispatch({ type: STORE_GOOGLE_INFO, payload: googleInfo });
       return data.user.getIdToken();
     })
     .then(idToken => {
@@ -113,11 +126,8 @@ const googleLogin = (history, inviteToken) => dispatch => {
           */
           dispatch({ type: APP_DONE_LOADING });
           if (error.response && error.response.data.accountExists === false) {
-            if (inviteToken) {
-              history.push(`/gredirect/${idToken}/${inviteToken}`);
-            } else {
-              history.push(`/gredirect/${idToken}`);
-            }
+            dispatch({ type: STORE_GOOGLE_INFO, payload: googleInfo });
+            history.push(`/register/${inviteToken || ""}`);
           }
         });
     })
@@ -148,9 +158,9 @@ export const actions = {
 };
 
 export const dispatchers = {
-  userRegistration,
-  createUser,
-  userLogin,
+  emailRegistration,
+  emailLogin,
+  googleRegistration,
   googleLogin,
   forgotPassword
 };
