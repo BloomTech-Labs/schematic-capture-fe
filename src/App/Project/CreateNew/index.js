@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 
 import { schema } from "./schema";
 
 import { StyledFields } from "./Styles";
 import { axiosWithAuth } from "../../../shared/utils";
+import { dispatchers } from "../../shared/actions/dashboardActions";
+
+const { fetchClients } = dispatchers;
 
 const CreateNewProject = () => {
   const { handleSubmit, register, error } = useForm();
-  const [options, setOptions] = useState([]);
+  const [clients, setClients] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    axiosWithAuth()
-      .get("/clients")
-      .then(response => {
-        console.log(response);
-        setOptions(response.data);
-      })
-      .catch(error => console.log(error.message));
+    dispatch(fetchClients(setClients));
   }, []);
 
   return (
     <form onSubmit={handleSubmit(data => console.log(data))}>
       <select>
-        {options.map(option => {
-          const { name, id } = option;
+        {clients.map(client => {
+          const { name, id } = client;
           return (
             <option key={id} value={id}>
               {name}
