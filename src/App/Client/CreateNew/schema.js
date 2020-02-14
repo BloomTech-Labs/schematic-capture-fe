@@ -9,13 +9,6 @@ export const schema = [
   },
   {
     fieldType: "input",
-    name: "email",
-    ref: ref => ref,
-    type: "email",
-    placeholder: "Email Address"
-  },
-  {
-    fieldType: "input",
     name: "phone",
     ref: ref => ref,
     type: "tel",
