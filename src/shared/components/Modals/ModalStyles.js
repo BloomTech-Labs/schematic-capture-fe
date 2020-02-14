@@ -98,13 +98,13 @@ export const Button = styled.button`
 
   &:hover {
     background-color: ${({ variant }) =>
-    variant === "primary" &&
-    Color(color.primary)
+      variant === "primary" &&
+      Color(color.primary)
         .darken(0.25)
         .string()};
     border-color: ${({ variant }) =>
-    variant === "secondary" &&
-    Color(color.secondary)
+      variant === "secondary" &&
+      Color(color.secondary)
         .darken(0.25)
         .string()};
   }

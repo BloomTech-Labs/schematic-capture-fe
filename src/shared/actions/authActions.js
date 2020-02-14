@@ -165,7 +165,7 @@ const sendInvite = (data, history) => dispatch => {
       console.log("Invite Sent");
       dispatch({ type: APP_DONE_LOADING });
       dispatch({ type: INVITE_SUCCESS, payload: res.data });
-      history.push("/register");
+      history.push("/dashboard");
     })
     .catch(error => {
       dispatch({ type: APP_ERROR, payload: error.message });

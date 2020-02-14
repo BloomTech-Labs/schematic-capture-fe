@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { color, font } from "../../../utils/styles";
 
-
 export const InviteContainer = styled.div`
   display: flex;
   justify-content: center;

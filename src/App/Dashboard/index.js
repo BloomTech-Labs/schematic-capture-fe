@@ -8,8 +8,8 @@ import Router from "./Router";
 import { dispatchers } from "../../shared/actions/dashboardActions";
 import Modal from "../../shared/components/Modals/Modal";
 import InviteReg from "../../shared/components/Modals/AdminSendInvite/InviteReg";
-import SendInvite from "../../shared/components/Modals/AdminSendInvite/SendInvite";
-import UploadPDF from "../../shared/components/Modals/JobSheet/Upload/UploadPDF";
+import ModalInvite from "../../shared/components/Modals/AdminSendInvite/ModalInvite";
+import InviteModala from "../../shared/components/Modals/JobSheet/Upload/ModalUpload";
 
 const { fetchClients } = dispatchers;
 
@@ -36,7 +36,6 @@ const Dashboard = () => {
   const [clients, setClients] = useState([]);
   const dispatch = useDispatch();
 
-
   useEffect(() => {
     dispatch(fetchClients(setClients));
   }, []);
@@ -51,8 +50,8 @@ const Dashboard = () => {
         aria-haspopup="true"
         aria-expanded="false"
       />
-      <SendInvite/>
-      <UploadPDF/>
+      <ModalInvite />
+      <InviteModala />
       {clients.map(client => (
         <pre>{JSON.stringify(client, null, 2)}</pre>
       ))}

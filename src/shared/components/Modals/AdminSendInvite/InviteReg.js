@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { SegmentedControl } from "segmented-control";
+import swal from 'sweetalert';
 
 // utils
 import {
@@ -22,12 +23,10 @@ import BackToLink from "../../BackToLink";
 import { dispatchers } from "../../../actions/authActions";
 import { axiosWithAuth } from "../../../utils";
 
-const InviteReg = ({ handleClose, show, children }) => {
+const InviteReg = ({ handleClose }) => {
   const { register, handleSubmit, errors } = useForm();
   const [roles, setRoles] = useState([]);
   const [theValue, setTheValue] = useState(null);
-  // const [roleId, setRoleId] = useState(null);
-  // const [roleType, setRoleType] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
   const { sendInvite } = dispatchers;
@@ -50,6 +49,13 @@ const InviteReg = ({ handleClose, show, children }) => {
   const onSubmit = (data, event) => {
     event.preventDefault();
     dispatch(sendInvite(data, history));
+    swal({
+      title: "Invite Sent",
+      text: "Press the button below to continue.",
+      icon: "success"
+    }).then(() => {
+      window.location.reload();
+    });
     console.log(data);
   };
 
@@ -93,10 +99,7 @@ const InviteReg = ({ handleClose, show, children }) => {
             >
               {roles.map(role => {
                 return (
-                  <option
-                    key={role.id + new Date()}
-                    value={theValue}
-                  >
+                  <option key={role.id + new Date()} value={theValue}>
                     {role.name.toUpperCase()}
                   </option>
                 );
@@ -115,8 +118,7 @@ const InviteReg = ({ handleClose, show, children }) => {
               ]}
               setValue={newValue => setTheValue(newValue)}
               onClick={console.log(theValue)}
-            >
-            </SegmentedControl>
+            />
 
             <br />
             {errors.email && errors.email.type === "required" && (

@@ -53,34 +53,32 @@ export const UploadInput = styled.input`
 `;
 
 export const InputOverlay = styled.div`
-[type="file"] {
-  height: 0;
-  overflow: hidden;
-  width: 0;
-}
-
-[type="file"] + label {
-  background: ${color.primaryLight};
-  border: none;
-  border-radius: 5px;
-  color: ${color.textLight};
-  cursor: pointer;
-  display: inline-block;
-  font-family: 'Poppins', sans-serif;
-  font-size: inherit;
-  font-weight: 600;
-  outline: none;
-  padding: 1rem 50px;
-  //position: relative;
-  transition: all 0.3s;
-  vertical-align: middle;
-  
-  &:hover {
-    background-color: ${color.primaryDark};
+  [type="file"] {
+    height: 0;
+    overflow: hidden;
+    width: 0;
   }
+
+  [type="file"] + label {
+    background: ${color.primaryLight};
+    border: none;
+    border-radius: 5px;
+    color: ${color.textLight};
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Poppins", sans-serif;
+    font-size: inherit;
+    font-weight: 600;
+    outline: none;
+    padding: 1rem 50px;
+    //position: relative;
+    transition: all 0.3s;
+    vertical-align: middle;
+
+    &:hover {
+      background-color: ${color.primaryDark};
+    }
   }
 `;
 
-export const FileLabel = styled.label`
-
-`;
+export const FileLabel = styled.label``;
