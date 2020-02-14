@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { color, font, mixin } from "../../../../utils/styles";
-import Color from "color";
+import { color } from "../../../../utils/styles";
 
 export const UploadContainer = styled.div`
   display: flex;
@@ -41,15 +40,6 @@ export const UploadForm = styled.div`
 export const UploadField = styled.div`
   display: flex;
   justify-content: space-around;
-`;
-
-export const UploadBox = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const UploadInput = styled.input`
-  opacity: 0;
 `;
 
 export const InputOverlay = styled.div`

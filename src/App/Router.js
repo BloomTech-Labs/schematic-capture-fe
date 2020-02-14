@@ -18,7 +18,7 @@ const Router = () => {
       <PrivateRoute path="/dashboard" component={Dashboard} />
       <Route exact path="/" component={Login} />
       <Route path="/invitereg" component={InviteReg} />
-      <Route path="/test" component={SchematicUpload} />
+      <Route path="/schematicupload" component={SchematicUpload} />
       <Route path="*" component={PageError} />
     </Switch>
   );

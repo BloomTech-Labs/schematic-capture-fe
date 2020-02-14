@@ -6,10 +6,8 @@ import DropdownButton from "../../shared/components/DropdownButton";
 import Router from "./Router";
 
 import { dispatchers } from "../../shared/actions/dashboardActions";
-import Modal from "../../shared/components/Modals/Modal";
-import InviteReg from "../../shared/components/Modals/AdminSendInvite/InviteReg";
 import ModalInvite from "../../shared/components/Modals/AdminSendInvite/ModalInvite";
-import InviteModala from "../../shared/components/Modals/JobSheet/Upload/ModalUpload";
+import ModalUpload from "../../shared/components/Modals/JobSheet/Upload/ModalUpload";
 
 const { fetchClients } = dispatchers;
 
@@ -51,7 +49,7 @@ const Dashboard = () => {
         aria-expanded="false"
       />
       <ModalInvite />
-      <InviteModala />
+      <ModalUpload />
       {clients.map(client => (
         <pre>{JSON.stringify(client, null, 2)}</pre>
       ))}

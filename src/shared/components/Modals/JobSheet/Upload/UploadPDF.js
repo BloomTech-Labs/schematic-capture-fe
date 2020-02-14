@@ -5,7 +5,6 @@ import {
   UploadContainer,
   UploadForm,
   UploadField,
-  UploadInput,
   InputOverlay,
   FileLabel
 } from "./Styles";
@@ -17,7 +16,6 @@ const UploadPDF = () => {
   const [pdf, setPdf] = useState(null);
   const [theFile, setTheFile] = useState("");
   const [progress, setProgress] = useState(0);
-  const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
   const handChange = e => {
@@ -50,9 +48,6 @@ const UploadPDF = () => {
           );
           setProgress(progress);
           if (progress === 100) {
-            // setSuccess(
-            //   `Your schematic, ${pdf.name}, has successfully been uploaded!`
-            // );
             setTheFile("");
             swal({
               title: `${pdf.name} successfully uploaded.`,
@@ -99,7 +94,6 @@ const UploadPDF = () => {
         <div>
           {progress > 0 ? <progress value={progress} max="100" /> : ""}
           <br />
-          <p>{success}</p>
           <p style={{ color: "red" }}>{error}</p>
         </div>
       </UploadForm>
