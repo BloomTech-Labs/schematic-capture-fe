@@ -6,6 +6,9 @@ import DropdownButton from "../../shared/components/DropdownButton";
 import Router from "./Router";
 
 import { dispatchers } from "../../shared/actions/dashboardActions";
+import Modal from "../../shared/components/Modals/Modal";
+import InviteReg from "../../shared/components/Modals/AdminSendInvite/InviteReg";
+import SendInvite from "../../shared/components/Modals/AdminSendInvite/SendInvite";
 
 const { fetchClients } = dispatchers;
 
@@ -21,12 +24,17 @@ const items = [
   {
     to: "/invite/technician",
     text: "Technician"
+  },
+  {
+    to: "/invitereg",
+    text: "Send Invite"
   }
 ];
 
 const Dashboard = () => {
   const [clients, setClients] = useState([]);
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     dispatch(fetchClients(setClients));
@@ -42,6 +50,7 @@ const Dashboard = () => {
         aria-haspopup="true"
         aria-expanded="false"
       />
+      <SendInvite/>
       {clients.map(client => (
         <pre>{JSON.stringify(client, null, 2)}</pre>
       ))}

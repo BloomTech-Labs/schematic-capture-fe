@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SignedInLinks from "../../../shared/components/layout/SignedInLinks";
-import SignedOutLinks from "../../../shared/components/layout/SignedOutLinks";
+import SignedInLinks from "./layout/SignedInLinks";
+import SignedOutLinks from "./layout/SignedOutLinks";
 
 const Navbar = () => {
   return (

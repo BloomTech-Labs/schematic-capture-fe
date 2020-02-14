@@ -70,6 +70,7 @@ export const FormContainer = styled.div`
   }
 `;
 
+
 export const FormRow = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -98,6 +99,8 @@ export const FieldLabel = styled.label`
   font-family: ${font.regular};
   ${font.size(1.25)}
 `;
+
+export const StyledSelect = styled.select``;
 
 export const StyledField = styled.input`
   background: ${color.inputBackground};

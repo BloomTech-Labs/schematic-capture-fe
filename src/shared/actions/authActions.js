@@ -6,6 +6,7 @@ const CREATE_ACCOUNT_SUCCESS = "CREATE_ACCOUNT_SUCCESS";
 const FORGOT_PASSWORD_SUCCESS = "FORGOT_PASSWORD_SUCCESS";
 const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 const STORE_GOOGLE_INFO = "STORE_GOOGLE_INFO";
+const INVITE_SUCCESS = "INVITE_SUCCESS";
 
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 
@@ -150,6 +151,26 @@ const forgotPassword = (data, history) => dispatch => {
     });
 };
 
+const sendInvite = (data, history) => dispatch => {
+  dispatch({ type: APP_LOADING });
+
+  axiosWithAuth()
+    .post("/auth/invite", data, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("idToken")
+      }
+    })
+    .then(res => {
+      console.log("Invite Sent");
+      dispatch({ type: APP_DONE_LOADING });
+      dispatch({ type: INVITE_SUCCESS, payload: res.data });
+      history.push("/register");
+    })
+    .catch(error => {
+      dispatch({ type: APP_ERROR, payload: error.message });
+    });
+};
+
 export const actions = {
   CREATE_ACCOUNT_SUCCESS,
   FORGOT_PASSWORD_SUCCESS,
@@ -162,5 +183,6 @@ export const dispatchers = {
   emailLogin,
   googleRegistration,
   googleLogin,
-  forgotPassword
+  forgotPassword,
+  sendInvite
 };
