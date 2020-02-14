@@ -11,12 +11,12 @@ import ModalRouter from "../shared/components/Modals/ModalRouter";
 const Router = () => {
   return (
     <Switch>
-      <ModalRouter />
       <Route exact path="/" component={Login} />
       <Route path="/login" component={Login} />
       <Route path="/register/:inviteToken?" component={Register} />
       <Route path="/forgotpassword" component={ForgotPassword} />
       <PrivateRoute path="/dashboard" component={Dashboard} />
+      <ModalRouter />
       <Route path="*" component={PageError} />
     </Switch>
   );
