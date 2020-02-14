@@ -9,6 +9,7 @@ import { dispatchers } from "../../shared/actions/dashboardActions";
 import Modal from "../../shared/components/Modals/Modal";
 import InviteReg from "../../shared/components/Modals/AdminSendInvite/InviteReg";
 import SendInvite from "../../shared/components/Modals/AdminSendInvite/SendInvite";
+import UploadPDF from "../../shared/components/Modals/JobSheet/Upload/UploadPDF";
 
 const { fetchClients } = dispatchers;
 
@@ -51,6 +52,7 @@ const Dashboard = () => {
         aria-expanded="false"
       />
       <SendInvite/>
+      <UploadPDF/>
       {clients.map(client => (
         <pre>{JSON.stringify(client, null, 2)}</pre>
       ))}

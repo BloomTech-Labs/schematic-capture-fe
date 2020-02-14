@@ -16,7 +16,6 @@ const Modal = (props) => {
                      transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
                      opacity: props.show ? '1' : '0'
                  }}>
-
                 <ModalBody>
                         {props.children}
                 </ModalBody>

@@ -29,7 +29,7 @@ export const InviteForm = styled.div`
     right: 100px;
   }
   @media (max-width: 500px) {
-    width: 80%;
+    width: 90%;
     height: 100%;
     border: none;
     h1 {

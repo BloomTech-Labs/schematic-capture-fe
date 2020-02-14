@@ -153,6 +153,7 @@ const forgotPassword = (data, history) => dispatch => {
 
 const sendInvite = (data, history) => dispatch => {
   dispatch({ type: APP_LOADING });
+  console.log(data);
 
   axiosWithAuth()
     .post("/auth/invite", data, {

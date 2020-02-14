@@ -7,6 +7,8 @@ import Dashboard from "../App/Dashboard";
 import PageError from "../shared/components/PageError";
 import PrivateRoute from "../shared/components/PrivateRoute";
 import InviteReg from "../shared/components/Modals/AdminSendInvite/InviteReg";
+import ImageUpload from "../shared/components/Modals/JobSheet/Upload/UploadModal";
+import UploadTest from "../shared/components/Modals/JobSheet/Upload/UploadTest";
 
 const Router = () => {
   return (
@@ -17,6 +19,7 @@ const Router = () => {
       <PrivateRoute path="/dashboard" component={Dashboard} />
       <Route exact path="/" component={Login} />
       <Route path="/invitereg" component={InviteReg} />
+      <Route path="/test" component={UploadTest} />
       <Route path="*" component={PageError} />
     </Switch>
   );

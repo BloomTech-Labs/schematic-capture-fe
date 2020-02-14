@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-// import { SegmentedControl } from "segmented-control";
+import { SegmentedControl } from "segmented-control";
 
 // utils
 import {
@@ -10,13 +10,10 @@ import {
   StyledField,
   FieldError,
   Button,
-  StyledSelect,
+  StyledSelect
 } from "../../../../App/Auth/Style";
 
-import {
-    InviteContainer,
-    InviteForm
-} from "./Styles";
+import { InviteContainer, InviteForm } from "./Styles";
 
 // components
 import BackToLink from "../../BackToLink";
@@ -25,9 +22,10 @@ import BackToLink from "../../BackToLink";
 import { dispatchers } from "../../../actions/authActions";
 import { axiosWithAuth } from "../../../utils";
 
-const InviteReg = ({ handleClose, show, children}) => {
+const InviteReg = ({ handleClose, show, children }) => {
   const { register, handleSubmit, errors } = useForm();
   const [roles, setRoles] = useState([]);
+  const [theValue, setTheValue] = useState(null);
   // const [roleId, setRoleId] = useState(null);
   // const [roleType, setRoleType] = useState("");
   const dispatch = useDispatch();
@@ -56,8 +54,8 @@ const InviteReg = ({ handleClose, show, children}) => {
   };
 
   return (
-      <InviteContainer>
-          <InviteForm>
+    <InviteContainer>
+      <InviteForm>
         <form onSubmit={handleSubmit(onSubmit)}>
           <h1>Send Registration Invitation</h1>
           <FormGroup>
@@ -87,6 +85,7 @@ const InviteReg = ({ handleClose, show, children}) => {
             <br />
             <h4>Please indicate level of access for account:</h4>
             <StyledSelect
+              hidden
               name="roleId"
               ref={register({
                 required: true
@@ -96,13 +95,29 @@ const InviteReg = ({ handleClose, show, children}) => {
                 return (
                   <option
                     key={role.id + new Date()}
-                    value={role.id}
+                    value={theValue}
                   >
                     {role.name.toUpperCase()}
                   </option>
                 );
               })}
             </StyledSelect>
+
+            <SegmentedControl
+              name="roleId"
+              ref={register({
+                required: true
+              })}
+              options={[
+                { label: "Admin", value: 1 },
+                { label: "Employee", value: 2, default: true },
+                { label: "Technician", value: 3 }
+              ]}
+              setValue={newValue => setTheValue(newValue)}
+              onClick={console.log(theValue)}
+            >
+            </SegmentedControl>
+
             <br />
             {errors.email && errors.email.type === "required" && (
               <FieldError id="error-email-required">
@@ -117,7 +132,12 @@ const InviteReg = ({ handleClose, show, children}) => {
             )}
           </FormGroup>
           <FormGroup>
-            <Button variant="primary" submit="button" onClick={handleClose}btnBlock>
+            <Button
+              variant="primary"
+              submit="button"
+              onClick={handleClose}
+              btnBlock
+            >
               Send Invite Link
             </Button>
           </FormGroup>
@@ -125,8 +145,8 @@ const InviteReg = ({ handleClose, show, children}) => {
             <BackToLink to="/login" text="Login" />
           </FormGroup>
         </form>
-          </InviteForm>
-      </InviteContainer>
+      </InviteForm>
+    </InviteContainer>
   );
 };
 

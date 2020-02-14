@@ -14,6 +14,7 @@ const SendInvite = () => {
         setIsShowing(true);
     };
     const closeModalHandler = () => {
+        window.location.reload();
         setIsShowing(false);
     };
 
