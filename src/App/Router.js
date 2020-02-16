@@ -1,11 +1,14 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import PrivateRoute from "../shared/components/PrivateRoute";
 import Register from "../App/Auth/Register";
 import Login from "../App/Auth/Login";
+import Client from "./Client";
+import CreateNewClient from "./Client/CreateNew";
+import CreateNewProject from "./Project/CreateNew";
 import ForgotPassword from "../App/Auth/ForgotPassword";
 import Dashboard from "../App/Dashboard";
 import PageError from "../shared/components/PageError";
-import PrivateRoute from "../shared/components/PrivateRoute";
 
 const Router = () => {
   return (
@@ -14,6 +17,13 @@ const Router = () => {
       <Route path="/register/:inviteToken?" component={Register} />
       <Route path="/forgotpassword" component={ForgotPassword} />
       <PrivateRoute path="/dashboard" component={Dashboard} />
+      <PrivateRoute path="/client/new" component={CreateNewClient} />
+      <PrivateRoute
+        path="/client/:id/project/new"
+        component={CreateNewProject}
+      />
+      <PrivateRoute path="/client/:id" component={Client} />
+      <PrivateRoute path="/project/:id" component={Client} />
       <Route exact path="/" component={Login} />
       <Route path="*" component={PageError} />
     </Switch>

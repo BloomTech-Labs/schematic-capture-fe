@@ -1,51 +1,33 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { Fragment, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import NavBar from "./Navbar";
-
-import DropdownButton from "../../shared/components/DropdownButton";
-import Router from "./Router";
 
 import { dispatchers } from "../../shared/actions/dashboardActions";
 
 const { fetchClients } = dispatchers;
 
-const items = [
-  {
-    to: "/invite/admin",
-    text: "Administration"
-  },
-  {
-    to: "/invite/employee",
-    text: "Employee"
-  },
-  {
-    to: "/invite/technician",
-    text: "Technician"
-  }
-];
-
 const Dashboard = () => {
-  const [clients, setClients] = useState([]);
   const dispatch = useDispatch();
+  const clients = useSelector(state => state.dashboard.clients);
+  console.log(clients);
 
   useEffect(() => {
-    dispatch(fetchClients(setClients));
-  }, []);
+    dispatch(fetchClients());
+  }, [dispatch]);
 
   return (
     <Fragment>
       <NavBar />
-      <h1>You made it to the dashboard!</h1>;
-      <DropdownButton
-        items={items}
-        text="Create New"
-        aria-haspopup="true"
-        aria-expanded="false"
-      />
-      {clients.map(client => (
-        <pre>{JSON.stringify(client, null, 2)}</pre>
-      ))}
-      <Router />
+      <h1>You made it to the dashboard!</h1>
+      <Link to="/client/new">Create New Client</Link>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {clients.map(client => (
+          <Link key={client.id} to={`/client/${client.id}`}>
+            <pre>{JSON.stringify(client, null, 2)}</pre>
+          </Link>
+        ))}
+      </div>
     </Fragment>
   );
 };
