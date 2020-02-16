@@ -4,6 +4,8 @@ import { axiosWithAuth } from "../utils";
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 
 const FETCH_CLIENTS_SUCCESS = "FETCH_CLIENTS_SUCCESS";
+const SET_CURRENT_CLIENT = "SET_CURRENT_CLIENT";
+const SET_CURRENT_PROJECTS = "SET_CURRENT_PROJECTS";
 
 const fetchClients = () => async dispatch => {
   dispatch({ type: APP_LOADING });
@@ -50,13 +52,30 @@ const addNewProject = (data, clientId, history) => async dispatch => {
   }
 };
 
+const fetchJobsheets = (projectId, setJobsheets) => async dispatch => {
+  dispatch({ type: APP_LOADING });
+
+  try {
+    const jobsheets = await axiosWithAuth().get(
+      `/projects/${projectId}/jobsheets`
+    );
+    setJobsheets(jobsheets.data);
+    dispatch({ type: APP_DONE_LOADING });
+  } catch (error) {
+    dispatch({ type: APP_ERROR, payload: error.message });
+  }
+};
+
 export const dispatchers = {
   fetchClients,
   addNewClient,
   fetchProjects,
-  addNewProject
+  addNewProject,
+  fetchJobsheets
 };
 
 export const actions = {
-  FETCH_CLIENTS_SUCCESS
+  FETCH_CLIENTS_SUCCESS,
+  SET_CURRENT_CLIENT,
+  SET_CURRENT_PROJECTS
 };
