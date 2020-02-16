@@ -1,40 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Link, useParams, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 
 import { schema } from "./schema";
+import { dispatchers } from "../../../shared/actions/dashboardActions";
 
 import { StyledFields } from "./Styles";
-import { axiosWithAuth } from "../../../shared/utils";
+
+const { addNewProject } = dispatchers;
 
 const CreateNewProject = () => {
-  const { handleSubmit, register, error } = useForm();
-  const [options, setOptions] = useState([]);
+  const { handleSubmit, register, errors } = useForm();
+  const params = useParams();
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  useEffect(() => {
-    axiosWithAuth()
-      .get("/clients")
-      .then(response => {
-        console.log(response);
-        setOptions(response.data);
-      })
-      .catch(error => console.log(error.message));
-  }, []);
+  const onAddNewProject = data => {
+    dispatch(addNewProject(data, params.id, history));
+  };
 
   return (
-    <form onSubmit={handleSubmit(data => console.log(data))}>
-      <select>
-        {options.map(option => {
-          const { name, id } = option;
-          return (
-            <option key={id} value={id}>
-              {name}
-            </option>
-          );
-        })}
-      </select>
-      <StyledFields fields={schema} register={register} errors={error} />
+    <form onSubmit={handleSubmit(onAddNewProject)}>
+      <StyledFields fields={schema} register={register} errors={errors} />
       <button type="submit">Save</button>
-      <button>Cancel</button>
+      <Link to={`/client/${params.id}`}>Cancel</Link>
     </form>
   );
 };
