@@ -4,6 +4,7 @@ import PrivateRoute from "../shared/components/PrivateRoute";
 import Register from "../App/Auth/Register";
 import Login from "../App/Auth/Login";
 import Client from "./Client";
+import Project from "./Project";
 import CreateNewClient from "./Client/CreateNew";
 import CreateNewProject from "./Project/CreateNew";
 import ForgotPassword from "../App/Auth/ForgotPassword";
@@ -23,7 +24,7 @@ const Router = () => {
         component={CreateNewProject}
       />
       <PrivateRoute path="/client/:id" component={Client} />
-      <PrivateRoute path="/project/:id" component={Client} />
+      <PrivateRoute path="/project/:id" component={Project} />
       <Route exact path="/" component={Login} />
       <Route path="*" component={PageError} />
     </Switch>

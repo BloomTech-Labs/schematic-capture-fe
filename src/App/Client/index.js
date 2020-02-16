@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { dispatchers } from "../../shared/actions/dashboardActions";
+import { dispatchers, actions } from "../../shared/actions/dashboardActions";
 import BackToLink from "../../shared/components/BackToLink";
 
 const { fetchProjects } = dispatchers;
+const { SET_CURRENT_CLIENT, SET_CURRENT_PROJECTS } = actions;
 
 const Client = () => {
   const [projects, setProjects] = useState([]);
@@ -15,9 +16,18 @@ const Client = () => {
   const clients = useSelector(state => state.dashboard.clients);
   const client = clients.find(client => client.id === Number(params.id));
 
+  const fetchProjectsSideEffect = async () => {
+    await dispatch(fetchProjects(params.id, setProjects));
+  };
+
   useEffect(() => {
-    dispatch(fetchProjects(params.id, setProjects));
+    fetchProjectsSideEffect();
   }, [params.id, dispatch]);
+
+  useEffect(() => {
+    dispatch({ type: SET_CURRENT_CLIENT, payload: client });
+    dispatch({ type: SET_CURRENT_PROJECTS, payload: projects });
+  }, [client, projects]);
 
   return client ? (
     <div>
@@ -28,9 +38,11 @@ const Client = () => {
       <h2>Projects:</h2>
       <div>
         {projects.map(project => (
-          <Link to={`/project/${project.id}`}>
-            <pre key={project.id}>{JSON.stringify(project, null, 2)}</pre>
-          </Link>
+          <pre key={project.id}>
+            <Link to={`/project/${project.id}`}>
+              {JSON.stringify(project, null, 2)}
+            </Link>
+          </pre>
         ))}
       </div>
 

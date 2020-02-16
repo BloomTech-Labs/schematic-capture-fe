@@ -10,7 +10,6 @@ const { fetchClients } = dispatchers;
 const Dashboard = () => {
   const dispatch = useDispatch();
   const clients = useSelector(state => state.dashboard.clients);
-  console.log(clients);
 
   useEffect(() => {
     dispatch(fetchClients());
