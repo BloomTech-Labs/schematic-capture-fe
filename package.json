@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "color": "^3.1.2",
+    "csvtojson": "^2.0.10",
     "cypress": "^3.8.3",
     "dotenv": "^8.2.0",
     "firebase": "^7.7.0",
