@@ -26,7 +26,7 @@ const Project = () => {
   return project ? (
     <div>
       {!!Object.entries(project).length && (
-        <Link to={`${params.id}/project/new`}>Create New Project</Link>
+        <Link to={`${params.id}/jobsheet/new`}>Create New Jobsheet</Link>
       )}
       <pre>{JSON.stringify(project, null, 2)}</pre>
       <h1>Jobsheets:</h1>
@@ -34,7 +34,9 @@ const Project = () => {
       <div>
         {jobsheets.map(jobsheet => (
           <pre key={jobsheet.id}>
-            <Link>{JSON.stringify(jobsheet, null, 2)}</Link>
+            <Link to={`/jobsheet/${jobsheet.id}`}>
+              {JSON.stringify(jobsheet, null, 2)}
+            </Link>
           </pre>
         ))}
       </div>

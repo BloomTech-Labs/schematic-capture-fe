@@ -1,3 +1,4 @@
+import firebase from "../utils/firebase";
 import { actions as appActions } from "./appActions";
 import { axiosWithAuth } from "../utils";
 
@@ -7,7 +8,7 @@ const FETCH_CLIENTS_SUCCESS = "FETCH_CLIENTS_SUCCESS";
 const SET_CURRENT_CLIENT = "SET_CURRENT_CLIENT";
 const SET_CURRENT_PROJECTS = "SET_CURRENT_PROJECTS";
 
-const fetchClients = () => async dispatch => {
+const fetchClients = () => async (dispatch, getState) => {
   dispatch({ type: APP_LOADING });
 
   try {
@@ -63,6 +64,25 @@ const fetchJobsheets = (projectId, setJobsheets) => async dispatch => {
     dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
     dispatch({ type: APP_ERROR, payload: error.message });
+  }
+};
+
+const addNewJobsheet = data => async (dispatch, getState) => {
+  dispatch({ type: APP_LOADING });
+
+  const { dashboard } = getState();
+  const { pdf, ...payload } = data;
+
+  try {
+    await axiosWithAuth().post("/jobsheets/create", payload);
+  } catch (error) {
+    return dispatch({ type: APP_ERROR, payload: error.message });
+  }
+
+  try {
+    const root = firebase.storage().ref("/");
+  } catch (error) {
+    return dispatch({ type: APP_ERROR, payload: error.message });
   }
 };
 

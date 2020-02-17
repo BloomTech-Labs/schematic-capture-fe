@@ -7,6 +7,7 @@ import Client from "./Client";
 import Project from "./Project";
 import CreateNewClient from "./Client/CreateNew";
 import CreateNewProject from "./Project/CreateNew";
+import CreateNewJobsheet from "./Jobsheet/CreateNew";
 import ForgotPassword from "../App/Auth/ForgotPassword";
 import Dashboard from "../App/Dashboard";
 import PageError from "../shared/components/PageError";
@@ -22,6 +23,10 @@ const Router = () => {
       <PrivateRoute
         path="/client/:id/project/new"
         component={CreateNewProject}
+      />
+      <PrivateRoute
+        path="/project/:id/jobsheet/new"
+        component={CreateNewJobsheet}
       />
       <PrivateRoute path="/client/:id" component={Client} />
       <PrivateRoute path="/project/:id" component={Project} />
