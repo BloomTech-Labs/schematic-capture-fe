@@ -1,4 +1,4 @@
-import { actions } from "../../actions/authActions";
+import { actions } from "../actions/authActions";
 
 const { CREATE_ACCOUNT_SUCCESS, LOGIN_SUCCESS, STORE_GOOGLE_INFO } = actions;
 

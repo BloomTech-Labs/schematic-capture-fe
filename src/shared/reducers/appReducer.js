@@ -1,4 +1,4 @@
-import { actions } from "../../actions/appActions";
+import { actions } from "../actions/appActions";
 
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = actions;
 
