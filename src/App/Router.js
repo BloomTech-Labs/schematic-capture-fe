@@ -15,7 +15,7 @@ import PageError from "../shared/components/PageError";
 const Router = () => {
   return (
     <Switch>
-      <Route path="/login" component={Login} />
+      <Route exact path="/" component={Login} />
       <Route path="/register/:inviteToken?" component={Register} />
       <Route path="/forgotpassword" component={ForgotPassword} />
       <PrivateRoute path="/dashboard" component={Dashboard} />
