@@ -8,7 +8,8 @@ import CreateClient from "../Client/CreateNew";
 const Router = () => {
   return (
     <Switch>
-      <PrivateRoute path="/dashboard/client/new" component={CreateClient} />
+      <PrivateRoute path="/client/new" component={CreateClient} />
+      <PrivateRoute path="/client/:id" component={() => <h1>Client Here</h1>} />
     </Switch>
   );
 };
