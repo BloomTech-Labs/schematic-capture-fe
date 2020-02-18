@@ -15,8 +15,6 @@ const CreateNewClient = () => {
 
   const { addNewClient } = dispatchers;
 
-  // TODO use context + redux to pass setClient without redux
-
   const onAddNewClient = data => {
     dispatch(addNewClient(data, history));
   };
@@ -25,7 +23,7 @@ const CreateNewClient = () => {
     <form onSubmit={handleSubmit(onAddNewClient)}>
       <StyledFields fields={schema} register={register} errors={errors} />
       <button type="Submit">Save</button>
-      <button>Cancel</button>
+      <button onClick={() => history.push("/dashboard")}>Cancel</button>
     </form>
   );
 };
