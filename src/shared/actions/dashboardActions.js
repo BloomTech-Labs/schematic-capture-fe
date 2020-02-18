@@ -1,32 +1,34 @@
 import { actions as appActions } from "./appActions";
 import { axiosWithAuth } from "../utils";
 
+const FETCH_CLIENTS_SUCCESS = "FETCH_CLIENTS_SUCCESS";
+
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 
-const fetchClients = setClients => dispatch => {
+const fetchClients = () => dispatch => {
   dispatch({ type: APP_LOADING });
   axiosWithAuth()
     .get("/clients")
     .then(res => {
-      setClients(res.data);
       dispatch({ type: APP_DONE_LOADING });
+      dispatch({ type: FETCH_CLIENTS_SUCCESS, payload: res.data });
     })
     .catch(error => dispatch({ type: APP_ERROR, payload: error.message }));
 };
 
-const addNewClient = (data, history) => dispatch => {
+const addNewClient = (data, history) => async dispatch => {
   dispatch({ type: APP_LOADING });
-  axiosWithAuth()
-    .post("/clients/create", data)
-    .then(client => {
-      dispatch({ type: APP_DONE_LOADING });
-      console.log(client);
-      history.push("/dashboard");
-    })
-    .catch(error => {
-      dispatch({ type: APP_ERROR });
-      console.error(error);
-    });
+
+  try {
+    await axiosWithAuth().post("/clients/create", data);
+
+    dispatch(fetchClients());
+    dispatch({ type: APP_DONE_LOADING });
+
+    history.push("/dashboard");
+  } catch (error) {
+    dispatch({ type: APP_ERROR });
+  }
 };
 
 const fetchProjects = (id, setProjects) => dispatch => {
@@ -60,4 +62,8 @@ export const dispatchers = {
   fetchClients,
   addNewProject,
   fetchProjects
+};
+
+export const actions = {
+  FETCH_CLIENTS_SUCCESS
 };
