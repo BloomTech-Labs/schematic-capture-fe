@@ -28,7 +28,7 @@ const CreateNewJobsheet = () => {
   } = useForm();
 
   const [isNew, setIsNew] = useState(false);
-  const [components, setComponents] = useState(null);
+  const [components, setComponents] = useState([]);
 
   useEffect(() => {
     const [file] = watch("csv");
