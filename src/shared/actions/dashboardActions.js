@@ -2,8 +2,6 @@ import firebase from "../utils/firebase";
 import { actions as appActions } from "./appActions";
 import { axiosWithAuth } from "../utils";
 
-const FETCH_CLIENTS_SUCCESS = "FETCH_CLIENTS_SUCCESS";
-
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 
 const FETCH_CLIENTS_SUCCESS = "FETCH_CLIENTS_SUCCESS";

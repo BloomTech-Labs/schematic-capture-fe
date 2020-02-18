@@ -22,7 +22,7 @@ const Clients = () => {
         {clients &&
           clients.map(client => (
             <StyledLink key={client.id} to={`/client/${client.id}`}>
-              {client.name}
+              {client.companyName}
             </StyledLink>
           ))}
       </div>

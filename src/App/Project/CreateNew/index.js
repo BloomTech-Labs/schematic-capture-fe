@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
 
 import { schema } from "./schema";
 import { dispatchers } from "../../../shared/actions/dashboardActions";
