@@ -8,7 +8,7 @@ html { font-size: 62.5% }
 
 body {
     background-color: ${color.backgroundBody};
-    color: ${color.textDark};
+    color: ${color.textLight};
     line-height: 1.2;
     ${font.size(1.5)}
     ${font.regular}
