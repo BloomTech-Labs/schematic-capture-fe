@@ -1,16 +1,14 @@
 import React, { Fragment } from "react";
-import NavBar from "./Navbar";
-
-import Clients from "../Client";
+import NavBar from "../../shared/components/Navbar";
+import Board from "./Board";
 import Router from "./Router";
 
 const Dashboard = () => {
   return (
     <Fragment>
       <NavBar />
-      <h1>Dashboard</h1>
+      <Board />
       <Router />
-      <Clients />
     </Fragment>
   );
 };
