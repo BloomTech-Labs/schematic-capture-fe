@@ -8,8 +8,8 @@ const {
 
 const initState = {
   clients: [],
-  currentClient: null,
-  currentProjects: []
+  currentProjects: [],
+  currentClient: null
 };
 
 const dashboardReducer = (state = initState, action) => {
