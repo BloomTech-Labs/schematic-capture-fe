@@ -9,11 +9,20 @@ import rootReducer from "./shared/reducers/rootReducer";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
+// custom middleware
+import { saveState, loadState } from "./shared/utils/localStorage";
+
 // Sentry.init({
 //     dsn: "https://05f80d89d56f4f538ab2b0fbedc568e4@sentry.io/2046923"
 // });
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const persistedState = loadState();
+
+const store = createStore(
+  rootReducer,
+  persistedState,
+  applyMiddleware(thunk, saveState)
+);
 
 ReactDOM.render(
   <Provider store={store}>
