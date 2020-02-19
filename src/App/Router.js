@@ -5,6 +5,7 @@ import Register from "../App/Auth/Register";
 import Login from "../App/Auth/Login";
 import Client from "./Client";
 import Project from "./Project";
+import Jobsheet from "./Jobsheet";
 import CreateNewClient from "./Client/CreateNew";
 import CreateNewProject from "./Project/CreateNew";
 import CreateNewJobsheet from "./Jobsheet/CreateNew";
@@ -30,6 +31,7 @@ const Router = () => {
       />
       <PrivateRoute path="/client/:id" component={Client} />
       <PrivateRoute path="/project/:id" component={Project} />
+      <PrivateRoute path="/jobsheet/:id" component={Jobsheet} />
       <Route exact path="/" component={Login} />
       <Route path="*" component={PageError} />
     </Switch>
