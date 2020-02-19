@@ -30,20 +30,22 @@ const saveState = throttle(
 
 const loadState = () => {
   try {
-    const serialized = localStorage.getItem("state");
-    if (serialized === null) {
+    const state = localStorage.getItem("state");
+    if (state === null) {
       return undefined;
     }
-    return JSON.parse(serialized);
+    const dashboard = JSON.parse(state);
+    return { dashboard };
   } catch (error) {
     return undefined;
   }
 };
 
 const persistedState = loadState();
+
 const store = createStore(
   rootReducer,
-  { dashboard: persistedState },
+  persistedState,
   applyMiddleware(thunk, saveState)
 );
 
