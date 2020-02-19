@@ -7,6 +7,7 @@ const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 const FETCH_CLIENTS_SUCCESS = "FETCH_CLIENTS_SUCCESS";
 const SET_CURRENT_CLIENT = "SET_CURRENT_CLIENT";
 const SET_CURRENT_PROJECTS = "SET_CURRENT_PROJECTS";
+const SET_CURRENT_PROJECT = "SET_CURRENT_PROJECT";
 
 const fetchClients = () => async (dispatch, getState) => {
   dispatch({ type: APP_LOADING });
@@ -68,23 +69,40 @@ const fetchJobsheets = (projectId, setJobsheets) => async dispatch => {
   }
 };
 
-const addNewJobsheet = data => async (dispatch, getState) => {
+const addNewJobsheet = (data, history) => async (dispatch, getState) => {
   dispatch({ type: APP_LOADING });
 
-  const { dashboard } = getState();
+  const { dashboard, auth } = getState();
+  const { currentClient, currentProject } = dashboard;
   const { pdf, ...payload } = data;
 
+  payload.projectId = dashboard.currentProject.id;
+
+  let jobsheet;
   try {
-    await axiosWithAuth().post("/jobsheets/create", payload);
+    jobsheet = await axiosWithAuth().post("/jobsheets/create", payload);
   } catch (error) {
     return dispatch({ type: APP_ERROR, payload: error.message });
   }
 
-  try {
-    const root = firebase.storage().ref("/");
-  } catch (error) {
-    return dispatch({ type: APP_ERROR, payload: error.message });
+  if (!!pdf.length) {
+    try {
+      const [schematic] = pdf;
+      const rootRef = firebase.storage().ref("/");
+      await rootRef
+        .child(String(auth.user.organizations[0].id))
+        .child(String(currentClient.id))
+        .child(String(currentProject.id))
+        .child(String(jobsheet.data.id))
+        .child(schematic.name)
+        .put(schematic);
+    } catch (error) {
+      return dispatch({ type: APP_ERROR, payload: error.message });
+    }
   }
+
+  history.push(`/project/${currentProject.id}`);
+  dispatch({ type: APP_DONE_LOADING });
 };
 
 const fetchComponents = (id, setComponents) => async dispatch => {
@@ -105,11 +123,13 @@ export const dispatchers = {
   fetchProjects,
   addNewProject,
   fetchJobsheets,
+  addNewJobsheet,
   fetchComponents
 };
 
 export const actions = {
   FETCH_CLIENTS_SUCCESS,
   SET_CURRENT_CLIENT,
-  SET_CURRENT_PROJECTS
+  SET_CURRENT_PROJECTS,
+  SET_CURRENT_PROJECT
 };

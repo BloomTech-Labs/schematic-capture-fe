@@ -3,34 +3,43 @@ import { useParams, Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import BackToLink from "../../shared/components/BackToLink";
-import { dispatchers } from "../../shared/actions/dashboardActions";
+import { actions, dispatchers } from "../../shared/actions/dashboardActions";
 
 import { Section, SectionName, StyledLink } from "./Styles";
 
 const { fetchJobsheets } = dispatchers;
+const { SET_CURRENT_PROJECT } = actions;
+
+const setCurrentProjectSideEffect = async (dispatch, currentProjects, id) => {
+  const project = currentProjects.find(project => project.id === Number(id));
+
+  await dispatch({ type: SET_CURRENT_PROJECT, payload: project });
+};
+
+const fetchJobsheetsSideEffect = async (dispatch, id, setJobsheets) => {
+  await dispatch(fetchJobsheets(id, setJobsheets));
+};
 
 const Board = () => {
   const [jobsheets, setJobsheets] = useState([]);
   const params = useParams();
   const dispatch = useDispatch();
 
-  const currentClient = useSelector(state => state.dashboard.currentClient);
-  const currentProjects = useSelector(state => state.dashboard.currentProjects);
-
-  const project = currentProjects.find(
-    project => project.id === Number(params.id)
+  const { currentClient, currentProjects, currentProject } = useSelector(
+    state => state.dashboard
   );
 
   useEffect(() => {
-    dispatch(fetchJobsheets(params.id, setJobsheets));
-  }, [dispatch, params.id, setJobsheets]);
+    setCurrentProjectSideEffect(dispatch, currentProjects, params.id);
+    fetchJobsheetsSideEffect(dispatch, params.id, setJobsheets);
+  }, [dispatch, currentProjects, params.id, setJobsheets]);
 
-  return !!project ? (
+  return !!currentProject ? (
     <Section>
-      {!!Object.entries(project).length && (
+      {!!Object.entries(currentProject).length && (
         <Link to={`${params.id}/jobsheet/new`}>Create New Jobsheet</Link>
       )}
-      <pre>{JSON.stringify(project, null, 2)}</pre>
+      <pre>{JSON.stringify(currentProject, null, 2)}</pre>
       <SectionName>Jobsheets</SectionName>
 
       <div>
