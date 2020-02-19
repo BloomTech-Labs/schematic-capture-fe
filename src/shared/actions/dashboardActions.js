@@ -37,6 +37,7 @@ const fetchProjects = (clientId, setProjects) => async dispatch => {
   try {
     const projects = await axiosWithAuth().get(`/clients/${clientId}/projects`);
     setProjects(projects.data);
+    dispatch({ type: SET_CURRENT_PROJECTS, payload: projects.data });
     dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
     dispatch({ type: APP_ERROR, payload: error.message });
@@ -86,12 +87,25 @@ const addNewJobsheet = data => async (dispatch, getState) => {
   }
 };
 
+const fetchComponents = (id, setComponents) => async dispatch => {
+  dispatch({ type: APP_LOADING });
+
+  try {
+    const components = await axiosWithAuth().get(`/jobsheets/${id}`);
+    setComponents(components.data);
+    dispatch({ type: APP_DONE_LOADING });
+  } catch (error) {
+    return dispatch({ type: APP_ERROR, payload: error.message });
+  }
+};
+
 export const dispatchers = {
   fetchClients,
   addNewClient,
   fetchProjects,
   addNewProject,
-  fetchJobsheets
+  fetchJobsheets,
+  fetchComponents
 };
 
 export const actions = {

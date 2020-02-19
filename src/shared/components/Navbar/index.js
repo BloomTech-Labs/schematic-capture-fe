@@ -15,7 +15,7 @@ const Navbar = () => {
       </Item>
 
       <Bottom>
-        <Item>
+        <Item to="/">
           <Icon className="fas fa-sign-out-alt" size={22} />
           <ItemText>Logout</ItemText>
         </Item>
