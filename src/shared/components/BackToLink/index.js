@@ -7,7 +7,7 @@ import ChevronIcon from "../../assets/chevron-left-icon";
 const BackToLink = ({ text, ...rest }) => (
   <StyledLink {...rest}>
     <ChevronIcon />
-    <div>Back to {text}</div>
+    <div>{text}</div>
   </StyledLink>
 );
 
