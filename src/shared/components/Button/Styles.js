@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import Color from "color";
 import { color, font } from "../../utils/styles";
 
-export const StyledButton = styled.button`
+export const buttonStyle = css`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,6 +11,7 @@ export const StyledButton = styled.button`
   cursor: pointer;
   border: 1px solid transparent;
   padding: 0.75rem 1rem;
+  max-height: 40px;
   font-size: 1.5rem;
   line-height: 1.5;
   transition: all 0.1s;
@@ -56,4 +57,8 @@ export const StyledButton = styled.button`
         .darken(0.25)
         .string()};
   }
+`;
+
+export const StyledButton = styled.button`
+  ${buttonStyle}
 `;
