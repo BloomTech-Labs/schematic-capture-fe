@@ -11,7 +11,7 @@ const Navbar = () => {
       </Item>
       <Item to="/client/new">
         <Icon className="fas fa-plus" size={22} />
-        <ItemText>Create Client</ItemText>
+        <ItemText>Create&nbsp;Client</ItemText>
       </Item>
 
       <Bottom>

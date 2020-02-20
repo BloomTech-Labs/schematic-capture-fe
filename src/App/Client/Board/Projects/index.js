@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link, Redirect } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { Section, SectionName, StyledLink } from "./Styles";
@@ -25,7 +25,7 @@ const setCurrentClientAndProjectsSideEffect = async (
   await dispatch({ type: SET_CURRENT_PROJECTS, payload: projects });
 };
 
-const Client = () => {
+const Projects = () => {
   const [projects, setProjects] = useState([]);
   const params = useParams();
   const dispatch = useDispatch();
@@ -35,19 +35,12 @@ const Client = () => {
 
   useEffect(() => {
     fetchProjectsSideEffect(dispatch, params.id, setProjects);
-  }, [dispatch]);
-
-  useEffect(() => {
     setCurrentClientAndProjectsSideEffect(dispatch, client, projects);
-  }, [dispatch]);
+  }, [dispatch, params.id, client, setProjects, projects]);
 
   return client ? (
     <Section>
-      {/* {!!Object.entries(client).length && (
-        <Link to={`${params.id}/project/new`}>Create New Project</Link>
-      )} */}
-      {/* <pre>{JSON.stringify(client, null, 2)}</pre> */}
-      <SectionName>Projects</SectionName>
+      <SectionName>All Projects</SectionName>
       <div>
         {projects.map(project => (
           <StyledLink key={project.id} to={`/project/${project.id}`}>
@@ -61,4 +54,4 @@ const Client = () => {
   );
 };
 
-export default Client;
+export default Projects;

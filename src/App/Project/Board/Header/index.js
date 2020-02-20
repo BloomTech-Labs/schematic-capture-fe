@@ -6,18 +6,20 @@ import { Header, PageName, StyledLink } from "./Styles";
 import BackToLink from "../../../../shared/components/BackToLink";
 
 const PageHeader = () => {
-  const { currentClient } = useSelector(state => state.dashboard);
+  const { currentClient, currentProject } = useSelector(
+    state => state.dashboard
+  );
   return (
     <Fragment>
       <BackToLink
         style={{ marginBottom: "2rem" }}
-        to="/dashboard"
-        text="Dashboard"
+        to={`/client/${currentClient.id}`}
+        text={`${currentClient.companyName}`}
       />
       <Header>
-        {!!currentClient && <PageName>{currentClient.companyName}</PageName>}
-        <StyledLink to="/client/:id/project/new" variant="primary">
-          New&nbsp;Project
+        {!!currentProject && <PageName>{currentProject.name}</PageName>}
+        <StyledLink to="/project/:id/jobsheet/new" variant="primary">
+          New&nbsp;Jobsheet
         </StyledLink>
       </Header>
     </Fragment>
