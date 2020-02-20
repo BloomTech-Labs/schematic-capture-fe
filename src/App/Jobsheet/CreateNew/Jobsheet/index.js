@@ -156,22 +156,22 @@ const CreateNewJobsheet = () => {
             <h1>Please import a CSV to render a preview.</h1>
           </PreLoad>
           <TableItems hidden={!getValues().name}>
-            <TableHeader className="tg-0lax">Component</TableHeader>
-            <TableHeader className="tg-0lax">RL Category</TableHeader>
-            <TableHeader className="tg-0lax">RL Number</TableHeader>
-            <TableHeader className="tg-0lax">Description</TableHeader>
-            <TableHeader className="tg-0lax">Manufacturer</TableHeader>
-            <TableHeader className="tg-0lax">Part Number</TableHeader>
-            <TableHeader className="tg-0lax">Stock Code</TableHeader>
-            <TableHeader className="tg-0lax">Electrical Address</TableHeader>
-            <TableHeader className="tg-0lax">Component Application</TableHeader>
-            <TableHeader className="tg-0lax">Reference Tag</TableHeader>
-            <TableHeader className="tg-0lax">Settings</TableHeader>
-            <TableHeader className="tg-0lax">Image</TableHeader>
-            <TableHeader className="tg-0lax">Resources</TableHeader>
-            <TableHeader className="tg-0lax">Cutsheet</TableHeader>
-            <TableHeader className="tg-0lax">Maintenance Video</TableHeader>
-            <TableHeader className="tg-0lax">Stores Part #</TableHeader>
+            <TableHeader>Component</TableHeader>
+            <TableHeader>RL Category</TableHeader>
+            <TableHeader>RL Number</TableHeader>
+            <TableHeader>Description</TableHeader>
+            <TableHeader>Manufacturer</TableHeader>
+            <TableHeader>Part Number</TableHeader>
+            <TableHeader>Stock Code</TableHeader>
+            <TableHeader>Electrical Address</TableHeader>
+            <TableHeader>Component Application</TableHeader>
+            <TableHeader>Reference Tag</TableHeader>
+            <TableHeader>Settings</TableHeader>
+            <TableHeader>Image</TableHeader>
+            <TableHeader>Resources</TableHeader>
+            <TableHeader>Cutsheet</TableHeader>
+            <TableHeader>Maintenance Video</TableHeader>
+            <TableHeader>Stores Part #</TableHeader>
           </TableItems>
           {components.map(item => {
             return (
