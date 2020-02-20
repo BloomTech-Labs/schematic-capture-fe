@@ -16,7 +16,10 @@ const PageHeader = () => {
       />
       <Header>
         {!!currentClient && <PageName>{currentClient.companyName}</PageName>}
-        <StyledLink to="/client/:id/project/new" variant="primary">
+        <StyledLink
+          to={`/client/${currentClient.id}/project/new`}
+          variant="primary"
+        >
           New&nbsp;Project
         </StyledLink>
       </Header>
