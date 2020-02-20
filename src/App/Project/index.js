@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link, Redirect } from "react-router-dom";
+import React, { Fragment, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import BackToLink from "../../shared/components/BackToLink";
-import { actions, dispatchers } from "../../shared/actions/dashboardActions";
+import NavBar from "../../shared/components/Navbar";
+import Board from "./Board";
 
-import { Section, SectionName, StyledLink } from "./Styles";
+import { actions } from "../../shared/actions/dashboardActions";
 
-const { fetchJobsheets } = dispatchers;
 const { SET_CURRENT_PROJECT } = actions;
 
 const setCurrentProjectSideEffect = async (dispatch, currentProjects, id) => {
@@ -16,50 +15,22 @@ const setCurrentProjectSideEffect = async (dispatch, currentProjects, id) => {
   await dispatch({ type: SET_CURRENT_PROJECT, payload: project });
 };
 
-const fetchJobsheetsSideEffect = async (dispatch, id, setJobsheets) => {
-  await dispatch(fetchJobsheets(id, setJobsheets));
-};
-
-const Board = () => {
-  const [jobsheets, setJobsheets] = useState([]);
+const Project = () => {
   const params = useParams();
   const dispatch = useDispatch();
 
-  const { currentClient, currentProjects, currentProject } = useSelector(
-    state => state.dashboard
-  );
+  const { currentProjects } = useSelector(state => state.dashboard);
 
   useEffect(() => {
     setCurrentProjectSideEffect(dispatch, currentProjects, params.id);
-    fetchJobsheetsSideEffect(dispatch, params.id, setJobsheets);
-  }, [dispatch, currentProjects, params.id, setJobsheets]);
+  }, [dispatch, currentProjects, params.id]);
 
-  return !!currentProject ? (
-    <Section>
-      {!!Object.entries(currentProject).length && (
-        <Link to={`${params.id}/jobsheet/new`}>Create New Jobsheet</Link>
-      )}
-      <pre>{JSON.stringify(currentProject, null, 2)}</pre>
-      <SectionName>Jobsheets</SectionName>
-
-      <div>
-        {jobsheets.map(jobsheet => (
-          <pre key={jobsheet.id}>
-            <StyledLink to={`/jobsheet/${jobsheet.id}`}>
-              {JSON.stringify(jobsheet, null, 2)}
-            </StyledLink>
-          </pre>
-        ))}
-      </div>
-
-      <BackToLink
-        to={`/client/${currentClient.id}`}
-        text={`${currentClient.companyName}`}
-      />
-    </Section>
-  ) : (
-    <Redirect to={`/client/${currentClient.id}`} />
+  return (
+    <Fragment>
+      <NavBar />
+      <Board />
+    </Fragment>
   );
 };
 
-export default Board;
+export default Project;
