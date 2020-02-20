@@ -17,7 +17,7 @@ const Clients = () => {
 
   return (
     <Section>
-      <SectionName>Clients</SectionName>
+      <SectionName>All Clients</SectionName>
       <div>
         {clients &&
           clients.map(client => (
