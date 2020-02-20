@@ -6,10 +6,31 @@ import csv from "csvtojson";
 import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { csvToApi } from "../../../shared/utils/componentMap";
 
+import {
+  Container,
+  PreviewContainer,
+  PreviewTable,
+  TableItems,
+  PreLoad,
+  TopLeft,
+  TopRight,
+  TopTopRight,
+  Top,
+  NewBlank,
+  SubmitButton,
+  ImportCsv,
+  AddSchem,
+  ImportText,
+  CenterDiv,
+  TableHeader,
+  LineOr
+} from "./Styles";
+
 const { addNewJobsheet } = dispatchers;
 
 const reader = new FileReader();
 const readFile = (file, onload) => {
+  console.log(file);
   reader.onload = onload;
   reader.readAsText(file);
 };
@@ -28,7 +49,7 @@ const csvComponentsToJson = async (components, setComponents) => {
           sanitizedComponent.custom = entry[1];
         }
       });
-
+      // console.log(sanitizedComponent);
       return sanitizedComponent;
     });
 
@@ -45,7 +66,6 @@ const CreateNewJobsheet = () => {
     setValue,
     handleSubmit,
     watch,
-    errors
   } = useForm();
 
   const dispatch = useDispatch();
@@ -72,53 +92,109 @@ const CreateNewJobsheet = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center"
-          }}
-        >
-          <label htmlFor="csv">Import CSV</label>
-          <span>or</span>
-          <button type="button" onClick={() => setIsNew(true)}>
-            start a blank jobsheet
-          </button>
-        </div>
-        <label>
-          name:
-          <input
-            name="name"
-            disabled={!isNew}
-            ref={register({ required: true })}
-          />
-        </label>
-        <label htmlFor="pdf" hidden={!getValues().name}>
-          Add Schematic
-        </label>
-        <input
-          hidden
-          id="csv"
-          name="csv"
-          multiple={false}
-          type="file"
-          accept=".csv"
-          ref={register}
-        />
-        <input
-          hidden
-          id="pdf"
-          name="pdf"
-          multiple={false}
-          type="file"
-          accept=".pdf"
-          ref={register}
-        />
-        <button type="submit">Create Jobsheet</button>
-      </form>
-    </div>
+    <Container>
+      <Top>
+        <TopLeft>
+          <h1>Schematic Capture</h1>
+
+        </TopLeft>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <TopRight>
+            <CenterDiv>
+              <TopTopRight>
+                <ImportCsv type="button" htmlFor="csv" onClick={() => setIsNew(true)}>
+                  <ImportText onClick={() => setIsNew(true)}>Import CSV</ImportText>
+                </ImportCsv>
+                <LineOr hidden={getValues().name}> or </LineOr>
+                <NewBlank type="button" hidden={getValues().name} onClick={() => setIsNew(true)}>
+                  Create A Blank Job Sheet
+                </NewBlank>
+              </TopTopRight>
+              <label htmlFor="name">
+                <input
+                  name="name"
+                  placeholder="JobSheet Name"
+                  disabled={!isNew}
+                  ref={register({ required: true })}
+                />
+              </label>
+            </CenterDiv>
+            <AddSchem type="button" htmlFor="pdf" hidden={!getValues().name}>
+              <ImportText>Add Schematic</ImportText>
+            </AddSchem>
+            <input hidden name="components" ref={register} />
+            <input
+              hidden
+              id="csv"
+              name="csv"
+              multiple={false}
+              type="file"
+              accept=".csv"
+              ref={register}
+            />
+            <input
+              hidden
+              id="pdf"
+              name="pdf"
+              multiple={false}
+              type="file"
+              accept=".pdf"
+              ref={register}
+            />
+
+            <SubmitButton type="submit" hidden={!getValues().name}>Submit Jobsheet</SubmitButton>
+          </TopRight>
+        </form>
+      </Top>
+      <PreviewContainer>
+        <PreviewTable>
+          <PreLoad hidden={getValues().name}>
+            <h1>Please import a CSV to render a preview.</h1>
+          </PreLoad>
+          <TableItems hidden={!getValues().name}>
+            <TableHeader className="tg-0lax">Component</TableHeader>
+            <TableHeader className="tg-0lax">RL Category</TableHeader>
+            <TableHeader className="tg-0lax">RL Number</TableHeader>
+            <TableHeader className="tg-0lax">Description</TableHeader>
+            <TableHeader className="tg-0lax">Manufacturer</TableHeader>
+            <TableHeader className="tg-0lax">Part Number</TableHeader>
+            <TableHeader className="tg-0lax">Stock Code</TableHeader>
+            <TableHeader className="tg-0lax">Electrical Address</TableHeader>
+            <TableHeader className="tg-0lax">Component Application</TableHeader>
+            <TableHeader className="tg-0lax">Reference Tag</TableHeader>
+            <TableHeader className="tg-0lax">Settings</TableHeader>
+            <TableHeader className="tg-0lax">Image</TableHeader>
+            <TableHeader className="tg-0lax">Resources</TableHeader>
+            <TableHeader className="tg-0lax">Cutsheet</TableHeader>
+            <TableHeader className="tg-0lax">Maintenance Video</TableHeader>
+            <TableHeader className="tg-0lax">Stores Part #</TableHeader>
+          </TableItems>
+          {components.map(item => {
+            return (
+              <TableItems>
+                <td>{item.componentId}</td>
+                <td>{item.rlCategory}</td>
+                <td>{item.rlNumber}</td>
+                <td>{item.descriptions}</td>
+                <td>{item.manufacturer}</td>
+                <td>{item.partNumber}</td>
+                <td>{item.stockCode}</td>
+                <td>{item.electricalAddress}</td>
+                <td>{item.componentApplication}</td>
+                <td>{item.referenceTag}</td>
+                <td>{item.settings}</td>
+                <td>{item.image}</td>
+                <td>{item.resources}</td>
+                <td>{item.cutsheet}</td>
+                <td>{item.maintenanceVideo}</td>
+                <td>{item.custom}</td>
+              </TableItems>
+            );
+          })}
+        </PreviewTable>
+      </PreviewContainer>
+    </Container>
   );
 };
 
