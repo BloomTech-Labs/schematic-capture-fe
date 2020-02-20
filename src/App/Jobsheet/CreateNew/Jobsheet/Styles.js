@@ -1,0 +1,157 @@
+import styled from "styled-components";
+
+import { color } from "../../../../shared/utils/styles";
+import React from "react";
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+`;
+
+export const PreviewContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto;
+  -webkit-box-shadow: 5px 8px 10px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 8px 10px 2px rgba(0, 0, 0, 0.5);
+  height: 50vh;
+  width: 75vw;
+  border: 1px red solid;
+  background: rgb(213, 216, 220);
+  overflow: auto;
+`;
+
+export const PreviewTable = styled.table`
+  display: table;
+  width: -webkit-fill-available;
+  white-space: nowrap;
+`;
+
+export const TableItems = styled.tr`
+  background: ghostwhite;
+  color: black;
+`;
+
+export const TableHeader = styled.th`
+  background: ghostwhite;
+  font-size: 12px;
+  white-space: nowrap;
+`;
+export const TableData = styled.th`
+  font-size: 10px;
+`;
+
+export const PreLoad = styled.div`
+  color: black;
+  position: absolute;
+  top: 50%;
+`;
+
+export const Top = styled.div`
+  width: 75vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const TopLeft = styled.div`
+  font-size: 16px;
+`;
+export const TopRight = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+`;
+
+export const TopTopRight = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const NewBlank = styled.button`
+  border: 1px black solid;
+  border-radius: 4px;
+  background: white;
+  width: 200px;
+  height: 40px;
+  font-weight: bold;
+`;
+
+export const SubmitButton = styled.button`
+  border: 1px black solid;
+  border-radius: 4px;
+  background: ${color.primary};
+  width: 200px;
+  height: 40px;
+  font-weight: bold;
+`;
+
+export const ImportCsv = styled.label`
+  border: 1px black solid;
+  border-radius: 4px;
+  background: white;
+  width: 200px;
+  height: 40px;
+  display: block;
+`;
+
+export const AddSchem = styled.label`
+  border: 1px black solid;
+  border-radius: 4px;
+  background: white;
+  width: 200px;
+  height: 40px;
+`;
+
+export const CenterDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
+export const ImportText = styled.p`
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  height: 100%;
+  line-height: 2.4285;
+`;
+
+export const OrSpan = styled.span`
+  font-size: 18px;
+`;
+
+export const LineOr = styled.div`
+  overflow: hidden;
+  text-align: center;
+  &:before,
+  &:after {
+    background-color: #eaeaea;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+  }
+  &:before {
+    top: 1.15em;
+    right: 1em;
+    margin-left: -50%;
+  }
+  &:after {
+    bottom: 2.8em;
+    left: 1em;
+    margin-right: -50%;
+  }
+`;
