@@ -8,7 +8,7 @@ import Project from "./Project";
 import Jobsheet from "./Jobsheet";
 import CreateNewClient from "./Client/CreateNew";
 import CreateNewProject from "./Project/CreateNew";
-import CreateNewJobsheet from "./Jobsheet/CreateNew";
+import CreateNewJobsheet from "./Jobsheet/CreateNew/Jobsheet";
 import ForgotPassword from "../App/Auth/ForgotPassword";
 import Dashboard from "../App/Dashboard";
 import PageError from "../shared/components/PageError";

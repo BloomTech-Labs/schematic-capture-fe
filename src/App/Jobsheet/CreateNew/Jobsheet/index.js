@@ -3,8 +3,10 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import csv from "csvtojson";
-import { dispatchers } from "../../../shared/actions/dashboardActions";
-import { csvToApi } from "../../../shared/utils/componentMap";
+import { dispatchers } from "../../../../shared/actions/dashboardActions";
+import { csvToApi } from "../../../../shared/utils/componentMap";
+import Header from "../Header";
+
 
 import {
   Container,
@@ -93,6 +95,7 @@ const CreateNewJobsheet = () => {
 
   return (
     <Container>
+      <Header/>
       <Top>
         <TopLeft>
           <h1>Schematic Capture</h1>

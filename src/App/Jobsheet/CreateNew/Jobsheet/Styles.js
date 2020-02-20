@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { color } from "../../../shared/utils/styles";
+import { color } from "../../../../shared/utils/styles";
 import React from "react";
 
 export const Container = styled.div`

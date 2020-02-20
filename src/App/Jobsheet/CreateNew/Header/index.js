@@ -13,18 +13,9 @@ const PageHeader = () => {
     <Fragment>
       <BackToLink
       style={{ marginBottom: "2rem" }}
-      to={`/client/${currentClient.id}`}
-      text={`${currentClient.companyName}`}
+      to={`/project/${currentProject.id}`}
+      text={`${currentProject.name}`}
     />
-      <Header>
-        {!!currentProject && <PageName>{currentProject.name}</PageName>}
-        <StyledLink
-          to={`/project/${currentClient.id}/jobsheet/new`}
-          variant="primary"
-        >
-          New&nbsp;Jobsheet
-        </StyledLink>
-      </Header>
     </Fragment>
   );
 };
