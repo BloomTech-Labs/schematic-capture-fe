@@ -18,7 +18,10 @@ const PageHeader = () => {
       />
       <Header>
         {!!currentProject && <PageName>{currentProject.name}</PageName>}
-        <StyledLink to="/project/:id/jobsheet/new" variant="primary">
+        <StyledLink
+          to={`/project/${currentClient.id}/jobsheet/new`}
+          variant="primary"
+        >
           New&nbsp;Jobsheet
         </StyledLink>
       </Header>
