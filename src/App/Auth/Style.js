@@ -45,6 +45,7 @@ export const FormContainer = styled.div`
   background: ${color.backgroundLight};
   border: 1px solid ${color.borderColor};
   border-radius: 0.5rem;
+  color: ${color.gray300};
   padding: 4rem;
   width: 440px;
   h1 {
