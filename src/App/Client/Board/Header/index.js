@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 
-import { Header, PageName } from "./Styles";
+import { Header, PageName, StyledLink } from "./Styles";
 
 import BackToLink from "../../../../shared/components/BackToLink";
 
@@ -16,6 +16,9 @@ const PageHeader = () => {
       />
       <Header>
         {!!currentClient && <PageName>{currentClient.companyName}</PageName>}
+        <StyledLink to="/client/:id/project/new" variant="primary">
+          New&nbsp;Project
+        </StyledLink>
       </Header>
     </Fragment>
   );
