@@ -17,13 +17,17 @@ const PageHeader = () => {
       text={`${currentClient.companyName}`}
     />
       <Header>
-        {!!currentProject && <PageName>{currentProject.name}</PageName>}
-        <StyledLink
-          to={`/project/${currentClient.id}/jobsheet/new`}
-          variant="primary"
-        >
-          New&nbsp;Jobsheet
-        </StyledLink>
+        {!!currentProject && (
+          <Fragment>
+            <PageName>{currentProject.name}</PageName>
+            <StyledLink
+              to={`/project/${currentClient.id}/jobsheet/new`}
+              variant="primary"
+            >
+              New&nbsp;Jobsheet
+            </StyledLink>
+          </Fragment>
+        )}
       </Header>
     </Fragment>
   );

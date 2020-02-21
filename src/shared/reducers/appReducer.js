@@ -17,6 +17,7 @@ const appReducer = (state = initState, action) => {
     case APP_DONE_LOADING:
       return {
         ...state,
+        error: null,
         isLoading: false
       };
     case APP_ERROR:
