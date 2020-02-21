@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 
 // utils
-import { StyledField, FieldError, Button } from "../../../../App/Auth/Style";
+import { StyledField, FieldError, Button } from "../../../App/Auth/Style";
 import {
   StyledSelect,
   InviteGroup,
@@ -17,11 +17,11 @@ import {
 } from "./Styles";
 
 // components
-import BackToLink from "../../BackToLink";
+import BackToLink from "../BackToLink";
 
 // actions
-import { dispatchers } from "../../../actions/authActions";
-import { axiosWithAuth } from "../../../utils";
+import { dispatchers } from "../../actions/authActions";
+import { axiosWithAuth } from "../../utils";
 
 const InviteReg = ({ handleClose }) => {
   const { register, handleSubmit, errors, reset } = useForm();

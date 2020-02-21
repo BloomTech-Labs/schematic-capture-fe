@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { color } from "../../../utils/styles";
+import { color } from "../../utils/styles";
 import Color from "color";
 
 export const InviteContainer = styled.div`
@@ -31,7 +31,11 @@ export const InviteForm = styled.div`
   }
   @media (max-width: 500px) {
     width: 90%;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
     border: none;
     h1 {
       margin-top: 3rem;
@@ -77,6 +81,6 @@ export const InviteTitle = styled.h1`
   color: black;
 `;
 
-export const AccessLevel = styled.h4`
-color: black;
+export const AccessText = styled.h4`
+  color: black;
 `;

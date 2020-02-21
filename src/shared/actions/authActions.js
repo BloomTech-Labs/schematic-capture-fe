@@ -172,6 +172,27 @@ const sendInvite = (data, history) => dispatch => {
     });
 };
 
+const sendInvite = (data, history) => dispatch => {
+  dispatch({ type: APP_LOADING });
+  console.log(data);
+
+  axiosWithAuth()
+    .post("/auth/invite", data, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("idToken")
+      }
+    })
+    .then(res => {
+      console.log("Invite Sent");
+      dispatch({ type: APP_DONE_LOADING });
+      dispatch({ type: INVITE_SUCCESS, payload: res.data });
+      history.push("/dashboard");
+    })
+    .catch(error => {
+      dispatch({ type: APP_ERROR, payload: error.message });
+    });
+};
+
 export const actions = {
   CREATE_ACCOUNT_SUCCESS,
   FORGOT_PASSWORD_SUCCESS,
