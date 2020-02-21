@@ -59,7 +59,7 @@ img {
 }
 
 .card img {
-    height: 400px;
+    height: auto;
     width: 100%;
 }
 
