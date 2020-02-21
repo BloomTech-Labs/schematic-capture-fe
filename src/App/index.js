@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 
 import NormalizeStyles from "./NormalizeStyles";
@@ -13,7 +13,12 @@ import { useSelector } from "react-redux";
 
 const App = () => {
   const { isLoading, error } = useSelector(state => state.app);
-  // const isLoading = true;
+
+  useEffect(() => {
+    if (!!error) {
+      alert(error);
+    }
+  }, [error]);
 
   return (
     <Fragment>

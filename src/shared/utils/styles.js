@@ -20,7 +20,7 @@ export const color = {
   // Background
   //
   // Setting background elements.
-  backgroundBody: "#ffffff",
+  backgroundBody: "#424244",
   backgroundLight: "#ffffff",
 
   // Text
@@ -34,7 +34,7 @@ export const color = {
   // Components
   //
   // Define common styles and more.
-  borderColor: "#d5d8dc",
+  borderColor: "#565658",
   borderInputFocus: "#1165a8",
 
   // Forms
@@ -47,6 +47,14 @@ export const font = {
     'font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; font-weight: normal;',
   bold: 'font-family: "Open Sans"; font-weight: 700;',
   size: size => `font-size: ${size}rem;`
+};
+
+export const sizes = {
+  navbarWidth: 58
+};
+
+export const zIndexValues = {
+  navbar: 100
 };
 
 export const mixin = {
@@ -63,7 +71,8 @@ export const mixin = {
       .alpha(opacity)
       .string(),
   boxShadowMedium: css`
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.1),
+      0 10px 30px #d5d8dc;
   `,
   cover: css`
     position: absolute;
@@ -82,5 +91,12 @@ export const mixin = {
     &:hover {
       text-decoration: underline;
     }
-  `
+  `,
+  backgroundImage: imageURL => css`
+    background-image: url("${imageURL}");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: ${color.backgroundLight};
+`
 };

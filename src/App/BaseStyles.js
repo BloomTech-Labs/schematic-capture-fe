@@ -7,7 +7,8 @@ export default createGlobalStyle`
 html { font-size: 62.5% }
 
 body {
-    color: ${color.textDark};
+    background-color: ${color.backgroundBody};
+    color: ${color.textLight};
     line-height: 1.2;
     ${font.size(1.5)}
     ${font.regular}
