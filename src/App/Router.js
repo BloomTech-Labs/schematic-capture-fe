@@ -12,6 +12,7 @@ import CreateNewJobsheet from "./Jobsheet/CreateNew/Jobsheet";
 import ForgotPassword from "../App/Auth/ForgotPassword";
 import Dashboard from "../App/Dashboard";
 import PageError from "../shared/components/PageError";
+import InviteReg from "../shared/components/Modals/AdminSendInvite/InviteReg";
 
 const Router = () => {
   return (
@@ -21,6 +22,7 @@ const Router = () => {
       <Route path="/forgotpassword" component={ForgotPassword} />
       <PrivateRoute path="/dashboard" component={Dashboard} />
       <PrivateRoute path="/client/new" component={CreateNewClient} />
+      <PrivateRoute path="/invite" component={InviteReg} />
       <PrivateRoute
         path="/client/:id/project/new"
         component={CreateNewProject}

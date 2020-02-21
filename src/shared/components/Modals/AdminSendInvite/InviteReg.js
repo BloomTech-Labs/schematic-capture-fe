@@ -1,0 +1,154 @@
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
+import swal from "sweetalert";
+
+// utils
+import { StyledField, FieldError, Button } from "../../../../App/Auth/Style";
+import {
+  StyledSelect,
+  InviteGroup,
+  InviteContainer,
+  InviteForm,
+  InviteTitle,
+  InviteGroupBack,
+  AccessLevel
+} from "./Styles";
+
+// components
+import BackToLink from "../../BackToLink";
+
+// actions
+import { dispatchers } from "../../../actions/authActions";
+import { axiosWithAuth } from "../../../utils";
+
+const InviteReg = ({ handleClose }) => {
+  const { register, handleSubmit, errors, reset } = useForm();
+  const [roles, setRoles] = useState([]);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { sendInvite } = dispatchers;
+
+  useEffect(() => {
+    axiosWithAuth()
+      .get("http://localhost:5000/api/roles/", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("idToken")
+        }
+      })
+      .then(res => {
+        const rolesArr = res.data;
+        setRoles(rolesArr);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
+
+  const onSubmit = (data, event) => {
+    event.preventDefault();
+    swal({
+      title: `Are you sure?`,
+      text: `This will send an invite to ${data.email}.`,
+      icon: "warning",
+      buttons: true,
+      dangerMode: true
+    }).then(confirm => {
+      if (confirm) {
+        dispatch(sendInvite(data, history));
+        swal("Invite sent!", {
+          icon: "success",
+          timer: 8000
+        }).then(() => {
+          reset();
+        });
+      } else {
+        swal("Invite not sent!", {
+          icon: "error"
+        });
+        reset();
+      }
+    });
+    console.log(data);
+  };
+
+  return (
+    <InviteContainer>
+      <InviteForm>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <InviteTitle>Send Registration Invitation</InviteTitle>
+          <InviteGroup>
+            <StyledField
+              type="string"
+              name="name"
+              id="name"
+              placeholder="Full Name"
+              aria-label="Full Name"
+              ref={register({
+                required: true
+              })}
+            />
+            <StyledField
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email address"
+              aria-label="Email address"
+              aria-invalid={errors.email ? "true" : "false"}
+              aria-describedby="error-email-required error-email-pattern"
+              ref={register({
+                required: true,
+                pattern: /^\S+@\S+$/i
+              })}
+            />
+            <br />
+            <AccessLevel>Please indicate level of access for account:</AccessLevel>
+            <StyledSelect
+              name="roleId"
+              ref={register({
+                required: true
+              })}
+            >
+              {roles.map(role => {
+                return (
+                  <option key={role.id + new Date()} value={role.id}>
+                    {role.name.toUpperCase()}
+                  </option>
+                );
+              })}
+            </StyledSelect>
+
+            <br />
+            {errors.email && errors.email.type === "required" && (
+              <FieldError id="error-email-required">
+                Please enter an email address.
+              </FieldError>
+            )}
+
+            {errors.name && errors.name.type === "required" && (
+              <FieldError id="error-name-required">
+                Please enter a name.
+              </FieldError>
+            )}
+          </InviteGroup>
+          <InviteGroup>
+            <Button
+              variant="primary"
+              submit="button"
+              onClick={handleClose}
+              btnBlock
+            >
+              Send Invite Link
+            </Button>
+          </InviteGroup>
+          <InviteGroupBack>
+            <BackToLink to="/dashboard" text="Back to Dashboard" />
+          </InviteGroupBack>
+        </form>
+      </InviteForm>
+    </InviteContainer>
+  );
+};
+
+export default InviteReg;
