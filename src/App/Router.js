@@ -27,7 +27,6 @@ const Router = () => {
         path="/client/:id/project/new"
         component={CreateNewProject}
       />
-      <PrivateRoute path="/invite" component={InviteReg} />
       <PrivateRoute
         path="/project/:id/jobsheet/new"
         component={CreateNewJobsheet}
