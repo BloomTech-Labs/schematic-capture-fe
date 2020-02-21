@@ -11,67 +11,40 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="about.css">
     <!-- Add fontawesome script -->
     <script
       src="https://kit.fontawesome.com/39f809c5bb.js"
       crossorigin="anonymous"
     ></script>
-    <!-- Google Tag Manager -->
-    <script>
-      (function(w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({
-          "gtm.start": new Date().getTime(),
-          event: "gtm.js"
-        });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-KVMP8ZW");
-    </script>
-    <!-- End Google Tag Manager -->
-    <!-- Adds meta description for search engines -->
-    <meta
-      name="description"
-      content="An app for capturing and annotating huge machines in some of the countries larger steel manufacturing facilities"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+    
     <title>About Us</title>
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-      <iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-KVMP8ZW"
-        height="0"
-        width="0"
-        style="display:none;visibility:hidden"
-      >
-      </iframe>
-    </noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <Container>
-    <h1>Schematic Capture About Us</h1>
+    <header class="main-header">
+      <h1>About Us</h1>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia, perspiciatis.</p>
+    </header>
 
-    <h2>An intrepid team of remote web developers came together to make this revolutionary app</h2>
-  </Container>
+    <main class="container">
+      <section class="card">
+        <img src="/public/assets/Jason Belgard.jpeg" alt="Team Lead - Jason Belgard">
+        <div>
+          <h3>Jason Belgard</h3>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam quam, libero aliquid sequi ex incidunt hic vel porro esse inventore quas molestias ea animi nam quo laudantium. Libero, assumenda ipsum.</p>
+          <a href="#"><img src="/public/assets/Octocat.png" alt="Github link" width="150" height="70"></a>
+        </div>
+      </section>
+
+      <section class="card"></section>
+      <section class="card"></section>
+      <section class="card"></section>
+      <section class="card"></section>
+      <section class="card"></section>
+      
+
+    </main>
+    
   </body>
 </html>
 
