@@ -25,9 +25,9 @@ jobs:
         with:
           node-version:
             "12"
-            # Run the NPM install command before proceeding
+            # Run the yarn install command before proceeding
       - run:
-          npm install
+          yarn
           # A GitHub action for running tests and publishing coverage
       - uses: paambaati/codeclimate-action@v2.4.0
         env:
@@ -35,4 +35,4 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CodeClimateReporterId }}
         with:
           # Run our `coverage` command from our `package.json`
-          coverageCommand: npm run coverage
+          coverageCommand: yarn run coverage
