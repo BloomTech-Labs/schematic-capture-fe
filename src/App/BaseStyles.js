@@ -59,7 +59,7 @@ p {
 
 table {
   border: 0;
-  border-bottom: 1px solid ${color.gray200};
+  border-bottom: 1px solid ${color.borderColor};
   border-collapse: collapse;
   border-spacing: 0;
   margin: 0;
@@ -75,7 +75,7 @@ table caption {
 }
 
 table tr {
-  border: 1px solid ${color.gray200};
+  border: 1px solid ${color.borderColor};
   padding: .35em;
 }
 
@@ -110,14 +110,14 @@ table th {
 
 
   table tr {
-    border-bottom: 3px solid ${color.gray200};
+    border-bottom: 3px solid ${color.borderColor};
     display: block;
     padding-bottom: 1em;
     margin-bottom: .625em;
   }
 
   table td {
-    border-bottom: 1px solid ${color.gray200};
+    border-bottom: 1px solid ${color.borderColor};
     display: block;
     font-size: .8em;
     text-align: right;
