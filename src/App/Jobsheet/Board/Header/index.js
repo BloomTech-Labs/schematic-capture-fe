@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 
-import { Header, PageName, StyledLink } from "./Styles";
+import { Header, PageName } from "./Styles";
 
 import BackToLink from "../../../../shared/components/BackToLink";
 
 const PageHeader = () => {
-  const { currentClient, currentProject } = useSelector(
+  const { currentProject, currentJobsheet } = useSelector(
     state => state.dashboard
   );
   return (
@@ -17,15 +17,9 @@ const PageHeader = () => {
         text={`${currentProject.name}`}
       />
       <Header>
-        {!!currentProject && (
+        {!!currentJobsheet && (
           <Fragment>
-            <PageName>{currentProject.name}</PageName>
-            <StyledLink
-              to={`/project/${currentClient.id}/jobsheet/new`}
-              variant="primary"
-            >
-              New&nbsp;Component
-            </StyledLink>
+            <PageName>{currentJobsheet.name}</PageName>
           </Fragment>
         )}
       </Header>
