@@ -17,7 +17,6 @@ export const NavbarLeft = styled.aside`
   height: 100vh;
   width: ${sizes.navbarWidth}px;
   z-index: ${zIndexValues.navbar};
-  padding: 0 16px 24px;
   background-color: ${mixin.lighten(color.backgroundBody, 0.1)};
   border-right: 1px solid ${color.borderColor};
   transition: all 0.1s;
