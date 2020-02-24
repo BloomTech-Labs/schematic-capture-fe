@@ -1,7 +1,14 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Color from "color";
 
-import { color, font, sizes, zIndexValues } from "../../../shared/utils/styles";
+import {
+  color,
+  font,
+  mixin,
+  sizes,
+  zIndexValues
+} from "../../../shared/utils/styles";
 
 export const NavbarLeft = styled.aside`
   position: fixed;
@@ -9,9 +16,9 @@ export const NavbarLeft = styled.aside`
   left: 0;
   height: 100vh;
   width: ${sizes.navbarWidth}px;
-  z-index: ${zIndexValues.navbar}
+  z-index: ${zIndexValues.navbar};
   padding: 0 16px 24px;
-  background-color: ${color.backgroundBody};
+  background-color: ${mixin.lighten(color.backgroundBody, 0.1)};
   border-right: 1px solid ${color.borderColor};
   transition: all 0.1s;
   transform: translateZ(0);
