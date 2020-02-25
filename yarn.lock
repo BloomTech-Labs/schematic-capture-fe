@@ -11017,6 +11017,7 @@ svgo@^1.0.0, svgo@^1.2.2:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
+
 sweetalert@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/sweetalert/-/sweetalert-2.1.2.tgz#010baaa80d0dbdc86f96bfcaa96b490728594b79"
@@ -11024,6 +11025,8 @@ sweetalert@^2.1.2:
   dependencies:
     es6-object-assign "^1.1.0"
     promise-polyfill "^6.0.2"
+
+
 
 symbol-observable@^1.1.0, symbol-observable@^1.2.0:
   version "1.2.0"
