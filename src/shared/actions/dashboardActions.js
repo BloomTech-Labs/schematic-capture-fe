@@ -8,6 +8,8 @@ const FETCH_CLIENTS_SUCCESS = "FETCH_CLIENTS_SUCCESS";
 const SET_CURRENT_CLIENT = "SET_CURRENT_CLIENT";
 const SET_CURRENT_PROJECTS = "SET_CURRENT_PROJECTS";
 const SET_CURRENT_PROJECT = "SET_CURRENT_PROJECT";
+const SET_CURRENT_JOBSHEETS = "SET_CURRENT_JOBSHEETS";
+const SET_CURRENT_JOBSHEET = "SET_CURRENT_JOBSHEET";
 
 const fetchClients = () => async (dispatch, getState) => {
   dispatch({ type: APP_LOADING });
@@ -63,6 +65,7 @@ const fetchJobsheets = (projectId, setJobsheets) => async dispatch => {
       `/projects/${projectId}/jobsheets`
     );
     setJobsheets(jobsheets.data);
+    dispatch({ type: SET_CURRENT_JOBSHEETS, payload: jobsheets.data });
     dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
     dispatch({ type: APP_ERROR, payload: error.message });
@@ -131,5 +134,7 @@ export const actions = {
   FETCH_CLIENTS_SUCCESS,
   SET_CURRENT_CLIENT,
   SET_CURRENT_PROJECTS,
-  SET_CURRENT_PROJECT
+  SET_CURRENT_PROJECT,
+  SET_CURRENT_JOBSHEETS,
+  SET_CURRENT_JOBSHEET
 };
