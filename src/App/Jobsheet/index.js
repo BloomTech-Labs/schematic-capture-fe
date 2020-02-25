@@ -1,30 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { useParams, Redirect } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { dispatchers } from "../../shared/actions/dashboardActions";
+import React, { Fragment } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-const { fetchComponents } = dispatchers;
+import NavBar from "../../shared/components/Navbar";
+import Board from "./Board";
 
-const fetchComponentsSideEffect = async (dispatch, id, setComponents) => {
-  await dispatch(fetchComponents(id, setComponents));
+import { actions } from "../../shared/actions/dashboardActions";
+import { useEffect } from "react";
+
+const { SET_CURRENT_JOBSHEET } = actions;
+
+const setCurrentJobsheetSideEffect = async (dispatch, currentJobsheets, id) => {
+  const jobsheet = currentJobsheets.find(
+    jobsheet => jobsheet.id === Number(id)
+  );
+
+  await dispatch({ type: SET_CURRENT_JOBSHEET, payload: jobsheet });
 };
 
 const Jobsheet = () => {
-  const [components, setComponents] = useState([]);
-  const dispatch = useDispatch();
   const params = useParams();
+  const dispatch = useDispatch();
+
+  const { currentJobsheets } = useSelector(state => state.dashboard);
 
   useEffect(() => {
-    fetchComponentsSideEffect(dispatch, params.id, setComponents);
-  }, [dispatch, params.id, setComponents]);
+    setCurrentJobsheetSideEffect(dispatch, currentJobsheets, params.id);
+  }, [dispatch, currentJobsheets, params.id]);
 
   return (
-    <div>
-      {!!components.length &&
-        components.map(component => (
-          <pre key={component.id}>{JSON.stringify(component, null, 2)}</pre>
-        ))}
-    </div>
+    <Fragment>
+      <NavBar />
+      <Board />
+    </Fragment>
   );
 };
 
