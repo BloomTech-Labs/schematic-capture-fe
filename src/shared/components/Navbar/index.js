@@ -3,6 +3,11 @@ import React from "react";
 import { NavbarLeft, Icon, Item, ItemText, Bottom } from "./Style";
 
 const Navbar = () => {
+  const removeKeys = () => {
+    localStorage.removeItem("idToken");
+    localStorage.removeItem("user");
+    localStorage.removeItem("state");
+  };
   return (
     <NavbarLeft>
       <Item to="/dashboard">
@@ -18,7 +23,7 @@ const Navbar = () => {
         <ItemText>Invite&nbsp;New&nbsp;User</ItemText>
       </Item>
       <Bottom>
-        <Item to="/">
+        <Item to="/" onClick={removeKeys}>
           <Icon className="fas fa-sign-out-alt" size={22} />
           <ItemText>Logout</ItemText>
         </Item>
