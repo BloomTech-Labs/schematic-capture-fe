@@ -21,6 +21,7 @@ export const PreviewContainer = styled.div`
   box-shadow: 5px 8px 10px 2px rgba(0, 0, 0, 0.5);
   height: 50vh;
   width: 75vw;
+  min-width: 600px;
   border: 1px red solid;
   background: rgb(213, 216, 220);
   overflow: auto;
@@ -28,8 +29,9 @@ export const PreviewContainer = styled.div`
 
 export const PreviewTable = styled.table`
   display: table;
-  width: -webkit-fill-available;
   white-space: nowrap;
+  margin: auto;
+  width: auto;
 `;
 
 export const TableItems = styled.tr`
@@ -40,16 +42,14 @@ export const TableItems = styled.tr`
 export const TableHeader = styled.th`
   background: ghostwhite;
   font-size: 12px;
-  white-space: nowrap;
 `;
-export const TableData = styled.th`
-  font-size: 10px;
-`;
+
 
 export const PreLoad = styled.div`
   color: black;
-  position: absolute;
-  top: 50%;
+  @media (max-width: 850px) {
+    transform: scale(0.5);
+  }
 `;
 
 export const Top = styled.div`
