@@ -1,8 +1,18 @@
 import React from "react";
 
 import { NavbarLeft, Icon, Item, ItemText, Bottom } from "./Style";
+import swal from "sweetalert";
 
 const Navbar = () => {
+  const onLogout = () => {
+    localStorage.removeItem("idToken");
+    localStorage.removeItem("user");
+    localStorage.removeItem("state");
+    return swal("Logged out successfully!", {
+      icon: "success",
+      timer: 4000
+    });
+  };
   return (
     <NavbarLeft>
       <Item to="/dashboard">
@@ -18,7 +28,7 @@ const Navbar = () => {
         <ItemText>Invite&nbsp;New&nbsp;User</ItemText>
       </Item>
       <Bottom>
-        <Item to="/">
+        <Item to="/" onClick={onLogout}>
           <Icon className="fas fa-sign-out-alt" size={22} />
           <ItemText>Logout</ItemText>
         </Item>
