@@ -6,7 +6,7 @@ import BaseStyles from "./BaseStyles";
 
 import PageLoader from "../shared/components/PageLoader";
 
-import Router from "./Router";
+import Router from "../App/Router";
 
 // redux hooks
 import { useSelector } from "react-redux";
