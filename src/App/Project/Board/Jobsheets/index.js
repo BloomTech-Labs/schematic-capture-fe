@@ -23,7 +23,7 @@ const Jobsheets = () => {
 
   useEffect(() => {
     fetchJobsheetsSideEffect(dispatch, params.id, setJobsheets);
-  }, [dispatch, params.id, setJobsheets]);
+  }, []);
 
   return !!currentProject ? (
     <Section>

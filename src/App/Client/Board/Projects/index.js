@@ -36,7 +36,7 @@ const Projects = () => {
   useEffect(() => {
     fetchProjectsSideEffect(dispatch, params.id, setProjects);
     setCurrentClientAndProjectsSideEffect(dispatch, client, projects);
-  }, [dispatch, params.id, client, setProjects, projects]);
+  }, []);
 
   return client ? (
     <Section>
