@@ -13,7 +13,7 @@ const Clients = () => {
 
   useEffect(() => {
     dispatch(fetchClients());
-  }, [dispatch]);
+  }, []);
 
   return (
     <Section>

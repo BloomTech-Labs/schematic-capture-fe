@@ -19,7 +19,7 @@ const Components = () => {
 
   useEffect(() => {
     fetchComponentsSideEffect(dispatch, params.id, setComponents);
-  }, [dispatch, params.id, setComponents]);
+  }, []);
   return (
     <Section>
       <SectionName>All Components</SectionName>
