@@ -4,36 +4,30 @@ import { Link } from "react-router-dom";
 
 import Color from "color";
 
-import { color, font } from "../../shared/utils/styles";
+import { color, font, mixin } from "../../shared/utils/styles";
 
 export const Container = styled.div`
-  background: url("../../assets/8609f4b9daabe355452ccd4ea682f37e.jpg") no-repeat
-    center center fixed;
-  background-color: ${color.gray400};
-  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
   height: 100vh;
   width: 100vw;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  @media (max-width: 500px) {
-    background: none;
-  }
-  @media (max-width: 650px) {
-    flex-direction: column;
-    justify-content: center;
+  @media (min-width: 900px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
   }
 `;
 
-export const HeadTitle = styled.h1`
-  ${font.size(4.5)}
+export const PageTitle = styled.h1`
+  ${font.size(3)}
   ${font.bold}
   color: ${color.textLight};
-  @media (max-width: 650px) {
-    text-align: center;
-  }
-  @media (max-width: 500px) {
-    color: ${color.textDark};
+  margin: 0 0 4rem;
+  @media (min-width: 900px) {
+    margin: 0 2rem;
   }
 `;
 
@@ -43,11 +37,11 @@ export const BackToLink = styled(Link)`
 
 export const FormContainer = styled.div`
   background: ${color.backgroundLight};
-  border: 1px solid ${color.borderColor};
   border-radius: 0.5rem;
   color: ${color.gray300};
   padding: 4rem;
-  width: 440px;
+  width: 95%;
+  ${mixin.boxShadowMedium};
   h1 {
     margin-top: 0;
     margin-bottom: 1rem;
@@ -58,16 +52,8 @@ export const FormContainer = styled.div`
   a {
     color: ${color.primary};
   }
-  @media (min-width: 1200px) {
-    right: 100px;
-  }
-  @media (max-width: 500px) {
-    width: 80%;
-    height: 100%;
-    border: none;
-    h1 {
-      margin-top: 3rem;
-    }
+  @media (min-width: 500px) {
+    width: 440px;
   }
 `;
 
@@ -91,15 +77,6 @@ export const FormGroup = styled.div`
   margin-bottom: 1rem;
 `;
 
-export const FieldLabel = styled.label`
-  display: block;
-  color: ${Color(color.textDark)
-    .lighten(1)
-    .string()};
-  font-family: ${font.regular};
-  ${font.size(1.25)}
-`;
-
 export const StyledField = styled.input`
   background: ${color.inputBackground};
   border: 1px solid ${color.gray100};
@@ -110,10 +87,7 @@ export const StyledField = styled.input`
   width: 100%;
   padding: 14px 16px;
   &:hover {
-    border-color:
-    ${Color(color.secondary)
-      .darken(0.1)
-      .string()};
+    border-color: ${mixin.darken(color.secondary, 0.1)};
     }
   }
   &:focus {
@@ -154,13 +128,6 @@ export const FieldError = styled.div`
   color: ${color.danger};
   ${font.size(1.25)}
 `;
-
-// export const Buttons = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-//   align-items: center;
-// `;
 
 export const Button = styled.button`
   display: flex;
