@@ -21,7 +21,7 @@ import GoogleIcon from "../../../shared/assets/google-icon";
 // actions
 import { dispatchers } from "../../../shared/actions/authActions";
 
-const Login =() => {
+const Login = () => {
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
   const history = useHistory();
