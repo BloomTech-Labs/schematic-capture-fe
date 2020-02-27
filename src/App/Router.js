@@ -22,7 +22,7 @@ const Router = () => {
       <Route path="/forgotpassword" component={ForgotPassword} />
       <PrivateRoute path="/dashboard" component={Dashboard} />
       <PrivateRoute path="/client/new" component={CreateNewClient} />
-        <PrivateRoute path="/invite" component={InviteReg} />
+      <PrivateRoute path="/invite" component={InviteReg} />
       <PrivateRoute
         path="/client/:id/project/new"
         component={CreateNewProject}

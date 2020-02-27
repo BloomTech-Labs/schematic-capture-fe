@@ -107,7 +107,9 @@ const InviteReg = ({ handleClose }) => {
               })}
             />
             <br />
-            <AccessText>Please indicate level of access for account:</AccessText>
+            <AccessText>
+              Please indicate level of access for account:
+            </AccessText>
             <StyledSelect
               data-select-role
               name="roleId"

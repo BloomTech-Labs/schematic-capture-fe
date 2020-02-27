@@ -57,8 +57,8 @@ export const StyledSelect = styled.select`
   &:hover {
     border-color:
     ${Color(color.secondary)
-  .darken(0.1)
-  .string()};
+      .darken(0.1)
+      .string()};
     }
   }
   &:focus {

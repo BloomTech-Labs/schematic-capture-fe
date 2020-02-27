@@ -44,7 +44,6 @@ export const TableHeader = styled.th`
   font-size: 12px;
 `;
 
-
 export const PreLoad = styled.div`
   color: black;
   @media (max-width: 850px) {
