@@ -53,7 +53,6 @@ const CreateNewClient = () => {
 
   return (
     <InviteContainer>
-      <button onClick={formatToPhone}>CLICK ME</button>
       {/*<form onSubmit={handleSubmit(onAddNewClient)}>*/}
       {/*  <StyledFields fields={schema} register={register} errors={errors} />*/}
       {/*  <button type="Submit">Save</button>*/}
