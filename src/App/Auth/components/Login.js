@@ -21,7 +21,7 @@ import GoogleIcon from "../../../shared/assets/google-icon";
 // actions
 import { dispatchers } from "../../../shared/actions/authActions";
 
-const Login = props => {
+const Login =() => {
   const { register, handleSubmit, errors } = useForm();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -47,6 +47,7 @@ const Login = props => {
         </div>
         <FormGroup>
           <StyledField
+            data-email-address
             type="email"
             name="email"
             id="email"
@@ -67,6 +68,7 @@ const Login = props => {
         </FormGroup>
         <FormGroup>
           <StyledField
+            data-password
             type="password"
             name="password"
             id="password"
@@ -84,7 +86,7 @@ const Login = props => {
         </FormGroup>
         <FormRow>
           <FormColumn>
-            <Button variant="primary" type="submit">
+            <Button data-button-continue variant="primary" type="submit">
               Continue
             </Button>
           </FormColumn>
