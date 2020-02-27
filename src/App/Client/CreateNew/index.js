@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -15,7 +15,7 @@ import {
   InviteGroupBack,
   InviteTitle
 } from "../../../shared/components/Invite/Styles";
-import { Button, FieldError, StyledField } from "../../Auth/Style";
+import { Button, FieldError, StyledField } from "../../Auth/Styles";
 import BackToLink from "../../../shared/components/BackToLink";
 
 const { addNewClient } = dispatchers;
@@ -24,9 +24,31 @@ const CreateNewClient = () => {
   const { handleSubmit, register, errors } = useForm();
   const dispatch = useDispatch();
   const history = useHistory();
+  let inputElement;
+
+  useEffect(() => {
+    inputElement = document.getElementById("phone");
+    inputElement.addEventListener("keyup", formatToPhone);
+  });
 
   const onAddNewClient = data => {
     dispatch(addNewClient(data, history));
+  };
+
+  const formatToPhone = event => {
+    const target = event.target;
+    const input = target.value.replace(/\D/g, "").substring(0, 10); // First ten digits of input only
+    const zip = input.substring(0, 3);
+    const middle = input.substring(3, 6);
+    const last = input.substring(6, 10);
+
+    if (input.length > 6) {
+      target.value = `(${zip}) ${middle}-${last}`;
+    } else if (input.length > 3) {
+      target.value = `(${zip}) ${middle}`;
+    } else if (input.length > 0) {
+      target.value = `(${zip}`;
+    }
   };
 
   return (
@@ -49,7 +71,7 @@ const CreateNewClient = () => {
               ref={register({ required: true })}
             />
             <StyledField
-              type="number"
+              type="tel"
               name="phone"
               id="phone"
               placeholder="Phone Number"

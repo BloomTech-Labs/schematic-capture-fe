@@ -43,7 +43,11 @@ const Projects = () => {
       <SectionName>All Projects</SectionName>
       <div>
         {projects.map(project => (
-          <StyledLink key={project.id} to={`/project/${project.id}`}>
+          <StyledLink
+            data-project-name
+            key={project.id}
+            to={`/project/${project.id}`}
+          >
             {project.name}
           </StyledLink>
         ))}

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 
 // utils
-import { StyledField, FieldError, Button } from "../../../App/Auth/Style";
+import { StyledField, FieldError, Button } from "../../../App/Auth/Styles";
 import {
   StyledSelect,
   InviteGroup,
@@ -80,16 +80,20 @@ const InviteReg = ({ handleClose }) => {
           <InviteTitle>Send Registration Invitation</InviteTitle>
           <InviteGroup>
             <StyledField
+              data-full-name
               type="string"
               name="name"
               id="name"
               placeholder="Full Name"
               aria-label="Full Name"
+              aria-invalid={errors.name ? "true" : "false"}
+              aria-describedby="error-name-required error-name-pattern"
               ref={register({
                 required: true
               })}
             />
             <StyledField
+              data-email-address
               type="email"
               name="email"
               id="email"
@@ -103,8 +107,11 @@ const InviteReg = ({ handleClose }) => {
               })}
             />
             <br />
-            <AccessText>Please indicate level of access for account:</AccessText>
+            <AccessText>
+              Please indicate level of access for account:
+            </AccessText>
             <StyledSelect
+              data-select-role
               name="roleId"
               ref={register({
                 required: true
@@ -121,19 +128,20 @@ const InviteReg = ({ handleClose }) => {
 
             <br />
             {errors.email && errors.email.type === "required" && (
-              <FieldError id="error-email-required">
+              <FieldError data-error-email id="error-email-required">
                 Please enter an email address.
               </FieldError>
             )}
 
             {errors.name && errors.name.type === "required" && (
-              <FieldError id="error-name-required">
+              <FieldError data-error-name id="error-name-required">
                 Please enter a name.
               </FieldError>
             )}
           </InviteGroup>
           <InviteGroup>
             <Button
+              data-button-invite
               variant="primary"
               submit="button"
               onClick={handleClose}

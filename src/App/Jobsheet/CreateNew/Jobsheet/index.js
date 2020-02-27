@@ -7,7 +7,6 @@ import { dispatchers } from "../../../../shared/actions/dashboardActions";
 import { csvToApi } from "../../../../shared/utils/componentMap";
 import Header from "../Header";
 
-
 import {
   Container,
   PreviewContainer,
@@ -62,13 +61,7 @@ const csvComponentsToJson = async (components, setComponents) => {
 };
 
 const CreateNewJobsheet = () => {
-  const {
-    register,
-    getValues,
-    setValue,
-    handleSubmit,
-    watch,
-  } = useForm();
+  const { register, getValues, setValue, handleSubmit, watch } = useForm();
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -95,22 +88,31 @@ const CreateNewJobsheet = () => {
 
   return (
     <Container>
-      <Header/>
+      <Header />
       <Top>
         <TopLeft>
           <h1>Schematic Capture</h1>
-
         </TopLeft>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <TopRight>
             <CenterDiv>
               <TopTopRight>
-                <ImportCsv type="button" htmlFor="csv" onClick={() => setIsNew(true)}>
-                  <ImportText onClick={() => setIsNew(true)}>Import CSV</ImportText>
+                <ImportCsv
+                  type="button"
+                  htmlFor="csv"
+                  onClick={() => setIsNew(true)}
+                >
+                  <ImportText onClick={() => setIsNew(true)}>
+                    Import CSV
+                  </ImportText>
                 </ImportCsv>
                 <LineOr hidden={getValues().name}> or </LineOr>
-                <NewBlank type="button" hidden={getValues().name} onClick={() => setIsNew(true)}>
+                <NewBlank
+                  type="button"
+                  hidden={getValues().name}
+                  onClick={() => setIsNew(true)}
+                >
                   Create A Blank Job Sheet
                 </NewBlank>
               </TopTopRight>
@@ -146,7 +148,9 @@ const CreateNewJobsheet = () => {
               ref={register}
             />
 
-            <SubmitButton type="submit" hidden={!getValues().name}>Submit Jobsheet</SubmitButton>
+            <SubmitButton type="submit" hidden={!getValues().name}>
+              Submit Jobsheet
+            </SubmitButton>
           </TopRight>
         </form>
       </Top>
