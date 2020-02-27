@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 
 // utils
-import { StyledField, FieldError, Button } from "../../../App/Auth/Style";
+import { StyledField, FieldError, Button } from "../../../App/Auth/Styles";
 import {
   StyledSelect,
   InviteGroup,
