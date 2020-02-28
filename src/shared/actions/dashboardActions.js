@@ -10,6 +10,7 @@ const SET_CURRENT_PROJECTS = "SET_CURRENT_PROJECTS";
 const SET_CURRENT_PROJECT = "SET_CURRENT_PROJECT";
 const SET_CURRENT_JOBSHEETS = "SET_CURRENT_JOBSHEETS";
 const SET_CURRENT_JOBSHEET = "SET_CURRENT_JOBSHEET";
+const UPDATE_CURRENT_PROJECT_NAME = "UPDATE_CURRENT_PROJECT_NAME";
 
 const fetchClients = () => async (dispatch, getState) => {
   dispatch({ type: APP_LOADING });
@@ -52,6 +53,24 @@ const addNewProject = (data, clientId, history) => async dispatch => {
   try {
     await axiosWithAuth().post(`/clients/${clientId}/projects`, data);
     history.push(`/client/${clientId}`);
+  } catch (error) {
+    dispatch({ type: APP_ERROR, payload: error.message });
+  }
+};
+
+const updateProjectName = (name, setIsEditing) => async (
+  dispatch,
+  getState
+) => {
+  dispatch({ type: APP_LOADING });
+
+  try {
+    const { currentProject } = getState().dashboard;
+    await axiosWithAuth().put(`/projects/${currentProject.id}`, { name });
+    dispatch({ type: UPDATE_CURRENT_PROJECT_NAME, payload: name });
+    console.log(UPDATE_CURRENT_PROJECT_NAME);
+    setIsEditing(false);
+    dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
     dispatch({ type: APP_ERROR, payload: error.message });
   }
@@ -125,6 +144,7 @@ export const dispatchers = {
   addNewClient,
   fetchProjects,
   addNewProject,
+  updateProjectName,
   fetchJobsheets,
   addNewJobsheet,
   fetchComponents
