@@ -21,7 +21,11 @@ const Clients = () => {
       <div>
         {clients &&
           clients.map(client => (
-            <StyledLink key={client.id} to={`/client/${client.id}`}>
+            <StyledLink
+              data-client-name
+              key={client.id}
+              to={`/client/${client.id}`}
+            >
               {client.companyName}
             </StyledLink>
           ))}

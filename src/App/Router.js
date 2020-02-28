@@ -8,6 +8,7 @@ import Jobsheet from "./Jobsheet";
 import CreateNewClient from "./Client/CreateNew";
 import CreateNewProject from "./Project/CreateNew";
 import CreateNewJobsheet from "./Jobsheet/CreateNew/Jobsheet";
+import InviteReg from "../shared/components/Invite/InviteReg";
 import Dashboard from "./Dashboard";
 import PageError from "../shared/components/PageError";
 
@@ -17,6 +18,7 @@ const Router = () => {
       <Switch>
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <PrivateRoute path="/client/new" component={CreateNewClient} />
+        <PrivateRoute path="/invite" component={InviteReg} />
         <PrivateRoute
           path="/client/:id/project/new"
           component={CreateNewProject}
