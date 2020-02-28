@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import Color from "color";
 
-import { color, font, mixin } from "../../shared/utils/styles";
+import { color, font, mixin } from "../../shared/styles";
 
 export const Container = styled.div`
   display: flex;

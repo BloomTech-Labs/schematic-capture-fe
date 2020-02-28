@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import { font } from "../../../../shared/utils/styles";
+import { font } from "../../../../shared/styles";
 import { buttonStyle } from "../../../../shared/components/Button/Styles";
 
 export const Header = styled.div`

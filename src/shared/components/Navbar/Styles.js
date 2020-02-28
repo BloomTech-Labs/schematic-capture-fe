@@ -1,14 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Color from "color";
 
-import {
-  color,
-  font,
-  mixin,
-  sizes,
-  zIndexValues
-} from "../../../shared/utils/styles";
+import { color, font, mixin, sizes, zIndexValues } from "../../styles";
 
 export const NavbarLeft = styled.aside`
   position: fixed;

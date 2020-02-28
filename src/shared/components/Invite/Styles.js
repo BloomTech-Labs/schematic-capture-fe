@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { color } from "../../utils/styles";
-import Color from "color";
+import { color, mixin } from "../../styles";
 
 export const InviteContainer = styled.div`
   display: flex;
@@ -55,11 +54,7 @@ export const StyledSelect = styled.select`
   width: 66%;
   padding: 9.7px 11.7px;
   &:hover {
-    border-color:
-    ${Color(color.secondary)
-  .darken(0.1)
-  .string()};
-    }
+    border-color: ${mixin.darken(color.secondary, 0.1)};
   }
   &:focus {
     border-color: ${color.primary};
