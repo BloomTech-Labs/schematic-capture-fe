@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { color } from "../../../shared/utils/styles";
+import { color } from "../../../shared/styles";
 
 export const StyledNav = styled.nav`
   align-items: center;
@@ -15,6 +15,5 @@ export const StyledNav = styled.nav`
   min-height: 0px;
   min-width: 0px;
   padding: 2rem;
-  position: relative;
   color: ${color.gray200};
 `;

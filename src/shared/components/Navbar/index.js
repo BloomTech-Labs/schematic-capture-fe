@@ -1,6 +1,6 @@
 import React from "react";
 
-import { NavbarLeft, Icon, Item, ItemText, Bottom } from "./Style";
+import { NavbarLeft, Icon, Item, ItemText, Bottom } from "./Styles";
 import swal from "sweetalert";
 
 const Navbar = () => {

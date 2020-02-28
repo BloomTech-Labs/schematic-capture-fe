@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import { color, font } from "../../../../shared/utils/styles";
+import { color, font } from "../../../../shared/styles";
 
 export const Section = styled.section`
   margin-top: 3rem;

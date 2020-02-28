@@ -1,6 +1,6 @@
 import React from "react";
 
-import { StyledLink } from "./Style";
+import { StyledLink } from "./Styles";
 
 import ChevronIcon from "../../assets/chevron-left-icon";
 

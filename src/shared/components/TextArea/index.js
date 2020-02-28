@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { StyledTextArea } from "./Style";
+import { StyledTextArea } from "./Styles";
 
 const TextArea = forwardRef((props, ref) => {
   console.log(props);

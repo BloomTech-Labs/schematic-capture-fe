@@ -1,15 +1,12 @@
 import React, { Fragment, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
-
-import NormalizeStyles from "./NormalizeStyles";
-import BaseStyles from "./BaseStyles";
-
-import PageLoader from "../shared/components/PageLoader";
-
-import Router from "../App/Router";
-
-// redux hooks
 import { useSelector } from "react-redux";
+
+import NormalizeStyles from "../shared/styles/normalize";
+import BaseStyles from "../shared/styles/baseStyles";
+import { PageLoader } from "../shared/components";
+
+import Router from "./Router";
 
 const App = () => {
   const { isLoading, error } = useSelector(state => state.app);

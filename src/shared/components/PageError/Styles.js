@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { font } from "../../utils/styles";
+import { font } from "../../styles";
 
 export const ErrorPage = styled.div`
   margin: 4rem;

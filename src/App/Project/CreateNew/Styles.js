@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import Fields from "../../../shared/components/Fields";
+import { Fields } from "../../../shared/components";
 
-import { font } from "../../../shared/utils/styles";
+import { font } from "../../../shared/styles";
 
 export const Form = styled.form`
   display: grid;

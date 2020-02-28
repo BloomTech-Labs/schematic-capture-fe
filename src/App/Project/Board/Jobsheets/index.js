@@ -30,15 +30,13 @@ const Jobsheets = () => {
       <SectionName>All Jobsheets</SectionName>
       <div>
         {jobsheets.map(jobsheet => (
-          <div>
-            <StyledLink
-              data-button-jobsheet
-              key={jobsheet.id}
-              to={`/jobsheet/${jobsheet.id}`}
-            >
-              {jobsheet.name}
-            </StyledLink>
-          </div>
+          <StyledLink
+            data-button-jobsheet
+            key={jobsheet.id}
+            to={`/jobsheet/${jobsheet.id}`}
+          >
+            {jobsheet.name}
+          </StyledLink>
         ))}
       </div>
     </Section>

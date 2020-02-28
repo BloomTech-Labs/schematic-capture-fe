@@ -3,7 +3,6 @@ import { useHistory, useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 
-// utils
 import {
   FormContainer,
   FormRow,
@@ -17,10 +16,7 @@ import {
 
 import GoogleIcon from "../../../shared/assets/google-icon";
 
-// actions
 import { dispatchers } from "../../../shared/actions/authActions";
-
-// TODO Print error on user account already exists.
 
 function Register() {
   const { register, handleSubmit, errors } = useForm();
@@ -50,7 +46,7 @@ function Register() {
       <form className="white" onSubmit={handleSubmit(onSubmit)}>
         <h2 className="signup">Create an account</h2>
         <div style={{ marginBottom: "2rem" }}>
-          Already have an account? <Link to="/login">Sign in</Link>
+          Already have an account? <Link to="/">Sign in</Link>
         </div>
         <FormRow>
           <FormColumn>
