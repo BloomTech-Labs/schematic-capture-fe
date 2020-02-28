@@ -1,16 +1,11 @@
 import styled from "styled-components";
 
-import { Fields } from "../../../shared/components";
-
-import { font } from "../../../shared/styles";
-
-export const Form = styled.form`
-  display: grid;
-  grid-template-colums: 1fr 1fr;
+export const Area = styled.div`
+height: 100vh;
+width: 95vw;
+margin-left: 5vw;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 `;
-
-export const FormHeading = styled.div`
-  ${font.size(2.25)}
-`;
-
-export const StyledFields = styled(Fields)``;
