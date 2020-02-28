@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
 
 // styled components
-import Input from "../Input";
-import TextArea from "../TextArea";
+import { Input, TextArea } from "../";
 
 const Fields = props => {
   const { fields, errors, register } = props;

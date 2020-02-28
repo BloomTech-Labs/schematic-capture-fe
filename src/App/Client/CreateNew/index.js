@@ -15,7 +15,7 @@ import {
   InviteGroupBack,
   InviteTitle
 } from "../../../shared/components/Invite/Styles";
-import { Button, FieldError, StyledField } from "../../Auth/Style";
+import { Button, FieldError, StyledField } from "../../Auth/Styles";
 import BackToLink from "../../../shared/components/BackToLink";
 
 const { addNewClient } = dispatchers;

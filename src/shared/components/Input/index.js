@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 
-import { StyledInput, InputField, StyledIcon } from "./Style";
+import { StyledInput, InputField, StyledIcon } from "./Styles";
 
 const Input = forwardRef((props, ref) => {
   const { icon, className, ...rest } = props;
