@@ -13,7 +13,7 @@ import {
 } from "../Styles";
 
 // components
-import BackToLink from "../../../shared/components/BackToLink";
+import { BackToLink } from "../../../shared/components";
 
 // actions
 import { dispatchers } from "../../../shared/actions/authActions";
@@ -58,7 +58,7 @@ const ForgotPassword = () => {
           </Button>
         </FormGroup>
         <FormGroup>
-          <BackToLink to="/login" text="Login" />
+          <BackToLink to="/" text="Login" />
         </FormGroup>
       </form>
     </FormContainer>
