@@ -11,7 +11,7 @@ import { StyledFields } from "./Styles";
 import { Button, StyledField } from "../../../Auth/Styles";
 
 import { InviteGroup } from "../../../../shared/components/Invite/Styles";
-import { Container, Form } from "./Styles";
+import { Container, Form, Text } from "./Styles";
 
 const { addNewProject } = dispatchers;
 
@@ -28,6 +28,7 @@ const CreateNewProject = () => {
   return (
     <Container>
       <Form onSubmit={handleSubmit(onAddNewProject)}>
+        <Text>Please enter the project name below:</Text>
         <InviteGroup>
           {/*<form onSubmit={handleSubmit(onAddNewProject)}>*/}
           {/*  <StyledFields fields={schema} register={register} errors={errors} />*/}

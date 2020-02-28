@@ -91,7 +91,7 @@ const Login = () => {
             </Button>
           </FormColumn>
           <FormColumn style={{ textAlign: "right" }}>
-            <Link to="/forgotpassword">Forgot account?</Link>
+            <Link to="/forgotpassword">Forgot password?</Link>
           </FormColumn>
         </FormRow>
       </form>

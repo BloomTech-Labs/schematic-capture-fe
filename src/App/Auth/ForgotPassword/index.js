@@ -17,6 +17,7 @@ import { BackToLink } from "../../../shared/components";
 
 // actions
 import { dispatchers } from "../../../shared/actions/authActions";
+import swal from "sweetalert";
 
 const ForgotPassword = () => {
   const { register, handleSubmit, errors } = useForm();
@@ -32,6 +33,11 @@ const ForgotPassword = () => {
     <FormContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h2 style={{ marginBottom: "2rem" }}>Reset Password</h2>
+        <p>
+          <b>If your email address is registered</b>, you will recieve an
+          emailed password reset link. <br /> You will also be routed back to
+          the login page.
+        </p>
         <FormGroup>
           <StyledField
             type="email"

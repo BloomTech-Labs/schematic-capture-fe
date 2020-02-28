@@ -37,6 +37,11 @@ export const Container = styled.div`
   }
 `;
 
+export const Text = styled.p`
+  color: black;
+  font-weight: bold;
+`;
+
 export const Form = styled.form``;
 
 export const StyledFields = styled(Fields)``;

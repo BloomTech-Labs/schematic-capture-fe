@@ -13,6 +13,8 @@ export const InviteForm = styled.div`
   background: ${color.backgroundLight};
   border: 1px solid ${color.borderColor};
   border-radius: 0.5rem;
+  -webkit-box-shadow: 5px 8px 10px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 8px 10px 2px rgba(0, 0, 0, 0.2);
   padding: 4rem;
   width: 440px;
   h1 {
