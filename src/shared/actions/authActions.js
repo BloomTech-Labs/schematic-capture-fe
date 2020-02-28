@@ -144,7 +144,7 @@ const forgotPassword = (data, history) => dispatch => {
       console.log("Password reset");
       dispatch({ type: APP_DONE_LOADING });
       dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: res.data.email });
-      history.push("/login");
+      history.push("/");
     })
     .catch(error => {
       dispatch({ type: APP_ERROR, payload: error.message });

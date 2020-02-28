@@ -1,14 +1,14 @@
 import React, { Fragment } from "react";
 import { Navbar } from "../../../shared/components";
-import CreateNewClient from "./Form";
+import CreateNewJobsheet from "./Jobsheet";
 
-const NewClient = () => {
+const NewJobSheet = () => {
   return (
     <Fragment>
       <Navbar />
-      <CreateNewClient />
+      <CreateNewJobsheet />
     </Fragment>
   );
 };
 
-export default NewClient;
+export default NewJobSheet;

@@ -5,27 +5,24 @@ import Auth from "./Auth";
 import Client from "./Client";
 import Project from "./Project";
 import Jobsheet from "./Jobsheet";
-import CreateNewClient from "./Client/CreateNew";
-import CreateNewProject from "./Project/CreateNew";
-import CreateNewJobsheet from "./Jobsheet/CreateNew/Jobsheet";
-import InviteReg from "../shared/components/Invite/InviteReg";
 import Dashboard from "./Dashboard";
 import PageError from "../shared/components/PageError";
+import NewProject from "./Project/CreateNew";
+import SendInvite from "../shared/components/Invite/SendInvite";
+import NewClient from "./Client/CreateNew";
+import NewJobSheet from "./Jobsheet/CreateNew";
 
 const Router = () => {
   return (
     <Fragment>
       <Switch>
         <PrivateRoute path="/dashboard" component={Dashboard} />
-        <PrivateRoute path="/client/new" component={CreateNewClient} />
-        <PrivateRoute path="/invite" component={InviteReg} />
-        <PrivateRoute
-          path="/client/:id/project/new"
-          component={CreateNewProject}
-        />
+        <PrivateRoute path="/client/new" component={NewClient} />
+        <PrivateRoute path="/invite" component={SendInvite} />
+        <PrivateRoute path="/client/:id/project/new" component={NewProject} />
         <PrivateRoute
           path="/project/:id/jobsheet/new"
-          component={CreateNewJobsheet}
+          component={NewJobSheet}
         />
         <PrivateRoute path="/client/:id" component={Client} />
         <PrivateRoute path="/project/:id" component={Project} />

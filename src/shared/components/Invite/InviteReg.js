@@ -47,10 +47,19 @@ const InviteReg = ({ handleClose }) => {
   }, []);
 
   const onSubmit = (data, event) => {
+    let roleName;
+    if(data.roleId == 1){
+      roleName = "an Admin"
+    } else if (data.roleId == 2){
+      roleName = "an Employee"
+    } else if (data.roleId == 3){
+      roleName = "a Technician"
+    }
+
     event.preventDefault();
     swal({
       title: `Are you sure?`,
-      text: `This will send an invite to ${data.email}.`,
+      text: `This will send an invite to ${data.email} as ${roleName}.`,
       icon: "warning",
       buttons: true,
       dangerMode: true

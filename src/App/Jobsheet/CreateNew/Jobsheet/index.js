@@ -66,6 +66,7 @@ const CreateNewJobsheet = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const [preview, setPreview] = useState(false);
   const [isNew, setIsNew] = useState(false);
   const [components, setComponents] = useState([]);
 
@@ -75,7 +76,7 @@ const CreateNewJobsheet = () => {
     if (file) {
       const [fileName] = file.name.split(".");
       readFile(file, () => csvComponentsToJson(reader.result, setComponents));
-      setIsNew(false);
+      setPreview(true);
       setValue("name", fileName);
     }
   }, [watch("csv")]);
@@ -121,6 +122,7 @@ const CreateNewJobsheet = () => {
                   name="name"
                   placeholder="JobSheet Name"
                   disabled={!isNew}
+                  hidden={!isNew}
                   ref={register({ required: true })}
                 />
               </label>
@@ -156,10 +158,10 @@ const CreateNewJobsheet = () => {
       </Top>
       <PreviewContainer>
         <PreviewTable>
-          <PreLoad hidden={getValues().name}>
+          <PreLoad hidden={preview}>
             <h1>Please import a CSV to render a preview.</h1>
           </PreLoad>
-          <TableItems hidden={!getValues().name}>
+          <TableItems hidden={!preview}>
             <TableHeader>Component</TableHeader>
             <TableHeader>RL Category</TableHeader>
             <TableHeader>RL Number</TableHeader>
