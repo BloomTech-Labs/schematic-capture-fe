@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
 
-import { Container, PageTitle } from "./Styles";
+import { Container, PageTitle, GlobalStyle } from "./Styles";
 
 import Login from "./Login";
 import Register from "./Register";
@@ -11,6 +11,7 @@ import Footer from "./Footer";
 const Auth = () => {
   return (
     <Fragment>
+      <GlobalStyle />
       <Container>
         <PageTitle>Schematic Capture</PageTitle>
         <Switch>

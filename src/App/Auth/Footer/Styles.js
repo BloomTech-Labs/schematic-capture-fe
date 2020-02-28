@@ -14,6 +14,5 @@ export const StyledNav = styled.nav`
   margin: 0px;
   min-height: 0px;
   min-width: 0px;
-  padding: 2rem;
   color: ${color.gray200};
 `;

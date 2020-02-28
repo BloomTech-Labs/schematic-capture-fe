@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 import { Link } from "react-router-dom";
 
@@ -6,13 +6,20 @@ import Color from "color";
 
 import { color, font, mixin } from "../../shared/styles";
 
+export const GlobalStyle = createGlobalStyle`
+  body {
+  background: url("../../../assets/testbg.jpg") no-repeat fixed;
+    background-size: cover;
+  }
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  height: 100vh;
+  height: 96vh;
   width: 100vw;
   @media (min-width: 900px) {
     flex-direction: row;
