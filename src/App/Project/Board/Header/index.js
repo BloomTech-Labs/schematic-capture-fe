@@ -8,12 +8,14 @@ import { BackToLink } from "../../../../shared/components";
 const { updateProjectName } = dispatchers;
 
 const PageHeader = () => {
-  const { currentClient, currentProject } = useSelector(
-    state => state.dashboard
-  );
+  const currentClient = useSelector(state => state.dashboard.currentClient);
+
+  const currentProject = useSelector(state => state.dashboard.currentProject);
 
   const [isEditing, setIsEditing] = useState(false);
-  const [projectName, setProjectName] = useState(currentProject.name);
+  const [projectName, setProjectName] = useState(
+    !!currentProject ? currentProject.name : ""
+  );
   const dispatch = useDispatch();
 
   const handleProjectNameChange = event => {
