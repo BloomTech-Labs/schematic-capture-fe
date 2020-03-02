@@ -45,6 +45,9 @@ An iOS/web app for capturing and annotating huge machines in some of the countri
 ### Key Features
 
 - Authentication with Firebase
+- Send registration invitation by email
+- Import data from CSV to the database
+- Upload PDF to Firebase cloud storage
 
 # Tech Stack
 
