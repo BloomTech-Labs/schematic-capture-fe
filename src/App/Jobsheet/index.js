@@ -1,12 +1,10 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import NavBar from "../../shared/components/Navbar";
-import Board from "./Board";
-
 import { actions } from "../../shared/actions/dashboardActions";
-import { useEffect } from "react";
+import { Navbar } from "../../shared/components";
+import Board from "./Board";
 
 const { SET_CURRENT_JOBSHEET } = actions;
 
@@ -30,7 +28,7 @@ const Jobsheet = () => {
 
   return (
     <Fragment>
-      <NavBar />
+      <Navbar />
       <Board />
     </Fragment>
   );

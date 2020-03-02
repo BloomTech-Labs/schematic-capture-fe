@@ -5,121 +5,129 @@
 
 # Schematic Capture
 
-You can find the deployed project at [schematiccapture.com](https://www.schematiccapture.com).
+Current version: 0.3. This app is in Alpha phase of the release life cycle for iOS and web.
 
-## Contributors
+### Production: [www.schematiccapture.com](https://www.schematiccapture.com)
 
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
+### Staging: [staging.schematiccapture.com](https://staging.schematiccapture.com)
 
-[Student 1](https://github.com/jbelgard)                                                       |                                                 [Student 2](https://github.com/bradzickafoose)                                                        |                                 [Student 3](https://github.com/nattroj)                                                       |                                         [Student 4](https://github.com/GiPyoK)                                                        |                                         
-[Student 5](https://github.com/chrismjohnston)
-[Student 6](https://github.com/raajnpatel)
-[Student 7](https://github.com/BHamilton781)|
-| :-----------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: |
-| [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/) |
-|                                [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                                |                            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)                             |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)                           |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)                           |                           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)                            |
-|                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |
+# Contributors
 
-## Project Overview
+## Labs 20 - First Product Cycle
 
-[Trello Board](https://trello.com/b/Amx4wIKW/labs-20-schematic-capture)
+### Team Lead
 
-[Product Canvas](https://www.notion.so/Schematic-Capture-d4594ebf93ff4c6aba7942aea0546fea)
+Jason Belgard – [Github](https://github.com/jbelgard)
 
-[UX Design files](https://www.notion.so/Schematic-Capture-d4594ebf93ff4c6aba7942aea0546fea#b59c986612b64c98badcfca0169aaeef)
+### UX
 
-An iOS app for capturing and annotating huge machines in some of the countries larger steel manufacturing facilities 🔥 It needs offline capabilities to be able to capture photos and annotate them in facilities that often have no network or signal available to them.
+Brian Hamilton – [LinkedIn](https://github.com/BHamilton781)
 
-### 4️⃣ Key Features
+### iOS
 
-- feature one
-- feature two
-- feature three
-- feature four
-- feature five
+Gi Pyo John Kim – [Github](https://github.com/GiPyoK)
 
-## Tech Stack
+### Full-Stack Web Developers
 
-### Front end built using:
+Christopher Johnson - [Github](https://github.com/chrismjohnston)
 
-Schematic Capture is a Web / IOS app that is built on several technologies. The web frontend is built on JavaScript, React, Redux, Firebase, and Node.js.
+Raajn Patel - [Github](https://github.com/raajnpatel)
 
-🚫 Why did you choose this framework?
+Nattajohn Rojanasupya - [Github](https://github.com/nattroj)
 
-- point one
-- point two
-- point three
-- point four
+#### Brad Zickafoose - [Github](https://github.com/bradzickafoose)
 
-🚫List the rest of the front end features and libraries in the same format as the framework above.
+# Project Overview
 
-#### Front end deployed to `🚫insert service here`
+[Trello Board](https://trello.com/b/Amx4wIKW/labs-20-schematic-capture) | [Product Canvas](https://www.notion.so/Schematic-Capture-d4594ebf93ff4c6aba7942aea0546fea) | [UX Design files](https://www.notion.so/Schematic-Capture-d4594ebf93ff4c6aba7942aea0546fea#b59c986612b64c98badcfca0169aaeef)
 
-#### [Back end](🚫link to back end repo here) built using:
+An iOS/web app for capturing and annotating huge machines in some of the countries larger steel manufacturing facilities 🔥 It needs offline capabilities to be able to capture photos and annotate them in facilities that often have no network or signal available to them.
 
-#### 🚫 back end framework goes here
+### Key Features
 
-- point one
-- point two
-- point three
+- Authentication with Firebase
 
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
+# Tech Stack
+
+### Front end deployed to [Netlify](https://app.netlify.com/sites/schematic/overview) and built using:
+
+#### Axios (https://www.npmjs.com/package/axios)
+
+#### Color (https://www.npmjs.com/package/color)
+
+#### CSV to JSON (https://www.npmjs.com/package/csvtojson)
+
+#### Dotenv (https://www.npmjs.com/package/dotenv)
+
+#### Firebase (https://www.npmjs.com/package/firebase)
+
+#### Lodash Throttle (https://www.npmjs.com/package/lodash.throttle)
+
+#### React (https://www.npmjs.com/package/react)
+
+#### React Hook Form (https://www.npmjs.com/package/react-hook-form)
+
+#### React Textarea Autosize (https://www.npmjs.com/package/react-textarea-autosize)
+
+#### React-Redux (https://www.npmjs.com/package/react-redux)
+
+#### Redux (https://www.npmjs.com/package/redux)
+
+#### Redux Thunk (https://www.npmjs.com/package/redux-thunk)
+
+#### Sentry (https://www.npmjs.com/package/@sentry/browser)
+
+#### Styled Components (https://www.npmjs.com/package/styled-components)
+
+#### Sweet Alert (https://www.npmjs.com/package/sweet-alert)
+
+### [Back End](https://github.com/Lambda-School-Labs/schematic-capture-be/) built using:
+
+#### NodeJs/Express/PostgreSQL
+
+- Express server for resftul API.
+- Familiarity and experience in creating production ready code.
+- PGAdmin to quickly edit/view database.
 
 # APIs
 
-## 2️⃣ Authentication API here
+## [Firebase](https://console.firebase.google.com/)
 
-🚫Replace text below with a description of the API
+Firebase includes a whole suite of products available to benefit owner/user/developer including Analytics, Authentication, and Storage.
 
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
+## [Font Awesome](https://fontawesome.com/)
 
-## 3️⃣ Misc API here
+Font Awesome is a default icon set used throughout the Schematic Capture web app.
 
-🚫Replace text below with a description of the API
+## [Sendgrid](https://sendgrid.com/)
 
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
+Sendgrid is a email delivery service which allow Schematic Capture to send invitation emails with invite tokens.
 
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
-
-# 3️⃣ Environment Variables
+# Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-🚫These are just examples, replace them with the specifics for your app
+    *  REACT_APP_BASE_URL - Base URL for the backend
 
-    *  REACT_APP_apiKey - this is your Google API key, which can be generated in the Google Cloud Console
-    *  REACT_APP_authDomain - when you set up your Firebase project, this information will be in the dashboard
-    *  REACT_APP_databaseURL - in the Firebase dashboard
-    *  REACT_APP_projectID - in the Firebase dashboard
-    *  REACT_APP_storageBucket - in the Firebase dashboard
-    *  REACT_APP_messagingSenderId - in the Firebase dashboard
-    *  REACT_APP_stripe_API - this is your public Stripe API key, generated in the Stripe dashboard
-    *  REACT_APP_backendURL - optional for your local development server
-    *  REACT_APP_clientid - this is the Stripe_connect clientID, generated in Stripe_connect settings
-    *  REACT_APP_stripe_plan - this is the ID for a second Stripe subscription plan, generated under Stripe products
+# Content Licenses
 
-# 5️⃣ Content Licenses
+| Filename | Source / Creator | License                               |
+| -------- | ---------------- | ------------------------------------- |
+| Icons    | Font Awesome     | [Free](https://fontawesome.com/plans) |
 
-🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
+# Testing
 
-| Image Filename | Source / Creator | License                                                                      |
-| -------------- | ---------------- | ---------------------------------------------------------------------------- |
-| doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
-| rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
+## [Cypress](https://www.cypress.io/)
 
-# 4️⃣ Testing
+We chose to use Cypress beacuse it is a complete end-to-end testing suite.
 
-🚫Document what you used for testing and why
+## [Sentry](https://sentry.io/)
+
+Sentry provides cloud-based error monitoring that helps the software team, discover, triage, and prioritize errors in real-time.
+
+## [Uptime Robot](https://uptimerobot.com/)
+
+Uptime Robot is a service that monitors the website every 5 minutes and alerts the software team if the site is down.
 
 # Installation Instructions
 
@@ -128,20 +136,20 @@ This project is setup using create-react-app (CRA). You will not need to install
 - [ ] Create a forked copy of this project.
 - [ ] Add your team lead as collaborator on Github.
 - [ ] Clone your OWN version of the repository in your terminal
-- [ ] CD into the project base directory `cd schematic-capture-fe`
-- [ ] Download project dependencies by running the command `yarn`
-- [ ] Using yarn, start up the app using `yarn start`
-- [ ] Create a new feature branch: git checkout -b `<new-feature>`. Implement the project on your newly created `<new-feature>` branch, committing changes regularly.
-- [ ] Push commits: git push origin `<new-feature>`.
+- [ ] CD into the project base directory `cd schematic-capture-fe`
+- [ ] Download project dependencies by running the command `yarn`
+- [ ] Using yarn, start up the app using `yarn start`
+- [ ] Create a new feature branch: git checkout -b `<new-feature>`. Implement the project on your newly created `<new-feature>` branch, committing changes regularly.
+- [ ] Push commits: git push origin `<new-feature>`.
 
-## Other Scripts
+## Scripts
 
-🚫replace these examples with your own
-
-    * typecheck - runs the TypeScript compiler
-    * build - creates a build of the application
     * start - starts the production server after a build is created
-    * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
+    * build - creates a build of the application
+    * coverage - runs test coverage using jest
+    * test:cypress - initializes cypress testing
+    * test:jest - initializes jest testing
+    * eject - copy the configuration files and dependencies into the project so you have full control over them
 
 # Contributing
 
@@ -182,4 +190,5 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](https://github.com/Lambda-School-Labs/schematic-capture-be/) for details on the backend of our project.
+- See [Backend Documentation](https://github.com/Lambda-School-Labs/schematic-capture-be/) for details on the backend of our project.
+- See [PVD](https://www.notion.so/Schematic-Capture-d4594ebf93ff4c6aba7942aea0546fea) for details on product overview.

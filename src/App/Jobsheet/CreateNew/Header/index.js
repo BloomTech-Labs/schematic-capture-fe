@@ -1,21 +1,17 @@
 import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 
-import { Header, PageName, StyledLink } from "./Styles";
-
-import BackToLink from "../../../../shared/components/BackToLink";
+import { BackToLink } from "../../../../shared/components";
 
 const PageHeader = () => {
-  const { currentClient, currentProject } = useSelector(
-    state => state.dashboard
-  );
+  const { currentProject } = useSelector(state => state.dashboard);
   return (
     <Fragment>
       <BackToLink
-      style={{ marginBottom: "2rem" }}
-      to={`/project/${currentProject.id}`}
-      text={`${currentProject.name}`}
-    />
+        style={{ marginBottom: "2rem" }}
+        to={`/project/${currentProject.id}`}
+        text={`${currentProject.name}`}
+      />
     </Fragment>
   );
 };
