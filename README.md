@@ -34,6 +34,7 @@ Current version: 0.3. This app is in Alpha phase of the release life cycle for i
 - **Raajn Patel** - [Github](https://github.com/raajnpatel)
 
 - **Nattajohn Rojanasupya** - [Github](https://github.com/nattroj)
+
 - **Brad Zickafoose** - [Github](https://github.com/bradzickafoose)
 
 # Project Overview
@@ -193,4 +194,5 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 ## Documentation
 
 - See [Backend Documentation](https://github.com/Lambda-School-Labs/schematic-capture-be/) for details on the backend of our project.
+- See [iOS Documentation](https://github.com/Lambda-School-Labs/schematic-capture-ios/) for details on the backend of our project.
 - See [PVD](https://www.notion.so/Schematic-Capture-d4594ebf93ff4c6aba7942aea0546fea) for details on product overview.
