@@ -72,7 +72,7 @@ export const mixin = {
       .string(),
   boxShadowMedium: css`
     box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.1),
-      0 10px 30px #d5d8dc;
+      0 10px 30px ${color.backgroundBody};
   `,
   cover: css`
     position: absolute;

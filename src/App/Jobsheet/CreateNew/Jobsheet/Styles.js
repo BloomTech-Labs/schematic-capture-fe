@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-import { color } from "../../../../shared/utils/styles";
-import React from "react";
+import { color } from "../../../../shared/styles";
 
 export const Container = styled.div`
   display: flex;
@@ -22,7 +21,7 @@ export const PreviewContainer = styled.div`
   height: 50vh;
   width: 75vw;
   min-width: 600px;
-  border: 1px red solid;
+  border: 1px black solid;
   background: rgb(213, 216, 220);
   overflow: auto;
 `;
@@ -43,7 +42,6 @@ export const TableHeader = styled.th`
   background: ghostwhite;
   font-size: 12px;
 `;
-
 
 export const PreLoad = styled.div`
   color: black;
@@ -134,6 +132,7 @@ export const OrSpan = styled.span`
 export const LineOr = styled.div`
   overflow: hidden;
   text-align: center;
+  font-size: 26px;
   &:before,
   &:after {
     background-color: #eaeaea;

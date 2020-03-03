@@ -6,7 +6,8 @@ const {
   SET_CURRENT_PROJECTS,
   SET_CURRENT_PROJECT,
   SET_CURRENT_JOBSHEETS,
-  SET_CURRENT_JOBSHEET
+  SET_CURRENT_JOBSHEET,
+  UPDATE_CURRENT_PROJECT_NAME
 } = actions;
 
 const initState = {
@@ -39,6 +40,16 @@ const dashboardReducer = (state = initState, action) => {
       return {
         ...state,
         currentProject: action.payload
+      };
+    case UPDATE_CURRENT_PROJECT_NAME:
+      console.log("update current project");
+      console.log(action.payload);
+      return {
+        ...state,
+        currentProject: {
+          ...state.currentProject,
+          name: action.payload
+        }
       };
     case SET_CURRENT_JOBSHEETS:
       return {

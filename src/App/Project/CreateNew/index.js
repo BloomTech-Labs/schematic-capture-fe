@@ -1,32 +1,20 @@
-import React from "react";
-import { Link, useParams, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
+import React, { Fragment } from "react";
 
-import { schema } from "./schema";
-import { dispatchers } from "../../../shared/actions/dashboardActions";
+import Header from "./Header";
+import Form from "./Form";
+import { Navbar } from "../../../shared/components";
+import { Area } from "./Styles";
 
-import { StyledFields } from "./Styles";
-
-const { addNewProject } = dispatchers;
-
-const CreateNewProject = () => {
-  const { handleSubmit, register, errors } = useForm();
-  const params = useParams();
-  const dispatch = useDispatch();
-  const history = useHistory();
-
-  const onAddNewProject = data => {
-    dispatch(addNewProject(data, params.id, history));
-  };
-
+const NewProject = () => {
   return (
-    <form onSubmit={handleSubmit(onAddNewProject)}>
-      <StyledFields fields={schema} register={register} errors={errors} />
-      <button type="submit">Save</button>
-      <Link to={`/client/${params.id}`}>Cancel</Link>
-    </form>
+    <Fragment>
+      <Navbar />
+      <Area>
+        <Header />
+        <Form />
+      </Area>
+    </Fragment>
   );
 };
 
-export default CreateNewProject;
+export default NewProject;

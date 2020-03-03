@@ -23,18 +23,20 @@ const Jobsheets = () => {
 
   useEffect(() => {
     fetchJobsheetsSideEffect(dispatch, params.id, setJobsheets);
-  }, [dispatch, params.id, setJobsheets]);
+  }, []);
 
   return !!currentProject ? (
     <Section>
       <SectionName>All Jobsheets</SectionName>
       <div>
         {jobsheets.map(jobsheet => (
-          <div>
-            <StyledLink key={jobsheet.id} to={`/jobsheet/${jobsheet.id}`}>
-              {jobsheet.name}
-            </StyledLink>
-          </div>
+          <StyledLink
+            data-button-jobsheet
+            key={jobsheet.id}
+            to={`/jobsheet/${jobsheet.id}`}
+          >
+            {jobsheet.name}
+          </StyledLink>
         ))}
       </div>
     </Section>

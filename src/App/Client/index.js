@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
-import NavBar from "../../shared/components/Navbar";
+import { Navbar } from "../../shared/components";
 import Board from "./Board";
 
 const Client = () => {
   return (
     <Fragment>
-      <NavBar />
+      <Navbar />
       <Board />
     </Fragment>
   );

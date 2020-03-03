@@ -2,10 +2,9 @@ import React, { Fragment, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import NavBar from "../../shared/components/Navbar";
-import Board from "./Board";
-
+import { Navbar } from "../../shared/components";
 import { actions } from "../../shared/actions/dashboardActions";
+import Board from "./Board";
 
 const { SET_CURRENT_PROJECT } = actions;
 
@@ -27,7 +26,7 @@ const Project = () => {
 
   return (
     <Fragment>
-      <NavBar />
+      <Navbar />
       <Board />
     </Fragment>
   );

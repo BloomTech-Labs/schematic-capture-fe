@@ -1,6 +1,6 @@
 import React from "react";
 
-import { NavbarLeft, Icon, Item, ItemText, Bottom } from "./Style";
+import { NavbarLeft, Icon, Item, ItemText, Bottom } from "./Styles";
 import swal from "sweetalert";
 
 const Navbar = () => {
@@ -23,7 +23,7 @@ const Navbar = () => {
         <Icon className="fas fa-plus" size={22} />
         <ItemText>Create&nbsp;Client</ItemText>
       </Item>
-      <Item to="/invite">
+      <Item data-invite-user to="/invite">
         <Icon className="fas fa-users" size={20} />
         <ItemText>Invite&nbsp;New&nbsp;User</ItemText>
       </Item>

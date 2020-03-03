@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { color } from "../../utils/styles";
-import Color from "color";
+import { color, mixin } from "../../styles";
 
 export const InviteContainer = styled.div`
   display: flex;
@@ -14,6 +13,8 @@ export const InviteForm = styled.div`
   background: ${color.backgroundLight};
   border: 1px solid ${color.borderColor};
   border-radius: 0.5rem;
+  -webkit-box-shadow: 5px 8px 10px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 8px 10px 2px rgba(0, 0, 0, 0.2);
   padding: 4rem;
   width: 440px;
   h1 {
@@ -55,11 +56,7 @@ export const StyledSelect = styled.select`
   width: 66%;
   padding: 9.7px 11.7px;
   &:hover {
-    border-color:
-    ${Color(color.secondary)
-  .darken(0.1)
-  .string()};
-    }
+    border-color: ${mixin.darken(color.secondary, 0.1)};
   }
   &:focus {
     border-color: ${color.primary};

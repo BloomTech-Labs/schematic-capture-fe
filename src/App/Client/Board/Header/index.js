@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import { Header, PageName, StyledLink } from "./Styles";
 
-import BackToLink from "../../../../shared/components/BackToLink";
+import { BackToLink } from "../../../../shared/components";
 
 const PageHeader = () => {
   const { currentClient } = useSelector(state => state.dashboard);

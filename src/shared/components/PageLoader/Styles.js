@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { color, mixin } from "../../utils/styles";
+import { color, mixin } from "../../styles";
 
 export default styled.div`
   ${mixin.cover}

@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
-import Color from "color";
-
-import { color } from "../../utils/styles";
+import { color, mixin } from "../../styles";
 
 export const StyledInput = styled.div``;
 
@@ -18,11 +16,7 @@ export const InputField = styled.input`
   width: 100%;
   padding: 14px 16px;
   &:hover {
-    border-color:
-    ${Color(color.secondary)
-      .darken(0.1)
-      .string()};
-    }
+    border-color: ${mixin.darken(color.secondary, 0.1)};
   }
   &:focus {
     border-color: ${color.primary};

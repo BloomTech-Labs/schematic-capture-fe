@@ -2,8 +2,7 @@ import React, { Fragment } from "react";
 import { useForm } from "react-hook-form";
 
 // styled components
-import Input from "../Input";
-import TextArea from "../TextArea";
+import { Input, TextArea } from "../";
 
 const Form = props => {
   const { buttonText, onSubmit, fields, ...rest } = props;
