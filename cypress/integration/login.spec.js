@@ -13,7 +13,7 @@ describe("Logging In", function() {
       cy.get("input[name=email]").type("bob_johnson@lambaschool.com");
       cy.get("input[name=password]").type("festing123!{enter}");
 
-      // we should have visible errors now
+      // we should have a visible alert window now
       cy.on("window:alert", str => {
         expect(str).to.equal(
           `The password is invalid or the user does not have a password.`

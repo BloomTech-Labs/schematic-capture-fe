@@ -7,9 +7,9 @@
 
 Current version: 0.3. This app is in Alpha phase of the release life cycle for iOS and web.
 
-### Production: [www.schematiccapture.com](https://www.schematiccapture.com)
+**Production:** [www.schematiccapture.com](https://www.schematiccapture.com)
 
-### Staging: [staging.schematiccapture.com](https://staging.schematiccapture.com)
+**Staging:** [staging.schematiccapture.com](https://staging.schematiccapture.com)
 
 # Contributors
 
@@ -17,25 +17,25 @@ Current version: 0.3. This app is in Alpha phase of the release life cycle for i
 
 ### Team Lead
 
-Jason Belgard – [Github](https://github.com/jbelgard)
+- **Jason Belgard** – [Github](https://github.com/jbelgard)
 
 ### UX
 
-Brian Hamilton – [LinkedIn](https://github.com/BHamilton781)
+- **Brian Hamilton** – [LinkedIn](https://github.com/BHamilton781)
 
 ### iOS
 
-Gi Pyo John Kim – [Github](https://github.com/GiPyoK)
+- **Gi Pyo John Kim** – [Github](https://github.com/GiPyoK)
 
 ### Full-Stack Web Developers
 
-Christopher Johnson - [Github](https://github.com/chrismjohnston)
+- **Christopher Johnson** - [Github](https://github.com/chrismjohnston)
 
-Raajn Patel - [Github](https://github.com/raajnpatel)
+- **Raajn Patel** - [Github](https://github.com/raajnpatel)
 
-Nattajohn Rojanasupya - [Github](https://github.com/nattroj)
+- **Nattajohn Rojanasupya** - [Github](https://github.com/nattroj)
 
-#### Brad Zickafoose - [Github](https://github.com/bradzickafoose)
+- **Brad Zickafoose** - [Github](https://github.com/bradzickafoose)
 
 # Project Overview
 
@@ -46,42 +46,45 @@ An iOS/web app for capturing and annotating huge machines in some of the countri
 ### Key Features
 
 - Authentication with Firebase
+- Send registration invitation by email
+- Import data from CSV to the database
+- Upload PDF to Firebase cloud storage
 
 # Tech Stack
 
 ### Front end deployed to [Netlify](https://app.netlify.com/sites/schematic/overview) and built using:
 
-#### Axios (https://www.npmjs.com/package/axios)
+- [Axios](https://www.npmjs.com/package/axios)
 
-#### Color (https://www.npmjs.com/package/color)
+- [Color](https://www.npmjs.com/package/color)
 
-#### CSV to JSON (https://www.npmjs.com/package/csvtojson)
+- [CSV to JSON](https://www.npmjs.com/package/csvtojson)
 
-#### Dotenv (https://www.npmjs.com/package/dotenv)
+- [Dotenv](https://www.npmjs.com/package/dotenv)
 
-#### Firebase (https://www.npmjs.com/package/firebase)
+- [Firebase](https://www.npmjs.com/package/firebase)
 
-#### Lodash Throttle (https://www.npmjs.com/package/lodash.throttle)
+- [Lodash Throttle](https://www.npmjs.com/package/lodash.throttle)
 
-#### React (https://www.npmjs.com/package/react)
+- [React](https://www.npmjs.com/package/react)
 
-#### React Hook Form (https://www.npmjs.com/package/react-hook-form)
+- [React Hook Form](https://www.npmjs.com/package/react-hook-form)
 
-#### React Textarea Autosize (https://www.npmjs.com/package/react-textarea-autosize)
+- [React Textarea Autosize](https://www.npmjs.com/package/react-textarea-autosize)
 
-#### React-Redux (https://www.npmjs.com/package/react-redux)
+- [React-Redux](https://www.npmjs.com/package/react-redux)
 
-#### Redux (https://www.npmjs.com/package/redux)
+- [Redux](https://www.npmjs.com/package/redux)
 
-#### Redux Thunk (https://www.npmjs.com/package/redux-thunk)
+- [Redux Thunk](https://www.npmjs.com/package/redux-thunk)
 
-#### Sentry (https://www.npmjs.com/package/@sentry/browser)
+- [Sentry](https://www.npmjs.com/package/@sentry/browser)
 
-#### Styled Components (https://www.npmjs.com/package/styled-components)
+- [Styled Components](https://www.npmjs.com/package/styled-components)
 
-#### Sweet Alert (https://www.npmjs.com/package/sweet-alert)
+- [Sweet Alert](https://www.npmjs.com/package/sweet-alert)
 
-### [Back End](https://github.com/Lambda-School-Labs/schematic-capture-be/) built using:
+### Backend deployed to [Heroku](https://www.heroku.com/) and built using:
 
 #### NodeJs/Express/PostgreSQL
 
@@ -91,15 +94,15 @@ An iOS/web app for capturing and annotating huge machines in some of the countri
 
 # APIs
 
-## [Firebase](https://console.firebase.google.com/)
+### [Firebase](https://console.firebase.google.com/)
 
 Firebase includes a whole suite of products available to benefit owner/user/developer including Analytics, Authentication, and Storage.
 
-## [Font Awesome](https://fontawesome.com/)
+### [Font Awesome](https://fontawesome.com/)
 
 Font Awesome is a default icon set used throughout the Schematic Capture web app.
 
-## [Sendgrid](https://sendgrid.com/)
+### [Sendgrid](https://sendgrid.com/)
 
 Sendgrid is a email delivery service which allow Schematic Capture to send invitation emails with invite tokens.
 
@@ -117,15 +120,15 @@ In order for the app to function correctly, the user must set up their own envir
 
 # Testing
 
-## [Cypress](https://www.cypress.io/)
+### [Cypress](https://www.cypress.io/)
 
 We chose to use Cypress beacuse it is a complete end-to-end testing suite.
 
-## [Sentry](https://sentry.io/)
+### [Sentry](https://sentry.io/)
 
 Sentry provides cloud-based error monitoring that helps the software team, discover, triage, and prioritize errors in real-time.
 
-## [Uptime Robot](https://uptimerobot.com/)
+### [Uptime Robot](https://uptimerobot.com/)
 
 Uptime Robot is a service that monitors the website every 5 minutes and alerts the software team if the site is down.
 
@@ -191,4 +194,5 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 ## Documentation
 
 - See [Backend Documentation](https://github.com/Lambda-School-Labs/schematic-capture-be/) for details on the backend of our project.
+- See [iOS Documentation](https://github.com/Lambda-School-Labs/schematic-capture-ios/) for details on the backend of our project.
 - See [PVD](https://www.notion.so/Schematic-Capture-d4594ebf93ff4c6aba7942aea0546fea) for details on product overview.
