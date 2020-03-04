@@ -38,14 +38,19 @@ const PageHeader = () => {
         {!!currentProject && (
           <Fragment>
             {isEditing ? (
-              <div>
+              <div style={{ display: "flex" }}>
                 <StyledInput
                   placeholder="Project Name"
                   type="text"
                   value={projectName}
                   onChange={handleProjectNameChange}
                 />
-                <button onClick={saveProjectName}>Save</button>
+                <StyledLink
+                  style={{ marginRight: "1rem" }}
+                  onClick={saveProjectName}
+                >
+                  Save
+                </StyledLink>
               </div>
             ) : (
               <PageName onClick={() => setIsEditing(true)}>
