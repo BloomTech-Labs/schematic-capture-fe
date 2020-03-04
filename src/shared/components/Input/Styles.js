@@ -14,7 +14,8 @@ export const InputField = styled.input`
   color: ${color.inputColor};
   display: block;
   width: 100%;
-  padding: 14px 16px;
+  padding: 0.75rem 1rem;
+  line-height: 1.5;
   &:hover {
     border-color: ${mixin.darken(color.secondary, 0.1)};
   }
