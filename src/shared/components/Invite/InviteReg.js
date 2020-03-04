@@ -32,7 +32,7 @@ const InviteReg = ({ handleClose }) => {
 
   useEffect(() => {
     axiosWithAuth()
-      .get("http://localhost:5000/api/roles/", {
+      .get("/roles/", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("idToken")
         }
@@ -48,12 +48,12 @@ const InviteReg = ({ handleClose }) => {
 
   const onSubmit = (data, event) => {
     let roleName;
-    if(data.roleId == 1){
-      roleName = "an Admin"
-    } else if (data.roleId == 2){
-      roleName = "an Employee"
-    } else if (data.roleId == 3){
-      roleName = "a Technician"
+    if (data.roleId == 1) {
+      roleName = "an Admin";
+    } else if (data.roleId == 2) {
+      roleName = "an Employee";
+    } else if (data.roleId == 3) {
+      roleName = "a Technician";
     }
 
     event.preventDefault();
