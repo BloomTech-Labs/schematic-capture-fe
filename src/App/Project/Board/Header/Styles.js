@@ -26,4 +26,6 @@ export const StyledLink = styled(Link)`
   ${buttonStyle}
 `;
 
-export const StyledInput = styled(Input)``;
+export const StyledInput = styled(Input)`
+  margin-right: 1rem;
+`;
