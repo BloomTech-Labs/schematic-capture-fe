@@ -8,7 +8,7 @@ import { color, font, mixin } from "../../shared/styles";
 
 export const GlobalStyle = createGlobalStyle`
   body {
-  background: url("../../../assets/testbg.jpg") no-repeat fixed;
+  background: url("../../../assets/bg-resized.jpg") no-repeat fixed;
     background-size: cover;
   }
 `;
