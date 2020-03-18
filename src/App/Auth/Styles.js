@@ -13,14 +13,23 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
+export const AuthContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  border: 2px solid white;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  height: 96vh;
-  width: 100vw;
+  margin: 20vh auto 20vh auto;
+  width: 100%;
+  height: 100%;
   @media (min-width: 900px) {
     flex-direction: row;
     align-items: center;
