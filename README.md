@@ -93,6 +93,7 @@ An iOS/web app for capturing and annotating huge machines in some of the countri
 - PGAdmin to quickly edit/view database.
 
 # APIs
+- See endpoint on BE
 
 ### [Firebase](https://console.firebase.google.com/)
 

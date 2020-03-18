@@ -1,6 +1,6 @@
 import firebase from "../utils/firebase";
 import { actions as appActions } from "./appActions";
-import { axiosWithAuth } from "../utils";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 
