@@ -1,5 +1,5 @@
 import { actions as appActions } from "./appActions";
-import { axiosWithAuth } from "../utils";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 import firebase, { GoogleProvider } from "../utils/firebase";
 
 const CREATE_ACCOUNT_SUCCESS = "CREATE_ACCOUNT_SUCCESS";
