@@ -78,7 +78,11 @@ export const Top = styled.div`
 
 export const TopLeft = styled.div`
   font-size: 16px;
+  
 `;
+
+// export const input = sty
+
 export const TopRight = styled.div`
   width: 100%;
   display: flex;

@@ -95,9 +95,17 @@ const CreateNewJobsheet = () => {
         <Header />
         <Top>
           <TopLeft>
-            <h1>Schematic Capture</h1>
+                  <h1 >Schematic Capture</h1>
           </TopLeft>
-
+          
+          <input
+                    name="name"
+                    placeholder="JobSheet Name"
+                    disabled={!isNew}
+                    hidden={!isNew}
+                    ref={register({ required: true })}
+                  />
+         
           <form onSubmit={handleSubmit(onSubmit)}>
             <TopRight>
               <CenterDiv>
@@ -107,7 +115,7 @@ const CreateNewJobsheet = () => {
                     htmlFor="csv"
                     onClick={() => setIsNew(true)}
                   >
-                    <ImportText onClick={() => setIsNew(true)}>
+                    <ImportText onClick={() => setIsNew(true)  }>
                       Import CSV
                     </ImportText>
                   </ImportCsv>
@@ -121,13 +129,7 @@ const CreateNewJobsheet = () => {
                   </NewBlank>
                 </TopTopRight>
                 <label htmlFor="name">
-                  <input
-                    name="name"
-                    placeholder="JobSheet Name"
-                    disabled={!isNew}
-                    hidden={!isNew}
-                    ref={register({ required: true })}
-                  />
+                 
                 </label>
               </CenterDiv>
               <AddSchem type="button" htmlFor="pdf" hidden={!getValues().name}>
