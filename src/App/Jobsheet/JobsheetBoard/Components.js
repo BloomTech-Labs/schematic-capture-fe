@@ -37,7 +37,7 @@ const Components = () => {
             {!!components.length &&
               components.map(component => (
                 <tr key={component.id}>
-                  <td data-label="Component">{component.id}</td>
+                  <td data-label="Component">{component.componentId}</td>
                   <td data-label="Description">{component.descriptions}</td>
                   <td data-label="Part Number">{component.partNumber}</td>
                   <td data-label="Stock Code">{component.stockCode}</td>
