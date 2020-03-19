@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import App from "./App";
+import App from "./App/App.js";
 import * as Sentry from "@sentry/browser";
 import * as serviceWorker from "./serviceWorker";
 import { createStore, applyMiddleware } from "redux";
