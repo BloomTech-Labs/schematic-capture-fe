@@ -25,7 +25,8 @@ import {
   ImportText,
   CenterDiv,
   TableHeader,
-  LineOr
+  LineOr,
+  Input
 } from "./Styles";
 
 const { addNewJobsheet } = dispatchers;
@@ -96,15 +97,11 @@ const CreateNewJobsheet = () => {
         <Top>
           <TopLeft>
                   <h1 >Schematic Capture</h1>
+                  
           </TopLeft>
           
-          <input
-                    name="name"
-                    placeholder="JobSheet Name"
-                    disabled={!isNew}
-                    hidden={!isNew}
-                    ref={register({ required: true })}
-                  />
+          
+          
          
           <form onSubmit={handleSubmit(onSubmit)}>
             <TopRight>
@@ -161,6 +158,13 @@ const CreateNewJobsheet = () => {
             </TopRight>
           </form>
         </Top>
+        <Input
+                    name="name"
+                    placeholder="JobSheet Name"
+                    disabled={!isNew}
+                    hidden={!isNew}
+                    ref={register({ required: true })}
+                  />
         <PreviewContainer>
           <PreviewTable>
             <PreLoad hidden={preview}>
