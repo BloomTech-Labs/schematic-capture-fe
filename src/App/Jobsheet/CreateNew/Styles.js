@@ -78,7 +78,20 @@ export const Top = styled.div`
 
 export const TopLeft = styled.div`
   font-size: 16px;
+  padding-bottom: 25%;
+  
 `;
+
+export const Input = styled.input`
+background: transparent;
+border-radius: 5px;
+border: none;
+color: red;
+position: absolute;
+top: 310px;
+left: 158px;
+`;
+
 export const TopRight = styled.div`
   width: 100%;
   display: flex;

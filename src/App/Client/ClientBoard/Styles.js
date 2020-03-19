@@ -5,10 +5,10 @@ import { color, font } from "../../../shared/styles";
 import { buttonStyle } from "../../../shared/components/Styles/Button-Styles";
 
 export const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-  padding-right: 2rem;
+display: flex;
+justify-content: space-between;
+margin-bottom: 1rem;
+padding-right: 2rem;
 `;
 
 export const PageName = styled.h1`
