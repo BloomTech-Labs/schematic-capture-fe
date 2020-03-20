@@ -51,6 +51,10 @@ export const StyledInput = styled.input`
   
 `
 
+export const StyledImage = styled.img`
+  width: 30%;
+`
+
 export const StyledSubmit = styled.button`
   background-color: green;
   padding: 1.5%;

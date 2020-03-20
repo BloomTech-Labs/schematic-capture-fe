@@ -3,8 +3,10 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 
+import Picture from './Camera.png'
+
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Section, SectionName, ImgSel, PTag, StyledInput, StyledSubmit } from "./Styles";
+import { Section, SectionName, ImgSel, PTag, StyledInput, StyledSubmit, StyledImage } from "./Styles";
 
 import { dispatchers } from "../../../shared/actions/dashboardActions";
 
@@ -67,7 +69,7 @@ const Components = () => {
                   <td data-label="Part Number">{component.partNumber}</td>
                   <td data-label="Stock Code">{component.stockCode}</td>
                   <td data-label="Select Image">
-                    <Button color="danger" onClick={toggle}>Select Image</Button>
+                    <Button onClick={toggle}><StyledImage src={Picture} className="image"/></Button>
                   </td>
                 </tr>
               ))}
