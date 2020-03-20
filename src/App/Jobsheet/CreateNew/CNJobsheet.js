@@ -26,7 +26,9 @@ import {
   CenterDiv,
   TableHeader,
   LineOr,
-  Input
+  Input,
+  Inputs
+
 } from "./Styles";
 
 const { addNewJobsheet } = dispatchers;
@@ -70,6 +72,7 @@ const CreateNewJobsheet = () => {
 
   const [preview, setPreview] = useState(false);
   const [isNew, setIsNew] = useState(false);
+  const [bananas, setBananas] = useState(false);
   const [components, setComponents] = useState([]);
 
   useEffect(() => {
@@ -81,7 +84,13 @@ const CreateNewJobsheet = () => {
       setPreview(true);
       setValue("name", fileName);
     }
-  }, [watch("csv")]);
+    const [file2] = watch('pdf');
+    if (file2) {
+      const [fileName2] = file2.name.split(".");
+      setValue('name2', fileName2);
+    }
+
+  }, [watch("csv"), watch('pdf')]);
 
   const onSubmit = data => {
     delete data.csv;
@@ -97,7 +106,6 @@ const CreateNewJobsheet = () => {
         <Top>
           <TopLeft>
                   <h1 >Schematic Capture</h1>
-                  
           </TopLeft>
           
           
@@ -129,9 +137,11 @@ const CreateNewJobsheet = () => {
                  
                 </label>
               </CenterDiv>
+
               <AddSchem type="button" htmlFor="pdf" hidden={!getValues().name}>
-                <ImportText>Add Schematic</ImportText>
+                <ImportText onClick={() => setBananas(true)}>Add Schematic</ImportText>
               </AddSchem>
+
               <input hidden name="components" ref={register} />
               <input
                 hidden
@@ -142,7 +152,17 @@ const CreateNewJobsheet = () => {
                 accept=".csv"
                 ref={register}
               />
-              <input
+              
+             
+
+              <SubmitButton type="submit" hidden={!getValues().name}>
+                Submit Jobsheet
+              </SubmitButton>
+            </TopRight>
+          </form>
+        </Top>
+                
+            <input
                 hidden
                 id="pdf"
                 name="pdf"
@@ -151,20 +171,25 @@ const CreateNewJobsheet = () => {
                 accept=".pdf"
                 ref={register}
               />
-
-              <SubmitButton type="submit" hidden={!getValues().name}>
-                Submit Jobsheet
-              </SubmitButton>
-            </TopRight>
-          </form>
-        </Top>
-        <Input
+              <Inputs>
+             
+              
+              <Input
                     name="name"
                     placeholder="JobSheet Name"
                     disabled={!isNew}
                     hidden={!isNew}
                     ref={register({ required: true })}
                   />
+                  <Input
+                    name="name2"
+                    placeholder="Schematic"
+                    disabled={!bananas}
+                    hidden={!bananas}
+                    ref={register({ required: true })}
+                  />
+                  
+                </Inputs>
         <PreviewContainer>
           <PreviewTable>
             <PreLoad hidden={preview}>
