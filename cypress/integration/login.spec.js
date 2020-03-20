@@ -9,7 +9,7 @@ describe("Logging In", function() {
     });
 
     it("displays errors on login", function() {
-      // incorrect username on purpose
+      // incorrect name and password on purpose
       cy.get("input[name=email]").type("bob_johnson@lambaschool.com");
       cy.get("input[name=password]").type("festing123!{enter}");
 
@@ -32,6 +32,11 @@ describe("Logging In", function() {
       // we should be redirected to /dashboard
       cy.url().should("include", "/dashboard");
       cy.get("h1").should("contain", "Dashboard");
+
+      cy.contains('Test Client 1').click()
+
+      cy.contains('table shenanigans').click()
+
     });
   });
 });
