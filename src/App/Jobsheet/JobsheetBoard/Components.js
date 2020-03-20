@@ -19,6 +19,7 @@ const fetchComponentsSideEffect = async (dispatch, id, setComponents) => {
 const Components = () => {
   const { register, getValues, setValue, handleSubmit, watch } = useForm();
   const [components, setComponents] = useState([]);
+  const [number, setNumber] = useState()
   const [isNew, setIsNew] = useState(false);
   const [modal, setModal] = useState(false);
 
@@ -27,6 +28,7 @@ const Components = () => {
 
   useEffect(() => {
     fetchComponentsSideEffect(dispatch, params.id, setComponents);
+    
   }, []);
 
   useEffect(() => {
@@ -39,8 +41,13 @@ const Components = () => {
     } 
   }, [watch("jpg")])
 
-  const toggle = () => setModal(!modal);
-
+  const newToggle = id => {
+    setNumber(id)
+    toggle()
+  }
+  const toggle = () => {
+    setModal(!modal)
+  }
 
   const onSubmit = e => {
     console.log('hello there')
@@ -69,7 +76,7 @@ const Components = () => {
                   <td data-label="Part Number">{component.partNumber}</td>
                   <td data-label="Stock Code">{component.stockCode}</td>
                   <td data-label="Select Image">
-                    <Button onClick={toggle}><StyledImage src={Picture} className="image"/></Button>
+                    <Button onClick={() => newToggle(component.id)}><StyledImage src={Picture} className="image"/></Button>
                   </td>
                 </tr>
               ))}
@@ -105,9 +112,7 @@ const Components = () => {
                   name="selectcomp"
                   id="selectcomp"
                 >
-                  {components.map(name => (
-                      <option value={name.id}>{name.id}</option>
-                  ))}
+                  <option value={number}>{number}</option>
                 </select>
               </label>
               <label htmlFor="name">
