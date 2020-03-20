@@ -8,9 +8,18 @@ import { color, font, mixin } from "../../shared/styles";
 
 export const GlobalStyle = createGlobalStyle`
   body {
-  background: url("../../../assets/testbg.jpg") no-repeat fixed;
+  background: url("../../../assets/bg-resized.jpg") no-repeat fixed;
     background-size: cover;
   }
+`;
+
+export const AuthContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  border: 2px solid white;
 `;
 
 export const Container = styled.div`
@@ -18,9 +27,9 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  height: 96vh;
-  width: 100vw;
+  margin: 20vh auto 20vh auto;
+  width: 100%;
+  height: 100%;
   @media (min-width: 900px) {
     flex-direction: row;
     align-items: center;

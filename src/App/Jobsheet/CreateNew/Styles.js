@@ -78,12 +78,32 @@ export const Top = styled.div`
 
 export const TopLeft = styled.div`
   font-size: 16px;
+  padding-bottom: 25%;
 `;
+
+export const Inputs = styled.div`
+display: flex;
+margin: 0.3;
+flex-wrap: wrap;
+justify-content: space-between;
+
+`;
+
+
+export const Input = styled.input`
+font-size: 26px;
+background: transparent;
+outline: 0;
+color: white;
+bottom-padding: 12px;
+border-radius: 8px;
+margin:5px
+`;
+
 export const TopRight = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   margin: 0;
 `;
 
@@ -109,6 +129,7 @@ export const SubmitButton = styled.button`
   width: 200px;
   height: 40px;
   font-weight: bold;
+  right: 320px
 `;
 
 export const ImportCsv = styled.label`

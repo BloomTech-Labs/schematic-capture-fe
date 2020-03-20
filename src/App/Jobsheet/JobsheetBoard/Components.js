@@ -60,24 +60,32 @@ const Components = () => {
         <table>
           <thead>
             <tr>
-              <th scope="col">Component</th>
+            <th scope="col">Component</th>
               <th scope="col">Description</th>
+              <th scope="col">Manufacturer</th>
               <th scope="col">Part Number</th>
               <th scope="col">Stock Code</th>
               <th scope="col">Select Image</th>
+              <th scope="col">Resources</th>
+              <th scope="col">Cutsheet</th> 
+              <th scope="col">Stores Part #</th>
             </tr>
           </thead>
           <tbody>
             {!!components.length &&
               components.map(component => (
                 <tr key={component.id}>
-                  <td data-label="Component">{component.id}</td>
+                  <td data-label="Component">{component.componentId}</td>
                   <td data-label="Description">{component.descriptions}</td>
+                  <td data-label="Manufacturer">{component.manufacturer}</td>
                   <td data-label="Part Number">{component.partNumber}</td>
                   <td data-label="Stock Code">{component.stockCode}</td>
                   <td data-label="Select Image">
                     <Button onClick={() => newToggle(component.id)}><StyledImage src={Picture} className="image"/></Button>
                   </td>
+                  <td data-label="Resources">{component.resources}</td>
+                  <td data-label="Cutsheet">{component.cutsheet}</td>
+                  <td data-label="Stores Part #">{component.storesPartNumber}</td>
                 </tr>
               ))}
           </tbody>
