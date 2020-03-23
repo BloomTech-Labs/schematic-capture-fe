@@ -81,7 +81,7 @@ const Components = () => {
                   <td data-label="Part Number">{component.partNumber}</td>
                   <td data-label="Stock Code">{component.stockCode}</td>
                   <td data-label="Select Image">
-                    <Button onClick={() => newToggle(component.id)}><StyledImage src={Picture} className="image"/></Button>
+                    <Button onClick={() => newToggle(component.componentId)}><StyledImage src={Picture} className="image"/></Button>
                   </td>
                   <td data-label="Resources">{component.resources}</td>
                   <td data-label="Cutsheet">{component.cutsheet}</td>
