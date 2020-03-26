@@ -44,9 +44,6 @@ describe("Logging In", function() {
       // we should be redirected to /dashboard
       cy.url().should("include", "/dashboard");
       cy.get("h1").should("contain", "Dashboard");
-
-      cy.contains('Test Client 1').click()
-
     });
   });
 });
