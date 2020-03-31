@@ -1,36 +1,36 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
-import PrivateRoute from "../shared/components/PrivateRoute";
-import Auth from "./Auth";
-import Client from "./Client";
-import Project from "./Project";
-import Jobsheet from "./Jobsheet";
-import Dashboard from "./Dashboard";
-import PageError from "../shared/components/PageError";
-import NewProject from "./Project/CreateNew";
-import SendInvite from "../shared/components/Invite/SendInvite";
-import NewClient from "./Client/CreateNew";
-import NewJobSheet from "./Jobsheet/CreateNew";
+import PrivateRoute from "../shared/components/Components/PrivateRoute";
+import Auth from "./Auth/Auth.js";
+import ClientBoard from "./Client/ClientBoard/ClientBoard.js";
+import CreateNewClient from "./Client/NewClientForm/CreateNewClient.js";
+import Dashboard from "./Dashboard/Dashboard.js";
+import JobsheetBoard from "./Jobsheet/JobsheetBoard/JobsheetBoard.js";
+import ProjectBoard from "./Project/ProjectBoard/ProjectBoard.js";
+import PageError from "../shared/components/Components/PageError";
+import NewProject from "./Project/CreateNewProject/CreateNewProject";
+import SendInvite from "../shared/components/Components/SendInvite";
+import NewJobSheet from "./Jobsheet/CreateNew/CNJobsheet";
 
 const Router = () => {
   return (
-    <Fragment>
+    <>
       <Switch>
         <PrivateRoute path="/dashboard" component={Dashboard} />
-        <PrivateRoute path="/client/new" component={NewClient} />
+        <PrivateRoute path="/client/new" component={CreateNewClient} />
         <PrivateRoute path="/invite" component={SendInvite} />
         <PrivateRoute path="/client/:id/project/new" component={NewProject} />
         <PrivateRoute
           path="/project/:id/jobsheet/new"
           component={NewJobSheet}
         />
-        <PrivateRoute path="/client/:id" component={Client} />
-        <PrivateRoute path="/project/:id" component={Project} />
-        <PrivateRoute path="/jobsheet/:id" component={Jobsheet} />
+        <PrivateRoute path="/client/:id" component={ClientBoard} />
+        <PrivateRoute path="/project/:id" component={ProjectBoard} />
+        <PrivateRoute path="/jobsheet/:id" component={JobsheetBoard} />
         <Route path="/" component={Auth} />
         <Route path="*" component={PageError} />
       </Switch>
-    </Fragment>
+    </>
   );
 };
 

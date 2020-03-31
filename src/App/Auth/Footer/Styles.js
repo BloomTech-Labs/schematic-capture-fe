@@ -11,7 +11,7 @@ export const StyledNav = styled.nav`
   flex-shrink: 0;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 0px;
+  margin: 0;
   min-height: 0px;
   min-width: 0px;
   color: ${color.gray200};

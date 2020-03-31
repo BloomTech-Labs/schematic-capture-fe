@@ -1,6 +1,6 @@
 import { actions } from "../actions/appActions";
 
-const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = actions;
+const { APP_LOADING, APP_DONE_LOADING, APP_ERROR, RESET_ERROR } = actions;
 
 const initState = {
   isLoading: false,
@@ -26,6 +26,11 @@ const appReducer = (state = initState, action) => {
         isLoading: false,
         error: action.payload
       };
+    case RESET_ERROR:
+      return {
+        ...state,
+        error: null
+      }
     default:
       return state;
   }
