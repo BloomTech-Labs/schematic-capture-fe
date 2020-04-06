@@ -36,6 +36,15 @@ describe("Logging In", function() {
       cy.url().should("include", "/");
     });
 
+    it("clears input fields when .clear is called", function() {
+      cy.get("input[name=email]").type(username)
+        .clear()
+        .should('have.value', '')
+      cy.get("input[name=password]").type(password)
+        .clear()
+        .should('have.value', '')
+    });
+
     it("redirects to /dashboard on success", function() {
       cy.get("input[name=email]").type(username);
       cy.get("input[name=password]").type(password);
