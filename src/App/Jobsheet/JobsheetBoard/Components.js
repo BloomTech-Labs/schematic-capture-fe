@@ -11,6 +11,7 @@ import { Section, SectionName, ImgSel, PTag, StyledInput, StyledSubmit, StyledIm
 import { dispatchers } from "../../../shared/actions/dashboardActions";
 
 const { fetchComponents } = dispatchers;
+console.log(typeof(fetchComponents))
 
 const fetchComponentsSideEffect = async (dispatch, id, setComponents) => {
   await dispatch(fetchComponents(id, setComponents));
