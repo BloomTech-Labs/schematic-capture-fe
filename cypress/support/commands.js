@@ -51,6 +51,10 @@ Cypress.Commands.add('FEclient', () => {
   cy.contains('testing 3').click();
 })
 
+Cypress.Commands.add('FEjobsheet', () => {
+  cy.FEclient();
+})
+
 // Commands currently intended for use in testing the back end:
 // This function will change after Okta is set up!  It is currently hard-coded to include the authorization bearer token because of backend requiremements.
 Cypress.Commands.add('login', () => {
