@@ -26,8 +26,14 @@
 
 // Commands currently intended for use in testing the front end:
 // Log in using the front end, ending up on dashboard:
-Cypress.Commands.add('FElogin', () => {
+Cypress.Commands.add('loginScript', () => {
   cy.visit("/");
+  cy.get("input[name=email]").type('bob_johnson@lambdaschool.com')
+        .clear()
+        .should('have.value', '')
+  cy.get("input[name=password]").type("testing123!")
+    .clear()
+    .should('have.value', '')
   cy.get("input[name=email]").type('bob_johnson@lambdaschool.com');
   cy.get("input[name=password]").type('testing123!');
   cy.get("form").submit();
@@ -35,7 +41,7 @@ Cypress.Commands.add('FElogin', () => {
 
 // Log in using the front end and then navigate to Test Client 1 from dashboard
 Cypress.Commands.add('FEdashboard', () => {
-  cy.FElogin();
+  cy.loginScript();
   cy.contains('Test Client 1').click()
 })
 

@@ -16,6 +16,7 @@ describe('My First Test', function () {
     cy.url()
       .should('include', '/commands/actions')
 
+    // gets an element based on class name
     cy.get('.action-email')
       .type('myemail@email.com')
       .should('have.value', 'myemail@email.com')

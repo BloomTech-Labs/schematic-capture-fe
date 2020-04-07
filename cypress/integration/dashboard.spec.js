@@ -1,7 +1,7 @@
 describe("User at Dashboard", function() {
   context("Selecting elements from dashboard", function() {
     beforeEach(function() {
-      cy.FElogin()
+      cy.loginScript()
     })
 
     it('Displays dashboard info correctly', function() {
@@ -12,6 +12,7 @@ describe("User at Dashboard", function() {
       cy.contains('Testing3')
       cy.contains('Company Test')
       cy.url().should('include', '/dashboard')
+      cy.contains('New Client')
     })
   })
 })
