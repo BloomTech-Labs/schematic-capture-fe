@@ -9,6 +9,7 @@ describe('Test project page functionality', function() {
     it('Displays items on the project page correctly', function() {
       cy.url().should('include', '/project')
       cy.contains('Testing 3')
+      cy.contains('All Jobsheets')
       cy.contains('testing 3')
       cy.contains('Renamed version')
       cy.contains('New Jobsheet')
