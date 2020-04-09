@@ -141,6 +141,9 @@ const CreateNewJobsheet = () => {
               <AddSchem type="button" htmlFor="pdf" hidden={!getValues().name}>
                 <ImportText onClick={() => setBananas(true)}>Add Schematic</ImportText>
               </AddSchem>
+              
+
+
 
               <input hidden name="components" ref={register} />
               <input
