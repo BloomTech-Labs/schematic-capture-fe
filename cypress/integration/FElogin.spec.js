@@ -8,8 +8,20 @@ describe("Logging In", function() {
       cy.visit("/");
     });
 
-    it("displays errors on login", function() {
-      // incorrect username on purpose
+    it('displays an error if email is not provided', function() {
+      cy.get('input[name=email]').type('{enter}')
+      cy.get('div').should('contain', 'Please enter an email address')
+      cy.url().should("include", "/");
+    })
+
+    it('displays an error if password is not provided', function() {
+      cy.get('input[name=password]').type('{enter}')
+      cy.get('div').should('contain', 'That\'s an incorrect password. Try again.')
+      cy.url().should("include", "/");
+    })
+
+    it("displays errors on login with incorrect email or password", function() {
+      // incorrect name and password on purpose
       cy.get("input[name=email]").type("bob_johnson@lambaschool.com");
       cy.get("input[name=password]").type("festing123!{enter}");
 
@@ -22,6 +34,15 @@ describe("Logging In", function() {
 
       // and still be on the same URL
       cy.url().should("include", "/");
+    });
+
+    it("clears input fields when .clear is called", function() {
+      cy.get("input[name=email]").type(username)
+        .clear()
+        .should('have.value', '')
+      cy.get("input[name=password]").type(password)
+        .clear()
+        .should('have.value', '')
     });
 
     it("redirects to /dashboard on success", function() {
