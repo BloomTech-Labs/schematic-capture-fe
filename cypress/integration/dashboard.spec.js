@@ -11,8 +11,17 @@ describe("User at Dashboard", function() {
       cy.contains('Test Client 2')
       cy.contains('Testing3')
       cy.contains('Company Test')
-      cy.url().should('include', '/dashboard')
       cy.contains('New Client')
+    })
+
+    it('Set local storage after successful login', function() {
+      cy.url().should('include', '/dashboard')
+      cy.getLocalStorage('idToken')
+        .should('exist')
+      cy.getLocalStorage('state')
+       .should('exist')
+      cy.getLocalStorage('user')
+       .should('exist')
     })
   })
 })
