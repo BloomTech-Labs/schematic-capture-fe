@@ -55,6 +55,7 @@ const Components = () => {
 
   return (
     <Section>
+     
       <SectionName>All Components</SectionName>
       <div style={{ marginRight: "2.5rem", marginBottom: "2.5rem" }}>
         <table>
