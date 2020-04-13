@@ -20,7 +20,9 @@ export const color = {
   // Background
   //
   // Setting background elements.
-  backgroundBody: "#424244",
+  // backgroundBody: "#424244",
+  backgroundBody: "#FFFFFF",
+
   backgroundLight: "#ffffff",
 
   // Text
@@ -28,7 +30,8 @@ export const color = {
   // Style text elements.
   textDark: "#343a40",
   textMedium: "#5e6C84",
-  textLight: "#f8f9fa",
+  // textLight: "#f8f9fa",
+  textLight: "#21242C",
   textLink: "#1165a8",
 
   // Components
