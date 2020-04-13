@@ -24,6 +24,9 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
+// imported to enable all local storage commands to be used in the Cypress environment
+import "cypress-localstorage-commands"
+
 // Commands currently intended for use in testing the front end:
 // Log in using the front end, ending up on dashboard:
 Cypress.Commands.add('loginScript', () => {
@@ -63,7 +66,7 @@ Cypress.Commands.add('login', () => {
     method: 'POST',
     url: 'https://sc-be-production.herokuapp.com/api/auth/login', 
     headers: {
-      "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjFmODhiODE0MjljYzQ1MWEzMzVjMmY1Y2RiM2RmYjM0ZWIzYmJjN2YiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vc2NoZW1hdGljLWNhcHR1cmUiLCJhdWQiOiJzY2hlbWF0aWMtY2FwdHVyZSIsImF1dGhfdGltZSI6MTU4NTI1MTYzOCwidXNlcl9pZCI6InRpRFRmZU5GMUtjRWtXOTdnUExJcEc4NWl1YjIiLCJzdWIiOiJ0aURUZmVORjFLY0VrVzk3Z1BMSXBHODVpdWIyIiwiaWF0IjoxNTg1MjUxNjM4LCJleHAiOjE1ODUyNTUyMzgsImVtYWlsIjoiYm9iX2pvaG5zb25AbGFtYmRhc2Nob29sLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJib2Jfam9obnNvbkBsYW1iZGFzY2hvb2wuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.RxlwLP8vlglAHclvyzZ6OAnu0LAkvaxFJFjhSdv5ATve4x_AjT-ENorpBnUpHo3YZqrnREChGAn6CuisuUgaUZuUAYoZK_hQN-itj2vRCPVl2yFT0V71orFvBCkAEIxEomCbM65kKSDfGMAl0gx30GXVfDSwZBEU_N4xXqcK0AUtOyEC87KAhrTEy22Iit3h-j_I8ZrrK44eebR8WdevCXHKMMKSyVZjx01Ls1mhNy53_EPy04etBcJ9UNoLL3zLObjNDOKI80WCgF9H-5uxjOI3P6M2EzbA1kzrhIjfdP18KyZC4LZ6qwzLmEUjbYC_AUHXiRBLtNLiB47MBZi1vg"
+      "authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImRjMGMzNWZlYjBjODIzYjQyNzdkZDBhYjIwNDQzMDY5ZGYzMGZkZWEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vc2NoZW1hdGljLWNhcHR1cmUiLCJhdWQiOiJzY2hlbWF0aWMtY2FwdHVyZSIsImF1dGhfdGltZSI6MTU4NjQ2MzUyMiwidXNlcl9pZCI6InRpRFRmZU5GMUtjRWtXOTdnUExJcEc4NWl1YjIiLCJzdWIiOiJ0aURUZmVORjFLY0VrVzk3Z1BMSXBHODVpdWIyIiwiaWF0IjoxNTg2NDYzNTIyLCJleHAiOjE1ODY0NjcxMjIsImVtYWlsIjoiYm9iX2pvaG5zb25AbGFtYmRhc2Nob29sLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJib2Jfam9obnNvbkBsYW1iZGFzY2hvb2wuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.2qDTh8zMlm9S3XPUM_McTCBI0-VpKNeu5xVpgptSLMVqEq8aRQdSbUtvFIkFI3wjHAXnmWLoH59UUCb0bMaMbmigz8i3OtOBtWAF_rhcBGhbTJ5yXtXgPiCKYwhOJnZgS6x3LMuSonT0b7VVH9YFBdIWcSmtIEOHcypE3-Nf3ixcTOnD_Z0ipLI43wqExKLVAzZcNw1EdcRqNlIQB4qYl8nasyvNHzf8zPiu1A58vDhAThVVeo9-b2bamFzGt28Yf6ztrOenGGaxIYb8l-JC4VCdlaGsGiuMu7QRIAt-GWOeMwFwo0yJrwTBGO_q-Dhhk_jzVjSmNWgXU0_Lnrj3mA"
     },
     body: {
       email: 'bob_johnson@lambdaschool.com',
