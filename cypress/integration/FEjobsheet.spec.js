@@ -48,5 +48,14 @@ describe('test jobsheet component', function () {
       cy.contains('Not Provided')
       cy.contains('EK 500-0')
     })
+
+    it('captures correct location information', function() {
+      cy.location().should((location) => {
+        expect(location.port).to.eq('3000')
+        expect(location.protocol).to.eq('http:')
+        expect(location.hostname).to.eq('localhost')
+        expect(location.pathname).to.eq('/project/4')
+      })
+    })
   })
 })
