@@ -17,5 +17,3 @@ const Board = () => {
 };
 
 export default Board;
-
-// test for error message

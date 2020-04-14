@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Section, SectionName, StyledLink2 } from "./Styles";
+import { Section, SectionName, StyledLink2, ClientsContain, CompleteBadge, IncompleteBadge } from "./Styles";
 
 import { dispatchers } from "../../shared/actions/dashboardActions";
 
@@ -10,6 +10,7 @@ const { fetchClients } = dispatchers;
 const Clients = () => {
   const dispatch = useDispatch();
   const clients = useSelector(state => state.dashboard.clients);
+  console.log(clients);
 
   useEffect(() => {
     dispatch(fetchClients());
@@ -18,7 +19,7 @@ const Clients = () => {
   return (
     <Section>
       <SectionName>Clients</SectionName>
-      <div>
+      <ClientsContain>
         {clients &&
           clients.map(client => (
             <StyledLink2
@@ -27,9 +28,11 @@ const Clients = () => {
               to={`/client/${client.id}`}
             >
               {client.companyName}
+              <CompleteBadge>Complete</CompleteBadge>
+              <IncompleteBadge>Incomplete</IncompleteBadge>
             </StyledLink2>
           ))}
-      </div>
+      </ClientsContain>
     </Section>
   );
 };
