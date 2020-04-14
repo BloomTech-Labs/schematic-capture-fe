@@ -3,6 +3,24 @@ import { Link } from "react-router-dom";
 
 import { color, font, mixin, sizes, zIndexValues } from "../../styles";
 
+export const NavbarLeft = styled.aside`
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: ${sizes.navbarWidth}px;
+  z-index: ${zIndexValues.navbar};
+  background-color: ${mixin.lighten(color.backgroundBody, 0.1)};
+  border-right: 1px solid ${color.borderColor};
+  transition: all 0.1s;
+  transform: translateZ(0);
+  &:hover {
+    width: 200px;
+    background-color: ${color.gray400};
+    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.3);
+  }
+`;
+
 export const Bottom = styled.div`
   position: absolute;
   bottom: 20px;
@@ -43,4 +61,8 @@ export const ItemText = styled.span`
   transition-property: right, visibility, opacity;
   ${font.bold}
   ${font.size(1.5)}
-  `;
+  ${NavbarLeft}:hover & {
+    right: 0;
+    visibility: visible;
+    opacity: 1;
+}`;

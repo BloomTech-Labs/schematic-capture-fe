@@ -5,9 +5,12 @@ import Clients from "./Clients";
 
 import { Main } from "./Styles";
 
+import { Navbar } from "../../shared/components"
+
 const Board = () => {
   return (
     <>
+    <Navbar />
       <Main>
         <Header />
         <Clients />

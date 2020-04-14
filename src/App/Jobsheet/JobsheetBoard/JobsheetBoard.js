@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Header from "./JobsheetHeader";
 import Components from "./Components";
 import { actions } from "../../../shared/actions/dashboardActions";
+import { Navbar } from "../../../shared/components";
 
 import { Main } from "./Styles";
 
@@ -30,6 +31,7 @@ const Board = () => {
 
   return (
     <>
+      <Navbar />
       <Main>
         <Header />
         <Components />

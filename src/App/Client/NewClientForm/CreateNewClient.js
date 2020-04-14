@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 
 import { dispatchers } from "../../../shared/actions/dashboardActions";
+import Navbar from "../../../shared/components/Components/Navbar";
 
 import {
   InviteContainer,
@@ -66,6 +67,7 @@ const CreateNewClient = () => {
 
   return (
     <>
+      <Navbar />
       <InviteContainer>
         {/*<form onSubmit={handleSubmit(onAddNewClient)}>*/}
         {/*  <StyledFields fields={schema} register={register} errors={errors} />*/}

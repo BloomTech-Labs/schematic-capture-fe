@@ -6,6 +6,7 @@ import Header from "./ProjectHeader";
 import Jobsheets from "./Jobsheets";
 
 import { actions } from "../../../shared/actions/dashboardActions";
+import { Navbar } from "../../../shared/components";
 import { Main } from "./Styles";
 
 const { SET_CURRENT_PROJECT } = actions;
@@ -28,6 +29,7 @@ const Board = () => {
 
   return (
     <>
+      <Navbar />
       <Main>
         <Header />
         <Jobsheets />

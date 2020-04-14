@@ -6,6 +6,7 @@ import csv from "csvtojson";
 import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { csvToApi } from "../../../shared/utils/componentMap";
 import Header from "./CNJobsheetHeader";
+import { Navbar } from "../../../shared/components";
 
 import {
   Container,
@@ -99,6 +100,7 @@ const CreateNewJobsheet = () => {
 
   return (
     <>
+      <Navbar />
       <Container>
         <Header />
         <Top>
@@ -106,6 +108,9 @@ const CreateNewJobsheet = () => {
                   <h1 >Schematic Capture</h1>
           </TopLeft>
           
+          
+          
+         
           <form onSubmit={handleSubmit(onSubmit)}>
             <TopRight>
               <CenterDiv>
