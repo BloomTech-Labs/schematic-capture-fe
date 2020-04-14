@@ -27,9 +27,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "node_modules/.bin/cypress open",
-    "eject": "react-scripts eject",
-    "coverage": "jest --coverage --detectOpenHandles --forceExit || true"
+    "test:jest": "jest --watchAll",
+    "test:cypress": "node_modules/.bin/cypress open",
+    "eject": "react-scripts eject"
+
   },
   "eslintConfig": {
     "extends": "react-app"
