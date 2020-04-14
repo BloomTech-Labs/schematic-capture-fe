@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
-import csv from "csvtojson";
-import { dispatchers } from "../../../shared/actions/dashboardActions";
-import { csvToApi } from "../../../shared/utils/componentMap";
-import Header from "./CNJobsheetHeader";
-import { Navbar } from "../../../shared/components";
-import DropboxChooser from '../CreateNew/Dropbox.js';
+import React, { useState, useEffect } from "react"
+import { useHistory } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { useForm } from "react-hook-form"
+import csv from "csvtojson"
+import { dispatchers } from "../../../shared/actions/dashboardActions"
+import { csvToApi } from "../../../shared/utils/componentMap"
+import Header from "./CNJobsheetHeader"
+import { Navbar } from "../../../shared/components"
+import DropboxChooser from './Dropbox.js'
 
 
 import {
@@ -31,74 +31,73 @@ import {
   Input,
   Inputs
 
-} from "./Styles";
+} from "./Styles"
 
-const { addNewJobsheet } = dispatchers;
+const { addNewJobsheet } = dispatchers
 
-const reader = new FileReader();
+const reader = new FileReader()
 const readFile = (file, onload) => {
-  console.log(file);
-  reader.onload = onload;
-  reader.readAsText(file);
+  console.log(file)
+  reader.onload = onload
+  reader.readAsText(file)
 };
 
 const csvComponentsToJson = async (components, setComponents) => {
   try {
-    const jsoned = await csv().fromString(components);
+    const jsoned = await csv().fromString(components)
     const sanitizedComponents = jsoned.map(component => {
-      const entries = Object.entries(component);
-      const sanitizedComponent = {};
+      const entries = Object.entries(component)
+      const sanitizedComponent = {}
 
       entries.forEach(entry => {
         if (entry[0] in csvToApi) {
-          sanitizedComponent[csvToApi[entry[0]]] = entry[1];
+          sanitizedComponent[csvToApi[entry[0]]] = entry[1]
         } else {
-          sanitizedComponent.custom = entry[1];
+          sanitizedComponent.custom = entry[1]
         }
-      });
-      // console.log(sanitizedComponent);
-      return sanitizedComponent;
-    });
+      })
+      return sanitizedComponent
+    })
 
-    setComponents(sanitizedComponents);
+    setComponents(sanitizedComponents)
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
 };
 
 const CreateNewJobsheet = () => {
-  const { register, getValues, setValue, handleSubmit, watch } = useForm();
+  const { register, getValues, setValue, handleSubmit, watch } = useForm()
 
-  const dispatch = useDispatch();
-  const history = useHistory();
+  const dispatch = useDispatch()
+  const history = useHistory()
 
-  const [preview, setPreview] = useState(false);
-  const [isNew, setIsNew] = useState(false);
-  const [bananas, setBananas] = useState(false);
-  const [components, setComponents] = useState([]);
+  const [preview, setPreview] = useState(false)
+  const [isNew, setIsNew] = useState(false)
+  const [bananas, setBananas] = useState(false)
+  const [components, setComponents] = useState([])
 
   useEffect(() => {
     const [file] = watch("csv");
 
     if (file) {
-      const [fileName] = file.name.split(".");
-      readFile(file, () => csvComponentsToJson(reader.result, setComponents));
+      const [fileName] = file.name.split(".")
+      readFile(file, () => csvComponentsToJson(reader.result, setComponents))
       setPreview(true);
-      setValue("name", fileName);
+      setValue("name", fileName)
     }
-    const [file2] = watch('pdf');
+    const [file2] = watch('pdf')
     if (file2) {
       const [fileName2] = file2.name.split(".");
-      setValue('name2', fileName2);
+      setValue('name2', fileName2)
     }
 
-  }, [watch("csv"), watch('pdf')]);
+  }, [watch("csv"), watch('pdf')])
 
   const onSubmit = data => {
     delete data.csv;
     data.components = components;
     dispatch(addNewJobsheet(data, history));
-  };
+  }
 
   return (
     <>
@@ -108,12 +107,8 @@ const CreateNewJobsheet = () => {
         <DropboxChooser/>
         <Top>
           <TopLeft>
-                  <h1 >Schematic Capture</h1>
+            <h1 >Schematic Capture</h1>
           </TopLeft>
-          
-          
-          
-         
           <form onSubmit={handleSubmit(onSubmit)}>
             <TopRight>
               <CenterDiv>
@@ -123,7 +118,7 @@ const CreateNewJobsheet = () => {
                     htmlFor="csv"
                     onClick={() => setIsNew(true)}
                   >
-                    <ImportText onClick={() => setIsNew(true)  }>
+                    <ImportText onClick={() => setIsNew(true)}>
                       Import CSV
                     </ImportText>
                   </ImportCsv>
@@ -137,18 +132,11 @@ const CreateNewJobsheet = () => {
                   </NewBlank>
                 </TopTopRight>
                 <label htmlFor="name">
-
-                 
                 </label>
               </CenterDiv>
-
               <AddSchem type="button" htmlFor="pdf" hidden={!getValues().name}>
                 <ImportText onClick={() => setBananas(true)}>Add Schematic</ImportText>
               </AddSchem>
-              
-
-
-
               <input hidden name="components" ref={register} />
               <input
                 hidden
@@ -159,19 +147,12 @@ const CreateNewJobsheet = () => {
                 accept=".csv"
                 ref={register}
               />
-              
-             
-
               <SubmitButton type="submit" hidden={!getValues().name}>
                 Submit Jobsheet
               </SubmitButton>
-
-
-
             </TopRight>
           </form>
-        </Top>
-                
+        </Top> 
             <input
                 hidden
                 id="pdf"
@@ -182,8 +163,6 @@ const CreateNewJobsheet = () => {
                 ref={register}
               />
               <Inputs>
-             
-              
               <Input
                     name="name"
                     placeholder="JobSheet Name"
@@ -198,7 +177,6 @@ const CreateNewJobsheet = () => {
                     hidden={!bananas}
                     ref={register({ required: true })}
                   />
-                  
                 </Inputs>
         <PreviewContainer>
           <PreviewTable>
@@ -243,13 +221,13 @@ const CreateNewJobsheet = () => {
                   <td>{item.maintenanceVideo}</td>
                   <td>{item.custom}</td>
                 </TableItems>
-              );
+              )
             })}
           </PreviewTable>
         </PreviewContainer>
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default CreateNewJobsheet;
+export default CreateNewJobsheet

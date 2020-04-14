@@ -12,7 +12,7 @@ function DropboxChooser() {
 
   return (
     <button onClick={open} disabled={isOpen}>
-      Dropbox
+      Import Image
     </button>
   )
 }

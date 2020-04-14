@@ -9,6 +9,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Section, SectionName, ImgSel, PTag, StyledInput, StyledSubmit, StyledImage } from "./Styles";
 
 import { dispatchers } from "../../../shared/actions/dashboardActions";
+import DropboxChooser from "../CreateNew/Dropbox";
 
 const { fetchComponents } = dispatchers;
 
@@ -97,14 +98,14 @@ const Components = () => {
           <ModalHeader toggle={toggle}><PTag>Select Image for Component</PTag></ModalHeader>
           <ModalBody>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <label
+              <DropboxChooser />
+              {/* <label
                 type="button"
                 htmlFor="jpg"
                 onClick={() => setIsNew(true)}
               >
-                <ImgSel>Import Image</ImgSel>
+                <ImgSel>Import from Computer</ImgSel>
               </label>
-              {/* <p hidden={getValues().name}></p> */}
               <label htmlFor="jpg">
                 <input
                   hidden
@@ -115,7 +116,7 @@ const Components = () => {
                   accept=".jpg"
                   ref={register}
                 />
-              </label>
+              </label> */}
               <label htmlFor="selectcomp">
                 <select 
                   name="selectcomp"
@@ -124,7 +125,7 @@ const Components = () => {
                   <option value={number}>{number}</option>
                 </select>
               </label>
-              <label htmlFor="name">
+              {/* <label htmlFor="name">
                 <StyledInput
                   id="name"
                   name="name"
@@ -133,7 +134,7 @@ const Components = () => {
                   hidden={!isNew}
                   ref={register({ required: true })}
                 />
-              </label>
+              </label> */}
               <StyledSubmit type="submit" hidden={!getValues().name}>Submit</StyledSubmit>
           </form>
           </ModalBody>
