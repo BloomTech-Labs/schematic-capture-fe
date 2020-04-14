@@ -23,7 +23,7 @@ export const StyledLink = styled(Link)`
 
 export const Main = styled.main`
   // padding: 20px 0 0 80px;
-  padding: 10%
+  padding: 2%
 `;
 
 export const Section = styled.section`

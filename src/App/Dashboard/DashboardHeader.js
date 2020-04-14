@@ -1,13 +1,10 @@
 import React from "react";
 
-import { Header, DashboardName, StyledLink } from "./Styles";
+import { Header, DashboardName } from "./Styles";
 
 const DashboardHeader = () => (
   <Header>
-    <DashboardName>Dashboard</DashboardName>
-    <StyledLink to="/client/new" variant="primary">
-      New&nbsp;Client
-    </StyledLink>
+    <DashboardName>Schematic Capture</DashboardName>
   </Header>
 );
 
