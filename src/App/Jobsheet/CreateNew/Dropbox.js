@@ -1,7 +1,7 @@
 import { useDropboxChooser } from 'use-dropbox-chooser'
 import React from "react";
 
-function DropboxChooser() {
+function Dropbox() {
   const { open, isOpen } = useDropboxChooser({
     appKey: 't5i27y2t3fzkiqj',
     chooserOptions: { multiple: true, linkType: 'direct' },
@@ -16,4 +16,4 @@ function DropboxChooser() {
     </button>
   )
 }
-export default DropboxChooser;
+export default Dropbox;
