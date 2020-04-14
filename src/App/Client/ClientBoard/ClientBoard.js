@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 
 import Header from "./ClientHeader";
 import Projects from "./Projects";
-import { Navbar } from "../../../shared/components";
 
 import { Main } from "./Styles";
 import { actions } from "../../../shared/actions/dashboardActions";
@@ -28,7 +27,6 @@ const Board = () => {
 
   return (
     <>
-      <Navbar />
       <Main>
         <Header />
         <Projects />
