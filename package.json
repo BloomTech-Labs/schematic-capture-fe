@@ -27,8 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test:jest": "jest --watchAll",
-    "test:cypress": "node_modules/.bin/cypress open",
+    "test": "node_modules/.bin/cypress open",
     "eject": "react-scripts eject"
 
   },
