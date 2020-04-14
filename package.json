@@ -32,8 +32,7 @@
     "build": "react-scripts build",
     "test:jest": "jest --watchAll",
     "test:cypress": "node_modules/.bin/cypress open",
-    "eject": "react-scripts eject",
-    "coverage": "jest --coverage --detectOpenHandles --forceExit || true"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
