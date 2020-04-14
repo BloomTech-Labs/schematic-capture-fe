@@ -3,7 +3,7 @@ import React from "react";
 
 function Dropbox() {
   const { open, isOpen } = useDropboxChooser({
-    appKey: 'acku3a0c8kpv2op',
+    appKey: 't5i27y2t3fzkiqj',
     chooserOptions: { multiple: true, linkType: 'direct' },
     onSelected: files => {
       console.log(files)
