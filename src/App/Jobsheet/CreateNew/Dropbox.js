@@ -12,7 +12,7 @@ function YourComponent() {
 
   return (
     <button onClick={open} disabled={isOpen}>
-      Choose from Dropbox
+      
     </button>
   )
 }
