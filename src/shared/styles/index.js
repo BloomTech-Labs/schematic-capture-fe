@@ -52,14 +52,6 @@ export const font = {
   size: size => `font-size: ${size}rem;`
 };
 
-export const sizes = {
-  navbarWidth: 58
-};
-
-export const zIndexValues = {
-  navbar: 100
-};
-
 export const mixin = {
   darken: (colorValue, amount) =>
     Color(colorValue)
