@@ -32,11 +32,15 @@ describe('Test New Client form', function() {
         .should('have.attr', 'name', 'zip')
         .and('have.attr', 'type', 'string')
         .and('have.attr', 'placeholder', 'Zip Code')
-      cy.get('Button')
-      // navigate back to dashboard
-      cy.get('.sc-AxjAm')
-        .click()
-      cy.url().should('contain', '/dashboard')
+    })
+
+    it('captures correct location information', function() {
+      cy.location().should((location) => {
+        expect(location.port).to.eq('3000')
+        expect(location.protocol).to.eq('http:')
+        expect(location.hostname).to.eq('localhost')
+        expect(location.pathname).to.eq('/dashboard')
+      })
     })
   })
 })
