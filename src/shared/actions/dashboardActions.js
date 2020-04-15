@@ -2,6 +2,7 @@ import firebase from "../utils/firebase";
 import { actions as appActions } from "./appActions";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import axios from 'axios'
+import { FileDownload } from 'js-file-download'
 
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 
@@ -78,7 +79,7 @@ const updateProjectName = (name, setIsEditing) => async (
   }
 };
 
-const newFile = (file) => async dispatch => {
+const newFile = (file, name) => async dispatch => {
   dispatch ({ type: APP_LOADING })
   try {
     await axios.get(`${file}`)
