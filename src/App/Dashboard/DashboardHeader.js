@@ -8,6 +8,7 @@ const DashboardHeader = () => (
     <StyledLink to="/client/new" variant="primary">
       New&nbsp;Client
     </StyledLink>
+  
   </Header>
 );
 

@@ -7,6 +7,8 @@ import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { csvToApi } from "../../../shared/utils/componentMap";
 import Header from "./CNJobsheetHeader";
 import { Navbar } from "../../../shared/components";
+import DropboxChooser from '../CreateNew/Dropbox.js';
+
 
 import {
   Container,
@@ -103,6 +105,7 @@ const CreateNewJobsheet = () => {
       <Navbar />
       <Container>
         <Header />
+        <DropboxChooser/>
         <Top>
           <TopLeft>
                   <h1 >Schematic Capture</h1>
@@ -134,6 +137,7 @@ const CreateNewJobsheet = () => {
                   </NewBlank>
                 </TopTopRight>
                 <label htmlFor="name">
+
                  
                 </label>
               </CenterDiv>
@@ -141,6 +145,9 @@ const CreateNewJobsheet = () => {
               <AddSchem type="button" htmlFor="pdf" hidden={!getValues().name}>
                 <ImportText onClick={() => setBananas(true)}>Add Schematic</ImportText>
               </AddSchem>
+              
+
+
 
               <input hidden name="components" ref={register} />
               <input
@@ -158,6 +165,9 @@ const CreateNewJobsheet = () => {
               <SubmitButton type="submit" hidden={!getValues().name}>
                 Submit Jobsheet
               </SubmitButton>
+
+
+
             </TopRight>
           </form>
         </Top>
