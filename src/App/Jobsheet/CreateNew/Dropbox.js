@@ -1,12 +1,18 @@
 import { useDropboxChooser } from 'use-dropbox-chooser'
 import React from "react";
+import { useDispatch } from 'react-redux'
+import { dispatchers } from '../../../shared/actions/dashboardActions'
+
+const newFile = { dispatchers }
 
 function Dropbox() {
+  const dispatch = useDispatch()
+
   const { open, isOpen } = useDropboxChooser({
     appKey: 't5i27y2t3fzkiqj',
     chooserOptions: { multiple: true, linkType: 'direct' },
     onSelected: files => {
-      console.log(files)
+      dispatch(newFile(files[0].link))
     },
   })
 

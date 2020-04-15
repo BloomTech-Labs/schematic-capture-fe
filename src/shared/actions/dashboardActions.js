@@ -1,6 +1,7 @@
 import firebase from "../utils/firebase";
 import { actions as appActions } from "./appActions";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import axios from 'axios'
 
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 
@@ -11,6 +12,7 @@ const SET_CURRENT_PROJECT = "SET_CURRENT_PROJECT";
 const SET_CURRENT_JOBSHEETS = "SET_CURRENT_JOBSHEETS";
 const SET_CURRENT_JOBSHEET = "SET_CURRENT_JOBSHEET";
 const UPDATE_CURRENT_PROJECT_NAME = "UPDATE_CURRENT_PROJECT_NAME";
+const SET_CURRENT_FILE = "SET_CURRENT_FILE"
 
 const fetchClients = () => async (dispatch, getState) => {
   dispatch({ type: APP_LOADING });
@@ -76,6 +78,17 @@ const updateProjectName = (name, setIsEditing) => async (
   }
 };
 
+const newFile = (file) => async dispatch => {
+  dispatch ({ type: APP_LOADING })
+  try {
+    const files = await axios.get(`${file}`)
+    dispatch({ type: SET_CURRENT_FILE, payload: files })
+    dispatch({ type: APP_DONE_LOADING });
+  } catch(error) {
+    dispatch({ type: APP_ERROR, payload: error.message });
+  }
+}
+
 const fetchJobsheets = (projectId, setJobsheets) => async dispatch => {
   dispatch({ type: APP_LOADING });
 
@@ -139,6 +152,8 @@ const fetchComponents = (id, setComponents) => async dispatch => {
   }
 };
 
+
+
 export const dispatchers = {
   fetchClients,
   addNewClient,
@@ -147,7 +162,8 @@ export const dispatchers = {
   updateProjectName,
   fetchJobsheets,
   addNewJobsheet,
-  fetchComponents
+  fetchComponents,
+  newFile
 };
 
 export const actions = {

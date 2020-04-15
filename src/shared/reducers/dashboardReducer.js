@@ -7,6 +7,7 @@ const {
   SET_CURRENT_PROJECT,
   SET_CURRENT_JOBSHEETS,
   SET_CURRENT_JOBSHEET,
+  SET_CURRENT_FILE,
   UPDATE_CURRENT_PROJECT_NAME
 } = actions;
 
@@ -16,7 +17,8 @@ const initState = {
   currentClient: null,
   currentProject: null,
   currentJobsheets: [],
-  currentJobsheet: null
+  currentJobsheet: null,
+  currentFile: []
 };
 
 const dashboardReducer = (state = initState, action) => {
@@ -61,6 +63,11 @@ const dashboardReducer = (state = initState, action) => {
         ...state,
         currentJobsheet: action.payload
       };
+    case SET_CURRENT_FILE:
+      return{
+        ...state,
+        currentFile: action.payload
+      }
     default:
       return state;
   }

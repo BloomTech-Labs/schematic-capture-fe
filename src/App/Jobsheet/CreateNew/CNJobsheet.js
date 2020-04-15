@@ -65,7 +65,7 @@ const csvComponentsToJson = async (components, setComponents) => {
   }
 };
 
-const CreateNewJobsheet = () => {
+const CreateNewJobsheet = props => {
   const { register, getValues, setValue, handleSubmit, watch } = useForm()
 
   const dispatch = useDispatch()
@@ -78,7 +78,6 @@ const CreateNewJobsheet = () => {
 
   useEffect(() => {
     const [file] = watch("csv");
-
     if (file) {
       const [fileName] = file.name.split(".")
       readFile(file, () => csvComponentsToJson(reader.result, setComponents))
