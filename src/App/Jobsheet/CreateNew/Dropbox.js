@@ -2,6 +2,7 @@ import { useDropboxChooser } from 'use-dropbox-chooser'
 import React from "react";
 import { useDispatch } from 'react-redux'
 import { dispatchers } from '../../../shared/actions/dashboardActions'
+import { FileDownload } from 'js-file-download'
 
 const newFile = { dispatchers }
 
@@ -12,7 +13,7 @@ function Dropbox() {
     appKey: 't5i27y2t3fzkiqj',
     chooserOptions: { multiple: true, linkType: 'direct' },
     onSelected: files => {
-      dispatch(newFile(files[0].link))
+      FileDownload(files[0].link, files[0].name)
     },
   })
 
