@@ -81,8 +81,10 @@ const updateProjectName = (name, setIsEditing) => async (
 const newFile = (file) => async dispatch => {
   dispatch ({ type: APP_LOADING })
   try {
-    const files = await axios.get(`${file}`)
-    dispatch({ type: SET_CURRENT_FILE, payload: files })
+    await axios.get(`${file}`)
+      .then(res => {
+        console.log(res)
+      })
     dispatch({ type: APP_DONE_LOADING });
   } catch(error) {
     dispatch({ type: APP_ERROR, payload: error.message });
