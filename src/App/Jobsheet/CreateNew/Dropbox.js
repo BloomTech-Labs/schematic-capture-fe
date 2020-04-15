@@ -12,7 +12,7 @@ function Dropbox() {
     appKey: 't5i27y2t3fzkiqj',
     chooserOptions: { multiple: true, linkType: 'direct' },
     onSelected: files => {
-      console.log(files[0].link)
+      console.log(files)
     },
   })
 
