@@ -7,8 +7,6 @@ import { dispatchers } from "../../../shared/actions/dashboardActions"
 import { csvToApi } from "../../../shared/utils/componentMap"
 import Header from "./CNJobsheetHeader"
 import { Navbar } from "../../../shared/components"
-import DropboxChooser from './Dropbox.js'
-
 
 import {
   Container,
@@ -30,7 +28,6 @@ import {
   LineOr,
   Input,
   Inputs
-
 } from "./Styles"
 
 const { addNewJobsheet } = dispatchers
@@ -89,7 +86,6 @@ const CreateNewJobsheet = props => {
       const [fileName2] = file2.name.split(".");
       setValue('name2', fileName2)
     }
-
   }, [watch("csv"), watch('pdf')])
 
   const onSubmit = data => {
@@ -103,7 +99,6 @@ const CreateNewJobsheet = props => {
       <Navbar />
       <Container>
         <Header />
-        <DropboxChooser/>
         <Top>
           <TopLeft>
             <h1 >Schematic Capture</h1>
