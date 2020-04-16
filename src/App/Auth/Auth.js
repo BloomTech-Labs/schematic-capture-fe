@@ -1,28 +1,28 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
+import React from "react"
+import { Route, Switch } from "react-router-dom"
 
-import { Container, PageTitle, GlobalStyle, AuthContainer } from "./Styles";
+import { GlobalStyle } from "./Styles"
 
-import Login from "./Login.js";
-import Register from "./Register.js";
-import ForgotPassword from "./ForgotPassword.js";
-import Footer from "./Footer/Footer.js";
+import Login from "./Login.js"
+import Register from "./Register.js"
+import ForgotPassword from "./ForgotPassword.js"
+import Footer from "./Footer/Footer.js"
 
 const Auth = () => {
   return (
-    <AuthContainer>
+    <div>
       <GlobalStyle />
-      <Container>
-        <PageTitle>Schematic Capture</PageTitle>
+      <div>
+        <h1>Schematic Capture</h1>
         <Switch>
           <Route path="/register/:inviteToken?" component={Register} />
           <Route path="/forgotpassword" component={ForgotPassword} />
           <Route exact path="/" component={Login} />
         </Switch>
-      </Container>
+      </div>
       <Footer />
-    </AuthContainer>
-  );
-};
+    </div>
+  )
+}
 
-export default Auth;
+export default Auth
