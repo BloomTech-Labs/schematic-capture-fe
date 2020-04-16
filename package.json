@@ -8,8 +8,11 @@
     "bootstrap": "^4.4.1",
     "color": "^3.1.2",
     "csvtojson": "^2.0.10",
+    "cypress-localstorage-commands": "^1.1.8",
     "dotenv": "^8.2.0",
     "firebase": "^7.14.0",
+    "istanbul": "^0.4.5",
+    "istanbul-lib-coverage": "^3.0.0",
     "lodash.throttle": "^4.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -26,7 +29,7 @@
     "use-dropbox-chooser": "0.0.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "node_modules/.bin/cypress open",
     "eject": "react-scripts eject"
@@ -47,6 +50,9 @@
     ]
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.2.1",
+    "@cypress/instrument-cra": "^1.1.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "cypress": "^4.4.0",
     "nyc": "^15.0.1",
     "prettier": "2.0.4"
