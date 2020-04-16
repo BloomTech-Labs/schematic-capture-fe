@@ -10,16 +10,21 @@ const DashboardHeader = () => (
 );
 =======
 import React from "react"
-import { Link } from "react-router-dom"
+import {
+  Title,
+  Greeting,
+  Seperate
+} from '../Styles/Dashboard'
 
 const DashboardHeader = () => (
-  <div>
-    <h1>Dashboard</h1>
-    <Link to="/client/new" variant="primary">
-      New&nbsp;Client
-    </Link>
-  
-  </div>
+  <Seperate>
+    <Title>Schematic Capture</Title>
+    <div>
+      <Greeting to="/profile" variant="primary">
+        Hi, Name
+      </Greeting>
+    </div>
+  </Seperate>
 )
 >>>>>>> 546438ae2d94272a35b2d932b97223ad67a658f8
 

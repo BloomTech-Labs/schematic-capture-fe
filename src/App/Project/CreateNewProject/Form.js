@@ -29,7 +29,7 @@ const CreateNewProject = () => {
           {/*  <button type="submit">Save</button>*/}
           {/*  <Link to={`/client/${params.id}`}>Cancel</Link>*/}
           {/*</form>*/}
-          <Fields
+          <input
             type="string"
             name="name"
             id="name"

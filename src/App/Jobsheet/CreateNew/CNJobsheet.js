@@ -18,28 +18,6 @@ import { csvToApi } from "../../../shared/utils/componentMap"
 import Header from "./CNJobsheetHeader"
 >>>>>>> 546438ae2d94272a35b2d932b97223ad67a658f8
 
-import {
-  Container,
-  PreviewContainer,
-  PreviewTable,
-  TableItems,
-  PreLoad,
-  TopLeft,
-  TopRight,
-  TopTopRight,
-  Top,
-  NewBlank,
-  SubmitButton,
-  ImportCsv,
-  AddSchem,
-  ImportText,
-  CenterDiv,
-  TableHeader,
-  LineOr,
-  Input,
-  Inputs
-} from "./Styles"
-
 const { addNewJobsheet } = dispatchers
 
 const reader = new FileReader()
