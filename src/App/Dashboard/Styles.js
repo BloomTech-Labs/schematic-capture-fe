@@ -57,17 +57,3 @@ export const StyledLink2 = styled(Link)`
   justify-content: center;
   }
 `;
-
-export const CompleteBadge = styled.div`
-  opacity: 0.5
-  width: 10rem;
-`;
-
-export const IncompleteBadge = styled.div`
-  background: #FA5656;
-  border-radius: 40px;
-  color: #FFFFFF;
-  width: 35%;
-  display: flex;
-  justify-content: center;
-`;

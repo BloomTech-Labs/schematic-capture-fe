@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Section, SectionName, StyledLink2, ClientsContain, CompleteBadge, IncompleteBadge } from "./Styles";
+import { Section, SectionName, StyledLink2, ClientsContain } from "./Styles";
+
+import { CompleteBadge, IncompleteBadge } from '../../shared/components/Styles/ConsolidatedStyles'
 
 import { dispatchers } from "../../shared/actions/dashboardActions";
 
@@ -28,6 +30,11 @@ const Clients = () => {
               to={`/client/${client.id}`}
             >
               {client.companyName}
+              {/* {client.allComplete ? 
+                <CompleteBadge>Complete</CompleteBadge> :
+                <IncompleteBadge>Incomplete</IncompleteBadge>
+              } */}
+              {/* temporary hard-coding completion status */}
               <CompleteBadge>Complete</CompleteBadge>
               <IncompleteBadge>Incomplete</IncompleteBadge>
             </StyledLink2>

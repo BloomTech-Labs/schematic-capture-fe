@@ -1,14 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { Header, PageName, StyledLink } from "./Styles";
+import { StyledLink } from "./Styles";
+import { Header, PageName } from '../../../../src/shared/components/Styles/ConsolidatedStyles'
+
+import { Main } from '../../../../src/shared/components/Styles/ConsolidatedStyles'
 
 import { BackToLink } from "../../../shared/components";
 
 const PageHeader = () => {
   const { currentClient } = useSelector(state => state.dashboard);
   return (
-    <>
+    <Main>
       <BackToLink
         style={{ marginBottom: "2rem" }}
         to="/dashboard"
@@ -27,7 +30,7 @@ const PageHeader = () => {
           </>
         )}
       </Header>
-    </>
+    </Main>
   );
 };
 
