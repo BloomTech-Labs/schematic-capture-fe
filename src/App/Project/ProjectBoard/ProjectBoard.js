@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from "react"
+import { useParams } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux"
 
-import Header from "./ProjectHeader";
-import Jobsheets from "./Jobsheets";
+import Header from "./ProjectHeader"
+import Jobsheets from "./Jobsheets"
 
-import { actions } from "../../../shared/actions/dashboardActions";
-import { Main } from "./Styles";
-
+import { actions } from "../../../shared/actions/dashboardActions"
 const { SET_CURRENT_PROJECT } = actions;
 
 const setCurrentProjectSideEffect = async (dispatch, currentProjects, id) => {
@@ -28,12 +26,12 @@ const Board = () => {
 
   return (
     <>
-      <Main>
+      <main>
         <Header />
         <Jobsheets />
-      </Main>
+      </main>
     </>
-  );
-};
+  )
+}
 
-export default Board;
+export default Board

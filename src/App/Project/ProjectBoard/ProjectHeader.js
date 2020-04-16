@@ -1,31 +1,31 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
 
-import { Header, PageName, StyledLink, StyledInput } from "./Styles";
-import { dispatchers } from "../../../shared/actions/dashboardActions";
-import { BackToLink } from "../../../shared/components";
+import { dispatchers } from "../../../shared/actions/dashboardActions"
+import { BackToLink } from "../../../shared/components"
+import { Link } from "react-router-dom"
 
-const { updateProjectName } = dispatchers;
+const { updateProjectName } = dispatchers
 
 const PageHeader = () => {
-  const currentClient = useSelector(state => state.dashboard.currentClient);
+  const currentClient = useSelector(state => state.dashboard.currentClient)
 
-  const currentProject = useSelector(state => state.dashboard.currentProject);
+  const currentProject = useSelector(state => state.dashboard.currentProject)
 
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(false)
   const [projectName, setProjectName] = useState(
     !!currentProject ? currentProject.name : ""
-  );
-  const dispatch = useDispatch();
+  )
+  const dispatch = useDispatch()
 
   const handleProjectNameChange = event => {
     setProjectName(event.target.value);
-  };
+  }
 
   const saveProjectName = event => {
-    event.preventDefault();
-    dispatch(updateProjectName(projectName, setIsEditing));
-  };
+    event.preventDefault()
+    dispatch(updateProjectName(projectName, setIsEditing))
+  }
 
   return (
     <>
@@ -34,38 +34,38 @@ const PageHeader = () => {
         to={`/client/${currentClient.id}`}
         text={`${currentClient.companyName}`}
       />
-      <Header>
+      <div>
         {!!currentProject && (
           <>
             {isEditing ? (
               <div style={{ display: "flex" }}>
-                <StyledInput
+                <input
                   placeholder="Project Name"
                   type="text"
                   value={projectName}
                   onChange={handleProjectNameChange}
                 />
-                <StyledLink
+                <Link
                   style={{ marginRight: "1rem" }}
                   onClick={saveProjectName}
                 >
                   Save
-                </StyledLink>
+                </Link>
               </div>
             ) : (
-              <PageName onClick={() => setIsEditing(true)}>
+              <h1 onClick={() => setIsEditing(true)}>
                 {projectName}
-              </PageName>
+              </h1>
             )}
-            <StyledLink
+            <Link
               to={`/project/${currentClient.id}/jobsheet/new`}
               variant="primary"
             >
               New&nbsp;Jobsheet
-            </StyledLink>
+            </Link>
           </>
         )}
-      </Header>
+      </div>
     </>
   );
 };
