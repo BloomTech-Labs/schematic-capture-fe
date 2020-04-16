@@ -18,13 +18,13 @@ const PageHeader = () => {
       />
 
 
-      <Header>
+      <div>
         {!!currentJobsheet && (
           <>
-            <PageName>{currentJobsheet.name}</PageName>
+            <h1>{currentJobsheet.name}</h1>
           </>
         )}
-      </Header>
+      </div>
     </>
   );
 };

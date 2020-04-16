@@ -95,40 +95,40 @@ const CreateNewJobsheet = props => {
 
   return (
     <>
-      <Container>
+      <div>
         <Header />
-        <Top>
-          <TopLeft>
+        <div>
+          <div>
             <h1 >Schematic Capture</h1>
-          </TopLeft>
+          </div>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <TopRight>
-              <CenterDiv>
-                <TopTopRight>
-                  <ImportCsv
+            <div>
+              <div>
+                <div>
+                  <label
                     type="button"
                     htmlFor="csv"
                     onClick={() => setIsNew(true)}
                   >
-                    <ImportText onClick={() => setIsNew(true)}>
+                    <p onClick={() => setIsNew(true)}>
                       Import CSV
-                    </ImportText>
-                  </ImportCsv>
-                  <LineOr hidden={getValues().name}> or </LineOr>
-                  <NewBlank
+                    </p>
+                  </label>
+                  <div hidden={getValues().name}> or </div>
+                  <button
                     type="button"
                     hidden={getValues().name}
                     onClick={() => setIsNew(true)}
                   >
                     Create A Blank Job Sheet
-                  </NewBlank>
-                </TopTopRight>
+                  </button>
+                </div>
                 <label htmlFor="name">
                 </label>
-              </CenterDiv>
-              <AddSchem type="button" htmlFor="pdf" hidden={!getValues().name}>
-                <ImportText onClick={() => setBananas(true)}>Add Schematic</ImportText>
-              </AddSchem>
+              </div>
+              <label type="button" htmlFor="pdf" hidden={!getValues().name}>
+                <p onClick={() => setBananas(true)}>Add Schematic</p>
+              </label>
               <input hidden name="components" ref={register} />
               <input
                 hidden
@@ -139,12 +139,12 @@ const CreateNewJobsheet = props => {
                 accept=".csv"
                 ref={register}
               />
-              <SubmitButton type="submit" hidden={!getValues().name}>
+              <button type="submit" hidden={!getValues().name}>
                 Submit Jobsheet
-              </SubmitButton>
-            </TopRight>
+              </button>
+            </div>
           </form>
-        </Top> 
+        </div> 
             <input
                 hidden
                 id="pdf"
@@ -154,48 +154,48 @@ const CreateNewJobsheet = props => {
                 accept=".pdf"
                 ref={register}
               />
-              <Inputs>
-              <Input
+              <div>
+              <input
                     name="name"
                     placeholder="JobSheet Name"
                     disabled={!isNew}
                     hidden={!isNew}
                     ref={register({ required: true })}
                   />
-                  <Input
+                  <input
                     name="name2"
                     placeholder="Schematic"
                     disabled={!bananas}
                     hidden={!bananas}
                     ref={register({ required: true })}
                   />
-                </Inputs>
-        <PreviewContainer>
-          <PreviewTable>
-            <PreLoad hidden={preview}>
+                </div>
+        <div>
+          <table>
+            <div hidden={preview}>
               <h1>Please import a CSV to render a preview.</h1>
-            </PreLoad>
-            <TableItems hidden={!preview}>
-              <TableHeader>Component</TableHeader>
-              <TableHeader>RL Category</TableHeader>
-              <TableHeader>RL Number</TableHeader>
-              <TableHeader>Description</TableHeader>
-              <TableHeader>Manufacturer</TableHeader>
-              <TableHeader>Part Number</TableHeader>
-              <TableHeader>Stock Code</TableHeader>
-              <TableHeader>Electrical Address</TableHeader>
-              <TableHeader>Component Application</TableHeader>
-              <TableHeader>Reference Tag</TableHeader>
-              <TableHeader>Settings</TableHeader>
-              <TableHeader>Image</TableHeader>
-              <TableHeader>Resources</TableHeader>
-              <TableHeader>Cutsheet</TableHeader>
-              <TableHeader>Maintenance Video</TableHeader>
-              <TableHeader>Stores Part #</TableHeader>
-            </TableItems>
+            </div>
+            <tr hidden={!preview}>
+              <th>Component</th>
+              <th>RL Category</th>
+              <th>RL Number</th>
+              <th>Description</th>
+              <th>Manufacturer</th>
+              <th>Part Number</th>
+              <th>Stock Code</th>
+              <th>Electrical Address</th>
+              <th>Component Application</th>
+              <th>Reference Tag</th>
+              <th>Settings</th>
+              <th>Image</th>
+              <th>Resources</th>
+              <th>Cutsheet</th>
+              <th>Maintenance Video</th>
+              <th>Stores Part #</th>
+            </tr>
             {components.map(item => {
               return (
-                <TableItems>
+                <tr>
                   <td>{item.componentId}</td>
                   <td>{item.rlCategory}</td>
                   <td>{item.rlNumber}</td>
@@ -212,12 +212,12 @@ const CreateNewJobsheet = props => {
                   <td>{item.cutsheet}</td>
                   <td>{item.maintenanceVideo}</td>
                   <td>{item.custom}</td>
-                </TableItems>
+                </tr>
               )
             })}
-          </PreviewTable>
-        </PreviewContainer>
-      </Container>
+          </table>
+        </div>
+      </div>
     </>
   )
 }
