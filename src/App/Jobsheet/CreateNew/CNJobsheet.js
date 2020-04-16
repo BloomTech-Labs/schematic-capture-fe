@@ -6,7 +6,6 @@ import csv from "csvtojson"
 import { dispatchers } from "../../../shared/actions/dashboardActions"
 import { csvToApi } from "../../../shared/utils/componentMap"
 import Header from "./CNJobsheetHeader"
-import { Navbar } from "../../../shared/components"
 
 import {
   Container,
@@ -96,7 +95,6 @@ const CreateNewJobsheet = props => {
 
   return (
     <>
-      <Navbar />
       <Container>
         <Header />
         <Top>

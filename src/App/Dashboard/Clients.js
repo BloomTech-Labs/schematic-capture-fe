@@ -1,37 +1,38 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { Link } from "react-router-dom"
+import { dispatchers } from "../../shared/actions/dashboardActions"
 
-import { Section, SectionName, StyledLink2 } from "./Styles";
-
-import { dispatchers } from "../../shared/actions/dashboardActions";
-
-const { fetchClients } = dispatchers;
+const { fetchClients } = dispatchers
 
 const Clients = () => {
-  const dispatch = useDispatch();
-  const clients = useSelector(state => state.dashboard.clients);
+  const dispatch = useDispatch()
+  const clients = useSelector(state => state.dashboard.clients)
+  console.log(clients)
 
   useEffect(() => {
-    dispatch(fetchClients());
-  }, []);
+    dispatch(fetchClients())
+  }, [])
 
   return (
-    <Section>
-      <SectionName>Clients</SectionName>
+    <section>
+      <h2>Clients</h2>
       <div>
         {clients &&
           clients.map(client => (
-            <StyledLink2
+            <Link
               data-client-name
               key={client.id}
               to={`/client/${client.id}`}
             >
               {client.companyName}
-            </StyledLink2>
+              <div>Complete</div>
+              <div>Incomplete</div>
+            </Link>
           ))}
       </div>
-    </Section>
-  );
-};
+    </section>
+  )
+}
 
-export default Clients;
+export default Clients

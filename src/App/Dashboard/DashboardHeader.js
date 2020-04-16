@@ -1,15 +1,14 @@
-import React from "react";
-
-import { Header, DashboardName, StyledLink } from "./Styles";
+import React from "react"
+import { Link } from "react-router-dom"
 
 const DashboardHeader = () => (
-  <Header>
-    <DashboardName>Dashboard</DashboardName>
-    <StyledLink to="/client/new" variant="primary">
+  <div>
+    <h1>Dashboard</h1>
+    <Link to="/client/new" variant="primary">
       New&nbsp;Client
-    </StyledLink>
+    </Link>
   
-  </Header>
-);
+  </div>
+)
 
-export default DashboardHeader;
+export default DashboardHeader
