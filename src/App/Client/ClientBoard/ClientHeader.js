@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import { BackToLink } from "../../../shared/components"
 
 const PageHeader = () => {
-  const { currentClient } = useSelector(state => state.dashboard);
+  const { currentClient } = useSelector(state => state.dashboard)
   return (
     <>
       <BackToLink
@@ -27,7 +27,7 @@ const PageHeader = () => {
         )}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default PageHeader;
+export default PageHeader

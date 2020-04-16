@@ -1,14 +1,19 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import {
+  Title,
+  Greeting,
+  Seperate
+} from '../Styles/Dashboard'
 
 const DashboardHeader = () => (
-  <div>
-    <h1>Dashboard</h1>
-    <Link to="/client/new" variant="primary">
-      New&nbsp;Client
-    </Link>
-  
-  </div>
+  <Seperate>
+    <Title>Schematic Capture</Title>
+    <div>
+      <Greeting to="/profile" variant="primary">
+        Hi, Name
+      </Greeting>
+    </div>
+  </Seperate>
 )
 
 export default DashboardHeader

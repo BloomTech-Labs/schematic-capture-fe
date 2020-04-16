@@ -7,28 +7,6 @@ import { dispatchers } from "../../../shared/actions/dashboardActions"
 import { csvToApi } from "../../../shared/utils/componentMap"
 import Header from "./CNJobsheetHeader"
 
-import {
-  Container,
-  PreviewContainer,
-  PreviewTable,
-  TableItems,
-  PreLoad,
-  TopLeft,
-  TopRight,
-  TopTopRight,
-  Top,
-  NewBlank,
-  SubmitButton,
-  ImportCsv,
-  AddSchem,
-  ImportText,
-  CenterDiv,
-  TableHeader,
-  LineOr,
-  Input,
-  Inputs
-} from "./Styles"
-
 const { addNewJobsheet } = dispatchers
 
 const reader = new FileReader()
