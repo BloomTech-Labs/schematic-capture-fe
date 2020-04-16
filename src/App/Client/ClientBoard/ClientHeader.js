@@ -1,9 +1,8 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React from "react"
+import { useSelector } from "react-redux"
+import { Link } from "react-router-dom"
 
-import { Header, PageName, StyledLink } from "./Styles";
-
-import { BackToLink } from "../../../shared/components";
+import { BackToLink } from "../../../shared/components"
 
 const PageHeader = () => {
   const { currentClient } = useSelector(state => state.dashboard);
@@ -14,19 +13,19 @@ const PageHeader = () => {
         to="/dashboard"
         text="Dashboard"
       />
-      <Header>
+      <div>
         {!!currentClient && (
           <>
-            <PageName>{currentClient.companyName}</PageName>
-            <StyledLink
+            <h1>{currentClient.companyName}</h1>
+            <Link
               to={`/client/${currentClient.id}/project/new`}
               variant="primary"
             >
               New&nbsp;Project
-            </StyledLink>
+            </Link>
           </>
         )}
-      </Header>
+      </div>
     </>
   );
 };
