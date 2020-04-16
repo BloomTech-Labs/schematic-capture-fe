@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
 
 import { dispatchers } from "../../../shared/actions/dashboardActions"
-import { Fields } from "../../../../shared/components"
+import { Fields } from "../../../shared/components"
 
 import BackToLink from "../../../shared/components/Components/BackToLink"
 
