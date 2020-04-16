@@ -1,45 +1,56 @@
-import React from "react"
-import { useHistory, useParams, Link } from "react-router-dom"
-import { useSelector, useDispatch } from "react-redux"
-import { useForm } from "react-hook-form"
+import React from "react";
+import { useHistory, useParams, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
 
-import GoogleIcon from "../../shared/assets/google-icon"
+import GoogleIcon from "../../shared/assets/google-icon";
 
-import { dispatchers } from "../../shared/actions/authActions"
+import { dispatchers } from "../../shared/actions/authActions";
+
+import {
+  FormContainer,
+  FormRow,
+  FormColumn,
+  FormGroup,
+  StyledField,
+  FieldError,
+  Button,
+  LineOr,
+} from "../Styles/Auth/loginStyles";
 
 function Register() {
-  const { register, handleSubmit, errors } = useForm()
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const params = useParams()
+  const { register, handleSubmit, errors } = useForm();
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const params = useParams();
 
-  const googleInfo = useSelector(state => state.auth.googleInfo)
-  const { emailRegistration, googleRegistration, googleLogin } = dispatchers
+  const googleInfo = useSelector((state) => state.auth.googleInfo);
+  const { emailRegistration, googleRegistration, googleLogin } = dispatchers;
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     if (googleInfo) {
-      dispatch(googleRegistration(data, history))
+      dispatch(googleRegistration(data, history));
     } else {
-      dispatch(emailRegistration(data, history))
+      dispatch(emailRegistration(data, history));
     }
-  }
+  };
 
-  const onGoogleLogin = event => {
-    event.preventDefault()
-    dispatch(googleLogin(history, params.inviteToken))
-  }
+  const onGoogleLogin = (event) => {
+    event.preventDefault();
+    dispatch(googleLogin(history, params.inviteToken));
+  };
 
   return (
-    <div>
+    <FormContainer>
       <form className="white" onSubmit={handleSubmit(onSubmit)}>
         <h2 className="signup">Create an account</h2>
         <div style={{ marginBottom: "2rem" }}>
           Already have an account? <Link to="/">Sign in</Link>
         </div>
-        <div>
-          <div>
-            <div>
-              <input
+        <FormRow>
+          <FormColumn>
+            <FormGroup>
+              <StyledField
                 type="text"
                 id="firstName"
                 name="firstName"
@@ -52,15 +63,15 @@ function Register() {
                 ref={register({ required: true, maxLength: 80 })}
               />
               {errors.firstName && errors.firstName.type === "required" && (
-                <div id="error-firstName-required">
+                <FieldError id="error-firstName-required">
                   Please enter your first name.
-                </div>
+                </FieldError>
               )}
-            </div>
-          </div>
-          <div>
-            <div>
-              <input
+            </FormGroup>
+          </FormColumn>
+          <FormColumn>
+            <FormGroup>
+              <StyledField
                 type="text"
                 id="lastName"
                 name="lastName"
@@ -72,15 +83,15 @@ function Register() {
                 ref={register({ required: true, maxLength: 100 })}
               />
               {errors.lastName && errors.lastName.type === "required" && (
-                <div id="error-lastName-required">
+                <FieldError id="error-lastName-required">
                   Please enter your last name.
-                </div>
+                </FieldError>
               )}
-            </div>
-          </div>
-        </div>
-        <div>
-          <input
+            </FormGroup>
+          </FormColumn>
+        </FormRow>
+        <FormGroup>
+          <StyledField
             type="email"
             name="email"
             id="email"
@@ -91,19 +102,19 @@ function Register() {
             aria-describedby="error-email-required error-email-pattern"
             ref={register({
               required: !googleInfo,
-              pattern: /^\S+@\S+$/i
+              pattern: /^\S+@\S+$/i,
             })}
           />
           {errors.email && errors.email.type === "required" && (
-            <div id="error-email-required">
+            <FieldError id="error-email-required">
               Please enter an email address.
-            </div>
+            </FieldError>
           )}
-        </div>
+        </FormGroup>
         {!googleInfo && (
           <>
-            <div>
-              <input
+            <FormGroup>
+              <StyledField
                 type="password"
                 name="password"
                 id="password"
@@ -114,13 +125,13 @@ function Register() {
                 ref={register({ required: !googleInfo })}
               />
               {errors.password && errors.password.type === "required" && (
-                <div id="error-password-required">
+                <FieldError id="error-password-required">
                   Please enter a password.
-                </div>
+                </FieldError>
               )}
-            </div>
-            <div>
-              <input
+            </FormGroup>
+            <FormGroup>
+              <StyledField
                 type="password"
                 name="confirmPassword"
                 id="confirmPassword"
@@ -130,15 +141,15 @@ function Register() {
               />
               {errors.confirmPassword &&
                 errors.confirmPassword.type === "required" && (
-                  <div id="error-firstName-required">
+                  <FieldError id="error-firstName-required">
                     Please enter your first name.
-                  </div>
+                  </FieldError>
                 )}
-            </div>
+            </FormGroup>
           </>
         )}
-        <div>
-          <input
+        <FormGroup>
+          <StyledField
             type="tel"
             id="phone"
             name="phone"
@@ -150,17 +161,17 @@ function Register() {
             ref={register({
               required: true,
               minLength: 7,
-              maxLength: 12
+              maxLength: 12,
             })}
           />
           {errors.phone && errors.phone.type === "required" && (
-            <div id="error-lastName-required">
+            <FieldError id="error-lastName-required">
               Please enter your phone number.
-            </div>
+            </FieldError>
           )}
-        </div>
-        <div hidden={!!params.inviteToken}>
-          <input
+        </FormGroup>
+        <FormGroup hidden={!!params.inviteToken}>
+          <StyledField
             type="text"
             id="inviteToken"
             name="inviteToken"
@@ -170,30 +181,30 @@ function Register() {
             defaultValue={params.inviteToken}
           />
           {errors.inviteToken && errors.inviteToken.type === "required" && (
-            <div id="error-lastName-required">
+            <FieldError id="error-lastName-required">
               Please enter an invite token.
-            </div>
+            </FieldError>
           )}
-        </div>
-        <div>
-          <button variant="primary" type="submit">
+        </FormGroup>
+        <FormGroup>
+          <Button variant="primary" type="submit">
             {googleInfo ? "Continue" : "Create account"}
-          </button>
-        </div>
+          </Button>
+        </FormGroup>
       </form>
       {!googleInfo && (
         <>
-          <div>
+          <LineOr>
             <p>Or</p>
-          </div>
-          <button onClick={onGoogleLogin} variant="secondary" btnBlock>
+          </LineOr>
+          <Button onClick={onGoogleLogin} variant="secondary" btnBlock>
             <GoogleIcon />
             Continue with Google
-          </button>
+          </Button>
         </>
       )}
-    </div>
-  )
+    </FormContainer>
+  );
 }
 
-export default Register
+export default Register;
