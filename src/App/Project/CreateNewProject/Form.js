@@ -1,11 +1,8 @@
 import React from "react"
-import { Link, useParams, useHistory } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
 import { dispatchers } from "../../../shared/actions/dashboardActions"
-import { Button, StyledField } from "../../Auth/Styles"
-import { InviteGroup } from "../../../shared/components/Styles/Invite-Styles"
-import Fields from "../../../shared/components/Components/Fields";
 
 const { addNewProject } = dispatchers
 
