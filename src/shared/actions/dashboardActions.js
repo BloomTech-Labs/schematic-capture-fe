@@ -1,7 +1,6 @@
 import firebase from "../utils/firebase";
 import { actions as appActions } from "./appActions";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 
 const FETCH_CLIENTS_SUCCESS = "FETCH_CLIENTS_SUCCESS";
@@ -11,6 +10,7 @@ const SET_CURRENT_PROJECT = "SET_CURRENT_PROJECT";
 const SET_CURRENT_JOBSHEETS = "SET_CURRENT_JOBSHEETS";
 const SET_CURRENT_JOBSHEET = "SET_CURRENT_JOBSHEET";
 const UPDATE_CURRENT_PROJECT_NAME = "UPDATE_CURRENT_PROJECT_NAME";
+
 
 const fetchClients = () => async (dispatch, getState) => {
   dispatch({ type: APP_LOADING });
@@ -138,6 +138,8 @@ const fetchComponents = (id, setComponents) => async dispatch => {
     return dispatch({ type: APP_ERROR, payload: error.message });
   }
 };
+
+
 
 export const dispatchers = {
   fetchClients,

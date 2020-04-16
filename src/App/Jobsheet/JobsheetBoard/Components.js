@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
+import React, { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { useForm } from "react-hook-form"
 
 import Picture from './Camera.png'
 
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Section, SectionName, ImgSel, PTag, StyledInput, StyledSubmit, StyledImage } from "./Styles";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
-import { dispatchers } from "../../../shared/actions/dashboardActions";
+import { dispatchers } from "../../../shared/actions/dashboardActions"
+import DropboxChooser from "../CreateNew/Dropbox"
 
-const { fetchComponents } = dispatchers;
+const { fetchComponents } = dispatchers
 
 const fetchComponentsSideEffect = async (dispatch, id, setComponents) => {
-  await dispatch(fetchComponents(id, setComponents));
+  await dispatch(fetchComponents(id, setComponents))
 };
 
 const Components = () => {
-  const { register, getValues, setValue, handleSubmit, watch } = useForm();
-  const [components, setComponents] = useState([]);
+  const { getValues, setValue, handleSubmit, watch } = useForm()
+  const [components, setComponents] = useState([])
   const [number, setNumber] = useState()
-  const [isNew, setIsNew] = useState(false);
-  const [modal, setModal] = useState(false);
+  const [isNew, setIsNew] = useState(false)
+  const [modal, setModal] = useState(false)
 
-  const dispatch = useDispatch();
-  const params = useParams();
+  const dispatch = useDispatch()
+  const params = useParams()
 
   useEffect(() => {
     fetchComponentsSideEffect(dispatch, params.id, setComponents);
@@ -54,8 +54,8 @@ const Components = () => {
   }
 
   return (
-    <Section>
-      <SectionName>All Components</SectionName>
+    <section>
+      <h2>All Components</h2>
       <div style={{ marginRight: "2.5rem", marginBottom: "2.5rem" }}>
         <table>
           <thead>
@@ -81,7 +81,7 @@ const Components = () => {
                   <td data-label="Part Number">{component.partNumber}</td>
                   <td data-label="Stock Code">{component.stockCode}</td>
                   <td data-label="Select Image">
-                    <Button onClick={() => newToggle(component.componentId)}><StyledImage src={Picture} className="image"/></Button>
+                    <Button onClick={() => newToggle(component.componentId)}><img src={Picture} className="image"/></Button>
                   </td>
                   <td data-label="Resources">{component.resources}</td>
                   <td data-label="Cutsheet">{component.cutsheet}</td>
@@ -93,17 +93,17 @@ const Components = () => {
         
         <Modal isOpen={modal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 1300 }}
         toggle={toggle}>
-          <ModalHeader toggle={toggle}><PTag>Select Image for Component</PTag></ModalHeader>
+          <ModalHeader toggle={toggle}><h3>Select Image for Component</h3></ModalHeader>
           <ModalBody>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <label
+              <DropboxChooser />
+              {/* <label
                 type="button"
                 htmlFor="jpg"
                 onClick={() => setIsNew(true)}
               >
-                <ImgSel>Import Image</ImgSel>
+                <ImgSel>Import from Computer</ImgSel>
               </label>
-              {/* <p hidden={getValues().name}></p> */}
               <label htmlFor="jpg">
                 <input
                   hidden
@@ -114,7 +114,7 @@ const Components = () => {
                   accept=".jpg"
                   ref={register}
                 />
-              </label>
+              </label> */}
               <label htmlFor="selectcomp">
                 <select 
                   name="selectcomp"
@@ -123,7 +123,7 @@ const Components = () => {
                   <option value={number}>{number}</option>
                 </select>
               </label>
-              <label htmlFor="name">
+              {/* <label htmlFor="name">
                 <StyledInput
                   id="name"
                   name="name"
@@ -132,8 +132,8 @@ const Components = () => {
                   hidden={!isNew}
                   ref={register({ required: true })}
                 />
-              </label>
-              <StyledSubmit type="submit" hidden={!getValues().name}>Submit</StyledSubmit>
+              </label> */}
+              <button type="submit" hidden={!getValues().name}>Submit</button>
           </form>
           </ModalBody>
           <ModalFooter>
@@ -142,8 +142,8 @@ const Components = () => {
       </Modal>
 
       </div>
-    </Section>
-  );
-};
+    </section>
+  )
+}
 
-export default Components;
+export default Components

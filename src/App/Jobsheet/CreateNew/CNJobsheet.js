@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -6,6 +7,16 @@ import csv from "csvtojson";
 import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { csvToApi } from "../../../shared/utils/componentMap";
 import Header from "./CNJobsheetHeader";
+=======
+import React, { useState, useEffect } from "react"
+import { useHistory } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { useForm } from "react-hook-form"
+import csv from "csvtojson"
+import { dispatchers } from "../../../shared/actions/dashboardActions"
+import { csvToApi } from "../../../shared/utils/componentMap"
+import Header from "./CNJobsheetHeader"
+>>>>>>> 546438ae2d94272a35b2d932b97223ad67a658f8
 
 import {
   Container,
@@ -27,78 +38,75 @@ import {
   LineOr,
   Input,
   Inputs
+} from "./Styles"
 
-} from "./Styles";
+const { addNewJobsheet } = dispatchers
 
-const { addNewJobsheet } = dispatchers;
-
-const reader = new FileReader();
+const reader = new FileReader()
 const readFile = (file, onload) => {
-  console.log(file);
-  reader.onload = onload;
-  reader.readAsText(file);
+  console.log(file)
+  reader.onload = onload
+  reader.readAsText(file)
 };
 
 const csvComponentsToJson = async (components, setComponents) => {
   try {
-    const jsoned = await csv().fromString(components);
+    const jsoned = await csv().fromString(components)
     const sanitizedComponents = jsoned.map(component => {
-      const entries = Object.entries(component);
-      const sanitizedComponent = {};
+      const entries = Object.entries(component)
+      const sanitizedComponent = {}
 
       entries.forEach(entry => {
         if (entry[0] in csvToApi) {
-          sanitizedComponent[csvToApi[entry[0]]] = entry[1];
+          sanitizedComponent[csvToApi[entry[0]]] = entry[1]
         } else {
-          sanitizedComponent.custom = entry[1];
+          sanitizedComponent.custom = entry[1]
         }
-      });
-      // console.log(sanitizedComponent);
-      return sanitizedComponent;
-    });
+      })
+      return sanitizedComponent
+    })
 
-    setComponents(sanitizedComponents);
+    setComponents(sanitizedComponents)
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
 };
 
-const CreateNewJobsheet = () => {
-  const { register, getValues, setValue, handleSubmit, watch } = useForm();
+const CreateNewJobsheet = props => {
+  const { register, getValues, setValue, handleSubmit, watch } = useForm()
 
-  const dispatch = useDispatch();
-  const history = useHistory();
+  const dispatch = useDispatch()
+  const history = useHistory()
 
-  const [preview, setPreview] = useState(false);
-  const [isNew, setIsNew] = useState(false);
-  const [bananas, setBananas] = useState(false);
-  const [components, setComponents] = useState([]);
+  const [preview, setPreview] = useState(false)
+  const [isNew, setIsNew] = useState(false)
+  const [bananas, setBananas] = useState(false)
+  const [components, setComponents] = useState([])
 
   useEffect(() => {
     const [file] = watch("csv");
-
     if (file) {
-      const [fileName] = file.name.split(".");
-      readFile(file, () => csvComponentsToJson(reader.result, setComponents));
+      const [fileName] = file.name.split(".")
+      readFile(file, () => csvComponentsToJson(reader.result, setComponents))
       setPreview(true);
-      setValue("name", fileName);
+      setValue("name", fileName)
     }
-    const [file2] = watch('pdf');
+    const [file2] = watch('pdf')
     if (file2) {
       const [fileName2] = file2.name.split(".");
-      setValue('name2', fileName2);
+      setValue('name2', fileName2)
     }
-
-  }, [watch("csv"), watch('pdf')]);
+  }, [watch("csv"), watch('pdf')])
 
   const onSubmit = data => {
     delete data.csv;
     data.components = components;
     dispatch(addNewJobsheet(data, history));
-  };
+  }
 
   return (
     <>
+<<<<<<< HEAD
       <Container>
         <Header />
         <Top>
@@ -106,37 +114,42 @@ const CreateNewJobsheet = () => {
                   <h1 >Schematic Capture</h1>
           </TopLeft>
           
+=======
+      <div>
+        <Header />
+        <div>
+          <div>
+            <h1 >Schematic Capture</h1>
+          </div>
+>>>>>>> 546438ae2d94272a35b2d932b97223ad67a658f8
           <form onSubmit={handleSubmit(onSubmit)}>
-            <TopRight>
-              <CenterDiv>
-                <TopTopRight>
-                  <ImportCsv
+            <div>
+              <div>
+                <div>
+                  <label
                     type="button"
                     htmlFor="csv"
                     onClick={() => setIsNew(true)}
                   >
-                    <ImportText onClick={() => setIsNew(true)  }>
+                    <p onClick={() => setIsNew(true)}>
                       Import CSV
-                    </ImportText>
-                  </ImportCsv>
-                  <LineOr hidden={getValues().name}> or </LineOr>
-                  <NewBlank
+                    </p>
+                  </label>
+                  <div hidden={getValues().name}> or </div>
+                  <button
                     type="button"
                     hidden={getValues().name}
                     onClick={() => setIsNew(true)}
                   >
                     Create A Blank Job Sheet
-                  </NewBlank>
-                </TopTopRight>
+                  </button>
+                </div>
                 <label htmlFor="name">
-                 
                 </label>
-              </CenterDiv>
-
-              <AddSchem type="button" htmlFor="pdf" hidden={!getValues().name}>
-                <ImportText onClick={() => setBananas(true)}>Add Schematic</ImportText>
-              </AddSchem>
-
+              </div>
+              <label type="button" htmlFor="pdf" hidden={!getValues().name}>
+                <p onClick={() => setBananas(true)}>Add Schematic</p>
+              </label>
               <input hidden name="components" ref={register} />
               <input
                 hidden
@@ -147,16 +160,12 @@ const CreateNewJobsheet = () => {
                 accept=".csv"
                 ref={register}
               />
-              
-             
-
-              <SubmitButton type="submit" hidden={!getValues().name}>
+              <button type="submit" hidden={!getValues().name}>
                 Submit Jobsheet
-              </SubmitButton>
-            </TopRight>
+              </button>
+            </div>
           </form>
-        </Top>
-                
+        </div> 
             <input
                 hidden
                 id="pdf"
@@ -166,51 +175,48 @@ const CreateNewJobsheet = () => {
                 accept=".pdf"
                 ref={register}
               />
-              <Inputs>
-             
-              
-              <Input
+              <div>
+              <input
                     name="name"
                     placeholder="JobSheet Name"
                     disabled={!isNew}
                     hidden={!isNew}
                     ref={register({ required: true })}
                   />
-                  <Input
+                  <input
                     name="name2"
                     placeholder="Schematic"
                     disabled={!bananas}
                     hidden={!bananas}
                     ref={register({ required: true })}
                   />
-                  
-                </Inputs>
-        <PreviewContainer>
-          <PreviewTable>
-            <PreLoad hidden={preview}>
+                </div>
+        <div>
+          <table>
+            <div hidden={preview}>
               <h1>Please import a CSV to render a preview.</h1>
-            </PreLoad>
-            <TableItems hidden={!preview}>
-              <TableHeader>Component</TableHeader>
-              <TableHeader>RL Category</TableHeader>
-              <TableHeader>RL Number</TableHeader>
-              <TableHeader>Description</TableHeader>
-              <TableHeader>Manufacturer</TableHeader>
-              <TableHeader>Part Number</TableHeader>
-              <TableHeader>Stock Code</TableHeader>
-              <TableHeader>Electrical Address</TableHeader>
-              <TableHeader>Component Application</TableHeader>
-              <TableHeader>Reference Tag</TableHeader>
-              <TableHeader>Settings</TableHeader>
-              <TableHeader>Image</TableHeader>
-              <TableHeader>Resources</TableHeader>
-              <TableHeader>Cutsheet</TableHeader>
-              <TableHeader>Maintenance Video</TableHeader>
-              <TableHeader>Stores Part #</TableHeader>
-            </TableItems>
+            </div>
+            <tr hidden={!preview}>
+              <th>Component</th>
+              <th>RL Category</th>
+              <th>RL Number</th>
+              <th>Description</th>
+              <th>Manufacturer</th>
+              <th>Part Number</th>
+              <th>Stock Code</th>
+              <th>Electrical Address</th>
+              <th>Component Application</th>
+              <th>Reference Tag</th>
+              <th>Settings</th>
+              <th>Image</th>
+              <th>Resources</th>
+              <th>Cutsheet</th>
+              <th>Maintenance Video</th>
+              <th>Stores Part #</th>
+            </tr>
             {components.map(item => {
               return (
-                <TableItems>
+                <tr>
                   <td>{item.componentId}</td>
                   <td>{item.rlCategory}</td>
                   <td>{item.rlNumber}</td>
@@ -227,14 +233,14 @@ const CreateNewJobsheet = () => {
                   <td>{item.cutsheet}</td>
                   <td>{item.maintenanceVideo}</td>
                   <td>{item.custom}</td>
-                </TableItems>
-              );
+                </tr>
+              )
             })}
-          </PreviewTable>
-        </PreviewContainer>
-      </Container>
+          </table>
+        </div>
+      </div>
     </>
-  );
-};
+  )
+}
 
-export default CreateNewJobsheet;
+export default CreateNewJobsheet

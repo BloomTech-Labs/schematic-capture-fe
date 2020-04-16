@@ -16,13 +16,15 @@ const PageHeader = () => {
         to={`/project/${currentProject.id}`}
         text={`${currentProject.name}`}
       />
-      <Header>
+
+
+      <div>
         {!!currentJobsheet && (
           <>
-            <PageName>{currentJobsheet.name}</PageName>
+            <h1>{currentJobsheet.name}</h1>
           </>
         )}
-      </Header>
+      </div>
     </>
   );
 };

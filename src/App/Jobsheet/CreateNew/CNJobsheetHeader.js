@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { BackToLink } from "../../../shared/components";
+import { BackToLink } from "../../../shared/components"
 
 const PageHeader = () => {
-  const { currentProject } = useSelector(state => state.dashboard);
+  const { currentProject } = useSelector(state => state.dashboard)
   return (
     <>
       <BackToLink
@@ -13,7 +13,7 @@ const PageHeader = () => {
         text={`${currentProject.name}`}
       />
     </>
-  );
-};
+  )
+}
 
-export default PageHeader;
+export default PageHeader

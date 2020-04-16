@@ -1,0 +1,13 @@
+import { css } from "styled-components"
+
+export const color = {
+    blue: '#3079BC',
+    black: '#21242C',
+    red: '#FFFFFF'
+}
+
+export const font = {
+    title: '36px',
+    normal: '18px',
+    small: '14px'
+}

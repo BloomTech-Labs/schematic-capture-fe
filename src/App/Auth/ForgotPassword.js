@@ -1,32 +1,28 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
+import React from "react"
+import { useHistory } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { useForm } from "react-hook-form"
 
-// utils
 import {
   FormContainer,
   FormGroup,
   StyledField,
   FieldError,
   Button
-} from "./Styles";
+} from "./Styles"
 
-// components
-import { BackToLink } from "../../shared/components";
+import { BackToLink } from "../../shared/components"
 
-// actions
-import { dispatchers } from "../../shared/actions/authActions";
-import swal from "sweetalert";
+import { dispatchers } from "../../shared/actions/authActions"
 
 const ForgotPassword = () => {
-  const { register, handleSubmit, errors } = useForm();
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const { forgotPassword } = dispatchers;
+  const { register, handleSubmit, errors } = useForm()
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const { forgotPassword } = dispatchers
 
   const onSubmit = data => {
-    dispatch(forgotPassword(data, history));
+    dispatch(forgotPassword(data, history))
   };
 
   return (
