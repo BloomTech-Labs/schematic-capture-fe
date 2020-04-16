@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import Color from "color";
 
-import { color, font, mixin } from "../../shared/styles";
+import { color, font, mixin } from "../../../shared/styles";
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -160,7 +160,7 @@ export const Button = styled.button`
   opacity: initial !important;
   ${font.bold}
 
-  ${props =>
+  ${(props) =>
     props.btnBlock &&
     `
     display: block;
@@ -188,14 +188,8 @@ export const Button = styled.button`
 
   &:hover {
     background-color: ${({ variant }) =>
-      variant === "primary" &&
-      Color(color.primary)
-        .darken(0.25)
-        .string()};
+      variant === "primary" && Color(color.primary).darken(0.25).string()};
     border-color: ${({ variant }) =>
-      variant === "secondary" &&
-      Color(color.secondary)
-        .darken(0.25)
-        .string()};
+      variant === "secondary" && Color(color.secondary).darken(0.25).string()};
   }
 `;
