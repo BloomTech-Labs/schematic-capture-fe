@@ -3,7 +3,7 @@ import React from "react";
 import Header from "./DashboardHeader";
 import Clients from "./Clients";
 
-import { Main } from "./Styles";
+import { Main } from "../../shared/components/Styles/ConsolidatedStyles";
 
 const Board = () => {
   return (

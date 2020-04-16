@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { Section, SectionName, StyledLink2 } from "./Styles";
+import { Section, SectionName } from "./Styles";
+import { ProjectsContain, ProjectsHeader, ProjectLink } from '../../../../src/shared/components/Styles/ConsolidatedStyles';
 
 import {
   dispatchers,
@@ -40,18 +41,21 @@ const Projects = () => {
 
   return client ? (
     <Section>
-      <SectionName>All Projects</SectionName>
-      <div>
+      <SectionName>Projects</SectionName>
+      <ProjectsHeader>
+
+      </ProjectsHeader>
+      <ProjectsContain>
         {projects.map(project => (
-          <StyledLink2
+          <ProjectLink
             data-project-name
             key={project.id}
             to={`/project/${project.id}`}
           >
             {project.name}
-          </StyledLink2>
+          </ProjectLink>
         ))}
-      </div>
+      </ProjectsContain>
     </Section>
   ) : (
     <Redirect to="/dashboard" />

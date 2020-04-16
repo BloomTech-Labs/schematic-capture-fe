@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import Header from "./ClientHeader";
 import Projects from "./Projects";
 
-import { Main } from "./Styles";
 import { actions } from "../../../shared/actions/dashboardActions";
 
 const { SET_CURRENT_CLIENT } = actions;
@@ -27,10 +26,8 @@ const Board = () => {
 
   return (
     <>
-      <Main>
-        <Header />
-        <Projects />
-      </Main>
+      <Header />
+      <Projects />
     </>
   );
 };
