@@ -14,6 +14,7 @@ import Unknown from '../Styles/Dashboard/unknown.jpg'
 const DashboardHeader = () => (
   <Seperate>
     <Title>Schematic Capture</Title>
+    <br />
     <RightSide>
       <Hover src={Swirl} />
       <Hover src={Search} />
