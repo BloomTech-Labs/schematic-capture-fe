@@ -106,22 +106,12 @@ const CreateNewJobsheet = props => {
 
   return (
     <>
-<<<<<<< HEAD
-      <Container>
-        <Header />
-        <Top>
-          <TopLeft>
-                  <h1 >Schematic Capture</h1>
-          </TopLeft>
-          
-=======
       <div>
         <Header />
         <div>
           <div>
             <h1 >Schematic Capture</h1>
           </div>
->>>>>>> 546438ae2d94272a35b2d932b97223ad67a658f8
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
               <div>
