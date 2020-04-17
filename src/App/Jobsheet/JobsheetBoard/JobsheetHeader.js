@@ -23,7 +23,7 @@ import swal from "sweetalert"
 const PageHeader = () => {
   const { currentProject, currentJobsheet, currentClient } = useSelector(
     state => state.dashboard
-  );
+  )
   const user = useSelector(state => state.auth.user)
 
   const onLogout = () => {
