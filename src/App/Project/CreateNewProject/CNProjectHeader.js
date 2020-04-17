@@ -8,11 +8,18 @@ const PageHeader = () => {
 
   return (
     <>
-      <BackToLink
-        style={{ marginBottom: "2rem" }}
-        to={`/client/${currentClient.id}`}
-        text={`${currentClient.companyName}`}
-      />
+      <div>
+        <BackToLink
+          style={{ marginBottom: "2rem" }}
+          to="/dashboard"
+          text="Home -"
+        />
+        <BackToLink
+          style={{ marginBottom: "2rem" }}
+          to={`/client/${currentClient.id}`}
+          text={'Clients'}
+        />
+      </div>
     </>
   )
 }

@@ -11,7 +11,7 @@ const PageHeader = () => {
       <BackToLink
         style={{ marginBottom: "2rem" }}
         to="/dashboard"
-        text="Dashboard"
+        text="Home"
       />
       <div>
         {!!currentClient && (

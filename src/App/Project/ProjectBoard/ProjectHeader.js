@@ -5,6 +5,8 @@ import { dispatchers } from "../../../shared/actions/dashboardActions"
 import { BackToLink } from "../../../shared/components"
 import { Link } from "react-router-dom"
 
+import {Bread} from '../../Styles/Project'
+
 const { updateProjectName } = dispatchers
 
 const PageHeader = () => {
@@ -29,11 +31,18 @@ const PageHeader = () => {
 
   return (
     <>
-      <BackToLink
-        style={{ marginBottom: "2rem" }}
-        to={`/client/${currentClient.id}`}
-        text={`${currentClient.companyName}`}
-      />
+      <Bread>
+        <BackToLink
+          style={{ marginBottom: "2rem" }}
+          to="/dashboard"
+          text="Home"
+        />
+        <BackToLink
+          style={{ marginBottom: "2rem" }}
+          to={`/client/${currentClient.id}`}
+          text='Clients'
+        />
+      </Bread>
       <div>
         {!!currentProject && (
           <>
