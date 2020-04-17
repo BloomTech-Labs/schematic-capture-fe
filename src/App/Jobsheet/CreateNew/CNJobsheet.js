@@ -14,7 +14,7 @@ const readFile = (file, onload) => {
   console.log(file)
   reader.onload = onload
   reader.readAsText(file)
-};
+}
 
 const csvComponentsToJson = async (components, setComponents) => {
   try {
@@ -37,9 +37,9 @@ const csvComponentsToJson = async (components, setComponents) => {
   } catch (error) {
     console.error(error)
   }
-};
+}
 
-const CreateNewJobsheet = props => {
+const CreateNewJobsheet = () => {
   const { register, getValues, setValue, handleSubmit, watch } = useForm()
 
   const dispatch = useDispatch()
@@ -60,15 +60,15 @@ const CreateNewJobsheet = props => {
     }
     const [file2] = watch('pdf')
     if (file2) {
-      const [fileName2] = file2.name.split(".");
+      const [fileName2] = file2.name.split(".")
       setValue('name2', fileName2)
     }
   }, [watch("csv"), watch('pdf')])
 
   const onSubmit = data => {
-    delete data.csv;
-    data.components = components;
-    dispatch(addNewJobsheet(data, history));
+    delete data.csv
+    data.components = components
+    dispatch(addNewJobsheet(data, history))
   }
 
   return (

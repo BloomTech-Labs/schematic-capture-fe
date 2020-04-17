@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux"
 import {
   Projectsh2,
   LineBreak
-} from '../../Styles/Clients'
+} from '../../Styles/Client'
 
 import {
   dispatchers,

@@ -14,7 +14,7 @@ const { fetchComponents } = dispatchers
 
 const fetchComponentsSideEffect = async (dispatch, id, setComponents) => {
   await dispatch(fetchComponents(id, setComponents))
-};
+}
 
 const Components = () => {
   const { getValues, setValue, handleSubmit, watch } = useForm()
@@ -27,9 +27,9 @@ const Components = () => {
   const params = useParams()
 
   useEffect(() => {
-    fetchComponentsSideEffect(dispatch, params.id, setComponents);
+    fetchComponentsSideEffect(dispatch, params.id, setComponents)
     
-  }, []);
+  }, [])
 
   useEffect(() => {
     const file = watch("jpg")

@@ -6,7 +6,7 @@ import Projects from "./Projects"
 
 import {
   Section
-} from '../../Styles/Clients'
+} from '../../Styles/Client'
 
 import { actions } from "../../../shared/actions/dashboardActions"
 
