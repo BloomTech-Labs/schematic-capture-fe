@@ -5,7 +5,20 @@ import { dispatchers } from "../../../shared/actions/dashboardActions"
 import { BackToLink } from "../../../shared/components"
 import { Link } from "react-router-dom"
 
-import {Bread} from '../../Styles/Project'
+import {
+  Title,
+  Greeting,
+  Seperate,
+  RightSide,
+  Profile,
+  Hover
+} from '../../Styles/Dashboard'
+import { Bread } from '../../Styles/Project'
+import { Column } from '../../Styles/Client'
+
+import Search from '../../Styles/Dashboard/Search.png'
+import Swirl from '../../Styles/Dashboard/synchronize 1.png'
+import Unknown from '../../Styles/Dashboard/unknown.jpg'
 
 const { updateProjectName } = dispatchers
 
@@ -31,18 +44,33 @@ const PageHeader = () => {
 
   return (
     <>
-      <Bread>
-        <BackToLink
-          style={{ marginBottom: "2rem" }}
-          to="/dashboard"
-          text="Home"
-        />
-        <BackToLink
-          style={{ marginBottom: "2rem" }}
-          to={`/client/${currentClient.id}`}
-          text='Clients'
-        />
-      </Bread>
+      <Seperate>
+        <Column>
+          <Title>Schematic Capture</Title>
+          <Bread>
+            <BackToLink
+              style={{ marginBottom: "2rem" }}
+              to="/dashboard"
+              text="Home"
+            />
+            <BackToLink
+              style={{ marginBottom: "2rem" }}
+              to={`/client/${currentClient.id}`}
+              text='Clients'
+            />
+          </Bread>
+        </Column>
+        <br />
+        <RightSide>
+          <Hover src={Swirl} />
+          <Hover src={Search} />
+          <Greeting to="/profile" variant="primary">
+            Hi, Name
+            <Profile src={Unknown} />
+          </Greeting>
+        </RightSide>
+      </Seperate>
+      
       <div>
         {!!currentProject && (
           <>

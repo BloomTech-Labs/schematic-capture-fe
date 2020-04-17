@@ -55,6 +55,7 @@ export const ClientBox = styled(Link)`
 `
 
 export const Hover = styled.img`
+    max-height: 2rem;
     :hover{
         opacity: 0.5;
     }
