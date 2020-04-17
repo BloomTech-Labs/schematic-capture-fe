@@ -1,17 +1,19 @@
-import React from "react"
+import React from "react";
 
-import Header from "./CNProjectHeader"
-import Form from "./Form"
+import Header from "./CNProjectHeader";
+import Form from "./Form";
+
+import { Area } from "../../Styles/Projects/projectStyles";
 
 const NewProject = () => {
   return (
     <>
-      <div>
+      <Area>
         <Header />
         <Form />
-      </div>
+      </Area>
     </>
-  )
-}
+  );
+};
 
-export default NewProject
+export default NewProject;

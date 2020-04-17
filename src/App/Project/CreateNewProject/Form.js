@@ -5,7 +5,8 @@ import { useForm } from "react-hook-form";
 import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { Button, StyledField } from "../../Styles/Auth/loginStyles";
 import { InviteGroup } from "../../../shared/components/Styles/Invite-Styles";
-import Fields from "../../../shared/components/Components/Fields";
+
+import { Container, Form, Text } from "../../Styles/Projects/projectStyles";
 
 const { addNewProject } = dispatchers;
 
@@ -20,16 +21,16 @@ const CreateNewProject = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onAddNewProject)}>
-        <p>Please enter the project name below:</p>
-        <div>
+    <Container>
+      <Form onSubmit={handleSubmit(onAddNewProject)}>
+        <Text>Please enter the project name below:</Text>
+        <InviteGroup>
           {/*<form onSubmit={handleSubmit(onAddNewProject)}>*/}
           {/*  <StyledFields fields={schema} register={register} errors={errors} />*/}
           {/*  <button type="submit">Save</button>*/}
           {/*  <Link to={`/client/${params.id}`}>Cancel</Link>*/}
           {/*</form>*/}
-          <input
+          <StyledField
             type="string"
             name="name"
             id="name"
@@ -37,14 +38,14 @@ const CreateNewProject = () => {
             aria-label="Project Name"
             ref={register({ required: true })}
           />
-        </div>
-        <div>
-          <button variant="primary" submit="button" btnBlock>
+        </InviteGroup>
+        <InviteGroup>
+          <Button variant="primary" submit="button" btnBlock>
             Create
-          </button>
-        </div>
-      </form>
-    </div>
+          </Button>
+        </InviteGroup>
+      </Form>
+    </Container>
   );
 };
 

@@ -25,13 +25,13 @@ export const StyledLink = styled(Link)`
 export const StyledInput = styled(Input)``;
 
 export const Area = styled.div`
-height: 100vh;
-width: 95vw;
-margin-left: 5vw;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+  height: 100vh;
+  width: 95vw;
+  margin-left: 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 export const Container = styled.div`
   background: ${color.backgroundLight};
