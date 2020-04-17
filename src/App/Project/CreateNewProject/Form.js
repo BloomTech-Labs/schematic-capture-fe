@@ -38,10 +38,10 @@ const CreateNewProject = () => {
         <InviteGroup>
           <Button variant="primary" submit="button" btnBlock>
             Create
-          </Button>
-        </InviteGroup>
-      </Form>
-    </Container>
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

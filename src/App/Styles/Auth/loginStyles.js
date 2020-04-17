@@ -146,6 +146,55 @@ export const FieldError = styled.div`
   ${font.size(1.25)}
 `;
 
+export const Button1 = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 0.75rem 1rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  transition: all 0.1s;
+  border-radius: 0.5rem;
+  opacity: initial !important;
+  text-align: center;
+  ${font.bold}
+
+  ${(props) =>
+    props.btnBlock &&
+    `
+    display: block;
+    width: 100%;
+  `}
+
+  background-color: ${({ variant }) =>
+    !variant || variant === "primary" ? color.primary : "transparent"};
+
+  color: black;
+
+  border-color: ${({ variant }) =>
+    !variant || variant === "primary" ? color.primary : color.secondary};
+
+    .icon {
+        margin-right: 12px;
+        vertical-align: sub;
+    }
+
+  &:active {
+    transform: scale(.98);
+    box-shadow: none;
+  }
+
+  &:hover {
+    background-color: ${({ variant }) =>
+      variant === "primary" && Color(color.primary).darken(0.25).string()};
+    border-color: ${({ variant }) =>
+      variant === "secondary" && Color(color.secondary).darken(0.25).string()};
+  }
+`
+
 export const Button = styled.button`
   display: flex;
   align-items: center;
@@ -171,8 +220,7 @@ export const Button = styled.button`
   background-color: ${({ variant }) =>
     !variant || variant === "primary" ? color.primary : "transparent"};
 
-  color: ${({ variant }) =>
-    !variant || variant === "primary" ? color.textLight : color.textDark};
+  color: white;
 
   border-color: ${({ variant }) =>
     !variant || variant === "primary" ? color.primary : color.secondary};
@@ -193,4 +241,8 @@ export const Button = styled.button`
     border-color: ${({ variant }) =>
       variant === "secondary" && Color(color.secondary).darken(0.25).string()};
   }
-`;
+`
+
+export const Signin = styled.h2`
+  margin-bottom: 1rem;
+`

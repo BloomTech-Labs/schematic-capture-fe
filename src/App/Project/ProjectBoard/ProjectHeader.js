@@ -19,7 +19,7 @@ const PageHeader = () => {
   const dispatch = useDispatch()
 
   const handleProjectNameChange = event => {
-    setProjectName(event.target.value);
+    setProjectName(event.target.value)
   }
 
   const saveProjectName = event => {
@@ -67,7 +67,7 @@ const PageHeader = () => {
         )}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default PageHeader;
+export default PageHeader

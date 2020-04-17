@@ -1,25 +1,25 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from "styled-components"
+import { Link } from "react-router-dom"
 
-import { font, color } from "../../../shared/styles";
-import { buttonStyle } from "../../../shared/components/Styles/Button-Styles";
+import { font, color } from "../../../shared/styles"
+import { buttonStyle } from "../../../shared/components/Styles/Button-Styles"
 
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
   padding-right: 2rem;
-`;
+`
 
 export const PageName = styled.h1`
   ${font.size(3)}
   ${font.bold}
   margin-right: 1rem;
-`;
+`
 
 export const StyledLink = styled(Link)`
   ${buttonStyle}
-`;
+`
 
 export const Container = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ export const Container = styled.div`
   height: 100vh;
   justify-content: center;
   width: 100vw;
-`;
+`
 
 export const PreviewContainer = styled.div`
   display: flex;
@@ -43,51 +43,50 @@ export const PreviewContainer = styled.div`
   border: 1px black solid;
   background: rgb(213, 216, 220);
   overflow: auto;
-`;
+`
 
 export const PreviewTable = styled.table`
   display: table;
   white-space: nowrap;
   margin: auto;
   width: auto;
-`;
+`
 
 export const TableItems = styled.tr`
   background: ghostwhite;
   color: black;
-`;
+`
 
 export const TableHeader = styled.th`
   background: ghostwhite;
   font-size: 12px;
-`;
+`
 
 export const PreLoad = styled.div`
   color: black;
   @media (max-width: 850px) {
     transform: scale(0.5);
   }
-`;
+`
 
 export const Top = styled.div`
   width: 75vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-`;
+`
 
 export const TopLeft = styled.div`
   font-size: 16px;
   padding-bottom: 25%;
-`;
+`
 
 export const Inputs = styled.div`
 display: flex;
 margin: 0.3;
 flex-wrap: wrap;
 justify-content: space-between;
-
-`;
+`
 
 
 export const Input = styled.input`
@@ -98,20 +97,20 @@ color: white;
 bottom-padding: 12px;
 border-radius: 8px;
 margin:5px
-`;
+`
 
 export const TopRight = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
   margin: 0;
-`;
+`
 
 export const TopTopRight = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-`;
+`
 
 export const NewBlank = styled.button`
   border: 1px black solid;
@@ -120,7 +119,7 @@ export const NewBlank = styled.button`
   width: 200px;
   height: 40px;
   font-weight: bold;
-`;
+`
 
 export const SubmitButton = styled.button`
   border: 1px black solid;
@@ -130,7 +129,7 @@ export const SubmitButton = styled.button`
   height: 40px;
   font-weight: bold;
   right: 320px
-`;
+`
 
 export const ImportCsv = styled.label`
   border: 1px black solid;
@@ -139,7 +138,7 @@ export const ImportCsv = styled.label`
   width: 200px;
   height: 40px;
   display: block;
-`;
+`
 
 export const AddSchem = styled.label`
   border: 1px black solid;
@@ -147,14 +146,14 @@ export const AddSchem = styled.label`
   background: white;
   width: 200px;
   height: 40px;
-`;
+`
 
 export const CenterDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-`;
+`
 
 export const ImportText = styled.p`
   color: black;
@@ -163,11 +162,11 @@ export const ImportText = styled.p`
   text-align: center;
   height: 100%;
   line-height: 2.4285;
-`;
+`
 
 export const OrSpan = styled.span`
   font-size: 18px;
-`;
+`
 
 export const LineOr = styled.div`
   overflow: hidden;
@@ -193,4 +192,4 @@ export const LineOr = styled.div`
     left: 1em;
     margin-right: -50%;
   }
-`;
+`

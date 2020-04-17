@@ -1,16 +1,16 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
-import PrivateRoute from "../shared/components/Components/PrivateRoute";
-import Auth from "./Auth/Auth.js";
-import ClientBoard from "./Client/ClientBoard/ClientBoard.js";
-import CreateNewClient from "./Client/NewClientForm/CreateNewClient.js";
-import Dashboard from "./Dashboard/Dashboard.js";
-import JobsheetBoard from "./Jobsheet/JobsheetBoard/JobsheetBoard.js";
-import ProjectBoard from "./Project/ProjectBoard/ProjectBoard.js";
-import PageError from "../shared/components/Components/PageError";
-import NewProject from "./Project/CreateNewProject/CreateNewProject";
-import SendInvite from "../shared/components/Components/SendInvite";
-import NewJobSheet from "./Jobsheet/CreateNew/CNJobsheet";
+import React from "react"
+import { Switch, Route } from "react-router-dom"
+import PrivateRoute from "../shared/components/Components/PrivateRoute"
+import Auth from "./Auth/Auth.js"
+import ClientBoard from "./Client/ClientBoard/ClientBoard.js"
+import CreateNewClient from "./Client/NewClientForm/CreateNewClient.js"
+import Dashboard from "./Dashboard/Dashboard.js"
+import JobsheetBoard from "./Jobsheet/JobsheetBoard/JobsheetBoard.js"
+import ProjectBoard from "./Project/ProjectBoard/ProjectBoard.js"
+import PageError from "../shared/components/Components/PageError"
+import NewProject from "./Project/CreateNewProject/CreateNewProject"
+import SendInvite from "../shared/components/Components/SendInvite"
+import NewJobSheet from "./Jobsheet/CreateNew/CNJobsheet"
 
 const Router = () => {
   return (
@@ -31,7 +31,7 @@ const Router = () => {
         <Route path="*" component={PageError} />
       </Switch>
     </>
-  );
-};
+  )
+}
 
-export default Router;
+export default Router

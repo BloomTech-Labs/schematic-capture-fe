@@ -10,7 +10,7 @@ const Board = () => {
         <Clients />
       </main>
     </>
-  );
-};
+  )
+}
 
-export default Board;
+export default Board
