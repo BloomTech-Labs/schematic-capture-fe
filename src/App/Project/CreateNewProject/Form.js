@@ -17,16 +17,16 @@ const CreateNewProject = () => {
   };
 
   return (
-    <Container>
-      <Form onSubmit={handleSubmit(onAddNewProject)}>
-        <Text>Please enter the project name below:</Text>
-        <InviteGroup>
+    <div>
+      <form onSubmit={handleSubmit(onAddNewProject)}>
+        <p>Please enter the project name below:</p>
+        <div>
           {/*<form onSubmit={handleSubmit(onAddNewProject)}>*/}
           {/*  <StyledFields fields={schema} register={register} errors={errors} />*/}
           {/*  <button type="submit">Save</button>*/}
           {/*  <Link to={`/client/${params.id}`}>Cancel</Link>*/}
           {/*</form>*/}
-          <StyledField
+          <input
             type="string"
             name="name"
             id="name"
@@ -34,9 +34,9 @@ const CreateNewProject = () => {
             aria-label="Project Name"
             ref={register({ required: true })}
           />
-        </InviteGroup>
-        <InviteGroup>
-          <Button variant="primary" submit="button" btnBlock>
+        </div>
+        <div>
+          <button variant="primary" submit="button" btnBlock>
             Create
           </button>
         </div>
