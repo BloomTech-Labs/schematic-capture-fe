@@ -7,7 +7,8 @@ import {
   Projectsh1,
   NewProjBtn,
   Column,
-  ClientHeaderContain
+  ClientHeaderContain,
+  Section2
 } from '../../Styles/Client'
 
 import {
@@ -66,7 +67,7 @@ const PageHeader = () => {
       </Seperate>
       <ClientHeaderContain>
         {!!currentClient && (
-          <>
+          <Section2>
             <Projectsh1>{currentClient.companyName}</Projectsh1>
             <NewProjBtn
               to={`/client/${currentClient.id}/project/new`}
@@ -74,7 +75,7 @@ const PageHeader = () => {
             >
               New&nbsp;Project
             </NewProjBtn>
-          </>
+          </Section2>
         )}
       </ClientHeaderContain>
     </>

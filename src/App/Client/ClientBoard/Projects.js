@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from "react-redux"
 
 import {
   Projectsh2,
-  LineBreak
+  LineBreak,
+  Section
 } from '../../Styles/Client'
 
 import {
@@ -42,7 +43,7 @@ const Projects = () => {
   }, [])
 
   return client ? (
-    <>
+    <Section>
       <Projectsh2>Projects</Projectsh2>
       <LineBreak />
       <table>
@@ -68,7 +69,7 @@ const Projects = () => {
           ))}
         </tbody>
       </table>
-    </>
+    </Section>
   ) : (
     <Redirect to="/dashboard" />
   )

@@ -7,7 +7,16 @@ export const Column = styled.div`
 `
 
 export const Section = styled.section`
-    margin: 0 25rem
+    margin: 0 25rem;
+    // display: flex;
+    // justify-content: space-between;
+`
+
+export const Section2 = styled.section`
+    margin: 0 25rem;
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
 `
 
 export const Projectsh1 = styled.h1`

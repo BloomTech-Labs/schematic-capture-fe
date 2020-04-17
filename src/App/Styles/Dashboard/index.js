@@ -17,7 +17,8 @@ export const Seperate = styled.div`
 export const RightSide = styled.div`
     width: 25rem;
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
+    max-height: 2.5rem;
 `
 
 export const Greeting = styled.button`
@@ -25,6 +26,7 @@ export const Greeting = styled.button`
     color: ${color.black};
     font-size: ${font.normal};
     font-weight: bold;
+    padding: 0
     :hover{
         text-decoration: none
     }
