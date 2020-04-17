@@ -1,7 +1,16 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom"
 import { dispatchers } from "../../shared/actions/dashboardActions"
+
+import {
+  Section,
+  Clientsh2,
+  LineBreak,
+  ClientCont,
+  ClientBox,
+  Spacer,
+  FlexEnd
+} from '../Styles/Dashboard'
 
 const { fetchClients } = dispatchers
 
@@ -15,23 +24,25 @@ const Clients = () => {
   }, [])
 
   return (
-    <section>
-      <h2>Clients</h2>
-      <div>
+    <Section>
+      <Clientsh2>Clients</Clientsh2>
+      <LineBreak />
+      <ClientCont>
         {clients &&
           clients.map(client => (
-            <Link
-              data-client-name
-              key={client.id}
-              to={`/client/${client.id}`}
-            >
-              {client.companyName}
-              <div>Complete</div>
-              <div>Incomplete</div>
-            </Link>
+            <Spacer>
+              <ClientBox
+                data-client-name
+                key={client.id}
+                to={`/client/${client.id}`}
+              >
+                {client.companyName}
+              </ClientBox>
+              <FlexEnd>Incomplete</FlexEnd>
+            </Spacer>
           ))}
-      </div>
-    </section>
+      </ClientCont>
+    </Section>
   )
 }
 
