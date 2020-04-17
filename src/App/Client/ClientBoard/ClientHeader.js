@@ -1,8 +1,14 @@
 import React from "react"
 import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
 
 import { BackToLink } from "../../../shared/components"
+
+import {
+  Projectsh1,
+  NewProjBtn,
+  Column,
+  ClientHeaderContain
+} from '../../Styles/Client'
 
 import {
   Title,
@@ -13,7 +19,6 @@ import {
   Hover
 } from '../../Styles/Dashboard'
 import { Bread } from '../../Styles/Project'
-import { Column } from '../../Styles/Client'
 
 import Search from '../../Styles/Dashboard/Search.png'
 import Swirl from '../../Styles/Dashboard/synchronize 1.png'
@@ -59,19 +64,19 @@ const PageHeader = () => {
           </Greeting>
         </RightSide>
       </Seperate>
-      <div>
+      <ClientHeaderContain>
         {!!currentClient && (
           <>
-            <h1>{currentClient.companyName}</h1>
-            <Link
+            <Projectsh1>{currentClient.companyName}</Projectsh1>
+            <NewProjBtn
               to={`/client/${currentClient.id}/project/new`}
               variant="primary"
             >
               New&nbsp;Project
-            </Link>
+            </NewProjBtn>
           </>
         )}
-      </div>
+      </ClientHeaderContain>
     </>
   )
 }
