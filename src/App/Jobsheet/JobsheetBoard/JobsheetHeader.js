@@ -1,9 +1,7 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React from "react"
+import { useSelector } from "react-redux"
 
-import { Header, PageName } from "./Styles";
-
-import BackToLink from "../../../shared/components/Components/BackToLink";
+import BackToLink from "../../../shared/components/Components/BackToLink"
 
 const PageHeader = () => {
   const { currentProject, currentJobsheet } = useSelector(
@@ -26,7 +24,7 @@ const PageHeader = () => {
         )}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default PageHeader;
+export default PageHeader

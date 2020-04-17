@@ -6,13 +6,13 @@ import Header from "./ProjectHeader"
 import Jobsheets from "./Jobsheets"
 
 import { actions } from "../../../shared/actions/dashboardActions"
-const { SET_CURRENT_PROJECT } = actions;
+const { SET_CURRENT_PROJECT } = actions
 
 const setCurrentProjectSideEffect = async (dispatch, currentProjects, id) => {
-  const project = currentProjects.find(project => project.id === Number(id));
+  const project = currentProjects.find(project => project.id === Number(id))
 
-  await dispatch({ type: SET_CURRENT_PROJECT, payload: project });
-};
+  await dispatch({ type: SET_CURRENT_PROJECT, payload: project })
+}
 
 const Board = () => {
   const params = useParams();
