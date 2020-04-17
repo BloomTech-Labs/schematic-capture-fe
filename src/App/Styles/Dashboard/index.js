@@ -20,7 +20,7 @@ export const RightSide = styled.div`
     justify-content: space-between
 `
 
-export const Greeting = styled(Link)`
+export const Greeting = styled.button`
     text-decoration: none;
     color: ${color.black};
     font-size: ${font.normal};

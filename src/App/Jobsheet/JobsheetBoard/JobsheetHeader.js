@@ -18,10 +18,25 @@ import Search from '../../Styles/Dashboard/Search.png'
 import Swirl from '../../Styles/Dashboard/synchronize 1.png'
 import Unknown from '../../Styles/Dashboard/unknown.jpg'
 
+import swal from "sweetalert"
+
 const PageHeader = () => {
   const { currentProject, currentJobsheet, currentClient } = useSelector(
     state => state.dashboard
   );
+  const user = useSelector(state => state.auth.user)
+
+  const onLogout = () => {
+    localStorage.removeItem("idToken")
+    localStorage.removeItem("user")
+    localStorage.removeItem("state")
+    window.location.reload(false)
+    return swal("Logged out successfully!", {
+      icon: "success",
+      timer: 4000
+    })
+  }
+
   return (
     <>
       <Seperate>
@@ -49,8 +64,8 @@ const PageHeader = () => {
         <RightSide>
           <Hover src={Swirl} />
           <Hover src={Search} />
-          <Greeting to="/profile" variant="primary">
-            Hi, Name
+          <Greeting onClick={onLogout} variant="primary">
+            Hi, {user.firstName}
             <Profile src={Unknown} />
           </Greeting>
         </RightSide>
