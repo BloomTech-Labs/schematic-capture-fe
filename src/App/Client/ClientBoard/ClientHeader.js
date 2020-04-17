@@ -1,8 +1,13 @@
 import React from "react"
 import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
 
 import { BackToLink } from "../../../shared/components"
+
+import {
+  Projectsh1,
+  NewProjBtn,
+  ClientHeaderContain
+} from '../../Styles/Clients'
 
 const PageHeader = () => {
   const { currentClient } = useSelector(state => state.dashboard)
@@ -13,19 +18,19 @@ const PageHeader = () => {
         to="/dashboard"
         text="Dashboard"
       />
-      <div>
+      <ClientHeaderContain>
         {!!currentClient && (
           <>
-            <h1>{currentClient.companyName}</h1>
-            <Link
+            <Projectsh1>{currentClient.companyName}</Projectsh1>
+            <NewProjBtn
               to={`/client/${currentClient.id}/project/new`}
               variant="primary"
             >
               New&nbsp;Project
-            </Link>
+            </NewProjBtn>
           </>
         )}
-      </div>
+      </ClientHeaderContain>
     </>
   )
 }

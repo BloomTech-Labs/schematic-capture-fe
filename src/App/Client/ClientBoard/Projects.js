@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react"
 import { useParams, Redirect, Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 
+import {
+  Projectsh2,
+  LineBreak
+} from '../../Styles/Clients'
 
 import {
   dispatchers,
@@ -38,20 +42,33 @@ const Projects = () => {
   }, [])
 
   return client ? (
-    <section>
-      <h2>All Projects</h2>
-      <div>
-        {projects.map(project => (
-          <Link
-            data-project-name
-            key={project.id}
-            to={`/project/${project.id}`}
-          >
-            {project.name}
-          </Link>
-        ))}
-      </div>
-    </section>
+    <>
+      <Projectsh2>Projects</Projectsh2>
+      <LineBreak />
+      <table>
+        <thead>
+          <tr>
+            <th scope='col'>Name</th>
+            <th scope='col'>Description</th>
+            <th scope='col'>Technician/s</th>
+            <th scope='col'>Jobsheets</th>
+            <th scope='col'>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {projects.map(project => (
+            <tr key={project.id}>
+              {console.log('project data in projects.map in Projects.js: ', project)}
+              <td data-label="Project"><Link to={`/project/${project.id}`}>{project.name}</Link></td>
+              <td data-label="Project"><Link to={`/project/${project.id}`}>{project.description}</Link></td>
+              <td data-label="Project"><Link to={`/project/${project.id}`}>{project.technician}</Link></td>
+              <td data-label="Project"><Link to={`/project/${project.id}`}>{project.jobsheets}</Link></td>
+              <td data-label="Project"><Link to={`/project/${project.id}`}>{project.status}</Link></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   ) : (
     <Redirect to="/dashboard" />
   )
