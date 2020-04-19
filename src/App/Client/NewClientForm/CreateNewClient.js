@@ -3,12 +3,8 @@ import { useHistory, Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
 
-<<<<<<< HEAD
-import { dispatchers } from "../../../shared/actions/dashboardActions";
-=======
 import { dispatchers } from "../../../shared/actions/dashboardActions"
 import { Fields } from "../../../shared/components"
->>>>>>> 546438ae2d94272a35b2d932b97223ad67a658f8
 
 import BackToLink from "../../../shared/components/Components/BackToLink"
 
@@ -63,11 +59,7 @@ const CreateNewClient = () => {
 
   return (
     <>
-<<<<<<< HEAD
-      <InviteContainer>
-=======
       <div>
->>>>>>> 546438ae2d94272a35b2d932b97223ad67a658f8
         {/*<form onSubmit={handleSubmit(onAddNewClient)}>*/}
         {/*  <StyledFields fields={schema} register={register} errors={errors} />*/}
         {/*  <button type="Submit">Save</button>*/}

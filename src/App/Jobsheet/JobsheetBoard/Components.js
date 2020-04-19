@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
+// import styled from '../JobsheetBoard/Styles.js';
+import styled from "styled-components";
 
-import Picture from './Camera.png'
+
+import Picture from './CameraImage.png'
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
@@ -52,10 +55,39 @@ const Components = () => {
   const onSubmit = e => {
     console.log('hello there')
   }
+// Styles => Start Here 
+
+  const Header = styled.h2`
+  color: #3079BC ; 
+  top: 10px;
+  position: absolute;
+  padding: 2px;
+  `;
+
+  const TextWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  `;
+
+  const Text = styled.h4`
+  color: #3079BC;
+  `;
+
+  const Button = styled.button `
+  background-color: white;
+  height: 12%;
+  width: 12%;
+  `;
+  
 
   return (
+    
     <section>
-      <h2>All Components</h2>
+      <Header>Schematic Capture</Header>
+      <TextWrapper>
+      <component style={{ color: '#3079BC', }}>List</component>
+      <Text>Schematic </Text>
+      </TextWrapper>
       <div style={{ marginRight: "2.5rem", marginBottom: "2.5rem" }}>
         <table>
           <thead>

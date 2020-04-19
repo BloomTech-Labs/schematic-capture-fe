@@ -4,18 +4,9 @@ import { useParams } from "react-router-dom"
 import Header from "./ClientHeader"
 import Projects from "./Projects"
 
-<<<<<<< HEAD
-import Header from "./ClientHeader";
-import Projects from "./Projects";
-
-import { actions } from "../../../shared/actions/dashboardActions";
-
-const { SET_CURRENT_CLIENT } = actions;
-=======
 import { actions } from "../../../shared/actions/dashboardActions"
 
 const { SET_CURRENT_CLIENT } = actions
->>>>>>> 546438ae2d94272a35b2d932b97223ad67a658f8
 
 const setCurrentClient = async (clients, id, dispatch) => {
   const currentClient = clients.find(client => client.id === Number(id))
@@ -34,15 +25,10 @@ const Board = () => {
 
   return (
     <>
-<<<<<<< HEAD
-      <Header />
-      <Projects />
-=======
       <main>
         <Header />
         <Projects />
       </main>
->>>>>>> 546438ae2d94272a35b2d932b97223ad67a658f8
     </>
   )
 }

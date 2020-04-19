@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
-import csv from "csvtojson";
-import { dispatchers } from "../../../shared/actions/dashboardActions";
-import { csvToApi } from "../../../shared/utils/componentMap";
-import Header from "./CNJobsheetHeader";
-=======
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
@@ -16,7 +6,6 @@ import csv from "csvtojson"
 import { dispatchers } from "../../../shared/actions/dashboardActions"
 import { csvToApi } from "../../../shared/utils/componentMap"
 import Header from "./CNJobsheetHeader"
->>>>>>> 546438ae2d94272a35b2d932b97223ad67a658f8
 
 const { addNewJobsheet } = dispatchers
 
