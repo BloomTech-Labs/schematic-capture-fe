@@ -14,6 +14,12 @@ export const Seperate = styled.div`
     margin: 5rem 25rem 12rem 25rem
 `
 
+export const Seperate2 = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 5rem 25rem 4rem 25rem
+`
+
 export const RightSide = styled.div`
     width: 25rem;
     display: flex;
