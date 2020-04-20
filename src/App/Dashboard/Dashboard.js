@@ -5,10 +5,8 @@ import Clients from "./Clients"
 const Board = () => {
   return (
     <>
-      <main>
-        <Header />
-        <Clients />
-      </main>
+      <Header />
+      <Clients />
     </>
   )
 }

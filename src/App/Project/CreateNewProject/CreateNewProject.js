@@ -6,10 +6,8 @@ import Form from "./Form"
 const NewProject = () => {
   return (
     <>
-      <div>
-        <Header />
-        <Form />
-      </div>
+      <Header />
+      <Form />
     </>
   )
 }

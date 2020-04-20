@@ -15,21 +15,19 @@ const setCurrentProjectSideEffect = async (dispatch, currentProjects, id) => {
 }
 
 const Board = () => {
-  const params = useParams();
-  const dispatch = useDispatch();
+  const params = useParams()
+  const dispatch = useDispatch()
 
-  const { currentProjects } = useSelector(state => state.dashboard);
+  const { currentProjects } = useSelector(state => state.dashboard)
 
   useEffect(() => {
-    setCurrentProjectSideEffect(dispatch, currentProjects, params.id);
-  }, [dispatch, currentProjects, params.id]);
+    setCurrentProjectSideEffect(dispatch, currentProjects, params.id)
+  }, [dispatch, currentProjects, params.id])
 
   return (
     <>
-      <main>
-        <Header />
-        <Jobsheets />
-      </main>
+      <Header />
+      <Jobsheets />
     </>
   )
 }

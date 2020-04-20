@@ -1,11 +1,11 @@
-import React from "react";
-import { useHistory, useParams, Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
+import React from "react"
+import { useHistory, useParams, Link } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux"
+import { useForm } from "react-hook-form"
 
-import GoogleIcon from "../../shared/assets/google-icon";
+import GoogleIcon from "../../shared/assets/google-icon"
 
-import { dispatchers } from "../../shared/actions/authActions";
+import { dispatchers } from "../../shared/actions/authActions"
 
 import {
   FormContainer,
@@ -16,29 +16,29 @@ import {
   FieldError,
   Button,
   LineOr,
-} from "../Styles/Auth/loginStyles";
+} from "../Styles/Auth/loginStyles"
 
 function Register() {
-  const { register, handleSubmit, errors } = useForm();
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const params = useParams();
+  const { register, handleSubmit, errors } = useForm()
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const params = useParams()
 
-  const googleInfo = useSelector((state) => state.auth.googleInfo);
-  const { emailRegistration, googleRegistration, googleLogin } = dispatchers;
+  const googleInfo = useSelector((state) => state.auth.googleInfo)
+  const { emailRegistration, googleRegistration, googleLogin } = dispatchers
 
   const onSubmit = (data) => {
     if (googleInfo) {
-      dispatch(googleRegistration(data, history));
+      dispatch(googleRegistration(data, history))
     } else {
-      dispatch(emailRegistration(data, history));
+      dispatch(emailRegistration(data, history))
     }
-  };
+  }
 
   const onGoogleLogin = (event) => {
     event.preventDefault();
-    dispatch(googleLogin(history, params.inviteToken));
-  };
+    dispatch(googleLogin(history, params.inviteToken))
+  }
 
   return (
     <FormContainer>
@@ -204,7 +204,7 @@ function Register() {
         </>
       )}
     </FormContainer>
-  );
+  )
 }
 
-export default Register;
+export default Register
