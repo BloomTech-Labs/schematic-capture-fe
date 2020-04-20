@@ -2,13 +2,18 @@ import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
-// import styled from '../JobsheetBoard/Styles.js';
-import styled from "styled-components";
+import {
+  Header,
+  navigation,
+  importButton
+} from '../../Styles/Jobsheet/ComponetStyle';
+
+
 
 
 import Picture from './CameraImage.png'
 
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import { dispatchers } from "../../../shared/actions/dashboardActions"
 import DropboxChooser from "../CreateNew/Dropbox"
@@ -55,39 +60,22 @@ const Components = () => {
   const onSubmit = e => {
     console.log('hello there')
   }
-// Styles => Start Here 
 
-  const Header = styled.h2`
-  color: #3079BC ; 
-  top: 10px;
-  position: absolute;
-  padding: 2px;
-  `;
-
-  const TextWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  `;
-
-  const Text = styled.h4`
-  color: #3079BC;
-  `;
-
-  const Button = styled.button `
-  background-color: white;
-  height: 12%;
-  width: 12%;
-  `;
-  
 
   return (
     
     <section>
       <Header>Schematic Capture</Header>
-      <TextWrapper>
-      <component style={{ color: '#3079BC', }}>List</component>
-      <Text>Schematic </Text>
-      </TextWrapper>
+      <navigation>
+      <ul>
+        <li>
+          Schematic
+        </li>
+        <li>
+          List
+        </li>
+      </ul>
+      </navigation>
       <div style={{ marginRight: "2.5rem", marginBottom: "2.5rem" }}>
         <table>
           <thead>
@@ -113,7 +101,7 @@ const Components = () => {
                   <td data-label="Part Number">{component.partNumber}</td>
                   <td data-label="Stock Code">{component.stockCode}</td>
                   <td data-label="Select Image">
-                    <Button onClick={() => newToggle(component.componentId)}><img src={Picture} className="image"/></Button>
+                    <importButton onClick={() => newToggle(component.componentId)}><img src={Picture} className="image"/></importButton>
                   </td>
                   <td data-label="Resources">{component.resources}</td>
                   <td data-label="Cutsheet">{component.cutsheet}</td>
