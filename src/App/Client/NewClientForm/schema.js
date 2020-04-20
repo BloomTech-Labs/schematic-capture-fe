@@ -40,4 +40,4 @@ export const schema = [
     ref: ref => ref,
     placeholder: "ZIP Code"
   }
-];
+]

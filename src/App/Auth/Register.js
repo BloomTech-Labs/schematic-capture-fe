@@ -1,7 +1,11 @@
-import React from "react";
-import { useHistory, useParams, Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
+import React from "react"
+import { useHistory, useParams, Link } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux"
+import { useForm } from "react-hook-form"
+
+import GoogleIcon from "../../shared/assets/google-icon"
+
+import { dispatchers } from "../../shared/actions/authActions"
 
 import {
   FormContainer,
@@ -11,35 +15,30 @@ import {
   StyledField,
   FieldError,
   Button,
-  LineOr
-} from "./Styles";
-
-import GoogleIcon from "../../shared/assets/google-icon";
-
-import { dispatchers } from "../../shared/actions/authActions";
+  LineOr,
+} from "../Styles/Auth/loginStyles"
 
 function Register() {
-  const { register, handleSubmit, errors } = useForm();
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const params = useParams();
+  const { register, handleSubmit, errors } = useForm()
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const params = useParams()
 
-  const googleInfo = useSelector(state => state.auth.googleInfo);
-  const { emailRegistration, googleRegistration, googleLogin } = dispatchers;
+  const googleInfo = useSelector((state) => state.auth.googleInfo)
+  const { emailRegistration, googleRegistration, googleLogin } = dispatchers
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     if (googleInfo) {
-      dispatch(googleRegistration(data, history));
+      dispatch(googleRegistration(data, history))
     } else {
-      dispatch(emailRegistration(data, history));
+      dispatch(emailRegistration(data, history))
     }
-  };
+  }
 
-  const onGoogleLogin = event => {
+  const onGoogleLogin = (event) => {
     event.preventDefault();
-
-    dispatch(googleLogin(history, params.inviteToken));
-  };
+    dispatch(googleLogin(history, params.inviteToken))
+  }
 
   return (
     <FormContainer>
@@ -103,7 +102,7 @@ function Register() {
             aria-describedby="error-email-required error-email-pattern"
             ref={register({
               required: !googleInfo,
-              pattern: /^\S+@\S+$/i
+              pattern: /^\S+@\S+$/i,
             })}
           />
           {errors.email && errors.email.type === "required" && (
@@ -162,7 +161,7 @@ function Register() {
             ref={register({
               required: true,
               minLength: 7,
-              maxLength: 12
+              maxLength: 12,
             })}
           />
           {errors.phone && errors.phone.type === "required" && (
@@ -205,7 +204,7 @@ function Register() {
         </>
       )}
     </FormContainer>
-  );
+  )
 }
 
-export default Register;
+export default Register

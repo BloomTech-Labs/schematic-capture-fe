@@ -1,41 +1,37 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react"
+import { useParams } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
 
-import Header from "./JobsheetHeader";
-import Components from "./Components";
-import { actions } from "../../../shared/actions/dashboardActions";
+import Header from "./JobsheetHeader"
+import Components from "./Components"
+import { actions } from "../../../shared/actions/dashboardActions"
 
-import { Main } from "./Styles";
-
-const { SET_CURRENT_JOBSHEET } = actions;
+const { SET_CURRENT_JOBSHEET } = actions
 
 const setCurrentJobsheetSideEffect = async (dispatch, currentJobsheets, id) => {
   const jobsheet = currentJobsheets.find(
     jobsheet => jobsheet.id === Number(id)
-  );
+  )
 
-  await dispatch({ type: SET_CURRENT_JOBSHEET, payload: jobsheet });
-};
+  await dispatch({ type: SET_CURRENT_JOBSHEET, payload: jobsheet })
+}
 
 const Board = () => {
-  const params = useParams();
-  const dispatch = useDispatch();
+  const params = useParams()
+  const dispatch = useDispatch()
 
-  const { currentJobsheets } = useSelector(state => state.dashboard);
+  const { currentJobsheets } = useSelector(state => state.dashboard)
 
   useEffect(() => {
-    setCurrentJobsheetSideEffect(dispatch, currentJobsheets, params.id);
-  }, [dispatch, currentJobsheets, params.id]);
+    setCurrentJobsheetSideEffect(dispatch, currentJobsheets, params.id)
+  }, [dispatch, currentJobsheets, params.id])
 
   return (
     <>
-      <Main>
-        <Header />
-        <Components />
-      </Main>
+      <Header />
+      <Components />
     </>
-  );
-};
+  )
+}
 
-export default Board;
+export default Board

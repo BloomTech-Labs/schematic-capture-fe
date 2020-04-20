@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import Color from "color";
 
-import { color, font, mixin } from "../../shared/styles";
+import { color, font, mixin } from "../../../shared/styles";
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -19,7 +19,6 @@ export const AuthContainer = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  border: 2px solid white;
 `;
 
 export const Container = styled.div`
@@ -30,21 +29,24 @@ export const Container = styled.div`
   margin: 20vh auto 20vh auto;
   width: 100%;
   height: 100%;
-  @media (min-width: 900px) {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-  }
+  // @media (min-width: 900px) {
+  //   flex-direction: row;
+  //   align-items: center;
+  //   justify-content: space-evenly;
+  // }
 `;
 
 export const PageTitle = styled.h1`
   ${font.size(3)}
   ${font.bold}
-  color: ${color.textLight};
-  margin: 0 0 4rem;
-  @media (min-width: 900px) {
-    margin: 0 2rem;
-  }
+  color: white;
+  padding:2rem;
+  background-color: rgba(48,121,188,0.8);
+  border-radius: 15px;
+  margin: 0 0 4rem 0;
+  // @media (min-width: 900px) {
+  //   margin: 0 2rem;
+  // }
 `;
 
 export const BackToLink = styled(Link)`
@@ -57,7 +59,6 @@ export const FormContainer = styled.div`
   color: ${color.gray300};
   padding: 4rem;
   width: 95%;
-  ${mixin.boxShadowMedium};
   h1 {
     margin-top: 0;
     margin-bottom: 1rem;
@@ -145,7 +146,7 @@ export const FieldError = styled.div`
   ${font.size(1.25)}
 `;
 
-export const Button = styled.button`
+export const Button1 = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -158,9 +159,10 @@ export const Button = styled.button`
   transition: all 0.1s;
   border-radius: 0.5rem;
   opacity: initial !important;
+  text-align: center;
   ${font.bold}
 
-  ${props =>
+  ${(props) =>
     props.btnBlock &&
     `
     display: block;
@@ -170,8 +172,7 @@ export const Button = styled.button`
   background-color: ${({ variant }) =>
     !variant || variant === "primary" ? color.primary : "transparent"};
 
-  color: ${({ variant }) =>
-    !variant || variant === "primary" ? color.textLight : color.textDark};
+  color: black;
 
   border-color: ${({ variant }) =>
     !variant || variant === "primary" ? color.primary : color.secondary};
@@ -188,14 +189,60 @@ export const Button = styled.button`
 
   &:hover {
     background-color: ${({ variant }) =>
-      variant === "primary" &&
-      Color(color.primary)
-        .darken(0.25)
-        .string()};
+      variant === "primary" && Color(color.primary).darken(0.25).string()};
     border-color: ${({ variant }) =>
-      variant === "secondary" &&
-      Color(color.secondary)
-        .darken(0.25)
-        .string()};
+      variant === "secondary" && Color(color.secondary).darken(0.25).string()};
   }
-`;
+`
+
+export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 0.75rem 1rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  transition: all 0.1s;
+  border-radius: 0.5rem;
+  opacity: initial !important;
+  ${font.bold}
+
+  ${(props) =>
+    props.btnBlock &&
+    `
+    display: block;
+    width: 100%;
+  `}
+
+  background-color: ${({ variant }) =>
+    !variant || variant === "primary" ? color.primary : "transparent"};
+
+  color: white;
+
+  border-color: ${({ variant }) =>
+    !variant || variant === "primary" ? color.primary : color.secondary};
+
+    .icon {
+        margin-right: 12px;
+        vertical-align: sub;
+    }
+
+  &:active {
+    transform: scale(.98);
+    box-shadow: none;
+  }
+
+  &:hover {
+    background-color: ${({ variant }) =>
+      variant === "primary" && Color(color.primary).darken(0.25).string()};
+    border-color: ${({ variant }) =>
+      variant === "secondary" && Color(color.secondary).darken(0.25).string()};
+  }
+`
+
+export const Signin = styled.h2`
+  margin-bottom: 1rem;
+`

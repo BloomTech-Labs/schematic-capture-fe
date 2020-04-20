@@ -1,47 +1,49 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { dispatchers } from "../../shared/actions/dashboardActions"
 
-import { Section, SectionName, StyledLink2, ClientsContain } from "./Styles";
+import {
+  Section,
+  Clientsh2,
+  LineBreak,
+  ClientCont,
+  ClientBox,
+  Spacer,
+  FlexEnd
+} from '../Styles/Dashboard'
 
-import { CompleteBadge, IncompleteBadge } from '../../shared/components/Styles/ConsolidatedStyles'
-
-import { dispatchers } from "../../shared/actions/dashboardActions";
-
-const { fetchClients } = dispatchers;
+const { fetchClients } = dispatchers
 
 const Clients = () => {
-  const dispatch = useDispatch();
-  const clients = useSelector(state => state.dashboard.clients);
-  console.log(clients);
+  const dispatch = useDispatch()
+  const clients = useSelector(state => state.dashboard.clients)
+  console.log(clients)
 
   useEffect(() => {
-    dispatch(fetchClients());
-  }, []);
+    dispatch(fetchClients())
+  }, [])
 
   return (
     <Section>
-      <SectionName>Clients</SectionName>
-      <ClientsContain>
+      <Clientsh2>Clients</Clientsh2>
+      <LineBreak />
+      <ClientCont>
         {clients &&
           clients.map(client => (
-            <StyledLink2
-              data-client-name
-              key={client.id}
-              to={`/client/${client.id}`}
-            >
-              {client.companyName}
-              {/* {client.allComplete ? 
-                <CompleteBadge>Complete</CompleteBadge> :
-                <IncompleteBadge>Incomplete</IncompleteBadge>
-              } */}
-              {/* temporary hard-coding completion status */}
-              <CompleteBadge>Complete</CompleteBadge>
-              <IncompleteBadge>Incomplete</IncompleteBadge>
-            </StyledLink2>
+            <Spacer>
+              <ClientBox
+                data-client-name
+                key={client.id}
+                to={`/client/${client.id}`}
+              >
+                {client.companyName}
+              </ClientBox>
+              <FlexEnd>Incomplete</FlexEnd>
+            </Spacer>
           ))}
-      </ClientsContain>
+      </ClientCont>
     </Section>
-  );
-};
+  )
+}
 
-export default Clients;
+export default Clients

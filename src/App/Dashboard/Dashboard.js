@@ -1,19 +1,14 @@
-import React from "react";
-
-import Header from "./DashboardHeader";
-import Clients from "./Clients";
-
-import { Main } from "../../shared/components/Styles/ConsolidatedStyles";
+import React from "react"
+import Header from "./DashboardHeader"
+import Clients from "./Clients"
 
 const Board = () => {
   return (
     <>
-      <Main>
-        <Header />
-        <Clients />
-      </Main>
+      <Header />
+      <Clients />
     </>
-  );
-};
+  )
+}
 
-export default Board;
+export default Board
