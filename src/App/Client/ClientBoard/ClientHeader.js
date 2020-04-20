@@ -14,7 +14,7 @@ import {
 import {
   Title,
   Greeting,
-  Seperate,
+  Seperate2,
   RightSide,
   Profile,
   Hover
@@ -44,7 +44,7 @@ const PageHeader = () => {
 
   return (
     <>
-      <Seperate>
+      <Seperate2>
         <Column>
           <Title>Schematic Capture</Title>
           <Bread>
@@ -64,7 +64,7 @@ const PageHeader = () => {
             <Profile src={Unknown} />
           </Greeting>
         </RightSide>
-      </Seperate>
+      </Seperate2>
       <ClientHeaderContain>
         {!!currentClient && (
           <Section2>
