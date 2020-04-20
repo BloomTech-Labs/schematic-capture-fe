@@ -8,8 +8,8 @@ import {
   FormGroup,
   StyledField,
   FieldError,
-  Button
-} from "./Styles"
+  Button,
+} from "../Styles/Auth/loginStyles"
 
 import { BackToLink } from "../../shared/components"
 
@@ -21,9 +21,9 @@ const ForgotPassword = () => {
   const history = useHistory()
   const { forgotPassword } = dispatchers
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     dispatch(forgotPassword(data, history))
-  };
+  }
 
   return (
     <FormContainer>
@@ -45,7 +45,7 @@ const ForgotPassword = () => {
             aria-describedby="error-email-required error-email-pattern"
             ref={register({
               required: true,
-              pattern: /^\S+@\S+$/i
+              pattern: /^\S+@\S+$/i,
             })}
           />
           {errors.email && errors.email.type === "required" && (
@@ -64,7 +64,7 @@ const ForgotPassword = () => {
         </FormGroup>
       </form>
     </FormContainer>
-  );
-};
+  )
+}
 
-export default ForgotPassword;
+export default ForgotPassword

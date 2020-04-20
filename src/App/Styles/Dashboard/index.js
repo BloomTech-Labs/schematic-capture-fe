@@ -11,11 +11,93 @@ export const Title = styled.h1`
 export const Seperate = styled.div`
     display: flex;
     justify-content: space-between;
-    margin: 2.5rem 15rem 12rem 15rem
+    margin: 5rem 25rem 12rem 25rem
 `
 
-export const Greeting = styled(Link)`
+export const RightSide = styled.div`
+    width: 25rem;
+    display: flex;
+    justify-content: space-between;
+    max-height: 2.5rem;
+`
+
+export const Greeting = styled.button`
     text-decoration: none;
     color: ${color.black};
-    font-size: ${font.small}
+    font-size: ${font.normal};
+    font-weight: bold;
+    padding: 0
+    :hover{
+        text-decoration: none
+    }
+`
+
+export const Section = styled.section`
+    margin: 0 25rem
+`
+
+export const Clientsh2 = styled.h2`
+    color: ${color.blue};
+    font-size: ${font.normal}
+`
+
+export const ClientCont = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between
+`
+
+export const ClientBox = styled(Link)`
+    text-align: center;
+    font-size: 36px;
+    color: rgba(33,36,44,0.5);
+    :hover{
+        text-decoration: none;
+    }
+`
+
+export const Hover = styled.img`
+    max-height: 2rem;
+    :hover{
+        opacity: 0.5;
+    }
+`
+
+export const LineBreak = styled.hr`
+    margin-bottom: 5rem
+`
+export const Spacer = styled.div`
+    width: 40rem;
+    height: 40rem;
+    border: 2px solid rgba(33,36,44,0.1);
+    margin-bottom: 6rem;
+    border-radius:10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+`
+
+export const FlexEnd = styled.button`
+    position: relative;
+    top: 15rem;
+    left: 29rem;
+    background-color: ${color.red};
+    padding: .75rem;
+    width: 10rem;
+    font-size: ${font.small};
+    border-radius:15px;
+    color: white;
+    opacity: 1;
+    font-weight: bold;
+    :hover{
+        color: rgba(33,36,44,0.5);
+    }
+`
+
+export const Profile = styled.img`
+    max-width: 4rem;
+    max-height: 3rem;
+    margin: 0 0 0 1rem;
+    border-radius: 50px;
 `

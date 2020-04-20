@@ -3,7 +3,7 @@ import { css } from "styled-components"
 export const color = {
     blue: '#3079BC',
     black: '#21242C',
-    red: '#FFFFFF'
+    red: '#FA5656'
 }
 
 export const font = {
