@@ -11,13 +11,25 @@ export const Title = styled.h1`
 export const Seperate = styled.div`
     display: flex;
     justify-content: space-between;
-    margin: 5rem 25rem 12rem 25rem
+    margin: 5rem 25rem 12rem 25rem;
+    @media (max-width: 1500px) {
+        margin: 5rem 20rem 12rem 20rem
+    }
+    @media (max-width: 1200px) {
+        margin: 5rem 16rem 12rem 16rem
+    }
 `
 
 export const Seperate2 = styled.div`
     display: flex;
     justify-content: space-between;
-    margin: 5rem 25rem 4rem 25rem
+    margin: 5rem 25rem 4rem 25rem;
+    @media (max-width: 1500px) {
+        margin: 5rem 20rem 12rem 20rem
+    }
+    @media (max-width: 1200px) {
+        margin: 5rem 16rem 12rem 16rem
+    }
 `
 
 export const RightSide = styled.div`
@@ -39,7 +51,13 @@ export const Greeting = styled.button`
 `
 
 export const Section = styled.section`
-    margin: 0 25rem
+    margin: 0 25rem;
+    @media (max-width: 1500px) {
+        margin: 0 20rem 
+    }
+    @media (max-width: 1200px) {
+        margin: 0 16rem 
+    }
 `
 
 export const Clientsh2 = styled.h2`

@@ -11,6 +11,12 @@ export const Section = styled.section`
     margin: 0 25rem;
     // display: flex;
     // justify-content: space-between;
+    @media (max-width: 1500px) {
+      margin: 0 20rem 
+  }
+  @media (max-width: 1200px) {
+      margin: 0 16rem 
+  }
 `
 
 export const Section2 = styled.section`
@@ -18,6 +24,12 @@ export const Section2 = styled.section`
     display: flex;
     justify-content: space-between;
     width: 70%;
+    @media (max-width: 1500px) {
+      margin: 0 20rem 
+  }
+  @media (max-width: 1200px) {
+      margin: 0 16rem
+  }
 `
 
 export const Projectsh1 = styled.h1`
@@ -35,7 +47,7 @@ export const LineBreak = styled.hr`
     margin-bottom: 5rem
 `
 
-export const NewProjBtn = styled.button`
+export const NewProjBtn = styled(Link)`
   text-decoration: none;
   background-color: ${color.blue};
   color: white;
