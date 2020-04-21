@@ -77,7 +77,7 @@ const Components = () => {
         <table>
           <thead>
             <tr>
-            <th scope="col">Component</th>
+              <th scope="col">Component</th>
               <th scope="col">Description</th>
               <th scope="col">Manufacturer</th>
               <th scope="col">Part Number</th>

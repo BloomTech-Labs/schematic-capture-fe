@@ -25,6 +25,9 @@ color: #3079BC;
 
 export const Wrapper = styled.div`
 
-margin-left: 55px;
+margin-left: 1150px;
+padding-bottom: 15px;
+display: flex;
+justify-content:space-evenly
 
 `;
