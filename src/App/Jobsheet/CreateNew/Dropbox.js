@@ -1,6 +1,5 @@
 import { useDropboxChooser } from 'use-dropbox-chooser'
 import React from "react"
-import { dispatchers } from '../../../shared/actions/dashboardActions'
 
 function Dropbox() {
   const { open, isOpen } = useDropboxChooser({

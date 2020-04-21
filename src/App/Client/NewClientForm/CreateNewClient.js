@@ -59,89 +59,85 @@ const CreateNewClient = () => {
 
   return (
     <>
-      <div>
         {/*<form onSubmit={handleSubmit(onAddNewClient)}>*/}
         {/*  <StyledFields fields={schema} register={register} errors={errors} />*/}
         {/*  <button type="Submit">Save</button>*/}
         {/*  <Link to="/dashboard">Cancel</Link>*/}
         {/*</form>*/}
+      <form onSubmit={handleSubmit(onAddNewClient)}>
+        <h1>Create a New Client</h1>
         <div>
-          <form onSubmit={handleSubmit(onAddNewClient)}>
-            <h1>Create a New Client</h1>
-            <div>
-              <Fields
-                type="string"
-                name="companyName"
-                id="companyName"
-                placeholder="Company Name"
-                aria-label="Company Name"
-                ref={register({ required: true })}
-              />
-              <Fields
-                type="tel"
-                name="phone"
-                id="phone"
-                placeholder="Phone Number"
-                aria-label="Phone Number"
-                ref={register()}
-              />
-              <Fields
-                type="string"
-                name="street"
-                id="street"
-                placeholder="Street"
-                aria-label="Street"
-                ref={register({})}
-              />
-              <Fields
-                type="string"
-                name="city"
-                id="city"
-                placeholder="City"
-                aria-label="City"
-                ref={register({})}
-              />
-              <Fields
-                type="string"
-                name="state"
-                id="state"
-                placeholder="State"
-                aria-label="State"
-                ref={register({})}
-              />
-              <Fields
-                type="string"
-                name="zip"
-                id="zip"
-                placeholder="Zip Code"
-                aria-label="Zip Code"
-                ref={register({})}
-              />
-              <br />
-              <br />
-              {errors.email && errors.email.type === "required" && (
-                <div id="error-email-required">
-                  Please enter an email address.
-                </div>
-              )}
+          <Fields
+            type="string"
+            name="companyName"
+            id="companyName"
+            placeholder="Company Name"
+            aria-label="Company Name"
+            ref={register({ required: true })}
+          />
+          <Fields
+            type="tel"
+            name="phone"
+            id="phone"
+            placeholder="Phone Number"
+            aria-label="Phone Number"
+            ref={register()}
+          />
+          <Fields
+            type="string"
+            name="street"
+            id="street"
+            placeholder="Street"
+            aria-label="Street"
+            ref={register({})}
+          />
+          <Fields
+            type="string"
+            name="city"
+            id="city"
+            placeholder="City"
+            aria-label="City"
+            ref={register({})}
+          />
+          <Fields
+            type="string"
+            name="state"
+            id="state"
+            placeholder="State"
+            aria-label="State"
+            ref={register({})}
+          />
+          <Fields
+            type="string"
+            name="zip"
+            id="zip"
+            placeholder="Zip Code"
+            aria-label="Zip Code"
+            ref={register({})}
+          />
+          <br />
+          <br />
+          {errors.email && errors.email.type === "required" && (
+            <div id="error-email-required">
+              Please enter an email address.
+            </div>
+          )}
 
-              {errors.name && errors.name.type === "required" && (
-                <div id="error-name-required">
-                  Please enter a name.
-                </div>
-              )}
+          {errors.name && errors.name.type === "required" && (
+            <div id="error-name-required">
+              Please enter a name.
             </div>
-            <div>
-              <button variant="primary" submit="button" btnBlock>
-                Create
-              </button>
-            </div>
-            <div>
-              <BackToLink to="/dashboard" text="Back to Dashboard" />
-            </div>
-          </form>
+          )}
         </div>
-      </div>
+        <div>
+          <button variant="primary" submit="button" btnBlock>
+            Create
+          </button>
+        </div>
+        <div>
+          <BackToLink to="/dashboard" text="Back to Dashboard" />
+        </div>
+      </form>
     </>
   )
 }

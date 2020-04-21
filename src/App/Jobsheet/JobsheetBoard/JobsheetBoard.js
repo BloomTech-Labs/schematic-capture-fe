@@ -28,10 +28,8 @@ const Board = () => {
 
   return (
     <>
-      <main>
-        <Header />
-        <Components />
-      </main>
+      <Header />
+      <Components />
     </>
   )
 }
