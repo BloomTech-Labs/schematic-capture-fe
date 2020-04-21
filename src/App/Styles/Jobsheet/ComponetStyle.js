@@ -56,6 +56,8 @@ padding: 5px;
 opacity: 0.5;
 `;
 
-export const img = styled.img`
-cursor: pointer;
-`;
+export const Img = styled.img`
+:hover{
+        text-decoration: none;
+        opacity: 0.75;};
+`
