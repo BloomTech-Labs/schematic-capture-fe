@@ -47,7 +47,7 @@ export const LineBreak = styled.hr`
     margin-bottom: 5rem
 `
 
-export const NewProjBtn = styled.button`
+export const NewProjBtn = styled(Link)`
   text-decoration: none;
   background-color: ${color.blue};
   color: white;
