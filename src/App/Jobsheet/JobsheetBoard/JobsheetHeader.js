@@ -9,7 +9,7 @@ import {
   Seperate,
   RightSide,
   Profile,
-  Hover
+  Hover,
 } from '../../Styles/Dashboard'
 import { Bread } from '../../Styles/Project'
 import { Column } from '../../Styles/Client'
@@ -73,7 +73,7 @@ const PageHeader = () => {
       <div>
         {!!currentJobsheet && (
           <>
-            <h1>{currentJobsheet.name}</h1>
+            <h1 class="Currentjobsheet">{currentJobsheet.name}</h1>
           </>
         )}
       </div>

@@ -3,9 +3,23 @@ import { useParams } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
 
-import Picture from './Camera.png'
+import {
+  Header,
+  List,
+  importButton,
+  Table,
+  Wrapper,
+  Status,
+  Img
+} from '../../Styles/Jobsheet/ComponetStyle';
 
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+
+
+import search from './searchIcon.png'
+import Picture from './CameraImage.png'
+import sort from './Sort.png'
+
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import { dispatchers } from "../../../shared/actions/dashboardActions"
 import DropboxChooser from "../CreateNew/Dropbox"
@@ -53,14 +67,21 @@ const Components = () => {
     console.log('hello there')
   }
 
+
   return (
+    
     <section>
-      <h2>All Components</h2>
+      <Status>Incomplete({components.id})</Status>
+      <List>List</List>
+      <Wrapper>
+      <img class="Img" src={search} alt="search Icon"></img>
+      <img class="Img" src={sort} alt="sort"></img>
+      </Wrapper>
       <div style={{ marginRight: "2.5rem", marginBottom: "2.5rem" }}>
-        <table>
+        <Table class="Table">
           <thead>
             <tr>
-            <th scope="col">Component</th>
+              <th scope="col">Component</th>
               <th scope="col">Description</th>
               <th scope="col">Manufacturer</th>
               <th scope="col">Part Number</th>
@@ -81,7 +102,7 @@ const Components = () => {
                   <td data-label="Part Number">{component.partNumber}</td>
                   <td data-label="Stock Code">{component.stockCode}</td>
                   <td data-label="Select Image">
-                    <Button onClick={() => newToggle(component.componentId)}><img src={Picture} className="image"/></Button>
+                    <importButton onClick={() => newToggle(component.componentId)}><img src={Picture} className="image"/></importButton>
                   </td>
                   <td data-label="Resources">{component.resources}</td>
                   <td data-label="Cutsheet">{component.cutsheet}</td>
@@ -89,7 +110,7 @@ const Components = () => {
                 </tr>
               ))}
           </tbody>
-        </table>
+        </Table>
         
         <Modal isOpen={modal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 1300 }}
         toggle={toggle}>

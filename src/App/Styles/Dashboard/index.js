@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 export const Title = styled.h1`
     color: ${color.blue};
     font-weight: bold;
-    font-size: ${font.normal}
-`
+    font-size: ${font.normal};
+`;
 
 export const Seperate = styled.div`
     display: flex;
@@ -63,7 +63,7 @@ export const Section = styled.section`
 
 export const Clientsh2 = styled.h2`
     color: ${color.blue};
-    font-size: ${font.normal}
+    font-size: ${font.normal};
 `
 
 export const ClientCont = styled.div`
@@ -71,9 +71,9 @@ export const ClientCont = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     @media (max-width: 1500px) {
-        justify-content: space-around;
+    justify-content: space-around;
     }
-`
+`;
 
 export const ClientBox = styled(Link)`
     text-align: center;
@@ -92,8 +92,9 @@ export const Hover = styled.img`
 `
 
 export const LineBreak = styled.hr`
-    margin-bottom: 5rem
-`
+  margin-bottom: 5rem;
+`;
+
 export const Spacer = styled.div`
     width: 40rem;
     height: 40rem;
@@ -116,11 +117,11 @@ export const Spacer = styled.div`
         height: 40rem;
     }
     @media (max-width: 1325px) {
-        width 37.5%;
+        width: 37.5%;
         height: 35rem;
     }
     @media (max-width: 1200px) {
-        width 37.5%;
+        width: 37.5%;
         height: 30rem;
     }
 `
