@@ -3,32 +3,32 @@ import { Link } from 'react-router-dom';
 import { color, font } from '../../Styles/index'
 
 export const Column = styled.div`
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 `
 
 export const Section = styled.section`
-    margin: 0 25rem;
-    // display: flex;
-    // justify-content: space-between;
-    @media (max-width: 1500px) {
-      margin: 0 20rem 
+  margin: 0 25rem;
+  // display: flex;
+  // justify-content: space-between;
+  @media (max-width: 1500px) {
+    margin: 0 20rem 
   }
   @media (max-width: 1200px) {
-      margin: 0 16rem 
+    margin: 0 16rem 
   }
 `
 
 export const Section2 = styled.section`
-    margin: 0 25rem;
-    display: flex;
-    justify-content: space-between;
-    width: 70%;
-    @media (max-width: 1500px) {
-      margin: 0 20rem 
+  margin: 0 25rem;
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  @media (max-width: 1500px) {
+    margin: 0 20rem 
   }
   @media (max-width: 1200px) {
-      margin: 0 16rem
+    margin: 0 16rem
   }
 `
 
@@ -38,13 +38,13 @@ export const Projectsh1 = styled.h1`
 `
 
 export const Projectsh2 = styled.h2`
-    color: ${color.blue};
-    font-size: ${font.normal};
-    padding-top: 2rem;
+  color: ${color.blue};
+  font-size: ${font.normal};
+  padding-top: 2rem;
 `
 
 export const LineBreak = styled.hr`
-    margin-bottom: 5rem
+  margin-bottom: 5rem
 `
 
 export const NewProjBtn = styled(Link)`
@@ -57,7 +57,8 @@ export const NewProjBtn = styled(Link)`
   opacity: 1;
   font-weight: bold;
   :hover{
-    color: black;
+    color: rgba(33,36,44,0.6);
+    text-decoration:none;
   }
 `
 
@@ -90,8 +91,17 @@ export const StyledTableData = styled.td`
 `
 
 export const ProjectLink = styled(Link)`
-    color: #3079BC;
-    :hover{
-        text-decoration: none;
-    }
+  color: ${color.blue};
+  :hover{
+    text-decoration: none;
+  }
+`
+
+export const ProjectLinkName = styled(Link)`
+  color: ${color.blue};
+  :hover{
+    text-decoration: none;
+    color: ${color.black};
+    opacity: 0.5;
+  }
 `

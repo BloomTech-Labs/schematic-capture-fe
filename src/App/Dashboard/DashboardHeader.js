@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import {
   Title,
   Greeting,
@@ -6,11 +6,11 @@ import {
   RightSide,
   Profile,
   Hover,
-} from "../Styles/Dashboard";
-import { useSelector } from "react-redux";
-import Search from "../Styles/Dashboard/Search.png";
-import Swirl from "../Styles/Dashboard/synchronize 1.png";
-import Unknown from "../Styles/Dashboard/unknown.jpg";
+} from "../Styles/Dashboard"
+import { useSelector } from "react-redux"
+import Search from "../Styles/Dashboard/Search.png"
+import Swirl from "../Styles/Dashboard/synchronize 1.png"
+import Unknown from "../Styles/Dashboard/unknown.jpg"
 
 import swal from "sweetalert";
 
@@ -29,8 +29,8 @@ const DashboardHeader = () => {
     return swal("Logged out successfully!", {
       icon: "success",
       timer: 4000,
-    });
-  };
+    })
+  }
 
   return (
     <Seperate>
@@ -45,7 +45,7 @@ const DashboardHeader = () => {
         </Greeting>
       </RightSide>
     </Seperate>
-  );
-};
+  )
+}
 
-export default DashboardHeader;
+export default DashboardHeader

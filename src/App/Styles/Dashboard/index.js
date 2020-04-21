@@ -46,7 +46,8 @@ export const Greeting = styled.button`
     font-weight: bold;
     padding: 0;
     :hover{
-        text-decoration: none
+        text-decoration: none;
+        opacity: 0.75;
     }
 `
 

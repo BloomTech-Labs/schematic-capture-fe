@@ -10,7 +10,8 @@ import {
   StyledTableHead,
   StyledTableRow,
   StyledTableData,
-  ProjectLink
+  ProjectLink,
+  ProjectLinkName
 } from '../../Styles/Client'
 
 import {
@@ -65,7 +66,7 @@ const Projects = () => {
           {projects.map(project => (
             <StyledTableRow key={project.id}>
               {console.log('project data in projects.map in Projects.js: ', project)}
-              <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.name}</ProjectLink></StyledTableData>
+              <StyledTableData data-label="Project"><ProjectLinkName to={`/project/${project.id}`}>{project.name}</ProjectLinkName></StyledTableData>
               <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.description}</ProjectLink></StyledTableData>
               <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.technician}</ProjectLink></StyledTableData>
               <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.jobsheets}</ProjectLink></StyledTableData>
