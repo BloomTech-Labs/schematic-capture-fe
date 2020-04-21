@@ -1,20 +1,20 @@
-import React from "react"
-import { useParams, useHistory } from "react-router-dom"
-import { useDispatch } from "react-redux"
-import { useForm } from "react-hook-form"
-import { dispatchers } from "../../../shared/actions/dashboardActions"
+import React from "react";
+import { useParams, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
+import { dispatchers } from "../../../shared/actions/dashboardActions";
 
-const { addNewProject } = dispatchers
+const { addNewProject } = dispatchers;
 
 const CreateNewProject = () => {
-  const { handleSubmit, register } = useForm()
-  const params = useParams()
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const { handleSubmit, register } = useForm();
+  const params = useParams();
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const onAddNewProject = (data) => {
-    dispatch(addNewProject(data, params.id, history))
-  }
+    dispatch(addNewProject(data, params.id, history));
+  };
 
   return (
     <div>
@@ -42,7 +42,7 @@ const CreateNewProject = () => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default CreateNewProject
+export default CreateNewProject;
