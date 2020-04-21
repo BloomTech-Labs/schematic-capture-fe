@@ -8,14 +8,23 @@ position: absolute;
 padding: 2px;
 `;
 
-export const li = styled.li`
-   display: flexbox;
-   color: #3079BC;
-
-`;
-
 export const importButton = styled.button`
 background-color: white;
 height: 12%;
 width: 12%;
+`;
+
+export const List = styled.li`
+color: #3079BC;
+   text-decoration: underline;
+   font-size: 1em;
+   list-style-type: none;
+   margin-left: 20px;
+`;
+
+
+export const Wrapper = styled.div`
+
+margin-left: 55px;
+
 `;

@@ -2,16 +2,19 @@ import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
+
 import {
   Header,
-  navigation,
-  importButton
+  List,
+  importButton,
+  Wrapper
 } from '../../Styles/Jobsheet/ComponetStyle';
 
 
 
-
+import search from './searchIcon.png'
 import Picture from './CameraImage.png'
+import sort from './Sort.png'
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
@@ -65,17 +68,11 @@ const Components = () => {
   return (
     
     <section>
-      <Header>Schematic Capture</Header>
-      <navigation>
-      <ul>
-        <li>
-          Schematic
-        </li>
-        <li>
-          List
-        </li>
-      </ul>
-      </navigation>
+     <List>list</List>
+      <Wrapper>
+      <img src={search} alt="search Icon"></img>
+      <img src={sort} alt="sort"></img>
+      </Wrapper>
       <div style={{ marginRight: "2.5rem", marginBottom: "2.5rem" }}>
         <table>
           <thead>
