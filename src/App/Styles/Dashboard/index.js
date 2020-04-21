@@ -97,11 +97,11 @@ export const Spacer = styled.div`
         height: 40rem;
     }
     @media (max-width: 1325px) {
-        width 37.5%;
+        width: 37.5%;
         height: 35rem;
     }
     @media (max-width: 1200px) {
-        width 37.5%;
+        width: 37.5%;
         height: 30rem;
     }
 `

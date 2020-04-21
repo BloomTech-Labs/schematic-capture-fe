@@ -7,6 +7,7 @@ import {
   Header,
   List,
   importButton,
+  Table,
   Wrapper
 } from '../../Styles/Jobsheet/ComponetStyle';
 
@@ -68,13 +69,13 @@ const Components = () => {
   return (
     
     <section>
-     <List>list</List>
+     <List>List</List>
       <Wrapper>
       <img src={search} alt="search Icon"></img>
       <img src={sort} alt="sort"></img>
       </Wrapper>
       <div style={{ marginRight: "2.5rem", marginBottom: "2.5rem" }}>
-        <table>
+        <Table class="Table">
           <thead>
             <tr>
               <th scope="col">Component</th>
@@ -106,7 +107,7 @@ const Components = () => {
                 </tr>
               ))}
           </tbody>
-        </table>
+        </Table>
         
         <Modal isOpen={modal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 1300 }}
         toggle={toggle}>

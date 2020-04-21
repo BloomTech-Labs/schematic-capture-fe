@@ -15,19 +15,33 @@ width: 12%;
 `;
 
 export const List = styled.li`
-color: #3079BC;
+   color: #3079BC;
    text-decoration: underline;
-   font-size: 1em;
+   font-size: 1.5em;
    list-style-type: none;
    margin-left: 20px;
+   margin-top: 50px;
 `;
 
-
 export const Wrapper = styled.div`
-
 margin-left: 1150px;
 padding-bottom: 15px;
 display: flex;
-justify-content:space-evenly
+justify-content:space-evenly;`
 
+export const Table = styled.table`
+  margin-left:10px;
+  border-left:hidden;
+  border-right:hidden;
+  color: #21242C;
+
+   th{
+      height: 65px;
+      font-weight: bold;
+      color: #21242C;
+   }
+   td{
+      height: 65px;
+      opacity:0.5;
+   }
 `;
