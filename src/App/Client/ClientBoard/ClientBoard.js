@@ -25,10 +25,8 @@ const Board = () => {
 
   return (
     <>
-      <main>
         <Header />
         <Projects />
-      </main>
     </>
   )
 }

@@ -2,6 +2,16 @@ import React, { useEffect, useState } from "react"
 import { useParams, Redirect, Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 
+import {
+  Projectsh2,
+  LineBreak,
+  Section,
+  ProjectsTable,
+  StyledTableHead,
+  StyledTableRow,
+  StyledTableData,
+  ProjectLink
+} from '../../Styles/Client'
 
 import {
   dispatchers,
@@ -38,20 +48,33 @@ const Projects = () => {
   }, [])
 
   return client ? (
-    <section>
-      <h2>All Projects</h2>
-      <div>
-        {projects.map(project => (
-          <Link
-            data-project-name
-            key={project.id}
-            to={`/project/${project.id}`}
-          >
-            {project.name}
-          </Link>
-        ))}
-      </div>
-    </section>
+    <Section>
+      <Projectsh2>Projects</Projectsh2>
+      <LineBreak />
+      <ProjectsTable>
+        <thead>
+          <StyledTableRow>
+            <StyledTableHead scope='col'>Name</StyledTableHead>
+            <StyledTableHead scope='col'>Description</StyledTableHead>
+            <StyledTableHead scope='col'>Technician/s</StyledTableHead>
+            <StyledTableHead scope='col'>Jobsheets</StyledTableHead>
+            <StyledTableHead scope='col'>Status</StyledTableHead>
+          </StyledTableRow>
+        </thead>
+        <tbody>
+          {projects.map(project => (
+            <StyledTableRow key={project.id}>
+              {console.log('project data in projects.map in Projects.js: ', project)}
+              <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.name}</ProjectLink></StyledTableData>
+              <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.description}</ProjectLink></StyledTableData>
+              <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.technician}</ProjectLink></StyledTableData>
+              <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.jobsheets}</ProjectLink></StyledTableData>
+              <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.status}</ProjectLink></StyledTableData>
+            </StyledTableRow>
+          ))}
+        </tbody>
+      </ProjectsTable>
+    </Section>
   ) : (
     <Redirect to="/dashboard" />
   )

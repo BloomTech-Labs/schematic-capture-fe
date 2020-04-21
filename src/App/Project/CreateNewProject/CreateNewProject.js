@@ -8,10 +8,8 @@ import { Area } from "../../Styles/Projects/projectStyles";
 const NewProject = () => {
   return (
     <>
-      <Area>
-        <Header />
-        <Form />
-      </Area>
+      <Header />
+      <Form />
     </>
   );
 };

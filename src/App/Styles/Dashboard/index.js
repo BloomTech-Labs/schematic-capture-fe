@@ -14,17 +14,25 @@ export const Seperate = styled.div`
     margin: 5rem 25rem 12rem 25rem
 `
 
+export const Seperate2 = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 5rem 25rem 4rem 25rem
+`
+
 export const RightSide = styled.div`
     width: 25rem;
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
+    max-height: 2.5rem;
 `
 
-export const Greeting = styled(Link)`
+export const Greeting = styled.button`
     text-decoration: none;
     color: ${color.black};
     font-size: ${font.normal};
     font-weight: bold;
+    padding: 0
     :hover{
         text-decoration: none
     }
@@ -42,7 +50,10 @@ export const Clientsh2 = styled.h2`
 export const ClientCont = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between
+    justify-content: space-between;
+    @media (max-width: 1500px) {
+        justify-content: space-around;
+    }
 `
 
 export const ClientBox = styled(Link)`
@@ -55,6 +66,7 @@ export const ClientBox = styled(Link)`
 `
 
 export const Hover = styled.img`
+    max-height: 2rem;
     :hover{
         opacity: 0.5;
     }
@@ -72,7 +84,26 @@ export const Spacer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    @media (max-width: 1750px) {
+        width: 30%;
+        height: 37rem;
+    }
+    @media (max-width: 1650px) {
+        width: 30%;
+        height: 35rem;
+    }
+    @media (max-width: 1500px) {
+        width: 40%;
+        height: 40rem;
+    }
+    @media (max-width: 1325px) {
+        width 37.5%;
+        height: 35rem;
+    }
+    @media (max-width: 1200px) {
+        width 37.5%;
+        height: 30rem;
+    }
 `
 
 export const FlexEnd = styled.button`
@@ -89,6 +120,26 @@ export const FlexEnd = styled.button`
     font-weight: bold;
     :hover{
         color: rgba(33,36,44,0.5);
+    }
+    @media (max-width: 1750px) {
+        top: 13.5rem;
+        left: 25rem;
+    }
+    @media (max-width: 1700px) {
+        top: 13.5rem;
+        left: 23.5rem;
+    }
+    @media (max-width: 1650px) {
+        top: 35%;
+        left: 67%;
+    }
+    @media (max-width: 1600px) {
+        top: 35%;
+        left: 65%;
+    }
+    @media (max-width: 1300px) {
+        top: 35%;
+        left: 61%;
     }
 `
 
