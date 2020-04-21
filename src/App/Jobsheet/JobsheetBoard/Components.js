@@ -8,7 +8,8 @@ import {
   List,
   importButton,
   Table,
-  Wrapper
+  Wrapper,
+  Status
 } from '../../Styles/Jobsheet/ComponetStyle';
 
 
@@ -69,7 +70,8 @@ const Components = () => {
   return (
     
     <section>
-     <List>List</List>
+      <Status>Incomplete({components.id})</Status>
+      <List>List</List>
       <Wrapper>
       <img src={search} alt="search Icon"></img>
       <img src={sort} alt="sort"></img>

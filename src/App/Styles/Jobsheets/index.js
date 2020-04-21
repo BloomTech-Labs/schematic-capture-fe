@@ -17,7 +17,7 @@ export const Section = styled.section`
 export const Projectsh2 = styled.h2`
     color: ${color.blue};
     font-size: ${font.normal};
-    padding-top 2rem;
+    padding-top: 2rem;
 `;
 
 export const LineBreak = styled.hr`

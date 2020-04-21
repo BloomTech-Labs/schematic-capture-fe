@@ -30,18 +30,32 @@ display: flex;
 justify-content:space-evenly;`
 
 export const Table = styled.table`
+
   margin-left:10px;
   border-left:hidden;
   border-right:hidden;
   color: #21242C;
-
+  
    th{
       height: 65px;
       font-weight: bold;
       color: #21242C;
+      
    }
    td{
       height: 65px;
       opacity:0.5;
+      border-bottom:0.5 px solid #21242C;
    }
+`;
+
+export const Status = styled.h1`
+font-size: 1.3rem;
+color: #21242C;
+padding: 5px;
+opacity: 0.5;
+`;
+
+export const img = styled.img`
+cursor: pointer;
 `;
