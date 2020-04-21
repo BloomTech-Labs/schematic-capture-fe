@@ -13,10 +13,10 @@ export const Seperate = styled.div`
     justify-content: space-between;
     margin: 5rem 25rem 12rem 25rem;
     @media (max-width: 1500px) {
-        margin: 5rem 21rem 12rem 21rem
+        margin: 5rem 20rem 12rem 20rem
     }
     @media (max-width: 1200px) {
-        margin: 5rem 17rem 12rem 17rem
+        margin: 5rem 16rem 12rem 16rem
     }
 `
 
@@ -25,10 +25,10 @@ export const Seperate2 = styled.div`
     justify-content: space-between;
     margin: 5rem 25rem 4rem 25rem;
     @media (max-width: 1500px) {
-        margin: 5rem 21rem 12rem 21rem
+        margin: 5rem 20rem 12rem 20rem
     }
     @media (max-width: 1200px) {
-        margin: 5rem 17rem 12rem 17rem
+        margin: 5rem 16rem 12rem 16rem
     }
 `
 
@@ -53,10 +53,10 @@ export const Greeting = styled.button`
 export const Section = styled.section`
     margin: 0 25rem;
     @media (max-width: 1500px) {
-        margin: 0 21rem 
+        margin: 0 20rem 
     }
     @media (max-width: 1200px) {
-        margin: 0 17rem 
+        margin: 0 16rem 
     }
 `
 
