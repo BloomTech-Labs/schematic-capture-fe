@@ -57,7 +57,8 @@ export const NewProjBtn = styled(Link)`
   opacity: 1;
   font-weight: bold;
   :hover{
-    color: black;
+    color: rgba(33,36,44,0.6);
+    text-decoration:none;
   }
 `
 
@@ -90,8 +91,17 @@ export const StyledTableData = styled.td`
 `
 
 export const ProjectLink = styled(Link)`
-    color: #3079BC;
+    color: ${color.blue};
     :hover{
         text-decoration: none;
+    }
+`
+
+export const ProjectLinkName = styled(Link)`
+    color: ${color.blue};
+    :hover{
+        text-decoration: none;
+        color: ${color.black};
+        opacity: 0.5;
     }
 `

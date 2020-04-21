@@ -44,9 +44,10 @@ export const Greeting = styled.button`
     color: ${color.black};
     font-size: ${font.normal};
     font-weight: bold;
-    padding: 0
+    padding: 0;
     :hover{
-        text-decoration: none
+        text-decoration: none;
+        opacity: 0.75;
     }
 `
 
