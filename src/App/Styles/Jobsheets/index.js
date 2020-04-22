@@ -7,17 +7,17 @@ export const Section = styled.section`
   // display: flex;
   // justify-content: space-between;
   @media (max-width: 1500px) {
-    margin: 0 21rem;
+    margin: 0 20rem;
   }
   @media (max-width: 1200px) {
-    margin: 0 17rem;
+    margin: 0 16rem;
   }
 `;
 
 export const Projectsh2 = styled.h2`
-    color: ${color.blue};
-    font-size: ${font.normal};
-    padding-top 2rem;
+  color: ${color.blue};
+  font-size: ${font.normal};
+  padding-top: 2rem;
 `;
 
 export const LineBreak = styled.hr`

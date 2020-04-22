@@ -11,6 +11,7 @@ import {
   StyledTableRow,
   StyledTableData,
   ProjectLink,
+  ProjectLinkName,
 } from "../../Styles/Client";
 
 import { dispatchers, actions } from "../../../shared/actions/dashboardActions";
@@ -66,11 +67,10 @@ const Projects = () => {
                 project
               )}
               <StyledTableData data-label="Project">
-                <ProjectLink to={`/project/${project.id}`}>
+                <ProjectLinkName to={`/project/${project.id}`}>
                   {project.name}
-                </ProjectLink>
+                </ProjectLinkName>
               </StyledTableData>
-
               <StyledTableData data-label="Project">
                 <ProjectLink to={`/project/${project.id}`}>
                   {project.description}

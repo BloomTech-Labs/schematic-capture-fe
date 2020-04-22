@@ -5,18 +5,18 @@ import { Link } from 'react-router-dom'
 export const Title = styled.h1`
     color: ${color.blue};
     font-weight: bold;
-    font-size: ${font.normal}
-`
+    font-size: ${font.normal};
+`;
 
 export const Seperate = styled.div`
     display: flex;
     justify-content: space-between;
     margin: 5rem 25rem 12rem 25rem;
     @media (max-width: 1500px) {
-        margin: 5rem 21rem 12rem 21rem
+        margin: 5rem 20rem 12rem 20rem
     }
     @media (max-width: 1200px) {
-        margin: 5rem 17rem 12rem 17rem
+        margin: 5rem 16rem 12rem 16rem
     }
 `
 
@@ -25,10 +25,10 @@ export const Seperate2 = styled.div`
     justify-content: space-between;
     margin: 5rem 25rem 4rem 25rem;
     @media (max-width: 1500px) {
-        margin: 5rem 21rem 12rem 21rem
+        margin: 5rem 20rem 12rem 20rem
     }
     @media (max-width: 1200px) {
-        margin: 5rem 17rem 12rem 17rem
+        margin: 5rem 16rem 12rem 16rem
     }
 `
 
@@ -44,25 +44,26 @@ export const Greeting = styled.button`
     color: ${color.black};
     font-size: ${font.normal};
     font-weight: bold;
-    padding: 0
+    padding: 0;
     :hover{
-        text-decoration: none
+        text-decoration: none;
+        opacity: 0.75;
     }
 `
 
 export const Section = styled.section`
     margin: 0 25rem;
     @media (max-width: 1500px) {
-        margin: 0 21rem 
+        margin: 0 20rem 
     }
     @media (max-width: 1200px) {
-        margin: 0 17rem 
+        margin: 0 16rem 
     }
 `
 
 export const Clientsh2 = styled.h2`
     color: ${color.blue};
-    font-size: ${font.normal}
+    font-size: ${font.normal};
 `
 
 export const ClientCont = styled.div`
@@ -70,9 +71,9 @@ export const ClientCont = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     @media (max-width: 1500px) {
-        justify-content: space-around;
+    justify-content: space-around;
     }
-`
+`;
 
 export const ClientBox = styled(Link)`
     text-align: center;
@@ -91,8 +92,9 @@ export const Hover = styled.img`
 `
 
 export const LineBreak = styled.hr`
-    margin-bottom: 5rem
-`
+  margin-bottom: 5rem;
+`;
+
 export const Spacer = styled.div`
     width: 40rem;
     height: 40rem;
@@ -115,11 +117,11 @@ export const Spacer = styled.div`
         height: 40rem;
     }
     @media (max-width: 1325px) {
-        width 37.5%;
+        width: 37.5%;
         height: 35rem;
     }
     @media (max-width: 1200px) {
-        width 37.5%;
+        width: 37.5%;
         height: 30rem;
     }
 `
