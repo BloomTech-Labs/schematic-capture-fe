@@ -6,6 +6,8 @@ import {
   RightSide,
   Profile,
   Hover,
+  SearchIn,
+  Buttion
 } from "../Styles/Dashboard"
 import { useSelector } from "react-redux"
 import Search from "../Styles/Dashboard/Search.png"
@@ -51,12 +53,11 @@ const DashboardHeader = () => {
         <Title>Schematic Capture</Title>
         <br />
         <RightSide>
-          <Hover src={Swirl} />
-          <button onClick={() => setEditing(!editing)}>
+          <Buttion onClick={() => setEditing(!editing)}>
             <Hover src={Search} />
-          </button>
+          </Buttion>
           {editing ? 
-          <input
+          <SearchIn
             type='search'
             onChange={(e) => setSearch(e.target.value)}
             placeholder='Search'

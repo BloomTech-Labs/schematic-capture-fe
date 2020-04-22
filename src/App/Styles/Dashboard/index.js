@@ -33,7 +33,7 @@ export const Seperate2 = styled.div`
 `
 
 export const RightSide = styled.div`
-    width: 25rem;
+    max-width:50rem;
     display: flex;
     justify-content: space-between;
     max-height: 2.5rem;
@@ -45,6 +45,7 @@ export const Greeting = styled.button`
     font-size: ${font.normal};
     font-weight: bold;
     padding: 0;
+    margin-left: 1rem;
     :hover{
         text-decoration: none;
         opacity: 0.75;
@@ -92,7 +93,7 @@ export const Hover = styled.img`
 `
 
 export const LineBreak = styled.hr`
-  margin-bottom: 5rem;
+    margin-bottom: 5rem;
 `;
 
 export const Spacer = styled.div`
@@ -168,4 +169,15 @@ export const Profile = styled.img`
     max-height: 3rem;
     margin: 0 0 0 1rem;
     border-radius: 50px;
+`
+
+export const SearchIn = styled.input`
+    border-radius: 15px;
+    max-width:10rem;
+    text-align:center;
+    margin: 0 2rem;
+`
+
+export const Buttion = styled.button`
+    margin-right: 2rem;
 `

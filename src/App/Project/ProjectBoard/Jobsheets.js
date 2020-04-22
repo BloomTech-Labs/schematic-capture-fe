@@ -35,6 +35,8 @@ const Jobsheets = () => {
   useEffect(() => {
     fetchJobsheetsSideEffect(dispatch, params.id, setJobsheets);
   }, []);
+  
+  useEffect(() => {console.log('tyler look here', jobsheets)},[jobsheets])
 
   return !!currentProject ? (
     <Section>
@@ -87,7 +89,7 @@ const Jobsheets = () => {
     </Section>
   ) : (
     <Redirect to={`/client/${currentClient.id}`} />
-  );
-};
+  )
+}
 
 export default Jobsheets;
