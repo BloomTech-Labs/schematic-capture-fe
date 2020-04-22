@@ -5,7 +5,8 @@ import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { BackToLink } from "../../../shared/components";
 import { Link } from "react-router-dom";
 
-import { ClientHeaderContain, Section2, NewProjBtn } from "../../Styles/Client";
+import { ClientHeaderContain, Section2 } from "../../Styles/Client";
+import { NewProjBtn } from "../../Styles/Jobsheets";
 
 import {
   Title,
@@ -15,6 +16,7 @@ import {
   Profile,
   Hover,
 } from "../../Styles/Dashboard";
+
 import { Bread } from "../../Styles/Project";
 import { Column } from "../../Styles/Client";
 
@@ -102,14 +104,17 @@ const PageHeader = () => {
                 </Link>
               </div>
             ) : (
-              <h1 onClick={() => setIsEditing(true)}>{projectName}</h1>
+              <div>
+                <h1 onClick={() => setIsEditing(true)}>{projectName}</h1>
+                <h4>Incomplete (5/5) </h4>
+              </div>
             )}
-            <Link
+            <NewProjBtn
               to={`/project/${currentClient.id}/jobsheet/new`}
               variant="primary"
             >
-              New&nbsp;Jobsheet
-            </Link>
+              New Jobsheet
+            </NewProjBtn>
           </Section2>
         )}
       </div>

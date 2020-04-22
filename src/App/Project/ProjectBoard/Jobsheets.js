@@ -15,6 +15,7 @@ import {
   StyledTableData,
   ProjectLink,
   FlexEnd,
+  FlexEnd2,
 } from "../../Styles/Jobsheets";
 
 const { fetchJobsheets } = dispatchers;
@@ -79,7 +80,11 @@ const Jobsheets = () => {
               </ProjectLink>
             </StyledTableData>
             <StyledTableData>
-              <FlexEnd>{jobsheet.status}</FlexEnd>
+              {jobsheet.status === "Unassigned" ? (
+                <FlexEnd>{jobsheet.status}</FlexEnd>
+              ) : (
+                <FlexEnd2>{jobsheet.status}</FlexEnd2>
+              )}
             </StyledTableData>
           </StyledTableRow>
         ))}
