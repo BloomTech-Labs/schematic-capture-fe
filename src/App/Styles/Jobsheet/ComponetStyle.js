@@ -34,7 +34,9 @@ export const List = styled.h1`
 
 export const ImgWrapper = styled.div`
    margin-left: 1200px;
-   padding-bottom: 10px`
+   padding-bottom: 10px;`
+
+   export const Img = styled.input``;
 
 
 

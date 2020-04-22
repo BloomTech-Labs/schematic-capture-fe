@@ -76,8 +76,9 @@ const Components = () => {
       <Wrapper>
       <List>List</List>
       <ImgWrapper>
-      <img class="Img" src={search} alt="search Icon"></img>
-      <img class="Img" src={sort} alt="sort"></img>
+      <input class="Img" name="submit" src={search} type="image"></input>
+      {/* <img class="Img" src={sort} alt="sort"></img> */}
+      <input class="Img" name="submit" src={sort} type="image"></input>
       </ImgWrapper>
       </Wrapper>
       <div style={{ marginRight: "2.5rem", marginBottom: "2.5rem" }}>
