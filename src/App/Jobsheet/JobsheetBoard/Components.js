@@ -10,7 +10,7 @@ import {
   Table,
   Wrapper,
   Status,
-  Img
+  ImgWrapper
 } from '../../Styles/Jobsheet/ComponetStyle';
 
 
@@ -72,10 +72,13 @@ const Components = () => {
     
     <section>
       <Status>Incomplete({components.id})</Status>
-      <List>List</List>
+      
       <Wrapper>
+      <List>List</List>
+      <ImgWrapper>
       <img class="Img" src={search} alt="search Icon"></img>
       <img class="Img" src={sort} alt="sort"></img>
+      </ImgWrapper>
       </Wrapper>
       <div style={{ marginRight: "2.5rem", marginBottom: "2.5rem" }}>
         <Table class="Table">
