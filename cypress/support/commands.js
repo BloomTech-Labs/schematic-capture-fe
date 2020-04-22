@@ -24,9 +24,6 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-// imported to enable all local storage commands to be used in the Cypress environment
-import "cypress-localstorage-commands"
-
 // Commands currently intended for use in testing the front end:
 // Log in using the front end, ending up on dashboard:
 Cypress.Commands.add('loginScript', () => {

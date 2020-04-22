@@ -16,12 +16,6 @@ describe("User at Dashboard", function() {
 
     it('Set local storage after successful login', function() {
       cy.url().should('include', '/dashboard')
-      cy.getLocalStorage('idToken')
-        .should('exist')
-      cy.getLocalStorage('state')
-       .should('exist')
-      cy.getLocalStorage('user')
-       .should('exist')
     })
 
     it('captures correct location information', function() {
