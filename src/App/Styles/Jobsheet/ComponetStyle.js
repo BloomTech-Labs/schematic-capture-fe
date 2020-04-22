@@ -20,7 +20,6 @@ export const List = styled.li`
    font-size: 1.5em;
    list-style-type: none;
    margin-left: 20px;
-   margin-top: 50px;
 `;
 
 export const Wrapper = styled.div`
@@ -28,6 +27,7 @@ margin-left: 1150px;
 padding-bottom: 15px;
 display: flex;
 justify-content:space-evenly;`
+
 
 export const Table = styled.table`
 
