@@ -127,6 +127,7 @@ export const FlexEnd2 = styled.button`
 
 export const NewProjBtn = styled(Link)`
   display: flex;
+  margin: 1.5rem;
   justify-content: center;
   align-items: center;
   text-decoration: none;
@@ -142,4 +143,10 @@ export const NewProjBtn = styled(Link)`
     color: white;
     background-color: ${color.blue};
   }
+`;
+
+export const BtnCont = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
 `;
