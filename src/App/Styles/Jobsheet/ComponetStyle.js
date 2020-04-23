@@ -36,7 +36,33 @@ export const ImgWrapper = styled.div`
    margin-left: 1200px;
    padding-bottom: 10px;`
 
-   export const Img = styled.input``;
+export const Search = styled.input`
+  
+   `;
+
+export const Sort = styled.input`
+
+   `;
+
+export const Searchicon = styled.div`
+ display: inline; 
+ border: none;
+ outline: none;
+ color: white;
+ font-size: 16px;
+ transition: 0.4s;
+ font-weight: bold;
+   `;
+
+export const Sorticon = styled.div`
+ display: inline; 
+ border: none;
+ outline: none;
+ color: white;
+ font-size: 16px;
+ transition: 0.4s;
+ font-weight: bold;
+   `;
 
 
 
