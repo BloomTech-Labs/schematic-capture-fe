@@ -1,3 +1,4 @@
+// New Client button was removed?
 describe('Test New Client form', function() {
   context('log in, navigate to user dashboard', function() {
     this.beforeEach(function() {
