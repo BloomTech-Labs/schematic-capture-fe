@@ -46,9 +46,14 @@ export const Greeting = styled.button`
     font-weight: bold;
     padding: 0;
     margin-left: 1rem;
+    min-width: 100px;
     :hover{
         text-decoration: none;
         opacity: 0.75;
+        div {
+            visibility: visible;
+            height: 130px;
+        }
     }
 `
 
@@ -165,10 +170,11 @@ export const FlexEnd = styled.button`
 `
 
 export const Profile = styled.img`
-    max-width: 4rem;
-    max-height: 3rem;
-    margin: 0 0 0 1rem;
-    border-radius: 50px;
+    width: 24px;
+    height: 24px;
+    margin: -5px 0 0 1rem;
+    border-radius: 50%;
+    border: 1px solid black;
 `
 
 export const SearchIn = styled.input`
