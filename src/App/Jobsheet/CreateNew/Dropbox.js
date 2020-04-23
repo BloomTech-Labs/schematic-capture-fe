@@ -1,5 +1,6 @@
 import { useDropboxChooser } from 'use-dropbox-chooser'
 import React from "react"
+import Picture from '../JobsheetBoard/Camera.png'
 
 function Dropbox() {
   const { open, isOpen } = useDropboxChooser({
@@ -12,7 +13,7 @@ function Dropbox() {
 
   return (
     <button onClick={open} disabled={isOpen}>
-      Import Image
+      <img src={Picture} className="image"/>
     </button>
   )
 }
