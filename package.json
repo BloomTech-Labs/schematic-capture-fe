@@ -8,6 +8,7 @@
     "bootstrap": "^4.4.1",
     "color": "^3.1.2",
     "csvtojson": "^2.0.10",
+    "cypress-localstorage-commands": "^1.1.8",
     "dotenv": "^8.2.0",
     "firebase": "^7.14.0",
     "js-file-download": "^0.4.11",
@@ -27,12 +28,13 @@
     "use-dropbox-chooser": "0.0.4"
   },
   "scripts": {
-    "start": "react-scripts -r @cypress/instrument-cra start",
+    "start": "react-scripts --require @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "node_modules/.bin/cypress open",
     "eject": "react-scripts eject",
     "cypress:coverage:run": "cypress run || true",
-    "cypress:coverage": "start-server-and-test start http://localhost:3000 cypress:coverage:run || true"
+    "start:coverage": "react-scripts -r @cypress/instrument-cra start",
+    "cypress:coverage": "start-server-and-test start:coverage http://localhost:3000 cypress:coverage:run || true"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -52,7 +54,9 @@
   "devDependencies": {
     "@cypress/code-coverage": "^3.5.1",
     "@cypress/instrument-cra": "^1.1.1",
-    "cypress": "4.4.1",
+    "babel-plugin-istanbul": "^6.0.0",
+    "cypress": "^4.4.0",
+    "nyc": "^15.0.1",
     "prettier": "2.0.4",
     "start-server-and-test": "^1.11.0"
   }
