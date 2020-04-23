@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { useParams } from "react-router-dom"
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
-import { dispatchers } from "../../../shared/actions/dashboardActions"
-import { BackToLink } from "../../../shared/components"
-import { Link } from "react-router-dom"
+import { dispatchers } from "../../../shared/actions/dashboardActions";
+import { BackToLink } from "../../../shared/components";
+import { Link } from "react-router-dom";
 
 import Jobsheets from "./Jobsheets";
 import { ClientHeaderContain, Section2 } from "../../Styles/Client";
-import { NewProjBtn } from "../../Styles/Jobsheets";
+import { NewProjBtn, BtnCont } from "../../Styles/Jobsheets";
 
 import {
   Title,
@@ -18,70 +18,70 @@ import {
   Profile,
   Hover,
   SearchIn,
-  Buttion
+  Buttion,
 } from "../../Styles/Dashboard";
-import { Bread } from "../../Styles/Project"
-import { Column } from "../../Styles/Client"
+import { Bread } from "../../Styles/Project";
+import { Column } from "../../Styles/Client";
 
-import Search from "../../Styles/Dashboard/Search.png"
-import Unknown from "../../Styles/Dashboard/unknown.jpg"
+import Search from "../../Styles/Dashboard/Search.png";
+import Unknown from "../../Styles/Dashboard/unknown.jpg";
 
-import swal from "sweetalert"
+import swal from "sweetalert";
 
-const { updateProjectName, fetchJobsheets } = dispatchers
+const { updateProjectName, fetchJobsheets } = dispatchers;
 
 const fetchJobsheetsSideEffect = async (dispatch, id, setJobsheets) => {
-  await dispatch(fetchJobsheets(id, setJobsheets))
-}
+  await dispatch(fetchJobsheets(id, setJobsheets));
+};
 
 const PageHeader = ({ counter, setCounter }) => {
   const currentClient = useSelector((state) => state.dashboard.currentClient);
   const user = useSelector((state) => state.auth.user);
   const currentProject = useSelector((state) => state.dashboard.currentProject);
-  const params = useParams()
+  const params = useParams();
 
-  const [editing, setEditing] = useState(false)
-  const [jobsheets, setJobsheets] = useState([])
-  const [jobsheets1, setJobsheets1] = useState([])
-  const [search, setSearch] = useState('')
-  const [isEditing, setIsEditing] = useState(false)
+  const [editing, setEditing] = useState(false);
+  const [jobsheets, setJobsheets] = useState([]);
+  const [jobsheets1, setJobsheets1] = useState([]);
+  const [search, setSearch] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
   const [projectName, setProjectName] = useState(
     !!currentProject ? currentProject.name : ""
   );
   const dispatch = useDispatch();
 
   const handleProjectNameChange = (event) => {
-    setProjectName(event.target.value)
+    setProjectName(event.target.value);
   };
 
   const saveProjectName = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     dispatch(updateProjectName(projectName, setIsEditing));
-  }
+  };
 
   useEffect(() => {
-    fetchJobsheetsSideEffect(dispatch, params.id, setJobsheets)
-  }, [])
+    fetchJobsheetsSideEffect(dispatch, params.id, setJobsheets);
+  }, []);
 
   useEffect(() => {
-    console.log(search)
+    console.log(search);
     setJobsheets1(
-      jobsheets.filter(input => {
-        return input.name.toLowerCase().includes(search.toLowerCase())
+      jobsheets.filter((input) => {
+        return input.name.toLowerCase().includes(search.toLowerCase());
       })
-    )
-  },[editing, search])
+    );
+  }, [editing, search]);
 
   const onLogout = () => {
-    localStorage.removeItem("idToken")
-    localStorage.removeItem("user")
-    localStorage.removeItem("state")
-    window.location.reload(false)
+    localStorage.removeItem("idToken");
+    localStorage.removeItem("user");
+    localStorage.removeItem("state");
+    window.location.reload(false);
     return swal("Logged out successfully!", {
       icon: "success",
       timer: 4000,
-    })
-  }
+    });
+  };
 
   return (
     <>
@@ -106,14 +106,15 @@ const PageHeader = ({ counter, setCounter }) => {
           <Buttion onClick={() => setEditing(!editing)}>
             <Hover src={Search} />
           </Buttion>
-          {editing ? 
+          {editing ? (
             <SearchIn
-              type='search'
+              type="search"
               onChange={(e) => setSearch(e.target.value)}
-              placeholder='Search'
-            /> :
+              placeholder="Search"
+            />
+          ) : (
             <></>
-          }
+          )}
           <Greeting onClick={onLogout} variant="primary">
             Hi, {user.firstName}
             <Profile src={Unknown} />
@@ -145,18 +146,25 @@ const PageHeader = ({ counter, setCounter }) => {
                 </h4>
               </div>
             )}
-            <NewProjBtn
-              to={`/project/${currentClient.id}/jobsheet/new`}
-              variant="primary"
-            >
-              New Jobsheet
-            </NewProjBtn>
+            <BtnCont>
+              <NewProjBtn>Assign Techs</NewProjBtn>
+              <NewProjBtn
+                to={`/project/${currentClient.id}/jobsheet/new`}
+                variant="primary"
+              >
+                New Jobsheet
+              </NewProjBtn>
+            </BtnCont>
           </Section2>
         )}
       </div>
-      <Jobsheets jobsheet={jobsheets1} search={search} setCounter={setCounter}/>
+      <Jobsheets
+        jobsheet={jobsheets1}
+        search={search}
+        setCounter={setCounter}
+      />
     </>
-  )
-}
+  );
+};
 
 export default PageHeader;
