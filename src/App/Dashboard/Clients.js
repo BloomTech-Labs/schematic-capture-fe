@@ -14,7 +14,7 @@ import {
 
 const { fetchClients } = dispatchers
 
-const Clients = () => {
+const Clients = props => {
   const dispatch = useDispatch()
   const clients = useSelector(state => state.dashboard.clients)
   console.log(clients)
@@ -27,9 +27,11 @@ const Clients = () => {
     <Section>
       <Clientsh2>Clients</Clientsh2>
       <LineBreak />
-      <ClientCont>
-        {clients &&
-          clients.map(client => (
+      {/* Please make cleaner sometime */}
+      {props.search.length>0 ? 
+        <ClientCont>
+        {props.clientsSrc &&
+          props.clientsSrc.map(client => (
             <Spacer>
               <ClientBox
                 data-client-name
@@ -41,7 +43,24 @@ const Clients = () => {
               <FlexEnd>Incomplete</FlexEnd>
             </Spacer>
           ))}
-      </ClientCont>
+        </ClientCont> : 
+        <ClientCont>
+          {clients &&
+            clients.map(client => (
+              <Spacer>
+                <ClientBox
+                  data-client-name
+                  key={client.id}
+                  to={`/client/${client.id}`}
+                >
+                  {client.companyName}
+                </ClientBox>
+                <FlexEnd>Incomplete</FlexEnd>
+              </Spacer>
+          ))}
+        </ClientCont>
+      }
+      
     </Section>
   )
 }
