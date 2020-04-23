@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -17,6 +17,10 @@ const setCurrentProjectSideEffect = async (dispatch, currentProjects, id) => {
 const Board = () => {
   const params = useParams();
   const dispatch = useDispatch();
+  const [counter, setCounter] = useState({
+    incomplete: 0,
+    total: 0,
+  });
 
   const { currentProjects } = useSelector((state) => state.dashboard);
 
@@ -26,8 +30,8 @@ const Board = () => {
 
   return (
     <>
-      <Header />
-      <Jobsheets />
+      <Header counter={counter} />
+      <Jobsheets counter={counter} setCounter={setCounter} />
     </>
   );
 };

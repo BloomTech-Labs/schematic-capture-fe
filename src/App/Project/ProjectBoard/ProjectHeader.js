@@ -28,7 +28,7 @@ import swal from "sweetalert";
 
 const { updateProjectName } = dispatchers;
 
-const PageHeader = () => {
+const PageHeader = ({ counter }) => {
   const currentClient = useSelector((state) => state.dashboard.currentClient);
   const user = useSelector((state) => state.auth.user);
   const currentProject = useSelector((state) => state.dashboard.currentProject);
@@ -106,7 +106,10 @@ const PageHeader = () => {
             ) : (
               <div>
                 <h1 onClick={() => setIsEditing(true)}>{projectName}</h1>
-                <h4>Incomplete (5/5) </h4>
+
+                <h4>
+                  Incomplete ({counter.incomplete}/{counter.total})
+                </h4>
               </div>
             )}
             <NewProjBtn
