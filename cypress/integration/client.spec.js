@@ -2,7 +2,7 @@ describe('Test client page functionality', function() {
   context('Select items from client page', function() {
     // first need to log in, get to dashboard, then navigate to client page
     beforeEach(function() {
-      cy.FEdashboard();
+      cy.dashboardToClient();
     });
 
     it('navigates to Test Client 1 and displays correct content', function() {
