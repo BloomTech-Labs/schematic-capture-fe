@@ -14,12 +14,13 @@ import {
   RightSide,
   Profile,
   Hover,
+  SearchIn,
+  Buttion
 } from "../../Styles/Dashboard";
 import { Bread } from "../../Styles/Project";
 import { Column } from "../../Styles/Client";
 
 import Search from "../../Styles/Dashboard/Search.png";
-import Swirl from "../../Styles/Dashboard/synchronize 1.png";
 import Unknown from "../../Styles/Dashboard/unknown.jpg";
 
 import swal from "sweetalert";
@@ -31,6 +32,9 @@ const PageHeader = () => {
   const user = useSelector((state) => state.auth.user);
   const currentProject = useSelector((state) => state.dashboard.currentProject);
 
+  const [editing, setEditing] = useState(false)
+  const [jobsheets, setJobsheets] = useState([])
+  const [search, setSearch] = useState('')
   const [isEditing, setIsEditing] = useState(false);
   const [projectName, setProjectName] = useState(
     !!currentProject ? currentProject.name : ""
@@ -77,8 +81,17 @@ const PageHeader = () => {
         </Column>
         <br />
         <RightSide>
-          <Hover src={Swirl} />
-          <Hover src={Search} />
+          <Buttion onClick={() => setEditing(!editing)}>
+            <Hover src={Search} />
+          </Buttion>
+          {editing ? 
+            <SearchIn
+              type='search'
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder='Search'
+            /> :
+            <></>
+          }
           <Greeting onClick={onLogout} variant="primary">
             Hi, {user.firstName}
             <Profile src={Unknown} />

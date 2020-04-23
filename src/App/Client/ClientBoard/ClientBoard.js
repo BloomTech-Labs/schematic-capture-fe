@@ -26,7 +26,6 @@ const Board = () => {
   return (
     <>
         <Header />
-        <Projects />
     </>
   )
 }
