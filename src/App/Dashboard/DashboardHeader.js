@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import NameDropDownMenu from '../../shared/components/Components/NameDropDownMenu';
 import {
   Title,
   Greeting,
@@ -66,6 +67,7 @@ const DashboardHeader = () => {
           <Greeting onClick={onLogout} variant="primary">
             Hi, {user.firstName}
             <Profile src={Unknown} />
+            <NameDropDownMenu firstName={user.firstName} lastName={user.lastName} />
           </Greeting>
         </RightSide>
       </Seperate>
