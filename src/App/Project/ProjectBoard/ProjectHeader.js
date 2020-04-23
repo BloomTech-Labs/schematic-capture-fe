@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { BackToLink } from "../../../shared/components";
 import { Link } from "react-router-dom";
 
-import { ClientHeaderContain, Section2, NewProjBtn } from "../../Styles/Client";
+import Jobsheets from "./Jobsheets";
+import { ClientHeaderContain, Section2 } from "../../Styles/Client";
+import { NewProjBtn, BtnCont } from "../../Styles/Jobsheets";
 
 import {
   Title,
@@ -14,23 +17,33 @@ import {
   RightSide,
   Profile,
   Hover,
+  SearchIn,
+  Buttion,
 } from "../../Styles/Dashboard";
 import { Bread } from "../../Styles/Project";
 import { Column } from "../../Styles/Client";
 
 import Search from "../../Styles/Dashboard/Search.png";
-import Swirl from "../../Styles/Dashboard/synchronize 1.png";
 import Unknown from "../../Styles/Dashboard/unknown.jpg";
 
 import swal from "sweetalert";
 
-const { updateProjectName } = dispatchers;
+const { updateProjectName, fetchJobsheets } = dispatchers;
 
-const PageHeader = () => {
+const fetchJobsheetsSideEffect = async (dispatch, id, setJobsheets) => {
+  await dispatch(fetchJobsheets(id, setJobsheets));
+};
+
+const PageHeader = ({ counter, setCounter }) => {
   const currentClient = useSelector((state) => state.dashboard.currentClient);
   const user = useSelector((state) => state.auth.user);
   const currentProject = useSelector((state) => state.dashboard.currentProject);
+  const params = useParams();
 
+  const [editing, setEditing] = useState(false);
+  const [jobsheets, setJobsheets] = useState([]);
+  const [jobsheets1, setJobsheets1] = useState([]);
+  const [search, setSearch] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [projectName, setProjectName] = useState(
     !!currentProject ? currentProject.name : ""
@@ -45,6 +58,19 @@ const PageHeader = () => {
     event.preventDefault();
     dispatch(updateProjectName(projectName, setIsEditing));
   };
+
+  useEffect(() => {
+    fetchJobsheetsSideEffect(dispatch, params.id, setJobsheets);
+  }, []);
+
+  useEffect(() => {
+    console.log(search);
+    setJobsheets1(
+      jobsheets.filter((input) => {
+        return input.name.toLowerCase().includes(search.toLowerCase());
+      })
+    );
+  }, [editing, search]);
 
   const onLogout = () => {
     localStorage.removeItem("idToken");
@@ -77,8 +103,18 @@ const PageHeader = () => {
         </Column>
         <br />
         <RightSide>
-          <Hover src={Swirl} />
-          <Hover src={Search} />
+          <Buttion onClick={() => setEditing(!editing)}>
+            <Hover src={Search} />
+          </Buttion>
+          {editing ? (
+            <SearchIn
+              type="search"
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search"
+            />
+          ) : (
+            <></>
+          )}
           <Greeting onClick={onLogout} variant="primary">
             Hi, {user.firstName}
             <Profile src={Unknown} />
@@ -102,17 +138,31 @@ const PageHeader = () => {
                 </Link>
               </div>
             ) : (
-              <h1 onClick={() => setIsEditing(true)}>{projectName}</h1>
+              <div>
+                <h1 onClick={() => setIsEditing(true)}>{projectName}</h1>
+
+                <h4>
+                  Incomplete ({counter.incomplete}/{counter.total})
+                </h4>
+              </div>
             )}
-            <Link
-              to={`/project/${currentClient.id}/jobsheet/new`}
-              variant="primary"
-            >
-              New&nbsp;Jobsheet
-            </Link>
+            <BtnCont>
+              <NewProjBtn>Assign Techs</NewProjBtn>
+              <NewProjBtn
+                to={`/project/${currentClient.id}/jobsheet/new`}
+                variant="primary"
+              >
+                New Jobsheet
+              </NewProjBtn>
+            </BtnCont>
           </Section2>
         )}
       </div>
+      <Jobsheets
+        jobsheet={jobsheets1}
+        search={search}
+        setCounter={setCounter}
+      />
     </>
   );
 };

@@ -27,6 +27,7 @@ const Clients = props => {
     <Section>
       <Clientsh2>Clients</Clientsh2>
       <LineBreak />
+      {/* Please make cleaner sometime */}
       {props.search.length>0 ? 
         <ClientCont>
         {props.clientsSrc &&
@@ -42,22 +43,22 @@ const Clients = props => {
               <FlexEnd>Incomplete</FlexEnd>
             </Spacer>
           ))}
-      </ClientCont> : 
-      <ClientCont>
-        {clients &&
-          clients.map(client => (
-            <Spacer>
-              <ClientBox
-                data-client-name
-                key={client.id}
-                to={`/client/${client.id}`}
-              >
-                {client.companyName}
-              </ClientBox>
-              <FlexEnd>Incomplete</FlexEnd>
-            </Spacer>
-        ))}
-      </ClientCont>
+        </ClientCont> : 
+        <ClientCont>
+          {clients &&
+            clients.map(client => (
+              <Spacer>
+                <ClientBox
+                  data-client-name
+                  key={client.id}
+                  to={`/client/${client.id}`}
+                >
+                  {client.companyName}
+                </ClientBox>
+                <FlexEnd>Incomplete</FlexEnd>
+              </Spacer>
+          ))}
+        </ClientCont>
       }
       
     </Section>

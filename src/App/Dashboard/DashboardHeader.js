@@ -12,7 +12,6 @@ import {
 } from "../Styles/Dashboard"
 import { useSelector } from "react-redux"
 import Search from "../Styles/Dashboard/Search.png"
-import Swirl from "../Styles/Dashboard/synchronize 1.png"
 import Unknown from "../Styles/Dashboard/unknown.jpg"
 
 import swal from "sweetalert";
@@ -58,12 +57,13 @@ const DashboardHeader = () => {
             <Hover src={Search} />
           </Buttion>
           {editing ? 
-          <SearchIn
-            type='search'
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder='Search'
-          /> :
-          <></>}
+            <SearchIn
+              type='search'
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder='Search'
+            /> :
+            <></>
+          }
           <Greeting onClick={onLogout} variant="primary">
             Hi, {user.firstName}
             <Profile src={Unknown} />
@@ -71,7 +71,7 @@ const DashboardHeader = () => {
           </Greeting>
         </RightSide>
       </Seperate>
-      <Clients clientsSrc={clientout} search={search}/>
+      <Clients clientsSrc={clientout} search={search} />
     </>
   )
 }

@@ -1,3 +1,4 @@
+
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
 //
@@ -10,11 +11,25 @@
 
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
+// module.exports = (on, config) => {
+//   on('task', require('@cypress/code-coverage/task'))
+
 
 module.exports = (on, config) => {
+<<<<<<< HEAD
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
   require('@cypress/code-coverage/task')(on, config)
 
   return config
 }
+=======
+  require('@cypress/code-coverage/task')(on, config)
+  // IMPORTANT to return the config object
+  // with the any changed environment variables
+  return config
+}
+// `on` is used to hook into various events Cypress emits
+// `config` is the resolved Cypress config
+
+>>>>>>> b394279c6f711093f76cf2eeb80523940676554c

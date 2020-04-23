@@ -34,13 +34,13 @@ Cypress.Commands.add('loginScript', () => {
 })
 
 // Log in using the front end and then navigate to Test Client 1 from dashboard
-Cypress.Commands.add('FEdashboard', () => {
+Cypress.Commands.add('dashboardToClient', () => {
   cy.loginScript();
   cy.contains('Test Client 1').click()
 })
 
 Cypress.Commands.add('FEclient', () => {
-  cy.FEdashboard();
+  cy.dashboardToClient();
   cy.contains('testing 3').click();
   cy.contains('testing 3').click();
 })

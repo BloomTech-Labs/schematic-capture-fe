@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 
 import Header from "./JobsheetHeader"
-import Components from "./Components"
 import { actions } from "../../../shared/actions/dashboardActions"
 
 const { SET_CURRENT_JOBSHEET } = actions
@@ -29,7 +28,6 @@ const Board = () => {
   return (
     <>
       <Header />
-      <Components />
     </>
   )
 }
