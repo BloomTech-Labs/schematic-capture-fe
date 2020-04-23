@@ -32,10 +32,10 @@ const setCurrentClientAndProjectsSideEffect = async (
   await dispatch({ type: SET_CURRENT_PROJECTS, payload: projects });
 };
 
-const Projects = () => {
-  const [projects, setProjects] = useState([]);
-  const params = useParams();
-  const dispatch = useDispatch();
+const Projects = props => {
+  const [projects, setProjects] = useState([])
+  const params = useParams()
+  const dispatch = useDispatch()
 
   const clients = useSelector((state) => state.dashboard.clients);
   const client = clients.find((client) => client.id === Number(params.id));
@@ -59,41 +59,33 @@ const Projects = () => {
             <StyledTableHead scope="col">Status</StyledTableHead>
           </StyledTableRow>
         </thead>
-        <tbody>
-          {projects.map((project) => (
-            <StyledTableRow key={project.id}>
-              {console.log(
-                "project data in projects.map in Projects.js: ",
-                project
-              )}
-              <StyledTableData data-label="Project">
-                <ProjectLinkName to={`/project/${project.id}`}>
-                  {project.name}
-                </ProjectLinkName>
-              </StyledTableData>
-              <StyledTableData data-label="Project">
-                <ProjectLink to={`/project/${project.id}`}>
-                  {project.description}
-                </ProjectLink>
-              </StyledTableData>
-              <StyledTableData data-label="Project">
-                <ProjectLink to={`/project/${project.id}`}>
-                  {project.technician}
-                </ProjectLink>
-              </StyledTableData>
-              <StyledTableData data-label="Project">
-                <ProjectLink to={`/project/${project.id}`}>
-                  {project.jobsheets}
-                </ProjectLink>
-              </StyledTableData>
-              <StyledTableData data-label="Project">
-                <ProjectLink to={`/project/${project.id}`}>
-                  {project.status}
-                </ProjectLink>
-              </StyledTableData>
-            </StyledTableRow>
-          ))}
+        {/* Please make cleaner */}
+        {props.search.length>0 ? 
+          <tbody>
+            {props.project.map(project => (
+              <StyledTableRow key={project.id}>
+                {console.log('project data in projects.map in Projects.js: ', project)}
+                <StyledTableData data-label="Project"><ProjectLinkName to={`/project/${project.id}`}>{project.name}</ProjectLinkName></StyledTableData>
+                <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.description}</ProjectLink></StyledTableData>
+                <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.technician}</ProjectLink></StyledTableData>
+                <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.jobsheets}</ProjectLink></StyledTableData>
+                <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.status}</ProjectLink></StyledTableData>
+              </StyledTableRow>
+            ))}
+          </tbody> :
+          <tbody>
+            {projects.map(project => (
+              <StyledTableRow key={project.id}>
+                {console.log('project data in projects.map in Projects.js: ', project)}
+                <StyledTableData data-label="Project"><ProjectLinkName to={`/project/${project.id}`}>{project.name}</ProjectLinkName></StyledTableData>
+                <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.description}</ProjectLink></StyledTableData>
+                <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.technician}</ProjectLink></StyledTableData>
+                <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.jobsheets}</ProjectLink></StyledTableData>
+                <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.status}</ProjectLink></StyledTableData>
+              </StyledTableRow>
+            ))}
         </tbody>
+        }
       </ProjectsTable>
     </Section>
   ) : (

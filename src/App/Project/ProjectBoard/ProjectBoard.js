@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import Header from "./ProjectHeader";
-import Jobsheets from "./Jobsheets";
 
 import { actions } from "../../../shared/actions/dashboardActions";
 const { SET_CURRENT_PROJECT } = actions;
@@ -30,8 +29,7 @@ const Board = () => {
 
   return (
     <>
-      <Header counter={counter} />
-      <Jobsheets counter={counter} setCounter={setCounter} />
+      <Header counter={counter} setCounter={setCounter}/>
     </>
   );
 };
