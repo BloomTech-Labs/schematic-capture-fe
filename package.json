@@ -31,7 +31,10 @@
     "start": "react-scripts --require @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "node_modules/.bin/cypress open",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress:coverage:run": "cypress run || true",
+    "start:coverage": "react-scripts -r @cypress/instrument-cra start",
+    "cypress:coverage": "start-server-and-test start:coverage http://localhost:3000 cypress:coverage:run || true"
   },
   "eslintConfig": {
     "extends": "react-app"
