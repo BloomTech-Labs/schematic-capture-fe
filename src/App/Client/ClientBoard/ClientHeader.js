@@ -26,6 +26,7 @@ import {
 } from '../../Styles/Dashboard'
 import { Bread } from '../../Styles/Project'
 
+import NameDropDownMenu from '../../../shared/components/Components/NameDropDownMenu';
 import Search from '../../Styles/Dashboard/Search.png'
 import Unknown from '../../Styles/Dashboard/unknown.jpg'
 
@@ -123,6 +124,7 @@ const PageHeader = () => {
           <Greeting onClick={onLogout} variant="primary">
             Hi, {user.firstName}
             <Profile src={Unknown} />
+            <NameDropDownMenu firstName={user.firstName} lastName={user.lastName} />
           </Greeting>
         </RightSide>
       </Seperate2>
