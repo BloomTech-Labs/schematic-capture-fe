@@ -1,12 +1,17 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import { Container, PageTitle, GlobalStyle, AuthContainer } from "./Styles";
+import Login from "./Login.js"
+import Register from "./Register.js"
+import ForgotPassword from "./ForgotPassword.js"
+import Footer from "./Footer/Footer.js"
 
-import Login from "./Login.js";
-import Register from "./Register.js";
-import ForgotPassword from "./ForgotPassword.js";
-import Footer from "./Footer/Footer.js";
+import {
+  Container,
+  PageTitle,
+  GlobalStyle,
+  AuthContainer,
+} from "../Styles/Auth/loginStyles"
 
 const Auth = () => {
   return (
@@ -22,7 +27,7 @@ const Auth = () => {
       </Container>
       <Footer />
     </AuthContainer>
-  );
-};
+  )
+}
 
-export default Auth;
+export default Auth

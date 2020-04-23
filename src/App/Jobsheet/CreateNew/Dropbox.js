@@ -1,9 +1,9 @@
 import { useDropboxChooser } from 'use-dropbox-chooser'
-import React from "react";
+import React from "react"
 
-function YourComponent() {
+function Dropbox() {
   const { open, isOpen } = useDropboxChooser({
-    appKey: 'acku3a0c8kpv2op',
+    appKey: 't5i27y2t3fzkiqj',
     chooserOptions: { multiple: true, linkType: 'direct' },
     onSelected: files => {
       console.log(files)
@@ -12,8 +12,8 @@ function YourComponent() {
 
   return (
     <button onClick={open} disabled={isOpen}>
-      
+      Import Image
     </button>
   )
 }
-export default YourComponent;
+export default Dropbox;
