@@ -10,7 +10,9 @@ import {
   Table,
   Wrapper,
   Status,
-  ImgWrapper
+  ImgWrapper,
+  Searchicon,
+  Sorticon
 } from '../../Styles/Jobsheet/ComponetStyle';
 
 
@@ -40,12 +42,12 @@ const Components = () => {
   const dispatch = useDispatch()
   const params = useParams()
 
-  useEffect(() => {
+useEffect(() => {
     fetchComponentsSideEffect(dispatch, params.id, setComponents)
     
   }, [])
 
-  useEffect(() => {
+useEffect(() => {
     const file = watch("jpg")
     if(file) {
       console.log({file})
@@ -55,15 +57,15 @@ const Components = () => {
     } 
   }, [watch("jpg")])
 
-  const newToggle = id => {
+const newToggle = id => {
     setNumber(id)
     toggle()
   }
-  const toggle = () => {
+const toggle = () => {
     setModal(!modal)
   }
 
-  const onSubmit = e => {
+const onSubmit = e => {
     console.log('hello there')
   }
 
@@ -76,9 +78,10 @@ const Components = () => {
       <Wrapper>
       <List>List</List>
       <ImgWrapper>
-      <input class="Img" name="submit" src={search} type="image"></input>
+      <Sorticon>
       {/* <img class="Img" src={sort} alt="sort"></img> */}
-      <input class="Img" name="submit" src={sort} type="image"></input>
+      <input class="Sort" name="submit" src={sort} type="image"></input>
+      </Sorticon>
       </ImgWrapper>
       </Wrapper>
       <div style={{ marginRight: "2.5rem", marginBottom: "2.5rem" }}>
