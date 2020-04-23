@@ -46,12 +46,13 @@ export const Greeting = styled.button`
     font-weight: bold;
     padding: 0;
     margin-left: 1rem;
+    min-width: 100px;
     :hover{
         text-decoration: none;
         opacity: 0.75;
         div {
             visibility: visible;
-            height: 120px;
+            height: 130px;
         }
     }
 `

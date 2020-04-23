@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import swal from "sweetalert";
 import Unknown from '../../../App/Styles/Dashboard/unknown.jpg'
+import { color } from '../../styles/index';
 
 export default ({ firstName, lastName }) => {
 
@@ -20,6 +21,7 @@ export default ({ firstName, lastName }) => {
         <Container>
             <img src={Unknown} />
             <p>{firstName} {lastName}</p>
+            <hr/>
             <a onClick={onLogout}>Log out</a>
         </Container>
     );
@@ -35,9 +37,13 @@ const Container = styled.div`
     position: relative;
     left: 0;
     top: 10px;
-    border: 1px solid gray;
+    border: 2px solid rgba(33,36,44,0.1);
     padding: 10px;
     transition: height 0.5s;
+    hr {
+        width: 80%;
+        border-width: 2px;
+    }
     img {
         width: 5rem;
         height: 5rem;
@@ -48,5 +54,8 @@ const Container = styled.div`
     }
     a {
         text-align: center;
+        &:hover {
+            color: #FA5656;
+        }
     }
 `
