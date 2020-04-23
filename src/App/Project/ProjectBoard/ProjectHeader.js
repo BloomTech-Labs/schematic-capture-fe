@@ -6,8 +6,9 @@ import { dispatchers } from "../../../shared/actions/dashboardActions"
 import { BackToLink } from "../../../shared/components"
 import { Link } from "react-router-dom"
 
-import { ClientHeaderContain, Section2, NewProjBtn } from "../../Styles/Client"
 import Jobsheets from "./Jobsheets";
+import { ClientHeaderContain, Section2 } from "../../Styles/Client";
+import { NewProjBtn } from "../../Styles/Jobsheets";
 
 import {
   Title,
@@ -33,7 +34,7 @@ const fetchJobsheetsSideEffect = async (dispatch, id, setJobsheets) => {
   await dispatch(fetchJobsheets(id, setJobsheets))
 }
 
-const PageHeader = () => {
+const PageHeader = ({ counter, setCounter }) => {
   const currentClient = useSelector((state) => state.dashboard.currentClient);
   const user = useSelector((state) => state.auth.user);
   const currentProject = useSelector((state) => state.dashboard.currentProject);
@@ -136,18 +137,24 @@ const PageHeader = () => {
                 </Link>
               </div>
             ) : (
-              <h1 onClick={() => setIsEditing(true)}>{projectName}</h1>
+              <div>
+                <h1 onClick={() => setIsEditing(true)}>{projectName}</h1>
+
+                <h4>
+                  Incomplete ({counter.incomplete}/{counter.total})
+                </h4>
+              </div>
             )}
-            <Link
+            <NewProjBtn
               to={`/project/${currentClient.id}/jobsheet/new`}
               variant="primary"
             >
-              New&nbsp;Jobsheet
-            </Link>
+              New Jobsheet
+            </NewProjBtn>
           </Section2>
         )}
       </div>
-      <Jobsheets jobsheet={jobsheets1} search={search}/>
+      <Jobsheets jobsheet={jobsheets1} search={search} setCounter={setCounter}/>
     </>
   )
 }

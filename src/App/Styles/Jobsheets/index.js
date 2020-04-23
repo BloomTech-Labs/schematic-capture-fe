@@ -7,17 +7,17 @@ export const Section = styled.section`
   // display: flex;
   // justify-content: space-between;
   @media (max-width: 1500px) {
-    margin: 0 20rem
-}
-@media (max-width: 1200px) {
-    margin: 0 16rem 
-}
+    margin: 0 20rem;
+  }
+  @media (max-width: 1200px) {
+    margin: 0 16rem;
+  }
 `;
 
 export const Projectsh2 = styled.h2`
-    color: ${color.blue};
-    font-size: ${font.normal};
-    padding-top: 2rem;
+  color: ${color.blue};
+  font-size: ${font.normal};
+  padding-top: 2rem;
 `;
 
 export const LineBreak = styled.hr`
@@ -87,5 +87,58 @@ export const FlexEnd = styled.button`
   @media (max-width: 1300px) {
     top: 35%;
     left: 61%;
+  }
+`;
+export const FlexEnd2 = styled.button`
+  top: 15rem;
+  left: 29rem;
+  background-color: ${color.blue};
+  padding: 0.75rem;
+  width: 10rem;
+  font-size: ${font.small};
+  border-radius: 15px;
+  color: white;
+  opacity: 1;
+  font-weight: bold;
+  :hover {
+    color: rgba(33, 36, 44, 0.5);
+  }
+  @media (max-width: 1750px) {
+    top: 13.5rem;
+    left: 25rem;
+  }
+  @media (max-width: 1700px) {
+    top: 13.5rem;
+    left: 23.5rem;
+  }
+  @media (max-width: 1650px) {
+    top: 35%;
+    left: 67%;
+  }
+  @media (max-width: 1600px) {
+    top: 35%;
+    left: 65%;
+  }
+  @media (max-width: 1300px) {
+    top: 35%;
+    left: 61%;
+  }
+`;
+
+export const NewProjBtn = styled(Link)`
+  text-decoration: none;
+  border: 2px solid ${color.blue};
+
+  text-align: center;
+  color: ${color.blue};
+  padding: 0.75rem;
+  width: 10rem;
+  font-size: ${font.small};
+  opacity: 1;
+  font-weight: bold;
+  :hover {
+    text-decoration: none;
+    color: white;
+    background-color: ${color.blue};
   }
 `;
