@@ -126,14 +126,15 @@ export const FlexEnd2 = styled.button`
 `;
 
 export const NewProjBtn = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
   border: 2px solid ${color.blue};
-
-  text-align: center;
   color: ${color.blue};
-  padding: 0.75rem;
-  width: 10rem;
-  font-size: ${font.small};
+  padding: 0.2rem 0.5rem;
+  width: 15rem;
+  height: 4.5rem;
   opacity: 1;
   font-weight: bold;
   :hover {
