@@ -27,7 +27,6 @@ const Board = () => {
   return (
     <>
       <Header />
-      <Jobsheets />
     </>
   );
 };

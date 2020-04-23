@@ -62,7 +62,7 @@ const Projects = props => {
             <StyledTableHead scope='col'>Status</StyledTableHead>
           </StyledTableRow>
         </thead>
-        {/* Please make cleaner sometime */}
+        {/* Please make cleaner */}
         {props.search.length>0 ? 
           <tbody>
             {props.project.map(project => (
