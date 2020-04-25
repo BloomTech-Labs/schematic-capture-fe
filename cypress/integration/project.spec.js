@@ -3,12 +3,12 @@ describe('Test project page functionality', function() {
   context('Select items from the project page', function() {
     // first need to log in and navigate to project page
     beforeEach(function() {
-      cy.FEclient()
+      cy.projectToJobsheet()
     });
 
     it('Displays items on the project page correctly', function() {
       cy.url().should('include', '/project')
-      cy.contains('testing 3')
+      cy.contains('Testing 3')
       cy.contains('All Jobsheets')
       cy.contains('New Jobsheet')
     })
@@ -18,7 +18,7 @@ describe('Test project page functionality', function() {
         expect(location.port).to.eq('3000')
         expect(location.protocol).to.eq('http:')
         expect(location.hostname).to.eq('localhost')
-        expect(location.pathname).to.eq('/project/1')
+        expect(location.pathname).to.eq('/project/4')
       })
     })
   })

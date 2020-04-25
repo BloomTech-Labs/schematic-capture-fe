@@ -6,7 +6,6 @@ describe("User at Dashboard", function() {
 
     it('Displays dashboard info correctly', function() {
       cy.url().should('include', '/dashboard')
-      cy.contains('Clients')
       cy.contains('Test Client 1')
       cy.contains('Test Client 2')
       cy.contains('Testing3')
@@ -18,6 +17,7 @@ describe("User at Dashboard", function() {
         expect(location.port).to.eq('3000')
         expect(location.protocol).to.eq('http:')
         expect(location.hostname).to.eq('localhost')
+        expect(location.pathname).to.eq('/dashboard')
       })
     })
   })
