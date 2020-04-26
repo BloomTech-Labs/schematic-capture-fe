@@ -11,13 +11,12 @@ import {
   Wrapper,
   Status,
   ImgWrapper,
-  Searchicon,
   Sorticon
 } from '../../Styles/Jobsheet/ComponetStyle';
 
 
 
-import search from './searchIcon.png'
+
 import Picture from './CameraImage.png'
 import sort from './Sort.png'
 
@@ -69,6 +68,31 @@ const onSubmit = e => {
     console.log('hello there')
   }
 
+  function TableSort(props) {
+    const {components} = props;
+    let sortedComponents = [...components];
+    const [sortedTable, setSortedTable] = React.useState(null);
+    const [sortConfig, setSortConfig] = React.useState;
+
+    const requestSort = key => {
+      let direction = "ascending";
+      if (sortConfig.key === key && sortConfig.direction === 'ascending') {
+        direction = 'descending';
+      }
+      setSortConfig({key, direction})
+    }
+    sortedComponents.sort((a,b) => {
+      if (a[sortConfig.key]< b[sortConfig.key]) {
+        return sortConfig.direction === "ascending" ? -1 : 1;
+      }
+      if (a[sortConfig.key] > b[sortConfig.key]) {
+        return sortConfig.direction === 'ascending' ? 1 : -1;
+      }
+      return 0;
+    });
+  }
+
+  
 
   return (
     
@@ -79,13 +103,12 @@ const onSubmit = e => {
       <List>List</List>
       <ImgWrapper>
       <Sorticon>
-      {/* <img class="Img" src={sort} alt="sort"></img> */}
-      <input class="Sort" name="submit" src={sort} type="image"></input>
+      <input class="Sort" name="submit" src={sort} type="image" onClick={() => requestSort('name')} ></input>
       </Sorticon>
       </ImgWrapper>
       </Wrapper>
       <div style={{ marginRight: "2.5rem", marginBottom: "2.5rem" }}>
-        <Table class="Table">
+        <Table class="Table" sorting= {true} style={{color: "black"}}>
           <thead>
             <tr>
               <th scope="col">Component</th>
@@ -125,24 +148,6 @@ const onSubmit = e => {
           <ModalBody>
             <form onSubmit={handleSubmit(onSubmit)}>
               <DropboxChooser />
-              {/* <label
-                type="button"
-                htmlFor="jpg"
-                onClick={() => setIsNew(true)}
-              >
-                <ImgSel>Import from Computer</ImgSel>
-              </label>
-              <label htmlFor="jpg">
-                <input
-                  hidden
-                  id="jpg"
-                  name="jpg"
-                  multiple={false}
-                  type="file"
-                  accept=".jpg"
-                  ref={register}
-                />
-              </label> */}
               <label htmlFor="selectcomp">
                 <select 
                   name="selectcomp"
@@ -151,16 +156,6 @@ const onSubmit = e => {
                   <option value={number}>{number}</option>
                 </select>
               </label>
-              {/* <label htmlFor="name">
-                <StyledInput
-                  id="name"
-                  name="name"
-                  placeholder="Image"
-                  disabled={!isNew}
-                  hidden={!isNew}
-                  ref={register({ required: true })}
-                />
-              </label> */}
               <button type="submit" hidden={!getValues().name}>Submit</button>
           </form>
           </ModalBody>

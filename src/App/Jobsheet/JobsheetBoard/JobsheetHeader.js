@@ -10,7 +10,8 @@ import {
   RightSide,
   Profile,
   Hover,
-} from "../../Styles/Dashboard";
+  div
+} from "../../Styles/Dashboard/index";
 import { Bread } from "../../Styles/Project";
 import { Column } from "../../Styles/Client";
 
@@ -70,7 +71,7 @@ const PageHeader = () => {
           </Greeting>
         </RightSide>
       </Seperate>
-      <div>
+      <div style={{marginLeft:"35px"}}>
         {!!currentJobsheet && (
           <>
             <h1 class="Currentjobsheet">{currentJobsheet.name}</h1>

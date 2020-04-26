@@ -169,3 +169,4 @@ export const Profile = styled.img`
     margin: 0 0 0 1rem;
     border-radius: 50px;
 `
+

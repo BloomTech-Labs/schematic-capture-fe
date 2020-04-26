@@ -34,24 +34,11 @@ export const List = styled.h1`
 
 export const ImgWrapper = styled.div`
    margin-left: 1200px;
-   padding-bottom: 10px;`
-
-export const Search = styled.input`
-  
+   padding-bottom: 10px;
    `;
 
 export const Sort = styled.input`
 
-   `;
-
-export const Searchicon = styled.div`
- display: inline; 
- border: none;
- outline: none;
- color: white;
- font-size: 16px;
- transition: 0.4s;
- font-weight: bold;
    `;
 
 export const Sorticon = styled.div`
@@ -62,18 +49,20 @@ export const Sorticon = styled.div`
  font-size: 16px;
  transition: 0.4s;
  font-weight: bold;
+
+ @media (max-width: 1920px){
+   
+}
    `;
+
+
 
 
 
 export const Wrapper = styled.div`
 display: inline; 
-@media (max-width: 1024px) {
-        margin: 5px 20px 12px 16px;
-    }
-    @media (max-width: 1200px) {
-        margin: 5px 15px 12px 16px
-    }`
+`
+
 
 
 export const Table = styled.table`
@@ -82,16 +71,22 @@ export const Table = styled.table`
   border-left:hidden;
   border-right:hidden;
   color: #21242C;
+  opacity: 0.5 ;
+
+  table:hover{
+     color: black;
+  };
   
    th{
       height: 65px;
       font-weight: bold;
-      color: #21242C;
-      
-   }
+      /* color: black; */
+      th:hover{
+         color: black;
+      };
+   };
    td{
       height: 65px;
-      opacity:0.5;
       border-bottom:0.5 px solid #21242C;
    }
 `;
@@ -101,5 +96,6 @@ font-size: 1.3rem;
 color: #21242C;
 padding: 5px;
 opacity: 0.5;
+margin-left:25px;
 `;
 
