@@ -32,4 +32,4 @@ jobs:
           CC_TEST_REPORTER_ID: 12dcfce279bc5c9eb9fa7ba358ecbe48a525ce91187812cfc5c50f008045bc57
         with:
           # Run our `coverage` command from our `package.json`
-          # coverageCommand: yarn run coverage
+          coverageCommand: yarn run cypress:coverage

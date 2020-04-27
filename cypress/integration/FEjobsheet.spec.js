@@ -2,7 +2,7 @@ describe('test jobsheet component', function () {
   context('select elements from the jobsheet component', function() {
     // login and navigate to project
     beforeEach(function() {
-      cy.FEjobsheet();
+      cy.FEclient();
     })
 
     it('displays elements correctly on the jobsheet page', function() {
@@ -54,7 +54,7 @@ describe('test jobsheet component', function () {
         expect(location.port).to.eq('3000')
         expect(location.protocol).to.eq('http:')
         expect(location.hostname).to.eq('localhost')
-        expect(location.pathname).to.eq('/project/4')
+        expect(location.pathname).to.eq('/project/1')
       })
     })
   })

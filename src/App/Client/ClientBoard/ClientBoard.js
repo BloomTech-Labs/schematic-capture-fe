@@ -2,7 +2,6 @@ import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import Header from "./ClientHeader"
-import Projects from "./Projects"
 
 import { actions } from "../../../shared/actions/dashboardActions"
 
@@ -25,8 +24,7 @@ const Board = () => {
 
   return (
     <>
-        <Header />
-        <Projects />
+      <Header />
     </>
   )
 }
