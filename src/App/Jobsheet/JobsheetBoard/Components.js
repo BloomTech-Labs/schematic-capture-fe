@@ -68,8 +68,7 @@ const onSubmit = e => {
     console.log('hello there')
   }
 
-  function TableSort(props) {
-    const {components} = props;
+  function TableSort(){
     let sortedComponents = [...components];
     const [sortedTable, setSortedTable] = React.useState(null);
     const [sortConfig, setSortConfig] = React.useState;
@@ -80,7 +79,8 @@ const onSubmit = e => {
         direction = 'descending';
       }
       setSortConfig({key, direction})
-    }
+    } 
+    requestSort()
     sortedComponents.sort((a,b) => {
       if (a[sortConfig.key]< b[sortConfig.key]) {
         return sortConfig.direction === "ascending" ? -1 : 1;
@@ -103,7 +103,7 @@ const onSubmit = e => {
       <List>List</List>
       <ImgWrapper>
       <Sorticon>
-      <input class="Sort" name="submit" src={sort} type="image" onClick={() => requestSort('name')} ></input>
+      <input class="Sort" name="submit" src={sort} type="image"></input>
       </Sorticon>
       </ImgWrapper>
       </Wrapper>
