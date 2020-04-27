@@ -6,10 +6,10 @@ describe("User at Dashboard", function() {
 
     it('Displays dashboard info correctly', function() {
       cy.url().should('include', '/dashboard')
-      cy.contains('Test Client 1')
-      cy.contains('Test Client 2')
-      cy.contains('Testing3')
-      cy.contains('Company Test')
+      cy.get(':nth-child(1) > .sc-fzomME')
+      cy.get(':nth-child(2) > .sc-fzomME')
+      cy.get(':nth-child(1) > .sc-fzoJMP')
+      cy.get(':nth-child(2) > .sc-fzoJMP')
     })
 
     it('captures correct location information', function() {
