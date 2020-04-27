@@ -54,30 +54,24 @@ useEffect(() => {
     console.log('hello there')
   }
 
-  function TableSort(){
-    let sortedComponents = [...components];
-    const [sortedTable, setSortedTable] = React.useState(null);
-    const [sortConfig, setSortConfig] = React.useState;
+const [sortingTable, setSortingTable] = useState(false);
+const [sortingComponents, setSortingComponents] = useState([]);
 
-    const requestSort = key => {
-      let direction = "ascending";
-      if (sortConfig.key === key && sortConfig.direction === 'ascending') {
-        direction = 'descending';
+useEffect(() => { 
+  if (sortingTable === true) {
+ 
+  console.log(components)
+    components.sort((a,b) => {
+      if (a.descriptions < b.descriptions) {
+        return -1 
+      } 
+      if (a.descriptions > b.descriptions) {
+        return 1
       }
-      setSortConfig({key, direction})
-    } 
-    requestSort()
-    sortedComponents.sort((a,b) => {
-      if (a[sortConfig.key]< b[sortConfig.key]) {
-        return sortConfig.direction === "ascending" ? -1 : 1;
-      }
-      if (a[sortConfig.key] > b[sortConfig.key]) {
-        return sortConfig.direction === 'ascending' ? 1 : -1;
-      }
-      return 0;
-    });
-  }
-
+    }) 
+    setSortingComponents(components) }
+},[sortingTable, components])
+console.log(sortingTable);
   
 
   return (
@@ -89,7 +83,7 @@ useEffect(() => {
       <List>List</List>
       <ImgWrapper>
       <Sorticon>
-      <input class="Sort" name="submit" src={sort} type="image"></input>
+  <button class="Sort" onClick={(() => setSortingTable(!sortingTable))}> <img src={sort}/> </button>
       </Sorticon>
       </ImgWrapper>
       </Wrapper>
@@ -146,6 +140,46 @@ useEffect(() => {
                 ))}
             </tbody>
           }
+
+                {sortingTable ? 
+            <tbody>
+              {!!sortingComponents.length &&
+                sortingComponents.map(component => (
+                  <tr key={component.id}>
+                    <td data-label="Component">{component.componentId}</td>
+                    <td data-label="Description">{component.descriptions}</td>
+                    <td data-label="Manufacturer">{component.manufacturer}</td>
+                    <td data-label="Part Number">{component.partNumber}</td>
+                    <td data-label="Stock Code">{component.stockCode}</td>
+                    <td data-label="Select Image">
+                      <DropboxChooser />
+                    </td>
+                    <td data-label="Resources">{component.resources}</td>
+                    <td data-label="Cutsheet">{component.cutsheet}</td>
+                    <td data-label="Stores Part #">{component.storesPartNumber}</td>
+                  </tr>
+                ))}
+            </tbody> :
+            <tbody>
+              {!!components.length &&
+                components.map(component => (
+                  <tr key={component.id}>
+                    <td data-label="Component">{component.componentId}</td>
+                    <td data-label="Description">{component.descriptions}</td>
+                    <td data-label="Manufacturer">{component.manufacturer}</td>
+                    <td data-label="Part Number">{component.partNumber}</td>
+                    <td data-label="Stock Code">{component.stockCode}</td>
+                    <td data-label="Select Image">
+                      <DropboxChooser />
+                    </td>
+                    <td data-label="Resources">{component.resources}</td>
+                    <td data-label="Cutsheet">{component.cutsheet}</td>
+                    <td data-label="Stores Part #">{component.storesPartNumber}</td>
+                  </tr>
+                ))}
+            </tbody>
+          }
+
         </Table>
       </div>
     </section>
