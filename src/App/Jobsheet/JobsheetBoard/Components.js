@@ -64,6 +64,18 @@ useEffect(() => {
       }
     }) 
     setSortingComponents(components) }
+    if (sortingTable === false) {
+      console.log(components)
+      components.sort((a,b) => {
+        if (a.descriptions < b.descriptions) {
+          return 1
+        }
+        if (a.descriptions > b.descriptions) {
+          return -1
+        }
+      })
+      setSortingComponents(components)
+    }
 },[sortingTable, components])
 console.log(sortingTable);
   
