@@ -6,6 +6,12 @@ describe('Test client page functionality', function() {
     });
 
     it('navigates to Test Client 1 and displays correct content', function() {
+      // Schematic capture header
+      cy.get('.sc-fzqPZZ')
+      // search widget
+      cy.get('.sc-fzqAbL')
+      // user widget
+      cy.get('.sc-fzpkJw')
       // client name
       cy.get('.sc-fzqARJ')
       // New Project button
