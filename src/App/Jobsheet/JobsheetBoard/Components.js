@@ -14,21 +14,15 @@ import {
   Sorticon
 } from '../../Styles/Jobsheet/ComponetStyle';
 
-
-
-
 import Picture from './CameraImage.png'
 import sort from './Sort.png'
-
 import { dispatchers } from "../../../shared/actions/dashboardActions"
 import DropboxChooser from "../CreateNew/Dropbox"
 
 const { fetchComponents } = dispatchers
-
 const fetchComponentsSideEffect = async (dispatch, id, setComponents) => {
   await dispatch(fetchComponents(id, setComponents))
 }
-
 const Components = props => {
   const { getValues, setValue, handleSubmit, watch } = useForm()
   const [components, setComponents] = useState([])
@@ -50,7 +44,7 @@ useEffect(() => {
     } 
   }, [watch("jpg")])
 
-  const onSubmit = e => {
+const onSubmit = e => {
     console.log('hello there')
   }
 
@@ -73,17 +67,15 @@ useEffect(() => {
 },[sortingTable, components])
 console.log(sortingTable);
   
-
-  return (
+return (
     
     <section>
       <Status>Incomplete({components.id})</Status>
-      
       <Wrapper>
       <List>List</List>
       <ImgWrapper>
       <Sorticon>
-  <button class="Sort" onClick={(() => setSortingTable(!sortingTable))}> <img src={sort}/> </button>
+      <button class="Sort" onClick={(() => setSortingTable(!sortingTable))}> <img src={sort}/> </button>
       </Sorticon>
       </ImgWrapper>
       </Wrapper>
