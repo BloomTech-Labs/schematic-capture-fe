@@ -48,3 +48,9 @@ Cypress.Commands.add('clientToNewProject', () => {
   cy.dashboardToClient();
   cy.contains('New Project').click();
 })
+
+Cypress.Commands.add('projectsToNewJobsheet', () => {
+  cy.dashboardToClient();
+  cy.contains('testing 3').click();
+  cy.contains('New Jobsheet').click();
+})
