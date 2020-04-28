@@ -104,7 +104,7 @@ const PageHeader = () => {
             <BackToLink
               style={{ marginBottom: "2rem" }}
               to="/dashboard"
-              text="Home"
+              text="Clients"
             />
           </Bread>
         </Column>

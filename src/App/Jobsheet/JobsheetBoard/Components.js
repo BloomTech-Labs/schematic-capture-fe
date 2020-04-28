@@ -2,22 +2,18 @@ import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
-import { Button, Modal, ModalBody} from "reactstrap";
+import SortDropDown from '../../../shared/components/Components/SortDropDown.js'
 
 import {
-  Header,
   List,
-  importButton,
   Table,
   Wrapper,
   Status,
   ImgWrapper,
-  Sorticon
-} from '../../Styles/Jobsheet/ComponetStyle';
+  Sorticon,
+  Buttin
+} from '../../Styles/Jobsheet/ComponetStyle'
 
-// import {fetchJobsheetsSideEffect , fetchJobsheets, setJobsheets, jobsheets} from '../../Project/ProjectBoard/Jobsheets.js';
-
-import Picture from './CameraImage.png'
 import sort from './Sort.png'
 import { dispatchers } from "../../../shared/actions/dashboardActions"
 import DropboxChooser from "../CreateNew/Dropbox"
@@ -29,15 +25,19 @@ const fetchComponentsSideEffect = async (dispatch, id, setComponents) => {
 const Components = props => {
   const { getValues, setValue, handleSubmit, watch } = useForm()
   const [components, setComponents] = useState([])
+  const [sortingComponents, setSortingComponents] = useState([])
+  const [sortingAsc, setSortingAsc] = useState(false)
+  const [sortingDesc, setSortingDesc] = useState(false)
+  const [sortingNone, setSortingNone] = useState(true)
 
   const dispatch = useDispatch()
   const params = useParams()
 
-useEffect(() => {
+  useEffect(() => {
     fetchComponentsSideEffect(dispatch, params.id, setComponents)
-  }, [])
+  }, [sortingNone])
 
-useEffect(() => {
+  useEffect(() => {
     const file = watch("jpg")
     if(file) {
       console.log({file})
@@ -47,125 +47,83 @@ useEffect(() => {
     } 
   }, [watch("jpg")])
 
-const onSubmit = e => {
-    console.log('hello there')
-  }
+  useEffect(() => { 
+    if (sortingAsc === true) {
+      components.sort((a,b) => {
+        if (a.descriptions < b.descriptions) {
+          return -1 
+        } 
+        if (a.descriptions > b.descriptions) {
+          return 1
+        }
+      })  
+  setSortingComponents(components)
 
-    const {
-      buttonLabel,
-      className
-    } = props;
-    const [modal, setModal] = useState(false);
-    const toggle = () => setModal(!modal);  
-  
+    }
+  },[sortingComponents,sortingAsc,sortingDesc,components])
 
-const [sortingTable, setSortingTable] = useState(false);
-const [sortingComponents, setSortingComponents] = useState([]);
-const [sortingAsc, setSortingAsc] = useState(false);
-const [sortingDesc, setSortingDesc] = useState(false);
-const [sortingNone, setSortingNone] = useState(true);
+  useEffect(() => { 
+    if (sortingDesc === true) {
+      components.sort((a,b) => {
+        if (a.descriptions < b.descriptions) {
+          return 1 
+        } 
+        if (a.descriptions > b.descriptions) {
+          return -1
+        }
+      })  
+  setSortingComponents(components)
 
-function sortAscending () {
-  if (sortingDesc === true) {
-    setSortingDesc(!sortingDesc)
-  }
-  if (sortingNone === true) {
-    setSortingNone(!sortingNone)
-  } 
-  setSortingAsc(!sortingAsc)
-  toggle()
-  
-}
+    }
+  },[sortingComponents,sortingDesc, sortingAsc, components])
 
-function sortDescending () {
-  if (sortingAsc === true) {
+  function sortAscending () {
+    if (sortingDesc === true) {
+      setSortingDesc(!sortingDesc)
+    }
+    if (sortingNone === true) {
+      setSortingNone(!sortingNone)
+    } 
     setSortingAsc(!sortingAsc)
   }
-  if (sortingNone === true) {
-    setSortingNone(!sortingNone)
-  }
-  setSortingDesc(!sortingDesc)
-  toggle()
-  
-}
 
-function sortNone () {
-  if (sortingAsc === true){
-    setSortingAsc(!sortingAsc)
-  }
-  if (sortingDesc === true) {
+  function sortDescending () {
+    if (sortingAsc === true) {
+      setSortingAsc(!sortingAsc)
+    }
+    if (sortingNone === true) {
+      setSortingNone(!sortingNone)
+    }
     setSortingDesc(!sortingDesc)
   }
-  setSortingNone(!sortingNone)
-  toggle()
-  
-}
 
-
-             
-useEffect(() => { 
-  if (sortingAsc === true) {
-    components.sort((a,b) => {
-      if (a.descriptions < b.descriptions) {
-        return -1 
-      } 
-      if (a.descriptions > b.descriptions) {
-        return 1
-      }
-    })  
-setSortingComponents(components)
-
+  function sortNone () {
+    if (sortingAsc === true){
+      setSortingAsc(!sortingAsc)
+    }
+    if (sortingDesc === true) {
+      setSortingDesc(!sortingDesc)
+    }
+    setSortingNone(!sortingNone)
   }
-},[sortingComponents,sortingAsc,components])
 
-useEffect(() => { 
-  if (sortingDesc === true) {
-    components.sort((a,b) => {
-      if (a.descriptions < b.descriptions) {
-        return 1 
-      } 
-      if (a.descriptions > b.descriptions) {
-        return -1
-      }
-    })  
-setSortingComponents(components)
-
-  }
-},[sortingComponents,sortingDesc,components])
-
-useEffect(() => { 
-  if (sortingNone === true) {
-    components.sort((a,b) => {
-      if (a.componentId < b.componentId) {
-        return -1
-      }
-      if (a.componentId > b.componentId) {
-        return 1
-      }
-    })
-    setSortingComponents(components)
-
-  }
-},[sortingComponents,sortingNone,components])
-
-return (
-    
+  return (
     <section>
       <Status>Incomplete({components.id})</Status>
       <Wrapper>
-      <List>List</List>
-      <ImgWrapper>
-      <Sorticon>
-      <Button class="Sort" onClick={toggle}> <img src={sort}/> {buttonLabel} </Button>
-      <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalBody>
-        <button onClick={sortAscending}> Ascending</button>
-        <button onClick={sortDescending}> Descening</button>
-        <button onClick={sortNone}> None</button>
-        </ModalBody>
-      </Modal>
-      </Sorticon>
-      </ImgWrapper>
+        <List>List</List>
+        <ImgWrapper>
+          <Sorticon>
+            <Buttin class="Sort" >
+              <img src={sort}/>
+              <SortDropDown 
+                  sortAscending={sortAscending} 
+                  sortDescending={sortDescending}
+                  sortNone={sortNone}
+                  />
+            </Buttin>
+          </Sorticon>
+        </ImgWrapper>
       </Wrapper>
       <div style={{ marginRight: "2.5rem", marginBottom: "2.5rem" }}>
         <Table class="Table" sorting= {true} style={{color: "black"}}>
@@ -199,8 +157,9 @@ return (
                     <td data-label="Cutsheet">{component.cutsheet}</td>
                     <td data-label="Stores Part #">{component.storesPartNumber}</td>
                   </tr>
-                ))}
-            </tbody> :
+                ))
+              }
+            </tbody> : 
             <tbody>
               {components.length &&
                 components.map(component => (
@@ -217,127 +176,10 @@ return (
                     <td data-label="Cutsheet">{component.cutsheet}</td>
                     <td data-label="Stores Part #">{component.storesPartNumber}</td>
                   </tr>
-                ))}
+                ))
+              }
             </tbody>
           }
-
-                {sortingAsc ? 
-            <tbody>
-              {sortingComponents.length &&
-                sortingComponents.map(component => (
-                  <tr key={component.id}>
-                    <td data-label="Component">{component.componentId}</td>
-                    <td data-label="Description">{component.descriptions}</td>
-                    <td data-label="Manufacturer">{component.manufacturer}</td>
-                    <td data-label="Part Number">{component.partNumber}</td>
-                    <td data-label="Stock Code">{component.stockCode}</td>
-                    <td data-label="Select Image">
-                      <DropboxChooser />
-                    </td>
-                    <td data-label="Resources">{component.resources}</td>
-                    <td data-label="Cutsheet">{component.cutsheet}</td>
-                    <td data-label="Stores Part #">{component.storesPartNumber}</td>
-                  </tr>
-                ))}
-            </tbody> :
-            <tbody>
-              {components.length &&
-                components.map(component => (
-                  <tr key={component.id}>
-                    <td data-label="Component">{component.componentId}</td>
-                    <td data-label="Description">{component.descriptions}</td>
-                    <td data-label="Manufacturer">{component.manufacturer}</td>
-                    <td data-label="Part Number">{component.partNumber}</td>
-                    <td data-label="Stock Code">{component.stockCode}</td>
-                    <td data-label="Select Image">
-                      <DropboxChooser />
-                    </td>
-                    <td data-label="Resources">{component.resources}</td>
-                    <td data-label="Cutsheet">{component.cutsheet}</td>
-                    <td data-label="Stores Part #">{component.storesPartNumber}</td>
-                  </tr>
-                ))}
-            </tbody>
-          }
-
-{sortingDesc ? 
-            <tbody>
-              {sortingComponents.length &&
-                sortingComponents.map(component => (
-                  <tr key={component.id}>
-                    <td data-label="Component">{component.componentId}</td>
-                    <td data-label="Description">{component.descriptions}</td>
-                    <td data-label="Manufacturer">{component.manufacturer}</td>
-                    <td data-label="Part Number">{component.partNumber}</td>
-                    <td data-label="Stock Code">{component.stockCode}</td>
-                    <td data-label="Select Image">
-                      <DropboxChooser />
-                    </td>
-                    <td data-label="Resources">{component.resources}</td>
-                    <td data-label="Cutsheet">{component.cutsheet}</td>
-                    <td data-label="Stores Part #">{component.storesPartNumber}</td>
-                  </tr>
-                ))}
-            </tbody> :
-            <tbody>
-              {components.length &&
-                components.map(component => (
-                  <tr key={component.id}>
-                    <td data-label="Component">{component.componentId}</td>
-                    <td data-label="Description">{component.descriptions}</td>
-                    <td data-label="Manufacturer">{component.manufacturer}</td>
-                    <td data-label="Part Number">{component.partNumber}</td>
-                    <td data-label="Stock Code">{component.stockCode}</td>
-                    <td data-label="Select Image">
-                      <DropboxChooser />
-                    </td>
-                    <td data-label="Resources">{component.resources}</td>
-                    <td data-label="Cutsheet">{component.cutsheet}</td>
-                    <td data-label="Stores Part #">{component.storesPartNumber}</td>
-                  </tr>
-                ))}
-            </tbody>
-          }
-
-{/* {sortingNone ? 
-            <tbody>
-              {!!sortingComponents.length &&
-                sortingComponents.map(component => (
-                  <tr key={component.id}>
-                    <td data-label="Component">{component.componentId}</td>
-                    <td data-label="Description">{component.descriptions}</td>
-                    <td data-label="Manufacturer">{component.manufacturer}</td>
-                    <td data-label="Part Number">{component.partNumber}</td>
-                    <td data-label="Stock Code">{component.stockCode}</td>
-                    <td data-label="Select Image">
-                      <DropboxChooser />
-                    </td>
-                    <td data-label="Resources">{component.resources}</td>
-                    <td data-label="Cutsheet">{component.cutsheet}</td>
-                    <td data-label="Stores Part #">{component.storesPartNumber}</td>
-                  </tr>
-                ))}
-            </tbody> :
-            <tbody>
-              {!!components.length &&
-                components.map(component => (
-                  <tr key={component.id}>
-                    <td data-label="Component">{component.componentId}</td>
-                    <td data-label="Description">{component.descriptions}</td>
-                    <td data-label="Manufacturer">{component.manufacturer}</td>
-                    <td data-label="Part Number">{component.partNumber}</td>
-                    <td data-label="Stock Code">{component.stockCode}</td>
-                    <td data-label="Select Image">
-                      <DropboxChooser />
-                    </td>
-                    <td data-label="Resources">{component.resources}</td>
-                    <td data-label="Cutsheet">{component.cutsheet}</td>
-                    <td data-label="Stores Part #">{component.storesPartNumber}</td>
-                  </tr>
-                ))}
-            </tbody>
-          } */}
-
         </Table>
       </div>
     </section>
