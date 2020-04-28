@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Modal } from "reactstrap";
 import {
   NewProjBtn,
   NewProjBtn2,
@@ -7,6 +7,7 @@ import {
   MBody,
   MH1,
   ModalCont,
+  Mod
 } from "../../Styles/Jobsheets";
 
 var people = [
@@ -48,7 +49,7 @@ const TechModal = (props) => {
   return (
     <ModalCont>
       <NewProjBtn onClick={toggle}>{buttonLabel}</NewProjBtn>
-      <Modal isOpen={modal} toggle={toggle} className={className}>
+      <Mod isOpen={modal} toggle={toggle}>
         <MH1>Available technicians</MH1>
         <MBody>
           {people.map((ele) => (
@@ -59,7 +60,7 @@ const TechModal = (props) => {
           ))}
         </MBody>
         <NewProjBtn2 onClick={toggle}>Assign Technician</NewProjBtn2>
-      </Modal>
+      </Mod>
     </ModalCont>
   );
 };
