@@ -28,6 +28,7 @@ import Search from "../../Styles/Dashboard/Search.png";
 import Unknown from "../../Styles/Dashboard/unknown.jpg";
 
 import swal from "sweetalert";
+import TechModal from "./TechPopup";
 
 const { updateProjectName, fetchJobsheets } = dispatchers;
 
@@ -149,7 +150,7 @@ const PageHeader = ({ counter, setCounter }) => {
               </div>
             )}
             <BtnCont>
-              <NewProjBtn>Assign Techs</NewProjBtn>
+              <TechModal buttonLabel="Assign Techs" />
               <NewProjBtn
                 to={`/project/${currentClient.id}/jobsheet/new`}
                 variant="primary"
