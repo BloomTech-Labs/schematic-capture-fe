@@ -184,7 +184,7 @@ return (
           </thead>
           {props.search.length>0 ? 
             <tbody>
-              {!!props.component.length &&
+              {props.component.length &&
                 props.component.map(component => (
                   <tr key={component.id}>
                     <td data-label="Component">{component.componentId}</td>
@@ -202,7 +202,7 @@ return (
                 ))}
             </tbody> :
             <tbody>
-              {!!components.length &&
+              {components.length &&
                 components.map(component => (
                   <tr key={component.id}>
                     <td data-label="Component">{component.componentId}</td>
@@ -223,7 +223,7 @@ return (
 
                 {sortingAsc ? 
             <tbody>
-              {!!sortingComponents.length &&
+              {sortingComponents.length &&
                 sortingComponents.map(component => (
                   <tr key={component.id}>
                     <td data-label="Component">{component.componentId}</td>
@@ -241,7 +241,7 @@ return (
                 ))}
             </tbody> :
             <tbody>
-              {!!components.length &&
+              {components.length &&
                 components.map(component => (
                   <tr key={component.id}>
                     <td data-label="Component">{component.componentId}</td>
@@ -262,7 +262,7 @@ return (
 
 {sortingDesc ? 
             <tbody>
-              {!!sortingComponents.length &&
+              {sortingComponents.length &&
                 sortingComponents.map(component => (
                   <tr key={component.id}>
                     <td data-label="Component">{component.componentId}</td>
@@ -280,7 +280,7 @@ return (
                 ))}
             </tbody> :
             <tbody>
-              {!!components.length &&
+              {components.length &&
                 components.map(component => (
                   <tr key={component.id}>
                     <td data-label="Component">{component.componentId}</td>
