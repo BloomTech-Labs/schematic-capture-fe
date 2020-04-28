@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Modal } from "reactstrap";
 import {
   NewProjBtn,
   NewProjBtn2,
@@ -8,6 +8,7 @@ import {
   MH1,
   ModalCont,
   Container,
+  Mod,
 } from "../../Styles/Jobsheets";
 
 import { FieldError } from "../../Styles/Auth/loginStyles";
@@ -171,10 +172,18 @@ const TechModal = (props) => {
   return (
     <ModalCont>
       <NewProjBtn onClick={toggle}>{buttonLabel}</NewProjBtn>
-      <Modal isOpen={modal} toggle={toggle} className={className}>
-        {pageNav(page)}
-        <NewProjBtn2 onClick={changePage}>Assign Technician</NewProjBtn2>
-      </Modal>
+      <Mod isOpen={modal} toggle={toggle}>
+        <MH1>Available technicians</MH1>
+        <MBody>
+          {people.map((ele) => (
+            <TechCont>
+              <input type="checkbox" name={ele} value={ele} />
+              <label for={ele}>{ele}</label>
+            </TechCont>
+          ))}
+        </MBody>
+        <NewProjBtn2 onClick={toggle}>Assign Technician</NewProjBtn2>
+      </Mod>
     </ModalCont>
   );
 };

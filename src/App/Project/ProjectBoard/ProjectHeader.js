@@ -94,12 +94,12 @@ const PageHeader = ({ counter, setCounter }) => {
             <BackToLink
               style={{ marginBottom: "2rem" }}
               to="/dashboard"
-              text="Home"
+              text="Clients"
             />
             <BackToLink
               style={{ marginBottom: "2rem" }}
               to={`/client/${currentClient.id}`}
-              text="Clients"
+              text="Projects"
             />
           </Bread>
         </Column>

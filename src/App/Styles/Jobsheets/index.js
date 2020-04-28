@@ -209,15 +209,24 @@ export const Container = styled.div`
 
 export const MBody = styled(ModalBody)`
   height: 20rem;
-  overflow: scroll;
+  overflow-y: scroll;
+  
 `;
 
 export const ModalCont = styled.div`
   border-radius: 10rem;
 `;
 
+export const Mod = styled(Modal)`
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  width:30%;
+`
+
 export const MH1 = styled.h1`
   font-family: Open Sans;
   color: black;
-  margin: 2rem auto;
+  text-align:center;
+  margin-top:2rem;
 `;

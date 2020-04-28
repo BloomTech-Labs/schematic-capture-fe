@@ -2,46 +2,42 @@ import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
+import SortDropDown from '../../../shared/components/Components/SortDropDown.js'
 
 import {
-  Header,
   List,
-  importButton,
   Table,
   Wrapper,
   Status,
   ImgWrapper,
-  Searchicon,
-  Sorticon
-} from '../../Styles/Jobsheet/ComponetStyle';
+  Sorticon,
+  Buttin
+} from '../../Styles/Jobsheet/ComponetStyle'
 
-
-
-import search from './searchIcon.png'
-import Picture from './CameraImage.png'
 import sort from './Sort.png'
-
 import { dispatchers } from "../../../shared/actions/dashboardActions"
 import DropboxChooser from "../CreateNew/Dropbox"
 
 const { fetchComponents } = dispatchers
-
 const fetchComponentsSideEffect = async (dispatch, id, setComponents) => {
   await dispatch(fetchComponents(id, setComponents))
 }
-
 const Components = props => {
   const { getValues, setValue, handleSubmit, watch } = useForm()
   const [components, setComponents] = useState([])
+  const [sortingComponents, setSortingComponents] = useState([])
+  const [sortingAsc, setSortingAsc] = useState(false)
+  const [sortingDesc, setSortingDesc] = useState(false)
+  const [sortingNone, setSortingNone] = useState(true)
 
   const dispatch = useDispatch()
   const params = useParams()
 
-useEffect(() => {
+  useEffect(() => {
     fetchComponentsSideEffect(dispatch, params.id, setComponents)
-  }, [])
+  }, [sortingNone])
 
-useEffect(() => {
+  useEffect(() => {
     const file = watch("jpg")
     if(file) {
       console.log({file})
@@ -51,27 +47,86 @@ useEffect(() => {
     } 
   }, [watch("jpg")])
 
-  const onSubmit = e => {
-    console.log('hello there')
+  useEffect(() => { 
+    if (sortingAsc === true) {
+      components.sort((a,b) => {
+        if (a.descriptions < b.descriptions) {
+          return -1 
+        } 
+        if (a.descriptions > b.descriptions) {
+          return 1
+        }
+      })  
+  setSortingComponents(components)
+
+    }
+  },[sortingComponents,sortingAsc,sortingDesc,components])
+
+  useEffect(() => { 
+    if (sortingDesc === true) {
+      components.sort((a,b) => {
+        if (a.descriptions < b.descriptions) {
+          return 1 
+        } 
+        if (a.descriptions > b.descriptions) {
+          return -1
+        }
+      })  
+  setSortingComponents(components)
+
+    }
+  },[sortingComponents,sortingDesc, sortingAsc, components])
+
+  function sortAscending () {
+    if (sortingDesc === true) {
+      setSortingDesc(!sortingDesc)
+    }
+    if (sortingNone === true) {
+      setSortingNone(!sortingNone)
+    } 
+    setSortingAsc(!sortingAsc)
   }
 
+  function sortDescending () {
+    if (sortingAsc === true) {
+      setSortingAsc(!sortingAsc)
+    }
+    if (sortingNone === true) {
+      setSortingNone(!sortingNone)
+    }
+    setSortingDesc(!sortingDesc)
+  }
+
+  function sortNone () {
+    if (sortingAsc === true){
+      setSortingAsc(!sortingAsc)
+    }
+    if (sortingDesc === true) {
+      setSortingDesc(!sortingDesc)
+    }
+    setSortingNone(!sortingNone)
+  }
 
   return (
-    
     <section>
       <Status>Incomplete({components.id})</Status>
-      
       <Wrapper>
-      <List>List</List>
-      <ImgWrapper>
-      <Sorticon>
-      {/* <img class="Img" src={sort} alt="sort"></img> */}
-      <input class="Sort" name="submit" src={sort} type="image"></input>
-      </Sorticon>
-      </ImgWrapper>
+        <List>List</List>
+        <ImgWrapper>
+          <Sorticon>
+            <Buttin class="Sort" >
+              <img src={sort}/>
+              <SortDropDown 
+                  sortAscending={sortAscending} 
+                  sortDescending={sortDescending}
+                  sortNone={sortNone}
+                  />
+            </Buttin>
+          </Sorticon>
+        </ImgWrapper>
       </Wrapper>
       <div style={{ marginRight: "2.5rem", marginBottom: "2.5rem" }}>
-        <Table class="Table">
+        <Table class="Table" sorting= {true} style={{color: "black"}}>
           <thead>
             <tr>
               <th scope="col">Component</th>
@@ -102,8 +157,9 @@ useEffect(() => {
                     <td data-label="Cutsheet">{component.cutsheet}</td>
                     <td data-label="Stores Part #">{component.storesPartNumber}</td>
                   </tr>
-                ))}
-            </tbody> :
+                ))
+              }
+            </tbody> : 
             <tbody>
               {!!components.length &&
                 components.map(component => (
@@ -120,7 +176,8 @@ useEffect(() => {
                     <td data-label="Cutsheet">{component.cutsheet}</td>
                     <td data-label="Stores Part #">{component.storesPartNumber}</td>
                   </tr>
-                ))}
+                ))
+              }
             </tbody>
           }
         </Table>

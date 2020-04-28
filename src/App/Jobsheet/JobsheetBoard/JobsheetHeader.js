@@ -77,17 +77,17 @@ const PageHeader = () => {
             <BackToLink
               style={{ marginBottom: "2rem" }}
               to="/dashboard"
-              text="Home"
-            />
-            <BackToLink
-              style={{ marginBottom: "2rem" }}
-              to={`/client/${currentClient.id}`}
               text="Clients"
             />
             <BackToLink
               style={{ marginBottom: "2rem" }}
-              to={`/project/${currentProject.id}`}
+              to={`/client/${currentClient.id}`}
               text="Projects"
+            />
+            <BackToLink
+              style={{ marginBottom: "2rem" }}
+              to={`/project/${currentProject.id}`}
+              text="Jobsheets"
             />
           </Bread>
         </Column>
@@ -111,7 +111,7 @@ const PageHeader = () => {
           </Greeting>
         </RightSide>
       </Seperate>
-      <div>
+      <div style={{marginLeft:"35px"}}>
         {!!currentJobsheet && (
           <>
             <h1 class="Currentjobsheet">{currentJobsheet.name}</h1>
