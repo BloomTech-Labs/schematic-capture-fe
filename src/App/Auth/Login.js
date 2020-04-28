@@ -40,9 +40,6 @@ const Login = () => {
     <FormContainer>
       <form className="white" onSubmit={handleSubmit(onSubmit)}>
         <Signin className="signin">Sign in</Signin>
-        <div style={{ marginBottom: "2rem" }}>
-          New user? <Link to="/register">Create an account</Link>
-        </div>
         <FormGroup>
           <StyledField
             data-email-address
