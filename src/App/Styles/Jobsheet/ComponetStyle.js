@@ -14,20 +14,67 @@ height: 12%;
 width: 12%;
 `;
 
-export const List = styled.li`
+export const List = styled.h1`
    color: #3079BC;
    text-decoration: underline;
-   font-size: 1.5em;
+   font-size: 1em;
    list-style-type: none;
-   margin-left: 20px;
-   margin-top: 50px;
+   margin-top:50px;
+   position: absolute;
+   width: 33px;
+   height: 25px;
+   left: 30px;
+   top: 250px;
+   @media (max-width: 1024px) {
+        margin: 5px 20px 12px 16px;
+    }
+    @media (max-width: 1200px) {
+        margin: 5px 15px 12px 16px};
 `;
 
+export const ImgWrapper = styled.div`
+   margin-left: 1200px;
+   padding-bottom: 10px;`
+
+export const Search = styled.input`
+  
+   `;
+
+export const Sort = styled.input`
+
+   `;
+
+export const Searchicon = styled.div`
+ display: inline; 
+ border: none;
+ outline: none;
+ color: white;
+ font-size: 16px;
+ transition: 0.4s;
+ font-weight: bold;
+   `;
+
+export const Sorticon = styled.div`
+ display: inline; 
+ border: none;
+ outline: none;
+ color: white;
+ font-size: 16px;
+ transition: 0.4s;
+ font-weight: bold;
+   `;
+
+
+
 export const Wrapper = styled.div`
-margin-left: 1150px;
-padding-bottom: 15px;
-display: flex;
-justify-content:space-evenly;`
+display: inline; 
+@media (max-width: 1024px) {
+        margin: 5px 20px 12px 16px;
+    }
+    @media (max-width: 1200px) {
+        margin: 5px 15px 12px 16px
+    }`
+
 
 export const Table = styled.table`
 
@@ -56,8 +103,3 @@ padding: 5px;
 opacity: 0.5;
 `;
 
-export const Img = styled.img`
-:hover{
-        text-decoration: none;
-        opacity: 0.75;};
-`

@@ -28,7 +28,7 @@ const Jobsheets = props => {
   const params = useParams();
   const dispatch = useDispatch();
 
-  const { currentClient, currentProject } = useSelector(
+const { currentClient, currentProject } = useSelector(
     (state) => state.dashboard
   );
 

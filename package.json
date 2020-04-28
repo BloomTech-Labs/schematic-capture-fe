@@ -5,7 +5,6 @@
   "dependencies": {
     "@sentry/browser": "^5.15.4",
     "axios": "^0.19.2",
-    "bootstrap": "^4.4.1",
     "color": "^3.1.2",
     "csvtojson": "^2.0.10",
     "cypress-localstorage-commands": "^1.1.8",
@@ -20,7 +19,6 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-textarea-autosize": "^7.1.2",
-    "reactstrap": "^8.4.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.1.0",
