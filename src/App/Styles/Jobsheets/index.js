@@ -193,6 +193,20 @@ export const TechCont = styled.div`
   }
 `;
 
+export const Container = styled.div`
+  color: ${color.blue};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  margin: 0 auto;
+
+  input {
+    margin: 2rem;
+  }
+`;
+
 export const MBody = styled(ModalBody)`
   height: 20rem;
   overflow: scroll;
