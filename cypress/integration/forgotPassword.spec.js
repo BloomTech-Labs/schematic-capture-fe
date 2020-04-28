@@ -23,9 +23,5 @@ describe('Navigating to and testing Forgot Password form', function() {
       // Back to login arrow
       cy.get('svg')
     })
-
-
   })
-
-  
 })
