@@ -25,15 +25,10 @@ const Login = () => {
   const { register, handleSubmit, errors } = useForm()
   const dispatch = useDispatch()
   const history = useHistory()
-  const { emailLogin, googleLogin } = dispatchers
+  const { emailLogin } = dispatchers
 
   const onSubmit = (data) => {
     dispatch(emailLogin(data, history))
-  }
-
-  const onGoogleLogin = (event) => {
-    event.preventDefault()
-    dispatch(googleLogin(history))
   }
 
   return (
@@ -90,13 +85,6 @@ const Login = () => {
           </FormColumn>
         </FormRow>
       </form>
-      <LineOr>
-        <p>Or</p>
-      </LineOr>
-      <Button1 onClick={onGoogleLogin} variant="secondary" btnBlock>
-        <GoogleIcon />
-        Continue with Google
-      </Button1>
     </FormContainer>
   )
 }
