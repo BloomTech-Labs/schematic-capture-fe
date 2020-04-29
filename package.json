@@ -5,6 +5,7 @@
   "dependencies": {
     "@sentry/browser": "^5.15.4",
     "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
     "color": "^3.1.2",
     "csvtojson": "^2.0.10",
     "cypress-localstorage-commands": "^1.1.8",
