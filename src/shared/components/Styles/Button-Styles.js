@@ -17,13 +17,14 @@ export const buttonStyle = css`
   transition: all 0.1s;
   border-radius: 0.5rem;
   opacity: initial !important;
+  width: 20%;
+  margin: 0 auto;
   ${font.bold}
 
   ${props =>
     props.btnBlock &&
     `
     display: block;
-    width: 100%;
   `}
 
   background-color: ${({ variant }) =>

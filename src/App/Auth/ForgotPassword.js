@@ -1,33 +1,29 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
+import React from "react"
+import { useHistory } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { useForm } from "react-hook-form"
 
-// utils
 import {
   FormContainer,
   FormGroup,
   StyledField,
   FieldError,
-  Button
-} from "./Styles";
+  Button,
+} from "../Styles/Auth/loginStyles"
 
-// components
-import { BackToLink } from "../../shared/components";
+import { BackToLink } from "../../shared/components"
 
-// actions
-import { dispatchers } from "../../shared/actions/authActions";
-import swal from "sweetalert";
+import { dispatchers } from "../../shared/actions/authActions"
 
 const ForgotPassword = () => {
-  const { register, handleSubmit, errors } = useForm();
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const { forgotPassword } = dispatchers;
+  const { register, handleSubmit, errors } = useForm()
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const { forgotPassword } = dispatchers
 
-  const onSubmit = data => {
-    dispatch(forgotPassword(data, history));
-  };
+  const onSubmit = (data) => {
+    dispatch(forgotPassword(data, history))
+  }
 
   return (
     <FormContainer>
@@ -49,7 +45,7 @@ const ForgotPassword = () => {
             aria-describedby="error-email-required error-email-pattern"
             ref={register({
               required: true,
-              pattern: /^\S+@\S+$/i
+              pattern: /^\S+@\S+$/i,
             })}
           />
           {errors.email && errors.email.type === "required" && (
@@ -68,7 +64,7 @@ const ForgotPassword = () => {
         </FormGroup>
       </form>
     </FormContainer>
-  );
-};
+  )
+}
 
-export default ForgotPassword;
+export default ForgotPassword

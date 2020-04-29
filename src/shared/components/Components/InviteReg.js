@@ -5,7 +5,11 @@ import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 
 // utils
-import { StyledField, FieldError, Button } from "../../../App/Auth/Styles";
+import {
+  StyledField,
+  FieldError,
+  Button,
+} from "../../../App/Styles/Auth/loginStyles";
 import {
   StyledSelect,
   InviteGroup,
@@ -13,7 +17,7 @@ import {
   InviteForm,
   InviteTitle,
   InviteGroupBack,
-  AccessText
+  AccessText,
 } from "../Styles/Invite-Styles";
 
 // components
@@ -34,14 +38,14 @@ const InviteReg = ({ handleClose }) => {
     axiosWithAuth()
       .get("/roles/", {
         headers: {
-          Authorization: "Bearer " + localStorage.getItem("idToken")
-        }
+          Authorization: "Bearer " + localStorage.getItem("idToken"),
+        },
       })
-      .then(res => {
+      .then((res) => {
         const rolesArr = res.data;
         setRoles(rolesArr);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }, []);
@@ -62,19 +66,19 @@ const InviteReg = ({ handleClose }) => {
       text: `This will send an invite to ${data.email} as ${roleName}.`,
       icon: "warning",
       buttons: true,
-      dangerMode: true
-    }).then(confirm => {
+      dangerMode: true,
+    }).then((confirm) => {
       if (confirm) {
         dispatch(sendInvite(data, history));
         swal("Invite sent!", {
           icon: "success",
-          timer: 8000
+          timer: 8000,
         }).then(() => {
           reset();
         });
       } else {
         swal("Invite not sent!", {
-          icon: "error"
+          icon: "error",
         });
         reset();
       }
@@ -98,7 +102,7 @@ const InviteReg = ({ handleClose }) => {
               aria-invalid={errors.name ? "true" : "false"}
               aria-describedby="error-name-required error-name-pattern"
               ref={register({
-                required: true
+                required: true,
               })}
             />
             <StyledField
@@ -112,7 +116,7 @@ const InviteReg = ({ handleClose }) => {
               aria-describedby="error-email-required error-email-pattern"
               ref={register({
                 required: true,
-                pattern: /^\S+@\S+$/i
+                pattern: /^\S+@\S+$/i,
               })}
             />
             <br />
@@ -123,10 +127,10 @@ const InviteReg = ({ handleClose }) => {
               data-select-role
               name="roleId"
               ref={register({
-                required: true
+                required: true,
               })}
             >
-              {roles.map(role => {
+              {roles.map((role) => {
                 return (
                   <option key={role.id + new Date()} value={role.id}>
                     {role.name.toUpperCase()}

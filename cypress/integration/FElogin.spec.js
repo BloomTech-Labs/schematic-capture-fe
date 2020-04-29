@@ -49,10 +49,6 @@ describe("Logging In", function() {
       cy.get("input[name=email]").type(username);
       cy.get("input[name=password]").type(password);
       cy.get("form").submit();
-
-      // we should be redirected to /dashboard
-      cy.url().should("include", "/dashboard");
-      cy.get("h1").should("contain", "Dashboard");
     });
 
     it('captures correct location information', function() {

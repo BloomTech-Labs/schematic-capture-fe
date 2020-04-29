@@ -1,10 +1,13 @@
-import React from "react";
+import React from "react"
 
-import { useHistory, Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
+import { useHistory, Link } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { useForm } from "react-hook-form"
 
-// utils
+import GoogleIcon from "../../shared/assets/google-icon"
+
+import { dispatchers } from "../../shared/actions/authActions"
+
 import {
   FormContainer,
   FormRow,
@@ -13,35 +16,30 @@ import {
   StyledField,
   FieldError,
   Button,
-  LineOr
-} from "./Styles";
-
-import GoogleIcon from "../../shared/assets/google-icon";
-
-// actions
-import { dispatchers } from "../../shared/actions/authActions";
+  LineOr,
+  Signin,
+  Button1
+} from "../Styles/Auth/loginStyles"
 
 const Login = () => {
-  const { register, handleSubmit, errors } = useForm();
-  const dispatch = useDispatch();
-  const history = useHistory();
-  const { emailLogin, googleLogin } = dispatchers;
+  const { register, handleSubmit, errors } = useForm()
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const { emailLogin, googleLogin } = dispatchers
 
-  const onSubmit = data => {
-    console.log(data);
-    dispatch(emailLogin(data, history));
-  };
+  const onSubmit = (data) => {
+    dispatch(emailLogin(data, history))
+  }
 
-  const onGoogleLogin = event => {
-    event.preventDefault();
-
-    dispatch(googleLogin(history));
-  };
+  const onGoogleLogin = (event) => {
+    event.preventDefault()
+    dispatch(googleLogin(history))
+  }
 
   return (
     <FormContainer>
       <form className="white" onSubmit={handleSubmit(onSubmit)}>
-        <h2 className="signin">Sign in</h2>
+        <Signin className="signin">Sign in</Signin>
         <div style={{ marginBottom: "2rem" }}>
           New user? <Link to="/register">Create an account</Link>
         </div>
@@ -57,7 +55,7 @@ const Login = () => {
             aria-describedby="error-email-required error-email-pattern"
             ref={register({
               required: true,
-              pattern: /^\S+@\S+$/i
+              pattern: /^\S+@\S+$/i,
             })}
           />
           {errors.email && errors.email.type === "required" && (
@@ -98,12 +96,12 @@ const Login = () => {
       <LineOr>
         <p>Or</p>
       </LineOr>
-      <Button onClick={onGoogleLogin} variant="secondary" btnBlock>
+      <Button1 onClick={onGoogleLogin} variant="secondary" btnBlock>
         <GoogleIcon />
         Continue with Google
-      </Button>
+      </Button1>
     </FormContainer>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

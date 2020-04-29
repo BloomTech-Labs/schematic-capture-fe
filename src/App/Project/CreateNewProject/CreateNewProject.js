@@ -2,17 +2,14 @@ import React from "react";
 
 import Header from "./CNProjectHeader";
 import Form from "./Form";
-import { Navbar } from "../../../shared/components";
-import { Area } from "./Styles";
+
+import { Area } from "../../Styles/Projects/projectStyles";
 
 const NewProject = () => {
   return (
     <>
-      <Navbar />
-      <Area>
-        <Header />
-        <Form />
-      </Area>
+      <Header />
+      <Form />
     </>
   );
 };
