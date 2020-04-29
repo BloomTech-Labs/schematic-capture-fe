@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Redirect, Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react"
+import { useParams, Redirect, Link } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux"
 
 import {
   Projectsh2,
@@ -12,38 +12,38 @@ import {
   StyledTableData,
   ProjectLink,
   ProjectLinkName,
-} from "../../Styles/Client";
+} from "../../Styles/Client"
 
-import { dispatchers, actions } from "../../../shared/actions/dashboardActions";
+import { dispatchers, actions } from "../../../shared/actions/dashboardActions"
 
-const { fetchProjects } = dispatchers;
-const { SET_CURRENT_CLIENT, SET_CURRENT_PROJECTS } = actions;
+const { fetchProjects } = dispatchers
+const { SET_CURRENT_CLIENT, SET_CURRENT_PROJECTS } = actions
 
 const fetchProjectsSideEffect = async (dispatch, id, setProjects) => {
-  await dispatch(fetchProjects(id, setProjects));
-};
+  await dispatch(fetchProjects(id, setProjects))
+}
 
 const setCurrentClientAndProjectsSideEffect = async (
   dispatch,
   client,
   projects
 ) => {
-  await dispatch({ type: SET_CURRENT_CLIENT, payload: client });
-  await dispatch({ type: SET_CURRENT_PROJECTS, payload: projects });
-};
+  await dispatch({ type: SET_CURRENT_CLIENT, payload: client })
+  await dispatch({ type: SET_CURRENT_PROJECTS, payload: projects })
+}
 
 const Projects = props => {
   const [projects, setProjects] = useState([])
   const params = useParams()
   const dispatch = useDispatch()
 
-  const clients = useSelector((state) => state.dashboard.clients);
-  const client = clients.find((client) => client.id === Number(params.id));
+  const clients = useSelector((state) => state.dashboard.clients)
+  const client = clients.find((client) => client.id === Number(params.id))
 
   useEffect(() => {
-    fetchProjectsSideEffect(dispatch, params.id, setProjects);
-    setCurrentClientAndProjectsSideEffect(dispatch, client, projects);
-  }, []);
+    fetchProjectsSideEffect(dispatch, params.id, setProjects)
+    setCurrentClientAndProjectsSideEffect(dispatch, client, projects)
+  }, [])
 
   return client ? (
     <Section>
@@ -90,7 +90,7 @@ const Projects = props => {
     </Section>
   ) : (
     <Redirect to="/dashboard" />
-  );
-};
+  )
+}
 
-export default Projects;
+export default Projects

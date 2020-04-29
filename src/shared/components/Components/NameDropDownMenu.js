@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import swal from "sweetalert";
 import Unknown from '../../../App/Styles/Dashboard/unknown.jpg'
-import { color } from '../../styles/index';
 
 export default ({ firstName, lastName }) => {
 

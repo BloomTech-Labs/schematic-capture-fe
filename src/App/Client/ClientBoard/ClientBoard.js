@@ -9,9 +9,8 @@ const { SET_CURRENT_CLIENT } = actions
 
 const setCurrentClient = async (clients, id, dispatch) => {
   const currentClient = clients.find(client => client.id === Number(id))
-
   await dispatch({ type: SET_CURRENT_CLIENT, payload: currentClient })
-};
+}
 
 const Board = () => {
   const dispatch = useDispatch()
