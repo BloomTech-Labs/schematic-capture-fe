@@ -19,6 +19,7 @@ import { Bread } from "../../Styles/Project";
 import { Column } from "../../Styles/Client";
 import { dispatchers } from "../../../shared/actions/dashboardActions"
 
+import NameDropDownMenu from '../../../shared/components/Components/NameDropDownMenu';
 import Search from "../../Styles/Dashboard/Search.png";
 import Unknown from "../../Styles/Dashboard/unknown.jpg";
 
@@ -76,17 +77,17 @@ const PageHeader = () => {
             <BackToLink
               style={{ marginBottom: "2rem" }}
               to="/dashboard"
-              text="Home"
-            />
-            <BackToLink
-              style={{ marginBottom: "2rem" }}
-              to={`/client/${currentClient.id}`}
               text="Clients"
             />
             <BackToLink
               style={{ marginBottom: "2rem" }}
-              to={`/project/${currentProject.id}`}
+              to={`/client/${currentClient.id}`}
               text="Projects"
+            />
+            <BackToLink
+              style={{ marginBottom: "2rem" }}
+              to={`/project/${currentProject.id}`}
+              text="Jobsheets"
             />
           </Bread>
         </Column>
@@ -106,10 +107,11 @@ const PageHeader = () => {
           <Greeting onClick={onLogout} variant="primary">
             Hi, {user.firstName}
             <Profile src={Unknown} />
+            <NameDropDownMenu firstName={user.firstName} lastName={user.lastName} />
           </Greeting>
         </RightSide>
       </Seperate>
-      <div>
+      <div style={{marginLeft:"35px"}}>
         {!!currentJobsheet && (
           <>
             <h1 class="Currentjobsheet">{currentJobsheet.name}</h1>

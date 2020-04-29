@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import NameDropDownMenu from '../../../shared/components/Components/NameDropDownMenu';
 
 import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { BackToLink } from "../../../shared/components";
@@ -27,6 +28,7 @@ import Search from "../../Styles/Dashboard/Search.png";
 import Unknown from "../../Styles/Dashboard/unknown.jpg";
 
 import swal from "sweetalert";
+import TechModal from "./TechPopup";
 
 const { updateProjectName, fetchJobsheets } = dispatchers;
 
@@ -92,12 +94,12 @@ const PageHeader = ({ counter, setCounter }) => {
             <BackToLink
               style={{ marginBottom: "2rem" }}
               to="/dashboard"
-              text="Home"
+              text="Clients"
             />
             <BackToLink
               style={{ marginBottom: "2rem" }}
               to={`/client/${currentClient.id}`}
-              text="Clients"
+              text="Projects"
             />
           </Bread>
         </Column>
@@ -118,6 +120,7 @@ const PageHeader = ({ counter, setCounter }) => {
           <Greeting onClick={onLogout} variant="primary">
             Hi, {user.firstName}
             <Profile src={Unknown} />
+            <NameDropDownMenu firstName={user.firstName} lastName={user.lastName} />
           </Greeting>
         </RightSide>
       </Seperate2>
@@ -147,7 +150,7 @@ const PageHeader = ({ counter, setCounter }) => {
               </div>
             )}
             <BtnCont>
-              <NewProjBtn>Assign Techs</NewProjBtn>
+              <TechModal buttonLabel="Assign Techs" />
               <NewProjBtn
                 to={`/project/${currentClient.id}/jobsheet/new`}
                 variant="primary"

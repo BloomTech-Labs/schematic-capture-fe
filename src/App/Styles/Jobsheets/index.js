@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { ModalBody, Modal } from "reactstrap";
 import { color, font } from "../../Styles/index";
 
 export const Section = styled.section`
@@ -128,6 +129,27 @@ export const FlexEnd2 = styled.button`
 export const NewProjBtn = styled(Link)`
   display: flex;
   margin: 1.5rem;
+  border-radius: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: 2px solid ${color.blue};
+  color: ${color.blue};
+  padding: 0.2rem 0.5rem;
+  width: 15rem;
+  height: 4.5rem;
+  opacity: 1;
+  font-weight: bold;
+  :hover {
+    text-decoration: none;
+    color: white;
+    background-color: ${color.blue};
+  }
+`;
+export const NewProjBtn2 = styled(Link)`
+  display: flex;
+  margin: 2rem auto;
+  border-radius: 0.7rem;
   justify-content: center;
   align-items: center;
   text-decoration: none;
@@ -149,4 +171,48 @@ export const BtnCont = styled.div`
   display: flex;
   flex-direction: column;
   align-items: space-between;
+`;
+
+export const TechCont = styled.div`
+  width: 13rem;
+  margin: 1.5rem auto;
+  height: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+
+  label {
+    color: ${color.blue};
+    width: 10rem;
+    margin: 0.2rem;
+  }
+  input {
+    margin: 0 0.3rem;
+    color: ${color.blue};
+  }
+`;
+
+export const MBody = styled(ModalBody)`
+  height: 20rem;
+  overflow-y: scroll;
+  
+`;
+
+export const ModalCont = styled.div`
+  border-radius: 10rem;
+`;
+
+export const Mod = styled(Modal)`
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  width:30%;
+`
+
+export const MH1 = styled.h1`
+  font-family: Open Sans;
+  color: black;
+  text-align:center;
+  margin-top:2rem;
 `;
