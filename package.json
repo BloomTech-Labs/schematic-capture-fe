@@ -27,7 +27,7 @@
     "use-dropbox-chooser": "0.0.4"
   },
   "scripts": {
-    "start": "react-scripts --require @cypress/instrument-cra start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "node_modules/.bin/cypress open",
     "eject": "react-scripts eject",
