@@ -4,8 +4,6 @@ import { useHistory, Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
 
-import GoogleIcon from "../../shared/assets/google-icon"
-
 import { dispatchers } from "../../shared/actions/authActions"
 
 import {
