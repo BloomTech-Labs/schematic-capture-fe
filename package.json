@@ -5,6 +5,7 @@
   "dependencies": {
     "@sentry/browser": "^5.15.4",
     "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
     "color": "^3.1.2",
     "csvtojson": "^2.0.10",
     "cypress-localstorage-commands": "^1.1.8",
@@ -27,7 +28,7 @@
     "use-dropbox-chooser": "0.0.4"
   },
   "scripts": {
-    "start": "react-scripts --require @cypress/instrument-cra start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "node_modules/.bin/cypress open",
     "eject": "react-scripts eject",

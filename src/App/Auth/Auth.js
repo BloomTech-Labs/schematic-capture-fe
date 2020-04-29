@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom"
 
 import Login from "./Login.js"
 import Register from "./Register.js"
@@ -10,7 +10,7 @@ import {
   Container,
   PageTitle,
   GlobalStyle,
-  AuthContainer,
+  AuthContainer
 } from "../Styles/Auth/loginStyles"
 
 const Auth = () => {

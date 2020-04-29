@@ -142,7 +142,7 @@ const Components = props => {
           </thead>
           {props.search.length>0 ? 
             <tbody>
-              {!!props.component.length &&
+              {props.component.length &&
                 props.component.map(component => (
                   <tr key={component.id}>
                     <td data-label="Component">{component.componentId}</td>
@@ -161,7 +161,7 @@ const Components = props => {
               }
             </tbody> : 
             <tbody>
-              {!!components.length &&
+              {components.length &&
                 components.map(component => (
                   <tr key={component.id}>
                     <td data-label="Component">{component.componentId}</td>

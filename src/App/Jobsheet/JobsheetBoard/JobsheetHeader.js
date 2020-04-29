@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux"
 
-import BackToLink from "../../../shared/components/Components/BackToLink";
+import BackToLink from "../../../shared/components/Components/BackToLink"
 import Components from "./Components"
 
 import {
@@ -14,14 +14,14 @@ import {
   Hover,
   SearchIn,
   Buttion
-} from "../../Styles/Dashboard";
-import { Bread } from "../../Styles/Project";
-import { Column } from "../../Styles/Client";
+} from "../../Styles/Dashboard"
+import { Bread } from "../../Styles/Project"
+import { Column } from "../../Styles/Client"
 import { dispatchers } from "../../../shared/actions/dashboardActions"
 
-import NameDropDownMenu from '../../../shared/components/Components/NameDropDownMenu';
-import Search from "../../Styles/Dashboard/Search.png";
-import Unknown from "../../Styles/Dashboard/unknown.jpg";
+import NameDropDownMenu from '../../../shared/components/Components/NameDropDownMenu'
+import Search from "../../Styles/Dashboard/Search.png"
+import Unknown from "../../Styles/Dashboard/unknown.jpg"
 
 import swal from "sweetalert";
 
@@ -65,8 +65,8 @@ const PageHeader = () => {
     return swal("Logged out successfully!", {
       icon: "success",
       timer: 4000,
-    });
-  };
+    })
+  }
 
   return (
     <>
@@ -120,7 +120,7 @@ const PageHeader = () => {
       </div>
       <Components component={components1} search={search}/>
     </>
-  );
-};
+  )
+}
 
-export default PageHeader;
+export default PageHeader
