@@ -39,8 +39,18 @@ Cypress.Commands.add('dashboardToClient', () => {
   cy.contains('Test Client 1').click()
 })
 
-Cypress.Commands.add('FEclient', () => {
+Cypress.Commands.add('projectToJobsheet', () => {
   cy.dashboardToClient();
   cy.contains('testing 3').click();
+})
+
+Cypress.Commands.add('clientToNewProject', () => {
+  cy.dashboardToClient();
+  cy.contains('New Project').click();
+})
+
+Cypress.Commands.add('projectsToNewJobsheet', () => {
+  cy.dashboardToClient();
   cy.contains('testing 3').click();
+  cy.contains('New Jobsheet').click();
 })
