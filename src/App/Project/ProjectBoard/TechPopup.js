@@ -174,15 +174,8 @@ const TechModal = (props) => {
       <NewProjBtn onClick={toggle}>{buttonLabel}</NewProjBtn>
       <Mod isOpen={modal} toggle={toggle}>
         <MH1>Available technicians</MH1>
-        <MBody>
-          {people.map((ele) => (
-            <TechCont>
-              <input type="checkbox" name={ele} value={ele} />
-              <label for={ele}>{ele}</label>
-            </TechCont>
-          ))}
-        </MBody>
-        <NewProjBtn2 onClick={toggle}>Assign Technician</NewProjBtn2>
+        <MBody>{pageNav(page)}</MBody>
+        <NewProjBtn2 onClick={changePage}>Assign Technician</NewProjBtn2>
       </Mod>
     </ModalCont>
   );
