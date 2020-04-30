@@ -20,24 +20,7 @@ describe('Test project page functionality', function() {
       cy.get('[href=""]')
       // New jobsheet button
       cy.get('[variant="primary"]')
-      // First jobsheet name in table
-      cy.get(':nth-child(1) > :nth-child(1) > .sc-fznOgF')
-      // First jobsheet status indicator
-      cy.get(':nth-child(1) > :nth-child(4) > .sc-fznYue')
-      // Second jobsheet name in table
-      cy.get(':nth-child(2) > :nth-child(1) > .sc-fznOgF')
-      // Second jobsheet status indicator
-      cy.get(':nth-child(2) > :nth-child(4) > .sc-fznYue')
-      // All jobsheets header container
-      cy.get('.sc-fzqLLg')
-      // Name header
-      cy.get('thead > .sc-fzplgP > :nth-child(1)')
-      // Description header
-      cy.get('thead > .sc-fzplgP > :nth-child(2)')
-      // Techs header
-      cy.get('thead > .sc-fzplgP > :nth-child(3)')
-      // Status header
-      cy.get('thead > .sc-fzplgP > :nth-child(3)')
+      
     })
     
     it('captures correct location information', function() {
