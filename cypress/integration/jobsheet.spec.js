@@ -28,22 +28,10 @@ describe('test jobsheet component', function () {
       cy.get('[variant="primary"]')
       // All jobsheets header container
       cy.get('.sc-fzoxnE')
-      // Name
-      // cy.get('thead > .sc-fznzqM > :nth-child(1)')
-      // Description
-      // cy.get('thead > .sc-fznzqM > :nth-child(2)')
-      // Techs
-      // cy.get('thead > .sc-fznzqM > :nth-child(3)')
-      // Status
-      // cy.get('thead > .sc-fznzqM > :nth-child(4)')
       // Table body, name container
       cy.get('tbody > :nth-child(1) > :nth-child(1)')
-      // Table body, jobsheet name
-      // cy.get(':nth-child(1) > :nth-child(1) > .sc-fznYue')
       // Table body, assignment button container
       cy.get('tbody > :nth-child(1) > :nth-child(4)')
-      // Table body, assignment button
-      // cy.get(':nth-child(1) > :nth-child(4) > .sc-fzonjX')
     })
 
     it('captures correct location information', function() {
