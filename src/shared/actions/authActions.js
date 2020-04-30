@@ -10,39 +10,6 @@ const INVITE_SUCCESS = "INVITE_SUCCESS";
 
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 
-const emailRegistration = (data, history) => dispatch => {
-  dispatch({ type: APP_LOADING });
-
-  // sets up request body to match backend requirements
-  const { email, password, ...payload } = data;
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then(data => {
-      return data.user.getIdToken();
-    })
-    .then(idToken => {
-      localStorage.setItem("idToken", idToken);
-      axiosWithAuth()
-        .post("/auth/register", payload)
-        .then(res => {
-          const user = res.data;
-
-          // stores token and user in localstorage for reducer to grab as initial state on page refresh;
-          localStorage.setItem("user", JSON.stringify(user));
-
-          dispatch({ type: APP_DONE_LOADING });
-          dispatch({ type: CREATE_ACCOUNT_SUCCESS, payload: user });
-          history.push("/dashboard");
-        })
-        .catch(async error => {
-          await firebase.auth().currentUser.delete();
-          dispatch({ type: APP_ERROR, payload: error.message });
-        });
-    })
-    .catch(error => dispatch({ type: APP_ERROR, payload: error.message }));
-};
-
 const emailLogin = (data, history) => dispatch => {
   dispatch({ type: APP_LOADING });
 
@@ -69,23 +36,6 @@ const emailLogin = (data, history) => dispatch => {
           history.push("/dashboard");
         })
         .catch(error => dispatch({ type: APP_ERROR, payload: error.message }));
-    })
-    .catch(error => dispatch({ type: APP_ERROR, payload: error.message }));
-};
-
-const googleRegistration = (data, history) => dispatch => {
-  dispatch({ type: APP_LOADING });
-  axiosWithAuth()
-    .post("/auth/register", data)
-    .then(res => {
-      const user = res.data;
-
-      // stores token and user in localstorage for reducer to grab as initial state on page refresh;
-      localStorage.setItem("user", JSON.stringify(user));
-
-      dispatch({ type: APP_DONE_LOADING });
-      dispatch({ type: CREATE_ACCOUNT_SUCCESS, payload: user });
-      history.push("/dashboard");
     })
     .catch(error => dispatch({ type: APP_ERROR, payload: error.message }));
 };
@@ -180,9 +130,7 @@ export const actions = {
 };
 
 export const dispatchers = {
-  emailRegistration,
   emailLogin,
-  googleRegistration,
   googleLogin,
   forgotPassword,
   sendInvite

@@ -16,14 +16,6 @@
 
 
 module.exports = (on, config) => {
-<<<<<<< HEAD
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
-  require('@cypress/code-coverage/task')(on, config)
-
-  return config
-}
-=======
   require('@cypress/code-coverage/task')(on, config)
   // IMPORTANT to return the config object
   // with the any changed environment variables
@@ -32,4 +24,3 @@ module.exports = (on, config) => {
 // `on` is used to hook into various events Cypress emits
 // `config` is the resolved Cypress config
 
->>>>>>> b394279c6f711093f76cf2eeb80523940676554c

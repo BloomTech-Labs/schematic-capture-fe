@@ -4,8 +4,6 @@ import { useHistory, Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
 
-import GoogleIcon from "../../shared/assets/google-icon"
-
 import { dispatchers } from "../../shared/actions/authActions"
 
 import {
@@ -25,24 +23,16 @@ const Login = () => {
   const { register, handleSubmit, errors } = useForm()
   const dispatch = useDispatch()
   const history = useHistory()
-  const { emailLogin, googleLogin } = dispatchers
+  const { emailLogin } = dispatchers
 
   const onSubmit = (data) => {
     dispatch(emailLogin(data, history))
-  }
-
-  const onGoogleLogin = (event) => {
-    event.preventDefault()
-    dispatch(googleLogin(history))
   }
 
   return (
     <FormContainer>
       <form className="white" onSubmit={handleSubmit(onSubmit)}>
         <Signin className="signin">Sign in</Signin>
-        <div style={{ marginBottom: "2rem" }}>
-          New user? <Link to="/register">Create an account</Link>
-        </div>
         <FormGroup>
           <StyledField
             data-email-address
@@ -93,13 +83,6 @@ const Login = () => {
           </FormColumn>
         </FormRow>
       </form>
-      <LineOr>
-        <p>Or</p>
-      </LineOr>
-      <Button1 onClick={onGoogleLogin} variant="secondary" btnBlock>
-        <GoogleIcon />
-        Continue with Google
-      </Button1>
     </FormContainer>
   )
 }
