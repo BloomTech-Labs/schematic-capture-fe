@@ -7,9 +7,9 @@
 
 Current version: 0.3. This app is in Alpha phase of the release life cycle for iOS and web.
 
-**Production:** [www.schematiccapture.com](https://www.schematiccapture.com)
+**Production:** [www.schematiccapture.com](https://www.schematiccapture.com) in current state, does not seem to want to render new code?
 
-**Staging:** [staging.schematiccapture.com](https://staging.schematiccapture.com)
+**Staging:** [staging.schematiccapture.com](https://staging.schematiccapture.com) not currently in use - check AWS!
 
 # Contributors
 
