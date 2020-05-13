@@ -25,7 +25,7 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.1.0",
     "sweetalert": "^2.1.2",
-    "use-dropbox-chooser": "0.0.4"
+    "use-dropbox-chooser": "^0.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
