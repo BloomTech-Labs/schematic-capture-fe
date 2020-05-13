@@ -6,22 +6,16 @@ describe("User at Dashboard", function() {
 
     it('Displays dashboard info correctly', function() {
       cy.url().should('include', '/dashboard')
-      cy.contains('All Clients')
-      cy.contains('Test Client 1')
-      cy.contains('Test Client 2')
-      cy.contains('Testing3')
-      cy.contains('Company Test')
-      cy.contains('New Client')
-    })
-
-    it('Set local storage after successful login', function() {
-      cy.url().should('include', '/dashboard')
-      cy.getLocalStorage('idToken')
-        .should('exist')
-      cy.getLocalStorage('state')
-       .should('exist')
-      cy.getLocalStorage('user')
-       .should('exist')
+      // Clients header
+      cy.get('.sc-fznMnq')
+      // First client name
+      cy.get(':nth-child(1) > .sc-fzomME')
+      // Second client name
+      cy.get(':nth-child(2) > .sc-fzomME')
+      // First client completed status
+      cy.get(':nth-child(1) > .sc-fzoJMP')
+      // Second client completed status
+      cy.get(':nth-child(2) > .sc-fzoJMP')
     })
 
     it('captures correct location information', function() {

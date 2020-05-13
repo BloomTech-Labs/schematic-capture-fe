@@ -5,23 +5,35 @@ import { Link } from 'react-router-dom'
 export const Title = styled.h1`
     color: ${color.blue};
     font-weight: bold;
-    font-size: ${font.normal}
-`
+    font-size: ${font.normal};
+`;
 
 export const Seperate = styled.div`
     display: flex;
     justify-content: space-between;
-    margin: 5rem 25rem 12rem 25rem
+    margin: 5rem 25rem 12rem 25rem;
+    @media (max-width: 1500px) {
+        margin: 5rem 20rem 12rem 20rem
+    }
+    @media (max-width: 1200px) {
+        margin: 5rem 16rem 12rem 16rem
+    }
 `
 
 export const Seperate2 = styled.div`
     display: flex;
     justify-content: space-between;
-    margin: 5rem 25rem 4rem 25rem
+    margin: 5rem 25rem 4rem 25rem;
+    @media (max-width: 1500px) {
+        margin: 5rem 20rem 12rem 20rem
+    }
+    @media (max-width: 1200px) {
+        margin: 5rem 16rem 12rem 16rem
+    }
 `
 
 export const RightSide = styled.div`
-    width: 25rem;
+    max-width:50rem;
     display: flex;
     justify-content: space-between;
     max-height: 2.5rem;
@@ -32,19 +44,32 @@ export const Greeting = styled.button`
     color: ${color.black};
     font-size: ${font.normal};
     font-weight: bold;
-    padding: 0
+    padding: 0;
+    margin-left: 1rem;
+    min-width: 100px;
     :hover{
-        text-decoration: none
+        text-decoration: none;
+        opacity: 0.75;
+        div {
+            visibility: visible;
+            height: 130px;
+        }
     }
 `
 
 export const Section = styled.section`
-    margin: 0 25rem
+    margin: 0 25rem;
+    @media (max-width: 1500px) {
+        margin: 0 20rem 
+    }
+    @media (max-width: 1200px) {
+        margin: 0 16rem 
+    }
 `
 
 export const Clientsh2 = styled.h2`
     color: ${color.blue};
-    font-size: ${font.normal}
+    font-size: ${font.normal};
 `
 
 export const ClientCont = styled.div`
@@ -52,9 +77,9 @@ export const ClientCont = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     @media (max-width: 1500px) {
-        justify-content: space-around;
+    justify-content: space-around;
     }
-`
+`;
 
 export const ClientBox = styled(Link)`
     text-align: center;
@@ -73,8 +98,9 @@ export const Hover = styled.img`
 `
 
 export const LineBreak = styled.hr`
-    margin-bottom: 5rem
-`
+    margin-bottom: 5rem;
+`;
+
 export const Spacer = styled.div`
     width: 40rem;
     height: 40rem;
@@ -97,11 +123,11 @@ export const Spacer = styled.div`
         height: 40rem;
     }
     @media (max-width: 1325px) {
-        width 37.5%;
+        width: 37.5%;
         height: 35rem;
     }
     @media (max-width: 1200px) {
-        width 37.5%;
+        width: 37.5%;
         height: 30rem;
     }
 `
@@ -144,8 +170,20 @@ export const FlexEnd = styled.button`
 `
 
 export const Profile = styled.img`
-    max-width: 4rem;
-    max-height: 3rem;
-    margin: 0 0 0 1rem;
-    border-radius: 50px;
+    width: 24px;
+    height: 24px;
+    margin: -5px 0 0 1rem;
+    border-radius: 50%;
+    border: 1px solid black;
+`
+
+export const SearchIn = styled.input`
+    border-radius: 15px;
+    max-width:10rem;
+    text-align:center;
+    margin: 0 2rem;
+`
+
+export const Buttion = styled.button`
+    margin-right: 2rem;
 `

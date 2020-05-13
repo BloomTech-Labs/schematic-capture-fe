@@ -1,7 +1,10 @@
-import React from "react"
-import { useSelector } from "react-redux"
+import React, { useEffect, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+
+import Projects from "./Projects"
 
 import { BackToLink } from "../../../shared/components"
+import { useParams } from "react-router-dom"
 
 import {
   Projectsh1,
@@ -17,19 +20,69 @@ import {
   Seperate2,
   RightSide,
   Profile,
-  Hover
+  Hover,
+  SearchIn,
+  Buttion
 } from '../../Styles/Dashboard'
 import { Bread } from '../../Styles/Project'
 
+import NameDropDownMenu from '../../../shared/components/Components/NameDropDownMenu';
 import Search from '../../Styles/Dashboard/Search.png'
-import Swirl from '../../Styles/Dashboard/synchronize 1.png'
 import Unknown from '../../Styles/Dashboard/unknown.jpg'
 
 import swal from "sweetalert"
+import {
+  dispatchers,
+  actions
+} from "../../../shared/actions/dashboardActions"
+
+const { fetchProjects } = dispatchers;
+const { SET_CURRENT_CLIENT, SET_CURRENT_PROJECTS } = actions
+
+const fetchProjectsSideEffect = async (dispatch, id, setProjects) => {
+  await dispatch(fetchProjects(id, setProjects))
+}
+
+const setCurrentClientAndProjectsSideEffect = async (
+  dispatch,
+  client,
+  projects
+) => {
+  await dispatch({ type: SET_CURRENT_CLIENT, payload: client });
+  await dispatch({ type: SET_CURRENT_PROJECTS, payload: projects });
+}
 
 const PageHeader = () => {
+  const params = useParams()
+  const dispatch = useDispatch()
   const { currentClient } = useSelector(state => state.dashboard)
   const user = useSelector(state => state.auth.user)
+
+  const clients = useSelector(state => state.dashboard.clients)
+  const client = clients.find(client => client.id === Number(params.id))
+
+  const [editing, setEditing] = useState(false)
+  const [projects, setProjects] = useState([])
+  const [projects1, setProjects1] = useState([])
+  const [search, setSearch] = useState('')
+
+  useEffect(() => {
+    fetchProjectsSideEffect(dispatch, params.id, setProjects)
+    setCurrentClientAndProjectsSideEffect(dispatch, client, projects)
+  },[])
+
+  useEffect(() => {
+    console.log(search)
+    setProjects1(
+      projects.filter(input => {
+        return input.name.toLowerCase().includes(search.toLowerCase())
+      })
+    )
+  },[editing, search])
+
+  useEffect(() => {
+    console.log('arraylist tyler look here for list of projects', projects1)
+  },[projects1])
 
   const onLogout = () => {
     localStorage.removeItem("idToken")
@@ -51,17 +104,27 @@ const PageHeader = () => {
             <BackToLink
               style={{ marginBottom: "2rem" }}
               to="/dashboard"
-              text="Home"
+              text="Clients"
             />
           </Bread>
         </Column>
         <br />
         <RightSide>
-          <Hover src={Swirl} />
-          <Hover src={Search} />
+          <Buttion onClick={() => setEditing(!editing)}>
+            <Hover src={Search} />
+          </Buttion>
+          {editing ? 
+            <SearchIn
+              type='search'
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder='Search'
+            /> :
+            <></>
+          }
           <Greeting onClick={onLogout} variant="primary">
             Hi, {user.firstName}
             <Profile src={Unknown} />
+            <NameDropDownMenu firstName={user.firstName} lastName={user.lastName} />
           </Greeting>
         </RightSide>
       </Seperate2>
@@ -78,6 +141,7 @@ const PageHeader = () => {
           </Section2>
         )}
       </ClientHeaderContain>
+      <Projects project={projects1} search={search} />
     </>
   )
 }

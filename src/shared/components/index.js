@@ -1,7 +1,6 @@
 export { default as BackToLink } from "./Components/BackToLink";
 export { default as Button } from "./Components/Button";
 export { default as Fields } from "./Components/Fields";
-export { default as Form } from "./Components/Form";
 export { default as Input } from "./Components/Input";
 export { default as PageError } from "./Components/PageError";
 export { default as PageLoader } from "./Components/PageLoader";
