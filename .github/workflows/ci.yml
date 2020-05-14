@@ -17,20 +17,20 @@ jobs:
       ubuntu-latest
       # The steps for the job, executed in sequence
     steps:
-    - uses: actions/checkout@master
-    - uses: actions/setup-node@master
-    with:
-      node-version: '12'
-    - run: npm install -g yarn
-    - run: yarn install
-    - run: yarn build
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          node-version: "12"
+      - run: npm install -g yarn
+      - run: yarn install
+      - run: yarn build
 
-    # A GitHub action for running tests and publishing coverage
-    - uses: paambaati/codeclimate-action@v2.6.0
-      env:
-        # An environment variable, the value is a GitHub repo secret
-        # CC_TEST_REPORTER_ID: ${{ secrets.CodeClimateReporterId }}
-        CC_TEST_REPORTER_ID: 12dcfce279bc5c9eb9fa7ba358ecbe48a525ce91187812cfc5c50f008045bc57
-      with:
-        # Run our `coverage` command from our `package.json`
-        coverageCommand: yarn run cypress:coverage
+      # A GitHub action for running tests and publishing coverage
+      - uses: paambaati/codeclimate-action@v2.6.0
+        env:
+          # An environment variable, the value is a GitHub repo secret
+          # CC_TEST_REPORTER_ID: ${{ secrets.CodeClimateReporterId }}
+          CC_TEST_REPORTER_ID: 12dcfce279bc5c9eb9fa7ba358ecbe48a525ce91187812cfc5c50f008045bc57
+        with:
+          # Run our `coverage` command from our `package.json`
+          coverageCommand: yarn run cypress:coverage
