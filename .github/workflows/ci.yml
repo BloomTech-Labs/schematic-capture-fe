@@ -35,4 +35,5 @@ jobs:
         with:
           # Run our `coverage` command from our `package.json`
           coverageCommand: yarn help
+          debug: true
           coverageLocations: ${{github.workspace}}/coverage/lcov.info:lcov
