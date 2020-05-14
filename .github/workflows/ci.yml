@@ -17,13 +17,12 @@ jobs:
       ubuntu-latest
       # The steps for the job, executed in sequence
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
-        with:
-          node-version: "12"
-      - run: npm install -g yarn
-      - run: yarn install
-      - run: yarn build
+      - name: Checkout
+        uses: actions/checkout@v1
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v1
 
       # A GitHub action for running tests and publishing coverage
       - uses: paambaati/codeclimate-action@v2.6.0
@@ -33,4 +32,4 @@ jobs:
           CC_TEST_REPORTER_ID: 12dcfce279bc5c9eb9fa7ba358ecbe48a525ce91187812cfc5c50f008045bc57
         with:
           # Run our `coverage` command from our `package.json`
-          coverageCommand: yarn run cypress:coverage
+          coverageLocations: ${{github.workspace}}/coverage/lcov.info:lcov
