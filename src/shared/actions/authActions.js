@@ -1,6 +1,5 @@
 import { actions as appActions } from "./appActions";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import firebase, { GoogleProvider } from "../utils/firebase";
 
 const CREATE_ACCOUNT_SUCCESS = "CREATE_ACCOUNT_SUCCESS";
 const FORGOT_PASSWORD_SUCCESS = "FORGOT_PASSWORD_SUCCESS";
@@ -28,77 +27,6 @@ const emailLogin = (data, history) => (dispatch) => {
       history.push("/dashboard");
     })
     .catch((err) => dispatch({ type: APP_ERROR, payload: err.message }));
-
-  // firebase
-  //   .auth()
-  //   .signInWithEmailAndPassword(email, password)
-  //   .then((data) => {
-  //     return data.user.getIdToken();
-  //   })
-  //   .then((idToken) => {
-  //     localStorage.setItem("idToken", idToken);
-  //     axiosWithAuth()
-  //       .post("/auth/login")
-  //       .then((res) => {
-  //         const user = res.data;
-
-  //         // stores token and user in localstorage for reducer to grab as initial state on page refresh;
-  //         localStorage.setItem("user", JSON.stringify(user));
-
-  //         dispatch({ type: APP_DONE_LOADING });
-  //         dispatch({ type: LOGIN_SUCCESS, payload: user });
-  //         history.push("/dashboard");
-  //       })
-  //       .catch((error) =>
-  //         dispatch({ type: APP_ERROR, payload: error.message })
-  //       );
-  //   })
-  //   .catch((error) => dispatch({ type: APP_ERROR, payload: error.message }));
-};
-
-const googleLogin = (history, inviteToken) => (dispatch) => {
-  dispatch({ type: APP_LOADING });
-  let googleInfo;
-
-  firebase
-    .auth()
-    .signInWithPopup(GoogleProvider)
-    .then((data) => {
-      const fullName = data.user.displayName.split(" ");
-      googleInfo = {
-        email: data.user.email,
-        firstName: fullName[0],
-        lastName: fullName[fullName.length - 1],
-        phone: data.user.phoneNumber,
-      };
-
-      return data.user.getIdToken();
-    })
-    .then((idToken) => {
-      localStorage.setItem("idToken", idToken);
-      axiosWithAuth()
-        .post("/auth/login") // sends the user's token to get decoded at backend to validate identity
-        .then((res) => {
-          const user = res.data;
-          dispatch({ type: APP_DONE_LOADING });
-          dispatch({ type: CREATE_ACCOUNT_SUCCESS, payload: user });
-          history.push("/dashboard");
-        })
-        .catch((error) => {
-          /*
-            if the account is authenticated on Firebase but has not been
-            inserted into the Postgres DB, then the backend will return a
-            JSON object with { accountExists: true }. The user gets redirected
-            to the Register page component with less fields to complete the onboarding.
-          */
-          dispatch({ type: APP_DONE_LOADING });
-          if (error.response && error.response.data.accountExists === false) {
-            dispatch({ type: STORE_GOOGLE_INFO, payload: googleInfo });
-            history.push(`/register/${inviteToken || ""}`);
-          }
-        });
-    })
-    .catch((error) => dispatch({ type: APP_ERROR, payload: error.message }));
 };
 
 const forgotPassword = (data, history) => (dispatch) => {
@@ -147,7 +75,6 @@ export const actions = {
 
 export const dispatchers = {
   emailLogin,
-  googleLogin,
   forgotPassword,
   sendInvite,
 };

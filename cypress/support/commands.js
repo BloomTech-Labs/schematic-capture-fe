@@ -26,31 +26,31 @@
 
 // Commands currently intended for use in testing the front end:
 // Log in using the front end, ending up on dashboard:
-Cypress.Commands.add('loginScript', () => {
+Cypress.Commands.add("loginScript", () => {
   cy.visit("/");
-  cy.get("input[name=email]").type('bob_johnson@lambdaschool.com');
-  cy.get("input[name=password]").type('testing123!');
+  cy.get("input[name=email]").type("bob_johnson@lambdaschool.com");
+  cy.get("input[name=password]").type("Testing123!");
   cy.get("form").submit();
-})
+});
 
 // Log in using the front end and then navigate to Test Client 1 from dashboard
-Cypress.Commands.add('dashboardToClient', () => {
+Cypress.Commands.add("dashboardToClient", () => {
   cy.loginScript();
-  cy.contains('Test Client 1').click()
-})
+  cy.contains("Evraz").click();
+});
 
-Cypress.Commands.add('projectToJobsheet', () => {
+Cypress.Commands.add("projectToJobsheet", () => {
   cy.dashboardToClient();
-  cy.contains('testing 3').click();
-})
+  cy.contains("Test Project 1").click();
+});
 
-Cypress.Commands.add('clientToNewProject', () => {
+Cypress.Commands.add("clientToNewProject", () => {
   cy.dashboardToClient();
-  cy.contains('New Project').click();
-})
+  cy.contains("New Project").click();
+});
 
-Cypress.Commands.add('projectsToNewJobsheet', () => {
+Cypress.Commands.add("projectsToNewJobsheet", () => {
   cy.dashboardToClient();
-  cy.contains('testing 3').click();
-  cy.contains('New Jobsheet').click();
-})
+  cy.contains("Test Project 1").click();
+  cy.contains("New Jobsheet").click();
+});
