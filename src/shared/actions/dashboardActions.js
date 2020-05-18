@@ -11,7 +11,6 @@ const SET_CURRENT_JOBSHEETS = "SET_CURRENT_JOBSHEETS";
 const SET_CURRENT_JOBSHEET = "SET_CURRENT_JOBSHEET";
 const UPDATE_CURRENT_PROJECT_NAME = "UPDATE_CURRENT_PROJECT_NAME";
 
-
 const fetchClients = () => async (dispatch, getState) => {
   dispatch({ type: APP_LOADING });
 
@@ -24,7 +23,7 @@ const fetchClients = () => async (dispatch, getState) => {
   }
 };
 
-const addNewClient = (data, history) => async dispatch => {
+const addNewClient = (data, history) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
 
   try {
@@ -36,7 +35,7 @@ const addNewClient = (data, history) => async dispatch => {
   }
 };
 
-const fetchProjects = (clientId, setProjects) => async dispatch => {
+const fetchProjects = (clientId, setProjects) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
   try {
     const projects = await axiosWithAuth().get(`/clients/${clientId}/projects`);
@@ -48,7 +47,7 @@ const fetchProjects = (clientId, setProjects) => async dispatch => {
   }
 };
 
-const addNewProject = (data, clientId, history) => async dispatch => {
+const addNewProject = (data, clientId, history) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
   try {
     await axiosWithAuth().post(`/clients/${clientId}/projects`, data);
@@ -76,7 +75,7 @@ const updateProjectName = (name, setIsEditing) => async (
   }
 };
 
-const fetchJobsheets = (projectId, setJobsheets) => async dispatch => {
+const fetchJobsheets = (projectId, setJobsheets) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
 
   try {
@@ -92,6 +91,7 @@ const fetchJobsheets = (projectId, setJobsheets) => async dispatch => {
 };
 
 const addNewJobsheet = (data, history) => async (dispatch, getState) => {
+  console.log("test");
   dispatch({ type: APP_LOADING });
 
   const { dashboard, auth } = getState();
@@ -104,6 +104,7 @@ const addNewJobsheet = (data, history) => async (dispatch, getState) => {
   try {
     jobsheet = await axiosWithAuth().post("/jobsheets/create", payload);
   } catch (error) {
+    console.log(error);
     return dispatch({ type: APP_ERROR, payload: error.message });
   }
 
@@ -127,7 +128,7 @@ const addNewJobsheet = (data, history) => async (dispatch, getState) => {
   dispatch({ type: APP_DONE_LOADING });
 };
 
-const fetchComponents = (id, setComponents) => async dispatch => {
+const fetchComponents = (id, setComponents) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
 
   try {
@@ -139,8 +140,6 @@ const fetchComponents = (id, setComponents) => async dispatch => {
   }
 };
 
-
-
 export const dispatchers = {
   fetchClients,
   addNewClient,
@@ -149,7 +148,7 @@ export const dispatchers = {
   updateProjectName,
   fetchJobsheets,
   addNewJobsheet,
-  fetchComponents
+  fetchComponents,
 };
 
 export const actions = {
@@ -158,5 +157,5 @@ export const actions = {
   SET_CURRENT_PROJECTS,
   SET_CURRENT_PROJECT,
   SET_CURRENT_JOBSHEETS,
-  SET_CURRENT_JOBSHEET
+  SET_CURRENT_JOBSHEET,
 };
