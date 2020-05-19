@@ -10,7 +10,6 @@
     "csvtojson": "^2.0.10",
     "cypress-localstorage-commands": "^1.1.8",
     "dotenv": "^8.2.0",
-    "firebase": "^7.14.0",
     "js-file-download": "^0.4.11",
     "lodash.throttle": "^4.1.1",
     "react": "^16.13.1",

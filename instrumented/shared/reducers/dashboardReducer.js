@@ -1,10 +1,10 @@
-function cov_1iu2e7vssl() {
-  var path = "/Users/mark/Repositories/schematic-capture-fe/src/shared/reducers/dashboardReducer.js";
-  var hash = "546191616128863fd8078cb2baa8192000c5033f";
+function cov_17m3cnsozb() {
+  var path = "/Users/colin/Documents/lambda/schematic-capture-fe/src/shared/reducers/dashboardReducer.js";
+  var hash = "0745abec0a5be7409d5c3208f477750cab4b454e";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
-    path: "/Users/mark/Repositories/schematic-capture-fe/src/shared/reducers/dashboardReducer.js",
+    path: "/Users/colin/Documents/lambda/schematic-capture-fe/src/shared/reducers/dashboardReducer.js",
     statementMap: {
       "0": {
         start: {
@@ -310,7 +310,7 @@ function cov_1iu2e7vssl() {
       "1": [0, 0, 0, 0, 0, 0, 0, 0]
     },
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "546191616128863fd8078cb2baa8192000c5033f"
+    hash: "0745abec0a5be7409d5c3208f477750cab4b454e"
   };
   var coverage = global[gcv] || (global[gcv] = {});
 
@@ -320,14 +320,14 @@ function cov_1iu2e7vssl() {
 
   var actualCoverage = coverage[path];
 
-  cov_1iu2e7vssl = function () {
+  cov_17m3cnsozb = function () {
     return actualCoverage;
   };
 
   return actualCoverage;
 }
 
-cov_1iu2e7vssl();
+cov_17m3cnsozb();
 import { actions } from "../actions/dashboardActions";
 const {
   FETCH_CLIENTS_SUCCESS,
@@ -337,8 +337,8 @@ const {
   SET_CURRENT_JOBSHEETS,
   SET_CURRENT_JOBSHEET,
   UPDATE_CURRENT_PROJECT_NAME
-} = (cov_1iu2e7vssl().s[0]++, actions);
-const initState = (cov_1iu2e7vssl().s[1]++, {
+} = (cov_17m3cnsozb().s[0]++, actions);
+const initState = (cov_17m3cnsozb().s[1]++, {
   clients: [],
   currentProjects: [],
   currentClient: null,
@@ -346,48 +346,48 @@ const initState = (cov_1iu2e7vssl().s[1]++, {
   currentJobsheets: [],
   currentJobsheet: null
 });
-cov_1iu2e7vssl().s[2]++;
+cov_17m3cnsozb().s[2]++;
 
-const dashboardReducer = (state = (cov_1iu2e7vssl().b[0][0]++, initState), action) => {
-  cov_1iu2e7vssl().f[0]++;
-  cov_1iu2e7vssl().s[3]++;
+const dashboardReducer = (state = (cov_17m3cnsozb().b[0][0]++, initState), action) => {
+  cov_17m3cnsozb().f[0]++;
+  cov_17m3cnsozb().s[3]++;
 
   switch (action.type) {
     case FETCH_CLIENTS_SUCCESS:
-      cov_1iu2e7vssl().b[1][0]++;
-      cov_1iu2e7vssl().s[4]++;
+      cov_17m3cnsozb().b[1][0]++;
+      cov_17m3cnsozb().s[4]++;
       return { ...state,
         clients: action.payload
       };
 
     case SET_CURRENT_CLIENT:
-      cov_1iu2e7vssl().b[1][1]++;
-      cov_1iu2e7vssl().s[5]++;
+      cov_17m3cnsozb().b[1][1]++;
+      cov_17m3cnsozb().s[5]++;
       return { ...state,
         currentClient: action.payload
       };
 
     case SET_CURRENT_PROJECTS:
-      cov_1iu2e7vssl().b[1][2]++;
-      cov_1iu2e7vssl().s[6]++;
+      cov_17m3cnsozb().b[1][2]++;
+      cov_17m3cnsozb().s[6]++;
       return { ...state,
         currentProjects: action.payload
       };
 
     case SET_CURRENT_PROJECT:
-      cov_1iu2e7vssl().b[1][3]++;
-      cov_1iu2e7vssl().s[7]++;
+      cov_17m3cnsozb().b[1][3]++;
+      cov_17m3cnsozb().s[7]++;
       return { ...state,
         currentProject: action.payload
       };
 
     case UPDATE_CURRENT_PROJECT_NAME:
-      cov_1iu2e7vssl().b[1][4]++;
-      cov_1iu2e7vssl().s[8]++;
+      cov_17m3cnsozb().b[1][4]++;
+      cov_17m3cnsozb().s[8]++;
       console.log("update current project");
-      cov_1iu2e7vssl().s[9]++;
+      cov_17m3cnsozb().s[9]++;
       console.log(action.payload);
-      cov_1iu2e7vssl().s[10]++;
+      cov_17m3cnsozb().s[10]++;
       return { ...state,
         currentProject: { ...state.currentProject,
           name: action.payload
@@ -395,22 +395,22 @@ const dashboardReducer = (state = (cov_1iu2e7vssl().b[0][0]++, initState), actio
       };
 
     case SET_CURRENT_JOBSHEETS:
-      cov_1iu2e7vssl().b[1][5]++;
-      cov_1iu2e7vssl().s[11]++;
+      cov_17m3cnsozb().b[1][5]++;
+      cov_17m3cnsozb().s[11]++;
       return { ...state,
         currentJobsheets: action.payload
       };
 
     case SET_CURRENT_JOBSHEET:
-      cov_1iu2e7vssl().b[1][6]++;
-      cov_1iu2e7vssl().s[12]++;
+      cov_17m3cnsozb().b[1][6]++;
+      cov_17m3cnsozb().s[12]++;
       return { ...state,
         currentJobsheet: action.payload
       };
 
     default:
-      cov_1iu2e7vssl().b[1][7]++;
-      cov_1iu2e7vssl().s[13]++;
+      cov_17m3cnsozb().b[1][7]++;
+      cov_17m3cnsozb().s[13]++;
       return state;
   }
 };

@@ -1,40 +1,31 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { useParams } from "react-router-dom"
+import Header from "./ClientHeader"
 
-import Header from "./ClientHeader";
-import Projects from "./Projects";
-import { Navbar } from "../../../shared/components";
+import { actions } from "../../../shared/actions/dashboardActions"
 
-import { Main } from "./Styles";
-import { actions } from "../../../shared/actions/dashboardActions";
-
-const { SET_CURRENT_CLIENT } = actions;
+const { SET_CURRENT_CLIENT } = actions
 
 const setCurrentClient = async (clients, id, dispatch) => {
-  const currentClient = clients.find(client => client.id === Number(id));
-
-  await dispatch({ type: SET_CURRENT_CLIENT, payload: currentClient });
-};
+  const currentClient = clients.find(client => client.id === Number(id))
+  await dispatch({ type: SET_CURRENT_CLIENT, payload: currentClient })
+}
 
 const Board = () => {
-  const dispatch = useDispatch();
-  const params = useParams();
-  const clients = useSelector(state => state.dashboard.clients);
+  const dispatch = useDispatch()
+  const params = useParams()
+  const clients = useSelector(state => state.dashboard.clients)
 
   useEffect(() => {
-    setCurrentClient(clients, params.id, dispatch);
-  }, [clients, params.id, dispatch]);
+    setCurrentClient(clients, params.id, dispatch)
+  }, [clients, params.id, dispatch])
 
   return (
     <>
-      <Navbar />
-      <Main>
-        <Header />
-        <Projects />
-      </Main>
+      <Header />
     </>
-  );
-};
+  )
+}
 
-export default Board;
+export default Board

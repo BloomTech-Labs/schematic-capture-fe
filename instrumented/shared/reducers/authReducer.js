@@ -1,10 +1,10 @@
-function cov_20yhla9u4q() {
-  var path = "/Users/mark/Repositories/schematic-capture-fe/src/shared/reducers/authReducer.js";
-  var hash = "b83d7aaae2c6dc9c1a7ed0dec13b02655463125a";
+function cov_151gi66oez() {
+  var path = "/Users/colin/Documents/lambda/schematic-capture-fe/src/shared/reducers/authReducer.js";
+  var hash = "aa3c2443745bb7d2d6c9a548e942772997a07074";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
-    path: "/Users/mark/Repositories/schematic-capture-fe/src/shared/reducers/authReducer.js",
+    path: "/Users/colin/Documents/lambda/schematic-capture-fe/src/shared/reducers/authReducer.js",
     statementMap: {
       "0": {
         start: {
@@ -231,7 +231,7 @@ function cov_20yhla9u4q() {
       "2": [0, 0, 0, 0]
     },
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "b83d7aaae2c6dc9c1a7ed0dec13b02655463125a"
+    hash: "aa3c2443745bb7d2d6c9a548e942772997a07074"
   };
   var coverage = global[gcv] || (global[gcv] = {});
 
@@ -241,54 +241,54 @@ function cov_20yhla9u4q() {
 
   var actualCoverage = coverage[path];
 
-  cov_20yhla9u4q = function () {
+  cov_151gi66oez = function () {
     return actualCoverage;
   };
 
   return actualCoverage;
 }
 
-cov_20yhla9u4q();
+cov_151gi66oez();
 import { actions } from "../actions/authActions";
 const {
   CREATE_ACCOUNT_SUCCESS,
   LOGIN_SUCCESS,
   STORE_GOOGLE_INFO
-} = (cov_20yhla9u4q().s[0]++, actions);
-const initState = (cov_20yhla9u4q().s[1]++, {
-  user: (cov_20yhla9u4q().b[0][0]++, JSON.parse(localStorage.getItem("user"))) || (cov_20yhla9u4q().b[0][1]++, {}),
+} = (cov_151gi66oez().s[0]++, actions);
+const initState = (cov_151gi66oez().s[1]++, {
+  user: (cov_151gi66oez().b[0][0]++, JSON.parse(localStorage.getItem("user"))) || (cov_151gi66oez().b[0][1]++, {}),
   googleInfo: null,
   isLoading: false,
   error: null
 });
-cov_20yhla9u4q().s[2]++;
+cov_151gi66oez().s[2]++;
 
-const authReducer = (state = (cov_20yhla9u4q().b[1][0]++, initState), action) => {
-  cov_20yhla9u4q().f[0]++;
-  cov_20yhla9u4q().s[3]++;
+const authReducer = (state = (cov_151gi66oez().b[1][0]++, initState), action) => {
+  cov_151gi66oez().f[0]++;
+  cov_151gi66oez().s[3]++;
 
   switch (action.type) {
     case STORE_GOOGLE_INFO:
-      cov_20yhla9u4q().b[2][0]++;
-      cov_20yhla9u4q().s[4]++;
+      cov_151gi66oez().b[2][0]++;
+      cov_151gi66oez().s[4]++;
       return { ...state,
         googleInfo: action.payload
       };
 
     case CREATE_ACCOUNT_SUCCESS:
-      cov_20yhla9u4q().b[2][1]++;
+      cov_151gi66oez().b[2][1]++;
 
     case LOGIN_SUCCESS:
-      cov_20yhla9u4q().b[2][2]++;
-      cov_20yhla9u4q().s[5]++;
+      cov_151gi66oez().b[2][2]++;
+      cov_151gi66oez().s[5]++;
       return { ...state,
         ...action.payload,
         isLoading: false
       };
 
     default:
-      cov_20yhla9u4q().b[2][3]++;
-      cov_20yhla9u4q().s[6]++;
+      cov_151gi66oez().b[2][3]++;
+      cov_151gi66oez().s[6]++;
       return state;
   }
 };

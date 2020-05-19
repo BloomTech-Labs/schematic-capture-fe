@@ -1,10 +1,10 @@
-function cov_28g0ftjtcm() {
-  var path = "/Users/mark/Repositories/schematic-capture-fe/src/shared/actions/appActions.js";
-  var hash = "45eca28fff2f67d68e31da94e893cb31df6e584f";
+function cov_2poxtqiyol() {
+  var path = "/Users/colin/Documents/lambda/schematic-capture-fe/src/shared/actions/appActions.js";
+  var hash = "daa29723f9fb541f643e7526fa08defdc7dfe56c";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
-    path: "/Users/mark/Repositories/schematic-capture-fe/src/shared/actions/appActions.js",
+    path: "/Users/colin/Documents/lambda/schematic-capture-fe/src/shared/actions/appActions.js",
     statementMap: {
       "0": {
         start: {
@@ -69,7 +69,7 @@ function cov_28g0ftjtcm() {
     f: {},
     b: {},
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "45eca28fff2f67d68e31da94e893cb31df6e584f"
+    hash: "daa29723f9fb541f643e7526fa08defdc7dfe56c"
   };
   var coverage = global[gcv] || (global[gcv] = {});
 
@@ -79,19 +79,19 @@ function cov_28g0ftjtcm() {
 
   var actualCoverage = coverage[path];
 
-  cov_28g0ftjtcm = function () {
+  cov_2poxtqiyol = function () {
     return actualCoverage;
   };
 
   return actualCoverage;
 }
 
-cov_28g0ftjtcm();
-const APP_LOADING = (cov_28g0ftjtcm().s[0]++, "APP_LOADING");
-const APP_DONE_LOADING = (cov_28g0ftjtcm().s[1]++, "APP_DONE_LOADING");
-const APP_ERROR = (cov_28g0ftjtcm().s[2]++, "APP_ERROR");
-const RESET_ERROR = (cov_28g0ftjtcm().s[3]++, "RESET_ERROR");
-export const actions = (cov_28g0ftjtcm().s[4]++, {
+cov_2poxtqiyol();
+const APP_LOADING = (cov_2poxtqiyol().s[0]++, "APP_LOADING");
+const APP_DONE_LOADING = (cov_2poxtqiyol().s[1]++, "APP_DONE_LOADING");
+const APP_ERROR = (cov_2poxtqiyol().s[2]++, "APP_ERROR");
+const RESET_ERROR = (cov_2poxtqiyol().s[3]++, "RESET_ERROR");
+export const actions = (cov_2poxtqiyol().s[4]++, {
   APP_LOADING,
   APP_DONE_LOADING,
   APP_ERROR,

@@ -1,10 +1,10 @@
-function cov_1ksywgoglj() {
-  var path = "/Users/mark/Repositories/schematic-capture-fe/src/shared/utils/localStorage.js";
-  var hash = "b79a8bd2a05e25fbf30d6ee648d688a47c7dba29";
+function cov_1h15ldyc6z() {
+  var path = "/Users/colin/Documents/lambda/schematic-capture-fe/src/shared/utils/localStorage.js";
+  var hash = "f4ec9718dddb3d9282ccf5eebc1b152b337b4569";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
-    path: "/Users/mark/Repositories/schematic-capture-fe/src/shared/utils/localStorage.js",
+    path: "/Users/colin/Documents/lambda/schematic-capture-fe/src/shared/utils/localStorage.js",
     statementMap: {
       "0": {
         start: {
@@ -328,7 +328,7 @@ function cov_1ksywgoglj() {
       "0": [0, 0]
     },
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "b79a8bd2a05e25fbf30d6ee648d688a47c7dba29"
+    hash: "f4ec9718dddb3d9282ccf5eebc1b152b337b4569"
   };
   var coverage = global[gcv] || (global[gcv] = {});
 
@@ -338,63 +338,63 @@ function cov_1ksywgoglj() {
 
   var actualCoverage = coverage[path];
 
-  cov_1ksywgoglj = function () {
+  cov_1h15ldyc6z = function () {
     return actualCoverage;
   };
 
   return actualCoverage;
 }
 
-cov_1ksywgoglj();
+cov_1h15ldyc6z();
 import throttle from "lodash.throttle";
-export const saveState = (cov_1ksywgoglj().s[0]++, throttle(store => {
-  cov_1ksywgoglj().f[0]++;
-  cov_1ksywgoglj().s[1]++;
+export const saveState = (cov_1h15ldyc6z().s[0]++, throttle(store => {
+  cov_1h15ldyc6z().f[0]++;
+  cov_1h15ldyc6z().s[1]++;
   return next => {
-    cov_1ksywgoglj().f[1]++;
-    cov_1ksywgoglj().s[2]++;
+    cov_1h15ldyc6z().f[1]++;
+    cov_1h15ldyc6z().s[2]++;
     return action => {
-      cov_1ksywgoglj().f[2]++;
+      cov_1h15ldyc6z().f[2]++;
       const {
         dashboard
-      } = (cov_1ksywgoglj().s[3]++, store.getState());
-      const serialized = (cov_1ksywgoglj().s[4]++, JSON.stringify(dashboard));
-      cov_1ksywgoglj().s[5]++;
+      } = (cov_1h15ldyc6z().s[3]++, store.getState());
+      const serialized = (cov_1h15ldyc6z().s[4]++, JSON.stringify(dashboard));
+      cov_1h15ldyc6z().s[5]++;
 
       try {
-        cov_1ksywgoglj().s[6]++;
+        cov_1h15ldyc6z().s[6]++;
         localStorage.setItem("state", serialized);
       } catch (error) {}
 
-      cov_1ksywgoglj().s[7]++;
+      cov_1h15ldyc6z().s[7]++;
       next(action);
     };
   };
 }, 1000));
-cov_1ksywgoglj().s[8]++;
+cov_1h15ldyc6z().s[8]++;
 export const loadState = () => {
-  cov_1ksywgoglj().f[3]++;
-  cov_1ksywgoglj().s[9]++;
+  cov_1h15ldyc6z().f[3]++;
+  cov_1h15ldyc6z().s[9]++;
 
   try {
-    const state = (cov_1ksywgoglj().s[10]++, localStorage.getItem("state"));
-    cov_1ksywgoglj().s[11]++;
+    const state = (cov_1h15ldyc6z().s[10]++, localStorage.getItem("state"));
+    cov_1h15ldyc6z().s[11]++;
 
     if (state === null) {
-      cov_1ksywgoglj().b[0][0]++;
-      cov_1ksywgoglj().s[12]++;
+      cov_1h15ldyc6z().b[0][0]++;
+      cov_1h15ldyc6z().s[12]++;
       return undefined;
     } else {
-      cov_1ksywgoglj().b[0][1]++;
+      cov_1h15ldyc6z().b[0][1]++;
     }
 
-    const dashboard = (cov_1ksywgoglj().s[13]++, JSON.parse(state));
-    cov_1ksywgoglj().s[14]++;
+    const dashboard = (cov_1h15ldyc6z().s[13]++, JSON.parse(state));
+    cov_1h15ldyc6z().s[14]++;
     return {
       dashboard
     };
   } catch (error) {
-    cov_1ksywgoglj().s[15]++;
+    cov_1h15ldyc6z().s[15]++;
     return undefined;
   }
 };
