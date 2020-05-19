@@ -1,10 +1,10 @@
-function cov_1gn6u5lts4() {
-  var path = "/Users/mark/Repositories/schematic-capture-fe/src/shared/reducers/rootReducer.js";
-  var hash = "dde79da47bea177d9b590e6e88ad2b9f73c9115b";
+function cov_1799gz8ybj() {
+  var path = "/Users/colin/Documents/lambda/schematic-capture-fe/src/shared/reducers/rootReducer.js";
+  var hash = "504ceb50e74efc4c530cb4d8c615e4ef05e06cb2";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
-    path: "/Users/mark/Repositories/schematic-capture-fe/src/shared/reducers/rootReducer.js",
+    path: "/Users/colin/Documents/lambda/schematic-capture-fe/src/shared/reducers/rootReducer.js",
     statementMap: {
       "0": {
         start: {
@@ -25,7 +25,7 @@ function cov_1gn6u5lts4() {
     f: {},
     b: {},
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "dde79da47bea177d9b590e6e88ad2b9f73c9115b"
+    hash: "504ceb50e74efc4c530cb4d8c615e4ef05e06cb2"
   };
   var coverage = global[gcv] || (global[gcv] = {});
 
@@ -35,19 +35,19 @@ function cov_1gn6u5lts4() {
 
   var actualCoverage = coverage[path];
 
-  cov_1gn6u5lts4 = function () {
+  cov_1799gz8ybj = function () {
     return actualCoverage;
   };
 
   return actualCoverage;
 }
 
-cov_1gn6u5lts4();
+cov_1799gz8ybj();
 import authReducer from "./authReducer";
 import appReducer from "./appReducer";
 import dashboardReducer from "./dashboardReducer";
 import { combineReducers } from "redux";
-const rootReducer = (cov_1gn6u5lts4().s[0]++, combineReducers({
+const rootReducer = (cov_1799gz8ybj().s[0]++, combineReducers({
   app: appReducer,
   auth: authReducer,
   dashboard: dashboardReducer

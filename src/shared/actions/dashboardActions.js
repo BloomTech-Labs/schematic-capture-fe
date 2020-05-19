@@ -1,4 +1,3 @@
-import firebase from "../utils/firebase";
 import { actions as appActions } from "./appActions";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
@@ -108,17 +107,9 @@ const addNewJobsheet = (data, history) => async (dispatch, getState) => {
     return dispatch({ type: APP_ERROR, payload: error.message });
   }
 
-  if (!!pdf.length) {
+  if (pdf.length) {
     try {
-      const [schematic] = pdf;
-      const rootRef = firebase.storage().ref("/");
-      await rootRef
-        .child(String(auth.user.organizations[0].id))
-        .child(String(currentClient.id))
-        .child(String(currentProject.id))
-        .child(String(jobsheet.data.id))
-        .child(schematic.name)
-        .put(schematic);
+      // add dropbox code
     } catch (error) {
       return dispatch({ type: APP_ERROR, payload: error.message });
     }
