@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-import Projects from "./Projects"
+import Projects from "./Projects";
 
-import { BackToLink } from "../../../shared/components"
-import { useParams } from "react-router-dom"
+import { BackToLink } from "../../../shared/components";
+import { useParams } from "react-router-dom";
 
 import {
   Projectsh1,
   NewProjBtn,
   Column,
   ClientHeaderContain,
-  Section2
-} from '../../Styles/Client'
+  Section2,
+} from "../../Styles/Client";
 
 import {
   Title,
@@ -22,26 +22,23 @@ import {
   Profile,
   Hover,
   SearchIn,
-  Buttion
-} from '../../Styles/Dashboard'
-import { Bread } from '../../Styles/Project'
+  Buttion,
+} from "../../Styles/Dashboard";
+import { Bread } from "../../Styles/Project";
 
-import NameDropDownMenu from '../../../shared/components/Components/NameDropDownMenu';
-import Search from '../../Styles/Dashboard/Search.png'
-import Unknown from '../../Styles/Dashboard/unknown.jpg'
+import NameDropDownMenu from "../../../shared/components/Components/NameDropDownMenu";
+import Search from "../../Styles/Dashboard/Search.png";
+import Unknown from "../../Styles/Dashboard/unknown.jpg";
 
-import swal from "sweetalert"
-import {
-  dispatchers,
-  actions
-} from "../../../shared/actions/dashboardActions"
+import swal from "sweetalert";
+import { dispatchers, actions } from "../../../shared/actions/dashboardActions";
 
 const { fetchProjects } = dispatchers;
-const { SET_CURRENT_CLIENT, SET_CURRENT_PROJECTS } = actions
+const { SET_CURRENT_CLIENT, SET_CURRENT_PROJECTS } = actions;
 
 const fetchProjectsSideEffect = async (dispatch, id, setProjects) => {
-  await dispatch(fetchProjects(id, setProjects))
-}
+  await dispatch(fetchProjects(id, setProjects));
+};
 
 const setCurrentClientAndProjectsSideEffect = async (
   dispatch,
@@ -50,50 +47,51 @@ const setCurrentClientAndProjectsSideEffect = async (
 ) => {
   await dispatch({ type: SET_CURRENT_CLIENT, payload: client });
   await dispatch({ type: SET_CURRENT_PROJECTS, payload: projects });
-}
+};
 
 const PageHeader = () => {
-  const params = useParams()
-  const dispatch = useDispatch()
-  const { currentClient } = useSelector(state => state.dashboard)
-  const user = useSelector(state => state.auth.user)
+  const params = useParams();
+  const dispatch = useDispatch();
+  const { currentClient } = useSelector((state) => state.dashboard);
+  const user = useSelector((state) => state.auth.user);
+  console.log(user.roleId);
 
-  const clients = useSelector(state => state.dashboard.clients)
-  const client = clients.find(client => client.id === Number(params.id))
+  const clients = useSelector((state) => state.dashboard.clients);
+  const client = clients.find((client) => client.id === Number(params.id));
 
-  const [editing, setEditing] = useState(false)
-  const [projects, setProjects] = useState([])
-  const [projects1, setProjects1] = useState([])
-  const [search, setSearch] = useState('')
-
-  useEffect(() => {
-    fetchProjectsSideEffect(dispatch, params.id, setProjects)
-    setCurrentClientAndProjectsSideEffect(dispatch, client, projects)
-  },[])
+  const [editing, setEditing] = useState(false);
+  const [projects, setProjects] = useState([]);
+  const [projects1, setProjects1] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    console.log(search)
+    fetchProjectsSideEffect(dispatch, params.id, setProjects);
+    setCurrentClientAndProjectsSideEffect(dispatch, client, projects);
+  }, []);
+
+  useEffect(() => {
+    console.log(search);
     setProjects1(
-      projects.filter(input => {
-        return input.name.toLowerCase().includes(search.toLowerCase())
+      projects.filter((input) => {
+        return input.name.toLowerCase().includes(search.toLowerCase());
       })
-    )
-  },[editing, search])
+    );
+  }, [editing, search]);
 
   useEffect(() => {
-    console.log('arraylist tyler look here for list of projects', projects1)
-  },[projects1])
+    console.log("arraylist tyler look here for list of projects", projects1);
+  }, [projects1]);
 
   const onLogout = () => {
-    localStorage.removeItem("idToken")
-    localStorage.removeItem("user")
-    localStorage.removeItem("state")
-    window.location.reload(false)
+    localStorage.removeItem("idToken");
+    localStorage.removeItem("user");
+    localStorage.removeItem("state");
+    window.location.reload(false);
     return swal("Logged out successfully!", {
       icon: "success",
-      timer: 4000
-    })
-  }
+      timer: 4000,
+    });
+  };
 
   return (
     <>
@@ -113,18 +111,22 @@ const PageHeader = () => {
           <Buttion onClick={() => setEditing(!editing)}>
             <Hover src={Search} />
           </Buttion>
-          {editing ? 
+          {editing ? (
             <SearchIn
-              type='search'
+              type="search"
               onChange={(e) => setSearch(e.target.value)}
-              placeholder='Search'
-            /> :
+              placeholder="Search"
+            />
+          ) : (
             <></>
-          }
+          )}
           <Greeting onClick={onLogout} variant="primary">
             Hi, {user.firstName}
             <Profile src={Unknown} />
-            <NameDropDownMenu firstName={user.firstName} lastName={user.lastName} />
+            <NameDropDownMenu
+              firstName={user.firstName}
+              lastName={user.lastName}
+            />
           </Greeting>
         </RightSide>
       </Seperate2>
@@ -132,18 +134,20 @@ const PageHeader = () => {
         {!!currentClient && (
           <Section2>
             <Projectsh1>{currentClient.companyName}</Projectsh1>
-            <NewProjBtn
-              to={`/client/${currentClient.id}/project/new`}
-              variant="primary"
-            >
-              New&nbsp;Project
-            </NewProjBtn>
+            {user.roleId !== 3 && (
+              <NewProjBtn
+                to={`/client/${currentClient.id}/project/new`}
+                variant="primary"
+              >
+                New&nbsp;Project
+              </NewProjBtn>
+            )}
           </Section2>
         )}
       </ClientHeaderContain>
       <Projects project={projects1} search={search} />
     </>
-  )
-}
+  );
+};
 
-export default PageHeader
+export default PageHeader;
