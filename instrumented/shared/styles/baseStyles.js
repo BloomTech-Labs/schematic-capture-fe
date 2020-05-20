@@ -1,10 +1,10 @@
-function cov_dfsfvm3kg() {
-  var path = "/Users/mark/Repositories/schematic-capture-fe/src/shared/styles/baseStyles.js";
-  var hash = "afa710cc63d8d9e3fb440fc59c680588531057a8";
+function cov_1xesd16fvd() {
+  var path = "/Users/colin/Documents/lambda/schematic-capture-fe/src/shared/styles/baseStyles.js";
+  var hash = "fe7059b26fd23468a10cf8f1f06a95b4c8d54833";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
-    path: "/Users/mark/Repositories/schematic-capture-fe/src/shared/styles/baseStyles.js",
+    path: "/Users/colin/Documents/lambda/schematic-capture-fe/src/shared/styles/baseStyles.js",
     statementMap: {},
     fnMap: {},
     branchMap: {},
@@ -12,7 +12,7 @@ function cov_dfsfvm3kg() {
     f: {},
     b: {},
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "afa710cc63d8d9e3fb440fc59c680588531057a8"
+    hash: "fe7059b26fd23468a10cf8f1f06a95b4c8d54833"
   };
   var coverage = global[gcv] || (global[gcv] = {});
 
@@ -22,14 +22,14 @@ function cov_dfsfvm3kg() {
 
   var actualCoverage = coverage[path];
 
-  cov_dfsfvm3kg = function () {
+  cov_1xesd16fvd = function () {
     return actualCoverage;
   };
 
   return actualCoverage;
 }
 
-cov_dfsfvm3kg();
+cov_1xesd16fvd();
 import { createGlobalStyle } from "styled-components";
 import { color, font, mixin } from "./";
 export default createGlobalStyle`

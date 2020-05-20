@@ -8,6 +8,7 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import "bootstrap/dist/css/bootstrap.min.css";
+import './index.css'
 
 import rootReducer from "./shared/reducers/rootReducer";
 
@@ -15,7 +16,7 @@ import rootReducer from "./shared/reducers/rootReducer";
 import { saveState, loadState } from "./shared/utils/localStorage";
 
 Sentry.init({
-  dsn: "https://05f80d89d56f4f538ab2b0fbedc568e4@sentry.io/2046923"
+  dsn: "https://05f80d89d56f4f538ab2b0fbedc568e4@sentry.io/2046923",
 });
 
 const persistedState = loadState();

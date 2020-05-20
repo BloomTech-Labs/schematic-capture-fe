@@ -1,71 +1,171 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import NameDropDownMenu from '../../../shared/components/Components/NameDropDownMenu';
 
-import { Header, PageName, StyledLink, StyledInput } from "./Styles";
 import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { BackToLink } from "../../../shared/components";
+import { Link } from "react-router-dom";
 
-const { updateProjectName } = dispatchers;
+import Jobsheets from "./Jobsheets";
+import { ClientHeaderContain, Section2 } from "../../Styles/Client";
+import { NewProjBtn, BtnCont } from "../../Styles/Jobsheets";
 
-const PageHeader = () => {
-  const currentClient = useSelector(state => state.dashboard.currentClient);
+import {
+  Title,
+  Greeting,
+  Seperate2,
+  RightSide,
+  Profile,
+  Hover,
+  SearchIn,
+  Buttion,
+} from "../../Styles/Dashboard";
+import { Bread } from "../../Styles/Project";
+import { Column } from "../../Styles/Client";
 
-  const currentProject = useSelector(state => state.dashboard.currentProject);
+import Search from "../../Styles/Dashboard/Search.png";
+import Unknown from "../../Styles/Dashboard/unknown.jpg";
 
+import swal from "sweetalert";
+import TechModal from "./TechPopup";
+
+const { updateProjectName, fetchJobsheets } = dispatchers;
+
+const fetchJobsheetsSideEffect = async (dispatch, id, setJobsheets) => {
+  await dispatch(fetchJobsheets(id, setJobsheets));
+};
+
+const PageHeader = ({ counter, setCounter }) => {
+  const currentClient = useSelector((state) => state.dashboard.currentClient);
+  const user = useSelector((state) => state.auth.user);
+  const currentProject = useSelector((state) => state.dashboard.currentProject);
+  const params = useParams();
+
+  const [editing, setEditing] = useState(false);
+  const [jobsheets, setJobsheets] = useState([]);
+  const [jobsheets1, setJobsheets1] = useState([]);
+  const [search, setSearch] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [projectName, setProjectName] = useState(
     !!currentProject ? currentProject.name : ""
   );
   const dispatch = useDispatch();
 
-  const handleProjectNameChange = event => {
+  const handleProjectNameChange = (event) => {
     setProjectName(event.target.value);
   };
 
-  const saveProjectName = event => {
+  const saveProjectName = (event) => {
     event.preventDefault();
     dispatch(updateProjectName(projectName, setIsEditing));
   };
 
+  useEffect(() => {
+    fetchJobsheetsSideEffect(dispatch, params.id, setJobsheets);
+  }, []);
+
+  useEffect(() => {
+    console.log(search);
+    setJobsheets1(
+      jobsheets.filter((input) => {
+        return input.name.toLowerCase().includes(search.toLowerCase());
+      })
+    );
+  }, [editing, search]);
+
+  const onLogout = () => {
+    localStorage.removeItem("idToken");
+    localStorage.removeItem("user");
+    localStorage.removeItem("state");
+    window.location.reload(false);
+    return swal("Logged out successfully!", {
+      icon: "success",
+      timer: 4000,
+    });
+  };
+
   return (
     <>
-      <BackToLink
-        style={{ marginBottom: "2rem" }}
-        to={`/client/${currentClient.id}`}
-        text={`${currentClient.companyName}`}
-      />
-      <Header>
+      <Seperate2>
+        <Column>
+          <Title>Schematic Capture</Title>
+          <Bread>
+            <BackToLink
+              style={{ marginBottom: "2rem" }}
+              to="/dashboard"
+              text="Clients"
+            />
+            <BackToLink
+              style={{ marginBottom: "2rem" }}
+              to={`/client/${currentClient.id}`}
+              text="Projects"
+            />
+          </Bread>
+        </Column>
+        <br />
+        <RightSide>
+          <Buttion onClick={() => setEditing(!editing)}>
+            <Hover src={Search} />
+          </Buttion>
+          {editing ? (
+            <SearchIn
+              type="search"
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search"
+            />
+          ) : (
+            <></>
+          )}
+          <Greeting onClick={onLogout} variant="primary">
+            Hi, {user.firstName}
+            <Profile src={Unknown} />
+            <NameDropDownMenu firstName={user.firstName} lastName={user.lastName} />
+          </Greeting>
+        </RightSide>
+      </Seperate2>
+
+      <div>
         {!!currentProject && (
-          <>
+          <Section2>
             {isEditing ? (
               <div style={{ display: "flex" }}>
-                <StyledInput
+                <input
                   placeholder="Project Name"
                   type="text"
                   value={projectName}
                   onChange={handleProjectNameChange}
                 />
-                <StyledLink
-                  style={{ marginRight: "1rem" }}
-                  onClick={saveProjectName}
-                >
+                <Link style={{ marginRight: "1rem" }} onClick={saveProjectName}>
                   Save
-                </StyledLink>
+                </Link>
               </div>
             ) : (
-              <PageName onClick={() => setIsEditing(true)}>
-                {projectName}
-              </PageName>
+              <div>
+                <h1 onClick={() => setIsEditing(true)}>{projectName}</h1>
+
+                <h4>
+                  Incomplete ({counter.incomplete}/{counter.total})
+                </h4>
+              </div>
             )}
-            <StyledLink
-              to={`/project/${currentClient.id}/jobsheet/new`}
-              variant="primary"
-            >
-              New&nbsp;Jobsheet
-            </StyledLink>
-          </>
+            <BtnCont>
+              <TechModal buttonLabel="Assign Techs" />
+              <NewProjBtn
+                to={`/project/${currentClient.id}/jobsheet/new`}
+                variant="primary"
+              >
+                New Jobsheet
+              </NewProjBtn>
+            </BtnCont>
+          </Section2>
         )}
-      </Header>
+      </div>
+      <Jobsheets
+        jobsheet={jobsheets1}
+        search={search}
+        setCounter={setCounter}
+      />
     </>
   );
 };

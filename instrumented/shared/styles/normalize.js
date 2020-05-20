@@ -1,10 +1,10 @@
-function cov_4fqu1u653() {
-  var path = "/Users/mark/Repositories/schematic-capture-fe/src/shared/styles/normalize.js";
-  var hash = "67ea59f53df9c5478d8e75731d3db4cd00d88b07";
+function cov_19k696rht3() {
+  var path = "/Users/colin/Documents/lambda/schematic-capture-fe/src/shared/styles/normalize.js";
+  var hash = "97b9a867663f375e1428df45ea8ce6f7a28cefca";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
-    path: "/Users/mark/Repositories/schematic-capture-fe/src/shared/styles/normalize.js",
+    path: "/Users/colin/Documents/lambda/schematic-capture-fe/src/shared/styles/normalize.js",
     statementMap: {},
     fnMap: {},
     branchMap: {},
@@ -12,7 +12,7 @@ function cov_4fqu1u653() {
     f: {},
     b: {},
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "67ea59f53df9c5478d8e75731d3db4cd00d88b07"
+    hash: "97b9a867663f375e1428df45ea8ce6f7a28cefca"
   };
   var coverage = global[gcv] || (global[gcv] = {});
 
@@ -22,14 +22,14 @@ function cov_4fqu1u653() {
 
   var actualCoverage = coverage[path];
 
-  cov_4fqu1u653 = function () {
+  cov_19k696rht3 = function () {
     return actualCoverage;
   };
 
   return actualCoverage;
 }
 
-cov_4fqu1u653();
+cov_19k696rht3();
 import { createGlobalStyle } from "styled-components";
 /** DO NOT ALTER THIS FILE. It is a copy of https://necolas.github.io/normalize.css/ */
 
