@@ -12,6 +12,7 @@ import {
   FormColumn,
   FormGroup,
   StyledField,
+  StyledSelect,
   FieldError,
   Button,
   LineOr,
