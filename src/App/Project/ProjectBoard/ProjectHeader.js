@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import NameDropDownMenu from '../../../shared/components/Components/NameDropDownMenu';
+import NameDropDownMenu from "../../../shared/components/Components/NameDropDownMenu";
 
 import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { BackToLink } from "../../../shared/components";
@@ -120,7 +120,10 @@ const PageHeader = ({ counter, setCounter }) => {
           <Greeting onClick={onLogout} variant="primary">
             Hi, {user.firstName}
             <Profile src={Unknown} />
-            <NameDropDownMenu firstName={user.firstName} lastName={user.lastName} />
+            <NameDropDownMenu
+              firstName={user.firstName}
+              lastName={user.lastName}
+            />
           </Greeting>
         </RightSide>
       </Seperate2>
@@ -150,13 +153,15 @@ const PageHeader = ({ counter, setCounter }) => {
               </div>
             )}
             <BtnCont>
-              <TechModal buttonLabel="Assign Techs" />
-              <NewProjBtn
-                to={`/project/${currentClient.id}/jobsheet/new`}
-                variant="primary"
-              >
-                New Jobsheet
-              </NewProjBtn>
+              {user.roleId !== 3 && <TechModal buttonLabel="Assign Techs" />}
+              {user.roleId === 1 && (
+                <NewProjBtn
+                  to={`/project/${currentClient.id}/jobsheet/new`}
+                  variant="primary"
+                >
+                  New Jobsheet
+                </NewProjBtn>
+              )}
             </BtnCont>
           </Section2>
         )}
