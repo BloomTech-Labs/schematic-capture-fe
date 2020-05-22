@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 import Jobsheets from "./Jobsheets";
 import { ClientHeaderContain, Section2 } from "../../Styles/Client";
-import { NewProjBtn, BtnCont } from "../../Styles/Jobsheets";
+import { NewProjBtn, BtnCont,  } from "../../Styles/Jobsheets";
 import InviteNewUserModal from "./InvitePopup"
 import {
   Title,
@@ -153,9 +153,7 @@ const PageHeader = ({ counter, setCounter }) => {
               </div>
             )}
             <BtnCont>
-              {user.roleId !== 3 && (
-                <InviteNewUserModal buttonLabel="Invite New User" />
-              )}
+              {user.roleId !== 3 && <InviteNewUserModal buttonLabel="Invite User" />}
               {user.roleId !== 3 && <TechModal buttonLabel="Assign Techs" />}
               {user.roleId === 1 && (
                 <NewProjBtn

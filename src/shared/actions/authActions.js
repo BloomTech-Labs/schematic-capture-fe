@@ -62,6 +62,7 @@ const sendInvite = (data, history) => (dispatch) => {
       history.push("/dashboard");
     })
     .catch((error) => {
+      console.log(error)
       dispatch({ type: APP_ERROR, payload: error.message });
     });
 };

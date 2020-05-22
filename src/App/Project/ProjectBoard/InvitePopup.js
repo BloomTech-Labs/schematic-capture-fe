@@ -1,181 +1,111 @@
 import React, { useState } from "react";
-import { Modal } from "reactstrap";
+import { Modal, Form, FormGroup, Input, Label } from "reactstrap";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import {
-  NewProjBtn,
   NewProjBtn2,
+  NewProjBtn,
   TechCont,
   MBody,
   MH1,
   ModalCont,
   Container,
   Mod,
+  BtnCont,
 } from "../../Styles/Jobsheets";
+import { dispatchers } from "../../../shared/actions/authActions";
 
 import { FieldError } from "../../Styles/Auth/loginStyles";
-
-var people = [
-  "Adam",
-  "Tyler",
-  "Danni",
-  "Vincent",
-  "Test1",
-  "Test2",
-  "Test3",
-  "Test4",
-  "Test5",
-  "Test6",
-  "Test7",
-  "Test8",
-  "Test9",
-  "Test10",
-  "Test11",
-  "Test12",
-  "Test13",
-  "Test14",
-  "Test15",
-  "Test16",
-  "Test17",
-  "Test18",
-  "Test19",
-  "Test20",
-  "Test21",
-  "Test22",
-  "Test23",
-  "Test24",
-];
+import { useFormContext } from "react-hook-form";
 
 const InviteNewUserModal = (props) => {
   const { buttonLabel, className } = props;
   const [modal, setModal] = useState(false);
-  const [tech, setTech] = useState({ name: null, date: null });
+  const [user, setUser] = useState({ name: null, email: null, role: "technician" });
   const toggle = () => setModal(!modal);
-  const [page, setPage] = useState(0);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { sendInvite } = dispatchers;
 
+  const onSubmit = (e) => {
+    e.preventDefault()
+    dispatch(sendInvite(user, history))
+  }
+    
+  
   const handleChange = (e) => {
-    setTech({ ...tech, name: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value });
     console.log(e.target.value);
   };
 
-  const handleDateChange = (e) => {
-    setTech({ ...tech, date: e.target.value });
-    console.log(e.target.value);
-  };
+  // const handleEmailChange = (e) => {
+  //   setUser({ ...user, email: e.target.value });
+  //   console.log(e.target.value);
+  // };
+  const Invite = () => {
+    return (
+      <>
+        <MH1></MH1>
+        <MBody>
+          {user.name === null || user.email === null ? (
+            <Container>
+              <FieldError>All Fields Required.</FieldError>
+            </Container>
+          ) : (
+            <></>
+          )}
 
-  const changePage = () => {
-    var num = page;
-    if (page >= 2) {
-      setPage(0);
-      toggle();
-      console.log(tech);
-    } else if (page === 1) {
-      if (tech.date === null) {
-      } else {
-        num += 1;
-        setPage(num);
-      }
-    } else if (page === 0) {
-      if (tech.name === null) {
-      } else {
-        num += 1;
-        setPage(num);
-      }
-    }
-  };
+          <Form onSubmit={onSubmit}>
+            <FormGroup>
+              <Label for="Name">Full Name</Label>
+              <Input
+                type="Name"
+                value={user.name}
+                id="name"
+                placeholder="Type Full Name"
+                name="name"
+                onChange={handleChange}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="exampleEmail">Email</Label>
+              <Input
+                type="email"
+                value={user.email}
+                id="exampleEmail"
+                placeholder="Type Email"
+                name="email"
+                onChange={handleChange}
+              />
+            </FormGroup>
 
-  const pageNav = (num) => {
-    switch (num) {
-      case 0:
-        return (
-          <>
-            <MH1>Available technicians</MH1>
-            <MBody>
-              {tech.name === null ? (
-                <Container>
-                  <FieldError>Please assign a technician</FieldError>
-                </Container>
-              ) : (
-                <></>
-              )}
-              {people.map((ele) => {
-                if (ele === tech.name) {
-                  return (
-                    <TechCont>
-                      <input
-                        type="checkbox"
-                        name={tech.name}
-                        value={ele}
-                        checked={true}
-                        onChange={handleChange}
-                      />
-                      <label for={ele}>{ele}</label>
-                    </TechCont>
-                  );
-                } else {
-                  return (
-                    <TechCont>
-                      <input
-                        type="checkbox"
-                        name={tech.name}
-                        checked={false}
-                        value={ele}
-                        onChange={handleChange}
-                      />
-                      <label for={ele}>{ele}</label>
-                    </TechCont>
-                  );
-                }
-              })}
-            </MBody>
-          </>
-        );
-      case 1:
-        return (
-          <>
-            <MH1>Select Date</MH1>
-            <MBody>
-              <Container>
-                <h1>Enter Date Here</h1>
-                {tech.date === null ? (
-                  <FieldError>Needs Date</FieldError>
-                ) : (
-                  <></>
-                )}
-                <input
-                  type="date"
-                  value={tech.date}
-                  name="Date"
-                  onChange={handleDateChange}
-                  required={true}
-                />
-              </Container>
-            </MBody>
-          </>
-        );
-      case 2:
-        return (
-          <>
-            <MH1>Finalize</MH1>
-            <MBody>
-              <Container>
-                <h1>Technician: {tech.name}</h1>
-                <h2>Date: {tech.date}</h2>
-              </Container>
-            </MBody>
-          </>
-        );
-
-      default:
-        break;
-    }
+            <FormGroup>
+              <Label for="exampleSelect">Select Role</Label>
+              <Input
+                type="select"
+                name="role"
+                id="exampleSelect"
+                value={user.role}
+                onChange={handleChange}
+              >
+                <option value="technician">Technician</option>
+                <option value="admin">Admin</option>
+                <option value="employee">Employee</option>
+              </Input>
+            </FormGroup>
+            <button type="submit">Send Invite</button>
+          </Form>
+        </MBody>{" "}
+      </>
+    );
   };
 
   return (
     <ModalCont>
       <NewProjBtn onClick={toggle}>{buttonLabel}</NewProjBtn>
       <Mod isOpen={modal} toggle={toggle}>
-        <MH1>Available technicians</MH1>
-        <MBody>{pageNav(page)}</MBody>
-        <NewProjBtn2 onClick={changePage}>Assign Technician</NewProjBtn2>
+        <MH1>Invite New User</MH1>
+        <MBody>{Invite(user)}</MBody>
       </Mod>
     </ModalCont>
   );
