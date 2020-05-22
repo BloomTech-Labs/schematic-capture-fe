@@ -3,6 +3,7 @@ import React from "react"
 import { useHistory, Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
+import { securityQuestions } from './SecurityQuestions.js'
 
 import { dispatchers } from "../../../shared/actions/authActions"
 
@@ -53,13 +54,13 @@ const FirstLoginForm = (props) => {
           )}
         </FormGroup>
         <FormGroup>
-          <StyledField
-          // @TODO: Finish Field for security question:
-            name="question"
-            id="question"
-            placeholder="Security Question"
-            aria-label="Security Question"
-          />
+          <StyledSelect
+            name="Select Security Question" ref={register({ required: true })}>
+            <option value="What was your childhood nickname?">What was your childhood nickname?</option>
+            <option value=" In what city did you meet your spouse/significant other?"> In what city did you meet your spouse/significant other?</option>
+            <option value=" What is the name of your favorite childhood friend?"> What is the name of your favorite childhood friend?</option>
+            <option value="In what city or town was your first job?">In what city or town was your first job?</option>
+          </StyledSelect>
         </FormGroup>
         <FormGroup>
           <StyledField
