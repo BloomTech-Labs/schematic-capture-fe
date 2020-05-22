@@ -55,7 +55,7 @@ const FirstLoginForm = (props) => {
         <FormGroup>
           <label> Select Security Question 
           <StyledSelect
-            name="Select Security Question" 
+            name="newQuestion" 
             label="Select Security Question"
             ref={register({ required: true })}>
             <option value="What was your childhood nickname?">What was your childhood nickname?</option>
@@ -70,8 +70,9 @@ const FirstLoginForm = (props) => {
         <FormGroup>
           <StyledField
           // @TODO: Finish Field for security answer:
-          name="answer"
+          name="newAnswer"
           id="answer"
+          ref={register({ required: true })}
           placeholder="Answer to Security Question"
           aria-label="Answer to Security Question"
           />
