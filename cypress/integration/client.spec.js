@@ -9,7 +9,7 @@ describe('Test client page functionality', function() {
       // Schematic capture header
       cy.get("h1").should("contain", "Schematic Capture");
       // search widget
-      cy.get("img")
+      cy.get("img").should("contain", "Schematic Capture");
       // user widget
       cy.get("button").should("contain", "Bob");
       // client name
