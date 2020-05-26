@@ -1,10 +1,10 @@
-function cov_73bzaz4ac() {
-  var path = "C:\\Users\\Scott\\Desktop\\lambda\\schematic-capture-fe\\src\\shared\\actions\\appActions.js";
-  var hash = "91bb232a1d94309ba3ff0dbe8514bc4001d379dd";
+function cov_2poxtqiyol() {
+  var path = "/Users/colin/Documents/lambda/schematic-capture-fe/src/shared/actions/appActions.js";
+  var hash = "daa29723f9fb541f643e7526fa08defdc7dfe56c";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
-    path: "C:\\Users\\Scott\\Desktop\\lambda\\schematic-capture-fe\\src\\shared\\actions\\appActions.js",
+    path: "/Users/colin/Documents/lambda/schematic-capture-fe/src/shared/actions/appActions.js",
     statementMap: {
       "0": {
         start: {
@@ -69,7 +69,7 @@ function cov_73bzaz4ac() {
     f: {},
     b: {},
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "91bb232a1d94309ba3ff0dbe8514bc4001d379dd"
+    hash: "daa29723f9fb541f643e7526fa08defdc7dfe56c"
   };
   var coverage = global[gcv] || (global[gcv] = {});
 
@@ -78,24 +78,23 @@ function cov_73bzaz4ac() {
   }
 
   var actualCoverage = coverage[path];
-  {
-    // @ts-ignore
-    cov_73bzaz4ac = function () {
-      return actualCoverage;
-    };
-  }
+
+  cov_2poxtqiyol = function () {
+    return actualCoverage;
+  };
+
   return actualCoverage;
 }
 
-cov_73bzaz4ac();
-const APP_LOADING = (cov_73bzaz4ac().s[0]++, "APP_LOADING");
-const APP_DONE_LOADING = (cov_73bzaz4ac().s[1]++, "APP_DONE_LOADING");
-const APP_ERROR = (cov_73bzaz4ac().s[2]++, "APP_ERROR");
-const RESET_ERROR = (cov_73bzaz4ac().s[3]++, "RESET_ERROR");
-export const actions = (cov_73bzaz4ac().s[4]++, {
+cov_2poxtqiyol();
+const APP_LOADING = (cov_2poxtqiyol().s[0]++, "APP_LOADING");
+const APP_DONE_LOADING = (cov_2poxtqiyol().s[1]++, "APP_DONE_LOADING");
+const APP_ERROR = (cov_2poxtqiyol().s[2]++, "APP_ERROR");
+const RESET_ERROR = (cov_2poxtqiyol().s[3]++, "RESET_ERROR");
+export const actions = (cov_2poxtqiyol().s[4]++, {
   APP_LOADING,
   APP_DONE_LOADING,
   APP_ERROR,
   RESET_ERROR
 });
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcEFjdGlvbnMuanMiXSwibmFtZXMiOlsiQVBQX0xPQURJTkciLCJBUFBfRE9ORV9MT0FESU5HIiwiQVBQX0VSUk9SIiwiUkVTRVRfRVJST1IiLCJhY3Rpb25zIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFlWTs7Ozs7Ozs7O0FBZlosTUFBTUEsV0FBVyw0QkFBRyxhQUFILENBQWpCO0FBQ0EsTUFBTUMsZ0JBQWdCLDRCQUFHLGtCQUFILENBQXRCO0FBQ0EsTUFBTUMsU0FBUyw0QkFBRyxXQUFILENBQWY7QUFDQSxNQUFNQyxXQUFXLDRCQUFHLGFBQUgsQ0FBakI7QUFFQSxPQUFPLE1BQU1DLE9BQU8sNEJBQUc7QUFDckJKLEVBQUFBLFdBRHFCO0FBRXJCQyxFQUFBQSxnQkFGcUI7QUFHckJDLEVBQUFBLFNBSHFCO0FBSXJCQyxFQUFBQTtBQUpxQixDQUFILENBQWIiLCJzb3VyY2VzQ29udGVudCI6WyJjb25zdCBBUFBfTE9BRElORyA9IFwiQVBQX0xPQURJTkdcIjtcclxuY29uc3QgQVBQX0RPTkVfTE9BRElORyA9IFwiQVBQX0RPTkVfTE9BRElOR1wiO1xyXG5jb25zdCBBUFBfRVJST1IgPSBcIkFQUF9FUlJPUlwiO1xyXG5jb25zdCBSRVNFVF9FUlJPUiA9IFwiUkVTRVRfRVJST1JcIjtcclxuXHJcbmV4cG9ydCBjb25zdCBhY3Rpb25zID0ge1xyXG4gIEFQUF9MT0FESU5HLFxyXG4gIEFQUF9ET05FX0xPQURJTkcsXHJcbiAgQVBQX0VSUk9SLFxyXG4gIFJFU0VUX0VSUk9SXHJcbn07XHJcblxyXG4iXX0=
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcEFjdGlvbnMuanMiXSwibmFtZXMiOlsiQVBQX0xPQURJTkciLCJBUFBfRE9ORV9MT0FESU5HIiwiQVBQX0VSUk9SIiwiUkVTRVRfRVJST1IiLCJhY3Rpb25zIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLE1BQU1BLFdBQVcsNkJBQUcsYUFBSCxDQUFqQjtBQUNBLE1BQU1DLGdCQUFnQiw2QkFBRyxrQkFBSCxDQUF0QjtBQUNBLE1BQU1DLFNBQVMsNkJBQUcsV0FBSCxDQUFmO0FBQ0EsTUFBTUMsV0FBVyw2QkFBRyxhQUFILENBQWpCO0FBRUEsT0FBTyxNQUFNQyxPQUFPLDZCQUFHO0FBQ3JCSixFQUFBQSxXQURxQjtBQUVyQkMsRUFBQUEsZ0JBRnFCO0FBR3JCQyxFQUFBQSxTQUhxQjtBQUlyQkMsRUFBQUE7QUFKcUIsQ0FBSCxDQUFiIiwic291cmNlc0NvbnRlbnQiOlsiY29uc3QgQVBQX0xPQURJTkcgPSBcIkFQUF9MT0FESU5HXCI7XG5jb25zdCBBUFBfRE9ORV9MT0FESU5HID0gXCJBUFBfRE9ORV9MT0FESU5HXCI7XG5jb25zdCBBUFBfRVJST1IgPSBcIkFQUF9FUlJPUlwiO1xuY29uc3QgUkVTRVRfRVJST1IgPSBcIlJFU0VUX0VSUk9SXCI7XG5cbmV4cG9ydCBjb25zdCBhY3Rpb25zID0ge1xuICBBUFBfTE9BRElORyxcbiAgQVBQX0RPTkVfTE9BRElORyxcbiAgQVBQX0VSUk9SLFxuICBSRVNFVF9FUlJPUlxufTtcblxuIl19
