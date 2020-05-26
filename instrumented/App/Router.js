@@ -11,12 +11,13 @@ import PageError from "../shared/components/Components/PageError"
 import NewProject from "./Project/CreateNewProject/CreateNewProject"
 import SendInvite from "../shared/components/Components/SendInvite"
 import NewJobSheet from "./Jobsheet/CreateNew/CNJobsheet"
-
+import FirstLogin from "./Auth/FirstLogin/FirstLogin.js"
 const Router = () => {
   return (
     <>
       <Switch>
         <PrivateRoute path="/dashboard" component={Dashboard} />
+        <Route path="/firstlogin/:userToken" component={FirstLogin} />
         <PrivateRoute path="/client/new" component={CreateNewClient} />
         <PrivateRoute path="/invite" component={SendInvite} />
         <PrivateRoute path="/client/:id/project/new" component={NewProject} />
