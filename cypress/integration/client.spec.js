@@ -7,31 +7,31 @@ describe('Test client page functionality', function() {
 
     it('navigates to Test Client 1 and displays correct content', function() {
       // Schematic capture header
-      cy.get("h1").should("contain", "Schematic Capture");
+      cy.get('.sc-fzqPZZ')
       // search widget
-      cy.get("img").should("contain", "Schematic Capture");
+      cy.get('.sc-fzqAbL')
       // user widget
-      cy.get("button").should("contain", "Bob");
+      cy.get('.sc-fzpkJw')
       // client name
-      cy.get("a").should("contain", "Evraz");
+      cy.get('.sc-fzqARJ')
       // New Project button
-      cy.get("a").should("contain", "New Project");
+      cy.get('.sc-fzoNJl')
       // Projects title bar
-      cy.get("h2").should("contain", "Projects");
+      cy.get('.sc-fzqNqU')
       // Name header
-      cy.get("th").should("contain", "Name");
+      cy.get('thead > .sc-fznMAR > :nth-child(1)')
       // Description header
-      cy.get("th").should("contain", "Description");
+      cy.get('thead > .sc-fznMAR > :nth-child(1)')
       // Technician header
-      cy.get("th").should("contain", "Technician/s");
+      cy.get('thead > .sc-fznMAR > :nth-child(3)')
       // Jobsheet header
-      cy.get("th").should("contain", "Jobsheets");
+      cy.get('thead > .sc-fznMAR > :nth-child(4)')
       // Status header
-      cy.get("th").should("contain", "Status");
+      cy.get('thead > .sc-fznMAR > :nth-child(5)')
       // First entry in projects table
-      cy.get("a").should("contain", "Test Project 1");
+      cy.get(':nth-child(1) > :nth-child(1) > .sc-fzqBkg')
       // Second entry in projects table
-      cy.get("th").should("contain", "Test Project 2");
+      cy.get(':nth-child(1) > :nth-child(1) > .sc-fzqBkg')
       // Table row
       cy.get('tbody > :nth-child(1) > :nth-child(1)')
       cy.url().should('include', '/client')
