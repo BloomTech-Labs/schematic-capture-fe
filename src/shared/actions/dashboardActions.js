@@ -123,7 +123,7 @@ const fetchComponents = (id, setComponents) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
 
   try {
-    const components = await axiosWithAuth().get(`/jobsheets/${id}`);
+    const components = await axiosWithAuth().get(`/jobsheets/${id}/components`);
     setComponents(components.data);
     dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
