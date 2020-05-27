@@ -11,7 +11,7 @@ import PageError from "../shared/components/Components/PageError"
 import NewProject from "./Project/CreateNewProject/CreateNewProject"
 import SendInvite from "../shared/components/Components/SendInvite"
 import NewJobSheet from "./Jobsheet/CreateNew/CNJobsheet"
-
+import FirstLogin from "./Auth/FirstLogin/FirstLogin.js"
 const Router = () => {
   return (
     <>
@@ -27,6 +27,7 @@ const Router = () => {
         <PrivateRoute path="/client/:id" component={ClientBoard} />
         <PrivateRoute path="/project/:id" component={ProjectBoard} />
         <PrivateRoute path="/jobsheet/:id" component={JobsheetBoard} />
+        <Route path="/firstlogin/:userToken" component={FirstLogin} />
         <Route path="/" component={Auth} />
         <Route path="*" component={PageError} />
       </Switch>

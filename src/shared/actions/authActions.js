@@ -29,6 +29,26 @@ const emailLogin = (data, history) => (dispatch) => {
     .catch((err) => dispatch({ type: APP_ERROR, payload: err.message }));
 };
 
+const firstLogin = (data, history) => (dispatch) => {
+  dispatch({ type: APP_LOADING });
+
+  const { newPassword, newQuestion, newAnswer, token } = data;
+  console.log(data);
+  axiosWithAuth()
+    .post("auth/firstlogin", { newPassword, newQuestion, newAnswer, token })
+    .then((res) => {
+      localStorage.setItem("idToken", res.data.token);
+      const user = res.data;
+
+      // stores token and user in localstorage for reducer to grab as initial state on page refresh;
+      localStorage.setItem("user", JSON.stringify(user));
+      dispatch({ type: APP_DONE_LOADING });
+      dispatch({ type: LOGIN_SUCCESS, payload: user });
+      history.push("/dashboard");
+    })
+    .catch((err) => dispatch({ type: APP_ERROR, payload: err.message }));
+};
+
 const forgotPassword = (data, history) => (dispatch) => {
   dispatch({ type: APP_LOADING });
 
@@ -78,4 +98,5 @@ export const dispatchers = {
   emailLogin,
   forgotPassword,
   sendInvite,
+  firstLogin,
 };

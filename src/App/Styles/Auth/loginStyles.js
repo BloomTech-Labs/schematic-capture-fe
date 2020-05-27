@@ -115,6 +115,27 @@ export const StyledField = styled.input`
   }
 `;
 
+export const StyledSelect = styled.select`
+  background: ${color.inputBackground};
+  border: 1px solid ${color.gray100};
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  color: ${color.inputColor};
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  &:hover {
+    border-color: ${mixin.darken(color.secondary, 0.1)};
+    }
+  }
+  &:focus {
+    border-color: ${color.primary};
+    &::placeholder {
+      color: ${color.gray100};
+    }
+  }
+`;
+
 export const LineOr = styled.div`
   overflow: hidden;
   text-align: center;
