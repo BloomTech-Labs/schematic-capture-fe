@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import SortDropDown from "../../../shared/components/Components/SortDropDown.js";
 
@@ -15,7 +15,7 @@ import {
 } from "../../Styles/Jobsheet/ComponetStyle";
 
 import sort from "./Sort.png";
-import { dispatchers } from "../../../shared/actions/dashboardActions";
+import { dispatchers, actions } from "../../../shared/actions/dashboardActions";
 import DropboxChooser from "../CreateNew/Dropbox";
 
 const { fetchComponents } = dispatchers;
@@ -29,6 +29,12 @@ const Components = (props) => {
   const [sortingAsc, setSortingAsc] = useState(false);
   const [sortingDesc, setSortingDesc] = useState(false);
   const [sortingNone, setSortingNone] = useState(true);
+  // const [update, setUpdate] = useState([])
+  const [editing, setEditing] = useSelector(state => state.edit)
+  const [formData, setFormData] = useState({
+    
+  })
+ 
 
   const dispatch = useDispatch();
   const params = useParams();
@@ -140,24 +146,30 @@ const Components = (props) => {
           </thead>
           {props.search.length > 0 ? (
             <tbody>
-              {props.component.length &&
+             {props.component.length &&
                 props.component.map((component) => (
                   <tr key={component.id}>
-                    <td data-label="Component">{component.componentId}</td>
-                    <td data-label="Description">{component.descriptions}</td>
-                    <td data-label="Manufacturer">{component.manufacturer}</td>
-                    <td data-label="Part Number">{component.partNumber}</td>
-                    <td data-label="Stock Code">{component.stockCode}</td>
+
+                {!editing ? <td data-label="Component" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.componentId}</td> : <input type="text" ></input> }
+
+
+
+                    <td data-label="Description" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td>
+                    <td data-label="Manufacturer" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.manufacturer}</td>
+                    <td data-label="Part Number" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.partNumber}</td>
+                    <td data-label="Stock Code" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.stockCode}</td>
                     <td data-label="Select Image">
                       <DropboxChooser />
                     </td>
-                    <td data-label="Resources">{component.resources}</td>
-                    <td data-label="Cutsheet">{component.cutsheet}</td>
-                    <td data-label="Stores Part #">
+                    <td data-label="Resources" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.resources}</td>
+                    <td data-label="Cutsheet" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.cutsheet}</td>
+                    <td data-label="Stores Part #" >
                       {component.storesPartNumber}
                     </td>
                   </tr>
-                ))}
+                )) 
+                }
+              
             </tbody>
           ) : (
             <tbody>

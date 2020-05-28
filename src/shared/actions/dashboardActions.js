@@ -9,6 +9,8 @@ const SET_CURRENT_PROJECT = "SET_CURRENT_PROJECT";
 const SET_CURRENT_JOBSHEETS = "SET_CURRENT_JOBSHEETS";
 const SET_CURRENT_JOBSHEET = "SET_CURRENT_JOBSHEET";
 const UPDATE_CURRENT_PROJECT_NAME = "UPDATE_CURRENT_PROJECT_NAME";
+const TOGGLE_COMPONENT_EDIT = "TOGGLE_COMPONENT_EDIT";
+const UPDATE_COMPONENT = "UPDATE_COMPONENT";
 
 const fetchClients = () => async (dispatch, getState) => {
   dispatch({ type: APP_LOADING });
@@ -131,6 +133,26 @@ const fetchComponents = (id, setComponents) => async (dispatch) => {
   }
 };
 
+const updateComponent = (id, name, setFormData) => async (dispatch) => {
+  dispatch({ type: APP_LOADING });
+
+  try {
+    const updated = await axiosWithAuth().patch(`/jobsheets/${id}/components`, { name });
+    setFormData(updated.data);
+    console.log(updated.data);
+    dispatch({ type: UPDATE_COMPONENT });
+  } catch (error) {
+    return dispatch({ type: APP_ERROR, payload: error.message });
+  }
+};
+
+const toggleEditing = (setEditing, dispatch) => {
+  const edit = setEditing(true)
+  dispatch({ type: TOGGLE_COMPONENT_EDIT, payload: edit})
+}
+
+
+
 export const dispatchers = {
   fetchClients,
   addNewClient,
@@ -140,6 +162,8 @@ export const dispatchers = {
   fetchJobsheets,
   addNewJobsheet,
   fetchComponents,
+  updateComponent,
+  toggleEditing
 };
 
 export const actions = {
@@ -149,4 +173,6 @@ export const actions = {
   SET_CURRENT_PROJECT,
   SET_CURRENT_JOBSHEETS,
   SET_CURRENT_JOBSHEET,
+  TOGGLE_COMPONENT_EDIT,
+  UPDATE_COMPONENT
 };

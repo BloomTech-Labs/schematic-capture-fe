@@ -7,7 +7,9 @@ const {
   SET_CURRENT_PROJECT,
   SET_CURRENT_JOBSHEETS,
   SET_CURRENT_JOBSHEET,
-  UPDATE_CURRENT_PROJECT_NAME
+  UPDATE_CURRENT_PROJECT_NAME,
+  TOGGLE_COMPONENT_EDIT,
+  UPDATE_COMPONENT
 } = actions;
 
 const initState = {
@@ -16,7 +18,9 @@ const initState = {
   currentClient: null,
   currentProject: null,
   currentJobsheets: [],
-  currentJobsheet: null
+  currentJobsheet: null,
+  edit: false,
+  currentComponent: null
 };
 
 const dashboardReducer = (state = initState, action) => {
@@ -60,6 +64,16 @@ const dashboardReducer = (state = initState, action) => {
       return {
         ...state,
         currentJobsheet: action.payload
+      };
+      case TOGGLE_COMPONENT_EDIT:
+      return {
+        ...state,
+        editing: action.payload
+      };
+      case UPDATE_COMPONENT:
+      return {
+        ...state,
+        currentComponent: action.payload
       };
     default:
       return state;
