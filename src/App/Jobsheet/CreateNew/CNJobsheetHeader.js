@@ -21,7 +21,7 @@ import Unknown from '../../Styles/Dashboard/unknown.jpg'
 import swal from "sweetalert"
 
 const PageHeader = () => {
-  const { currentProject, currentJobsheet, currentClient } = useSelector(
+  const { currentProject, currentClient } = useSelector(
     state => state.dashboard
   )
   const user = useSelector(state => state.auth.user)

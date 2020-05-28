@@ -14,9 +14,7 @@ import {
   StyledField,
   FieldError,
   Button,
-  LineOr,
-  Signin,
-  Button1
+  Signin
 } from "../Styles/Auth/loginStyles"
 
 const Login = () => {

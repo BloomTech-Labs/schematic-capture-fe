@@ -14,7 +14,7 @@ function Dropbox() {
 
   return (
     <Button onClick={open} disabled={isOpen}>
-      <img src={Picture} className="image"/>
+      <img src={Picture} className="image" alt='dropbox'/>
     </Button>
   )
 }

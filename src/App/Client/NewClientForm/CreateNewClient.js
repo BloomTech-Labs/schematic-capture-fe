@@ -1,7 +1,3 @@
-// @TODO: Errors do not show when required field is left empty. 
-// @TODO: React does not recognize the `btnBlock` prop on a DOM element... getting error.
-// @TODO: Where is Fields.js being used? Not using here, but cannot delete file without app crashing. 
-
 import React, { useEffect } from "react"
 import { useHistory, Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
@@ -15,6 +11,9 @@ const { addNewClient } = dispatchers
 
 const CreateNewClient = () => {
   const { handleSubmit, register, errors } = useForm()
+
+  console.log(errors, ' errors')
+
   const dispatch = useDispatch()
   const history = useHistory()
   let inputElement
@@ -84,7 +83,7 @@ const CreateNewClient = () => {
               id="phone"
               placeholder="Phone Number"
               aria-label="Phone Number"
-              ref={register()}
+              ref={register({ required: true })}
             />
           </FormGroup>
           <FormGroup>
@@ -123,15 +122,14 @@ const CreateNewClient = () => {
           </FormGroup>
           <br />
           <br />
-          {errors.email && errors.email.type === "required" && (
-            <div id="error-email-required">
-              Please enter an email address.
-            </div>
+          {errors.companyName && errors.companyName.type === "required" && (
+              <div id="error-name-required">
+                <p> NAME IS REQUIRED </p>
+              </div>
           )}
-
-          {errors.name && errors.name.type === "required" && (
-            <div id="error-name-required">
-              Please enter a name.
+          {errors.phone && errors.phone.type === "required" && (
+            <div id="error-phone-required">
+              <p> PHONE NUMBER IS REQUIRED. </p>
             </div>
           )}
         </FormContainer>

@@ -15,9 +15,7 @@ import {
   StyledSelect,
   FieldError,
   Button,
-  LineOr,
-  Signin,
-  Button1
+  Signin
 } from "../../Styles/Auth/loginStyles"
 
 const FirstLoginForm = (props) => {
