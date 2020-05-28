@@ -132,10 +132,10 @@ const { currentClient, currentProject } = useSelector(
                   </ProjectLink>
                 </StyledTableData>
                 <StyledTableData>
-                  {jobsheet.status === "Unassigned" ? (
-                    <FlexEnd>{jobsheet.status}</FlexEnd>
+                  {jobsheet.completed !== 1  ? (
+                    <FlexEnd>Incomplete</FlexEnd>
                   ) : (
-                    <FlexEnd2>{jobsheet.status}</FlexEnd2>
+                    <FlexEnd2>Complete</FlexEnd2>
                   )}
                 </StyledTableData>
               </StyledTableRow>
