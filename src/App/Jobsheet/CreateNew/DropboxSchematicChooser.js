@@ -3,13 +3,13 @@ import { useDropboxChooser } from 'use-dropbox-chooser'
 import styled from 'styled-components';
 import Picture from '../JobsheetBoard/Camera.png'
 import { axiosWithAuth } from "../../../shared/utils/axiosWithAuth";
-function Dropbox() {
+function Dropbox(props) {
   const { open, isOpen } = useDropboxChooser({
     appKey: 't5i27y2t3fzkiqj',
     chooserOptions: { multiple: true, linkType: 'direct' },
     onSelected: files => {
+        props.setImageFile(files[0].link)
       console.log(files)
-      axiosWithAuth().post("/jobsheets/create", files.link)
     },
   })
   return (
