@@ -1,7 +1,6 @@
 // @TODO: form styling in this file AND ProjectStyles.js. Need to DRY.
 
 import styled from "styled-components";
-import Color from "color";
 import { color, font, mixin } from "../../shared/styles";
 import Input from "../../shared/components/Components/Input";
 

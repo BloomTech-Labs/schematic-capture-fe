@@ -73,7 +73,7 @@ const CreateNewClient = () => {
               type="string"
               name="companyName"
               id="companyName"
-              placeholder="Company Name"
+              placeholder="Company Name*"
               aria-label="Company Name"
               ref={register({ required: true })}
             />
@@ -81,7 +81,7 @@ const CreateNewClient = () => {
               type="tel"
               name="phone"
               id="phone"
-              placeholder="Phone Number"
+              placeholder="Phone Number*"
               aria-label="Phone Number"
               ref={register({ required: true })}
             />
