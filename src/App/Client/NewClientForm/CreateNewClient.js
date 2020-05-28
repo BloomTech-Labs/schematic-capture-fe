@@ -1,10 +1,12 @@
+// @TODO: Errors do not show when required field is left empty. 
+// @TODO: React does not recognize the `btnBlock` prop on a DOM element... getting error.
+// @TODO: Where is Fields.js being used? Not using here, but cannot delete file without app crashing. 
+
 import React, { useEffect } from "react"
 import { useHistory, Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
 import { dispatchers } from "../../../shared/actions/dashboardActions"
-
-
 
 import BackToLink from "../../../shared/components/Components/BackToLink"
 import { StyledField, FormContainer, FormGroup, Form } from "../../Styles/FormStyles"
@@ -61,7 +63,6 @@ const CreateNewClient = () => {
   return (
     <>
         <Form onSubmit={handleSubmit(onAddNewClient)}>
-         {/* <StyledFields fields={schema} register={register} errors={errors} /> */}
          <button type="Submit">Save</button>
          <Link to="/dashboard">Cancel</Link>
         </Form>
