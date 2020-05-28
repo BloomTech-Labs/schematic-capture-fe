@@ -2,13 +2,12 @@ import React, { useEffect } from "react"
 import { useHistory, Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
-
 import { dispatchers } from "../../../shared/actions/dashboardActions"
-// import Fields  from "../../../shared/components/Components/Fields.js"
-// import { StyledFields } from '../../Styles/Projects/projectStyles'
-import { schema } from './schema'
+
+
 
 import BackToLink from "../../../shared/components/Components/BackToLink"
+import { StyledField, FormContainer, FormGroup, Form } from "../../Styles/FormStyles"
 
 const { addNewClient } = dispatchers
 
@@ -20,10 +19,10 @@ const CreateNewClient = () => {
 
   useEffect(() => {
     inputElement = document.getElementById("phone")
-    // inputElement.addEventListener("keyup", formatToPhone)
+    inputElement.addEventListener("keyup", formatToPhone)
 
     inputElement = document.getElementById("zip")
-    // inputElement.addEventListener("keyup", formatToZip)
+    inputElement.addEventListener("keyup", formatToZip)
   })
 
   const onAddNewClient = data => {
@@ -61,68 +60,66 @@ const CreateNewClient = () => {
 
   return (
     <>
-        <form onSubmit={handleSubmit(onAddNewClient)}>
+        <Form onSubmit={handleSubmit(onAddNewClient)}>
          {/* <StyledFields fields={schema} register={register} errors={errors} /> */}
          <button type="Submit">Save</button>
          <Link to="/dashboard">Cancel</Link>
-        </form>
-      <form onSubmit={handleSubmit(onAddNewClient)}>
+        </Form>
+      <Form onSubmit={handleSubmit(onAddNewClient)}>
         <h1>Create a New Client</h1>
-        <div>
-          <input
-            type="string"
-            name="companyName"
-            id="companyName"
-            placeholder="Company Name"
-            aria-label="Company Name"
-            register={register}
-            ref={register({ required: true })}
-          />
-          <input
-            type="tel"
-            name="phone"
-            id="phone"
-            placeholder="Phone Number"
-            aria-label="Phone Number"
-            register={register}
-            ref={register()}
-          />
-          <input
-            type="string"
-            name="street"
-            id="street"
-            placeholder="Street"
-            aria-label="Street"
-            register={register}
-            ref={register({})}
-          />
-          <input
-            type="string"
-            name="city"
-            id="city"
-            placeholder="City"
-            aria-label="City"
-            register={register}
-            ref={register({})}
-          />
-          <input
-            type="string"
-            name="state"
-            id="state"
-            placeholder="State"
-            aria-label="State"
-            register={register}
-            ref={register({})}
-          />
-          <input
-            type="string"
-            name="zip"
-            id="zip"
-            placeholder="Zip Code"
-            aria-label="Zip Code"
-            register={register}
-            ref={register({})}
-          />
+        <FormContainer>
+          <FormGroup>
+            <StyledField
+              type="string"
+              name="companyName"
+              id="companyName"
+              placeholder="Company Name"
+              aria-label="Company Name"
+              ref={register({ required: true })}
+            />
+            <StyledField
+              type="tel"
+              name="phone"
+              id="phone"
+              placeholder="Phone Number"
+              aria-label="Phone Number"
+              ref={register()}
+            />
+          </FormGroup>
+          <FormGroup>
+            <StyledField
+              type="string"
+              name="street"
+              id="street"
+              placeholder="Street"
+              aria-label="Street"
+              ref={register({})}
+            />
+            <StyledField
+              type="string"
+              name="city"
+              id="city"
+              placeholder="City"
+              aria-label="City"
+              ref={register({})}
+            />
+            <StyledField
+              type="string"
+              name="state"
+              id="state"
+              placeholder="State"
+              aria-label="State"
+              ref={register({})}
+            />
+            <StyledField
+              type="string"
+              name="zip"
+              id="zip"
+              placeholder="Zip Code"
+              aria-label="Zip Code"
+              ref={register({})}
+            />
+          </FormGroup>
           <br />
           <br />
           {errors.email && errors.email.type === "required" && (
@@ -136,16 +133,16 @@ const CreateNewClient = () => {
               Please enter a name.
             </div>
           )}
-        </div>
+        </FormContainer>
         <div>
-          <button variant="primary" submit="button" btnBlock>
+          <button variant="primary" submit="button">
             Create
           </button>
         </div>
         <div>
           <BackToLink to="/dashboard" text="Back to Dashboard" />
         </div>
-      </form>
+      </Form>
     </>
   )
 }
