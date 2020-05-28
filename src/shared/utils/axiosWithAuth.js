@@ -4,7 +4,7 @@ export const axiosWithAuth = () => {
   const idToken = localStorage.getItem("idToken");
   const BASE_URL =
     process.env.REACT_APP_BASE_URL ||
-    "https://schematic-capture.herokuapp.com/api/";
+    "http://localhost:5435/api";
 
   return axios.create({
     baseURL: BASE_URL,
@@ -14,4 +14,5 @@ export const axiosWithAuth = () => {
   });
 };
 
+// https://schematic-capture.herokuapp.com/api/
 // https://schematiccapture-master.herokuapp.com/api

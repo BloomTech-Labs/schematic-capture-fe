@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
 import csv from "csvtojson"
+import SchematicChooser from "./DropboxSchematicChooser"
+
 import { dispatchers } from "../../../shared/actions/dashboardActions"
 import { csvToApi } from "../../../shared/utils/componentMap"
 import Header from "./CNJobsheetHeader"
@@ -104,7 +106,7 @@ const CreateNewJobsheet = () => {
               </label>
             </div>
             <label type="button" htmlFor="pdf" hidden={!getValues().name}>
-              <p onClick={() => setBananas(true)}>Add Schematic</p>
+               <SchematicChooser />
             </label>
             <input hidden name="components" ref={register} />
             <input
