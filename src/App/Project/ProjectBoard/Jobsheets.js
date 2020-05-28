@@ -48,6 +48,14 @@ const { currentClient, currentProject } = useSelector(
     });
   }
 
+  //Assigns jobsheet array value either from dispatch or from search
+  var jobsheetArray;
+  if (props.search.length > 0){
+    jobsheetArray = props.jobsheet
+  } else {
+    jobsheetArray = jobsheets
+  }
+
   return (
     <Section>
       <Projectsh2>All Jobsheets</Projectsh2>
@@ -63,8 +71,8 @@ const { currentClient, currentProject } = useSelector(
           </StyledTableRow>
         </thead>
         <tbody>
-          {props.search.length>0 ? 
-            props.jobsheet.map((jobsheet) => (
+          {
+            jobsheetArray.map((jobsheet) => (
               <StyledTableRow key={jobsheet.id}>
                 <StyledTableData>
                   <ProjectLink
@@ -81,65 +89,28 @@ const { currentClient, currentProject } = useSelector(
                     key={jobsheet.id}
                     to={`/jobsheet/${jobsheet.id}`}
                   >
-                    {jobsheet.technician}
-                  </ProjectLink>
-                </StyledTableData>
-                <StyledTableData>
-                  <ProjectLink
-                    data-button-jobsheet
-                    key={jobsheet.id}
-                    to={`/jobsheet/${jobsheet.id}`}
-                  >
                     {jobsheet.description}
                   </ProjectLink>
                 </StyledTableData>
                 <StyledTableData>
-                  {jobsheet.status === "Unassigned" ? (
-                    <FlexEnd>{jobsheet.status}</FlexEnd>
-                  ) : (
-                    <FlexEnd2>{jobsheet.status}</FlexEnd2>
-                  )}
-                </StyledTableData>
-              </StyledTableRow>
-            )) : 
-            jobsheets.map((jobsheet) => (
-              <StyledTableRow key={jobsheet.id}>
-                <StyledTableData>
                   <ProjectLink
                     data-button-jobsheet
                     key={jobsheet.id}
                     to={`/jobsheet/${jobsheet.id}`}
                   >
-                    {jobsheet.name}
+                  {/* Revise: Possibly change jobsheet.userEmail to map through an array is more than 1 tech */}
+                  {jobsheet.userEmail}
                   </ProjectLink>
                 </StyledTableData>
                 <StyledTableData>
-                  <ProjectLink
-                    data-button-jobsheet
-                    key={jobsheet.id}
-                    to={`/jobsheet/${jobsheet.id}`}
-                  >
-                    {jobsheet.technician}
-                  </ProjectLink>
-                </StyledTableData>
-                <StyledTableData>
-                  <ProjectLink
-                    data-button-jobsheet
-                    key={jobsheet.id}
-                    to={`/jobsheet/${jobsheet.id}`}
-                  >
-                    {jobsheet.description}
-                  </ProjectLink>
-                </StyledTableData>
-                <StyledTableData>
-                  {jobsheet.completed !== 1  ? (
+                {jobsheet.completed !== 1  ? (
                     <FlexEnd>Incomplete</FlexEnd>
                   ) : (
                     <FlexEnd2>Complete</FlexEnd2>
                   )}
                 </StyledTableData>
               </StyledTableRow>
-            ))
+            )) 
           }
           
         </tbody>
