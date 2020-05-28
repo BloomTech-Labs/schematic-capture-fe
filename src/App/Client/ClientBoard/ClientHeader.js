@@ -12,7 +12,7 @@ import {
   Column,
   ClientHeaderContain,
   Section2,
-  NewUserBtn,
+  NewUserBtn
 } from "../../Styles/Client";
 
 import {
