@@ -145,7 +145,7 @@ const PageHeader = ({ counter, setCounter }) => {
               </div>
             ) : (
               <div>
-                <h1 onClick={() => setIsEditing(true)}>{projectName}</h1>
+                <h1 onClick={() => setIsEditing(true)}>{currentProject.name}</h1>
 
                 <h4>
                   Incomplete ({counter.incomplete}/{counter.total})

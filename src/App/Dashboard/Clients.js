@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { dispatchers } from "../../shared/actions/dashboardActions"
 
@@ -17,21 +17,30 @@ const { fetchClients } = dispatchers
 const Clients = props => {
   const dispatch = useDispatch()
   const clients = useSelector(state => state.dashboard.clients)
+  const [complete, setComplete] = useState()
   console.log(clients)
 
   useEffect(() => {
     dispatch(fetchClients())
   }, [])
 
+
+
+  var clientArray;
+  if (props.search.length > 0){
+    clientArray = props.clientsSrc
+  } else {
+    clientArray = clients
+  }
+
   return (
     <Section>
       <Clientsh2>Clients</Clientsh2>
       <LineBreak />
       {/* Please make cleaner sometime */}
-      {props.search.length>0 ? 
+      
         <ClientCont>
-        {props.clientsSrc &&
-          props.clientsSrc.map(client => (
+        {clientArray.map(client => (
             <Spacer>
               <ClientBox
                 data-client-name
@@ -43,23 +52,7 @@ const Clients = props => {
               <FlexEnd>Incomplete</FlexEnd>
             </Spacer>
           ))}
-        </ClientCont> : 
-        <ClientCont>
-          {clients &&
-            clients.map(client => (
-              <Spacer>
-                <ClientBox
-                  data-client-name
-                  key={client.id}
-                  to={`/client/${client.id}`}
-                >
-                  {client.companyName}
-                </ClientBox>
-                <FlexEnd>Incomplete</FlexEnd>
-              </Spacer>
-          ))}
-        </ClientCont>
-      }
+        </ClientCont> 
       
     </Section>
   )
