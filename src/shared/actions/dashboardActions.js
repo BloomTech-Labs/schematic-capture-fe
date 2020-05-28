@@ -131,6 +131,20 @@ const fetchComponents = (id, setComponents) => async (dispatch) => {
   }
 };
 
+const updateComponent = (id, data) => (dispatch) => {
+  dispatch({ type: APP_LOADING });
+
+  axiosWithAuth()
+    .put(`/api/components/${id}/update`, {
+      data,
+    })
+    .then((component) => {
+      console.log(component);
+      dispatch({ type: APP_DONE_LOADING });
+    })
+    .catch((err) => dispatch({ type: APP_ERROR, payload: err.message }));
+};
+
 export const dispatchers = {
   fetchClients,
   addNewClient,

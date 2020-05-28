@@ -105,6 +105,8 @@ const Components = (props) => {
     setSortingNone(!sortingNone);
   }
 
+  console.log(components);
+
   return (
     <section>
       <Status>Incomplete({components.id})</Status>
@@ -132,7 +134,7 @@ const Components = (props) => {
               <th scope="col">Manufacturer</th>
               <th scope="col">Part Number</th>
               <th scope="col">Stock Code</th>
-              <th scope="col">Select Image</th>
+              <th scope="col">Image</th>
               <th scope="col">Resources</th>
               <th scope="col">Cutsheet</th>
               <th scope="col">Stores Part #</th>
@@ -149,7 +151,11 @@ const Components = (props) => {
                     <td data-label="Part Number">{component.partNumber}</td>
                     <td data-label="Stock Code">{component.stockCode}</td>
                     <td data-label="Select Image">
-                      <DropboxChooser />
+                      {component.image ? (
+                        <a href={component.image}>View Image</a>
+                      ) : (
+                        <DropboxChooser />
+                      )}
                     </td>
                     <td data-label="Resources">{component.resources}</td>
                     <td data-label="Cutsheet">{component.cutsheet}</td>
@@ -170,7 +176,11 @@ const Components = (props) => {
                     <td data-label="Part Number">{component.partNumber}</td>
                     <td data-label="Stock Code">{component.stockCode}</td>
                     <td data-label="Select Image">
-                      <DropboxChooser />
+                      {component.image ? (
+                        <a href={component.image}>View Image</a>
+                      ) : (
+                        <DropboxChooser />
+                      )}
                     </td>
                     <td data-label="Resources">{component.resources}</td>
                     <td data-label="Cutsheet">{component.cutsheet}</td>
