@@ -51,6 +51,7 @@ const CreateNewJobsheet = () => {
   const [isNew, setIsNew] = useState(false)
   const [bananas, setBananas] = useState(false)
   const [components, setComponents] = useState([])
+  const [imageFile, setImageFile] = useState(null)
 
   useEffect(() => {
     const [file] = watch("csv");
@@ -69,6 +70,7 @@ const CreateNewJobsheet = () => {
 
   const onSubmit = data => {
     delete data.csv
+    data.schematic = imageFile
     data.components = components
     dispatch(addNewJobsheet(data, history))
   }
@@ -106,7 +108,7 @@ const CreateNewJobsheet = () => {
               </label>
             </div>
             <label type="button" htmlFor="pdf" hidden={!getValues().name}>
-               <SchematicChooser />
+               <SchematicChooser setImageFile={setImageFile}/>
             </label>
             <input hidden name="components" ref={register} />
             <input
