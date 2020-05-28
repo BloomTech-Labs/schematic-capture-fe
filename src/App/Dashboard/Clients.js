@@ -33,7 +33,7 @@ const Clients = props => {
         <ClientHeaderContain>
           <Clientsh2>Clients</Clientsh2>
             <NewClientBtn
-              to={`/client`}
+              to={`/client/new`}
               variant="primary"
               >
               New&nbsp;Client

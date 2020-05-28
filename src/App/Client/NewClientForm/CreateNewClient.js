@@ -4,7 +4,9 @@ import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
 
 import { dispatchers } from "../../../shared/actions/dashboardActions"
-import { Fields } from "../../../shared/components"
+// import Fields  from "../../../shared/components/Components/Fields.js"
+// import { StyledFields } from '../../Styles/Projects/projectStyles'
+import { schema } from './schema'
 
 import BackToLink from "../../../shared/components/Components/BackToLink"
 
@@ -18,10 +20,10 @@ const CreateNewClient = () => {
 
   useEffect(() => {
     inputElement = document.getElementById("phone")
-    inputElement.addEventListener("keyup", formatToPhone)
+    // inputElement.addEventListener("keyup", formatToPhone)
 
     inputElement = document.getElementById("zip")
-    inputElement.addEventListener("keyup", formatToZip)
+    // inputElement.addEventListener("keyup", formatToZip)
   })
 
   const onAddNewClient = data => {
@@ -59,60 +61,66 @@ const CreateNewClient = () => {
 
   return (
     <>
-        {/*<form onSubmit={handleSubmit(onAddNewClient)}>*/}
-        {/*  <StyledFields fields={schema} register={register} errors={errors} />*/}
-        {/*  <button type="Submit">Save</button>*/}
-        {/*  <Link to="/dashboard">Cancel</Link>*/}
-        {/*</form>*/}
+        <form onSubmit={handleSubmit(onAddNewClient)}>
+         {/* <StyledFields fields={schema} register={register} errors={errors} /> */}
+         <button type="Submit">Save</button>
+         <Link to="/dashboard">Cancel</Link>
+        </form>
       <form onSubmit={handleSubmit(onAddNewClient)}>
         <h1>Create a New Client</h1>
         <div>
-          <Fields
+          <input
             type="string"
             name="companyName"
             id="companyName"
             placeholder="Company Name"
             aria-label="Company Name"
+            register={register}
             ref={register({ required: true })}
           />
-          <Fields
+          <input
             type="tel"
             name="phone"
             id="phone"
             placeholder="Phone Number"
             aria-label="Phone Number"
+            register={register}
             ref={register()}
           />
-          <Fields
+          <input
             type="string"
             name="street"
             id="street"
             placeholder="Street"
             aria-label="Street"
+            register={register}
             ref={register({})}
           />
-          <Fields
+          <input
             type="string"
             name="city"
             id="city"
             placeholder="City"
             aria-label="City"
+            register={register}
             ref={register({})}
           />
-          <Fields
+          <input
             type="string"
             name="state"
             id="state"
             placeholder="State"
             aria-label="State"
+            register={register}
             ref={register({})}
           />
-          <Fields
+          <input
             type="string"
             name="zip"
             id="zip"
             placeholder="Zip Code"
             aria-label="Zip Code"
+            register={register}
             ref={register({})}
           />
           <br />
