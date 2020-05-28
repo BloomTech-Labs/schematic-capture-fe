@@ -10,8 +10,12 @@ import {
   ClientBox,
   Spacer,
   FlexEnd,
-  NewClientBtn
+  NewClientBtn,
 } from '../Styles/Dashboard'
+
+import {
+  ClientHeaderContain,
+} from '../Styles/Client';
 
 const { fetchClients } = dispatchers
 
@@ -26,13 +30,15 @@ const Clients = props => {
 
   return (
     <Section>
-      <Clientsh2>Clients</Clientsh2>
-      <NewClientBtn
-        to={`/client`}
-        variant="primary"
-        >
-        New&nbsp;Client
-      </NewClientBtn>
+        <ClientHeaderContain>
+          <Clientsh2>Clients</Clientsh2>
+            <NewClientBtn
+              to={`/client`}
+              variant="primary"
+              >
+              New&nbsp;Client
+            </NewClientBtn>
+        </ClientHeaderContain>
       <LineBreak />
       {/* Please make cleaner sometime */}
       {props.search.length>0 ? 
