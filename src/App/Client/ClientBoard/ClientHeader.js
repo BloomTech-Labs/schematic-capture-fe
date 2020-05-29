@@ -11,8 +11,7 @@ import {
   NewProjBtn,
   Column,
   ClientHeaderContain,
-  Section2,
-  NewUserBtn,
+  Section2
 } from "../../Styles/Client";
 
 import {

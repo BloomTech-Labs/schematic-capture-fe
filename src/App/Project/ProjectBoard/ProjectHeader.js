@@ -8,7 +8,7 @@ import { BackToLink } from "../../../shared/components";
 import { Link } from "react-router-dom";
 
 import Jobsheets from "./Jobsheets";
-import { ClientHeaderContain, Section2 } from "../../Styles/Client";
+import { Section2 } from "../../Styles/Client";
 import { NewProjBtn, BtnCont,  } from "../../Styles/Jobsheets";
 import InviteNewUserModal from "./InvitePopup"
 import {

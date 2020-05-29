@@ -79,6 +79,7 @@ export const NewUserBtn = styled(Link)`
     text-decoration: none;
   }
 `;
+
 export const ClientHeaderContain = styled.div`
   display: flex;
   justify-content: space-between;
