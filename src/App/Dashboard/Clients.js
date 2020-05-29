@@ -24,7 +24,9 @@ const Clients = props => {
     dispatch(fetchClients())
   }, [])
 
-
+  const getCompleted = completed => {
+    setComplete(completed);
+  };
 
   var clientArray;
   if (props.search.length > 0){
