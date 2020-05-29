@@ -13,10 +13,10 @@ import {
   FormGroup,
   StyledField,
   StyledSelect,
-  FieldError,
-  Button,
-  Signin
-} from "../../Styles/Auth/loginStyles"
+  FieldError
+} from "../../Styles/FormStyles"
+
+import { Button, Signin } from "../../Styles/Auth/loginStyles"
 
 const FirstLoginForm = (props) => {
   const { register, handleSubmit, errors } = useForm()

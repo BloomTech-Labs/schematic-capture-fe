@@ -5,7 +5,13 @@ import { useForm } from "react-hook-form"
 import { dispatchers } from "../../../shared/actions/dashboardActions"
 
 import BackToLink from "../../../shared/components/Components/BackToLink"
-import { StyledField, FormContainer, FormGroup, Form } from "../../Styles/FormStyles"
+import { 
+  StyledField, 
+  FormContainer, 
+  FormGroup, 
+  Form, 
+  FieldError 
+} from "../../Styles/FormStyles"
 
 const { addNewClient } = dispatchers
 
@@ -123,14 +129,14 @@ const CreateNewClient = () => {
           <br />
           <br />
           {errors.companyName && errors.companyName.type === "required" && (
-              <div id="error-name-required">
+              <FieldError id="error-name-required">
                 <p> NAME IS REQUIRED </p>
-              </div>
+              </FieldError>
           )}
           {errors.phone && errors.phone.type === "required" && (
-            <div id="error-phone-required">
+            <FieldError id="error-phone-required">
               <p> PHONE NUMBER IS REQUIRED. </p>
-            </div>
+            </FieldError>
           )}
         </FormContainer>
         <div>

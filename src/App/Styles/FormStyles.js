@@ -1,5 +1,3 @@
-// @TODO: form styling in this file AND ProjectStyles.js. Need to DRY.
-
 import styled from "styled-components";
 import { color, font, mixin } from "../../shared/styles";
 import Input from "../../shared/components/Components/Input";
@@ -117,6 +115,8 @@ margin-top: 8px;
 color: ${color.danger};
 ${font.size(1.25)}
 `;
+
+
 
 export const Form = styled.form``;
 export const StyledInput = styled(Input)``;

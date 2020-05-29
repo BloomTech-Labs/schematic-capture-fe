@@ -15,7 +15,7 @@ import {
 } from "../../Styles/Jobsheets";
 import { dispatchers } from "../../../shared/actions/authActions";
 
-import { FieldError } from "../../Styles/Auth/loginStyles";
+import { FieldError } from "../../Styles/FormStyles";
 import { useFormContext } from "react-hook-form";
 
 const InviteNewUserModal = (props) => {
