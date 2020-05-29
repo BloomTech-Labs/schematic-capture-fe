@@ -31,13 +31,39 @@ const Components = (props) => {
   const [sortingNone, setSortingNone] = useState(true);
   // const [update, setUpdate] = useState([])
   const [editing, setEditing] = useSelector(state => state.edit)
-  const [formData, setFormData] = useState({
-    
+  const [update, setUpdate] = useState([])
+  const [input, setInput] = useState({
+      description: '',
+      manufacturer: '',
+      partNumber: '',
+      stockCode: '',
+      resources: '',
+      cutsheet: '',
+      storesPartNumber: ''
+
   })
+
  
 
   const dispatch = useDispatch();
   const params = useParams();
+
+
+  const handleChange = e => {
+      setInput({
+        ...input,
+        [e.target.name]: e.target.value
+      })
+  }
+
+  const onSubmit = (data) => {
+    e.preventDefault();
+
+  }
+
+  useEffect(() => {
+    updateComponentSideEffects(dispatch, params.id, setUpdate)
+  })
 
   useEffect(() => {
     fetchComponentsSideEffect(dispatch, params.id, setComponents);
@@ -150,9 +176,9 @@ const Components = (props) => {
                 props.component.map((component) => (
                   <tr key={component.id}>
 
-                {!editing ? <td data-label="Component" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.componentId}</td> : <input type="text" ></input> }
+                {!editing ? <td data-label="Component" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.componentId}</td> : <form onSubmit={handleSubmit(onSubmit)}><input type="text" name={id} value={input.id} onChange={handleChange}/></form> }
 
-
+                {!editing ? <td data-label="Component" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name={id} value={input.description} onChange={handleChange}/></form> }
 
                     <td data-label="Description" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td>
                     <td data-label="Manufacturer" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.manufacturer}</td>
