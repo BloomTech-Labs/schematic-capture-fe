@@ -18,19 +18,23 @@ import sort from "./Sort.png";
 import { dispatchers, actions } from "../../../shared/actions/dashboardActions";
 import DropboxChooser from "../CreateNew/Dropbox";
 
-const { fetchComponents } = dispatchers;
+const { fetchComponents, updateComponent } = dispatchers;
 const fetchComponentsSideEffect = async (dispatch, id, setComponents) => {
   await dispatch(fetchComponents(id, setComponents));
 };
+
+const updateComponentSideEffects = async (dispatch, id, input, setUpdate) => {
+  await dispatch(updateComponent(id, input, setUpdate))
+}
+
 const Components = (props) => {
-  const { getValues, setValue, handleSubmit, watch } = useForm();
+  const { register, getValues, setValue, handleSubmit, watch } = useForm();
   const [components, setComponents] = useState([]);
   const [sortingComponents, setSortingComponents] = useState([]);
   const [sortingAsc, setSortingAsc] = useState(false);
   const [sortingDesc, setSortingDesc] = useState(false);
   const [sortingNone, setSortingNone] = useState(true);
-  // const [update, setUpdate] = useState([])
-  const [editing, setEditing] = useSelector(state => state.edit)
+  const [editing, setEditing] = useState(false)
   const [update, setUpdate] = useState([])
   const [input, setInput] = useState({
       description: '',
@@ -57,13 +61,14 @@ const Components = (props) => {
   }
 
   const onSubmit = (data) => {
-    e.preventDefault();
+    setUpdate()
+   console.log()
 
   }
 
   useEffect(() => {
     updateComponentSideEffects(dispatch, params.id, setUpdate)
-  })
+  }, [editing, update]);
 
   useEffect(() => {
     fetchComponentsSideEffect(dispatch, params.id, setComponents);
@@ -175,10 +180,25 @@ const Components = (props) => {
              {props.component.length &&
                 props.component.map((component) => (
                   <tr key={component.id}>
+{/* 
+                {!editing ? <td data-label="Component" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.componentId}</td> : <form onSubmit={handleSubmit(onSubmit)}><input type="text" value={input} onChange={handleChange} ref={register}/></form> }
 
-                {!editing ? <td data-label="Component" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.componentId}</td> : <form onSubmit={handleSubmit(onSubmit)}><input type="text" name={id} value={input.id} onChange={handleChange}/></form> }
+                {!editing ? <td data-label="Description" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="description" value={input.description} onChange={handleChange} ref={register}/></form> }
 
-                {!editing ? <td data-label="Component" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name={id} value={input.description} onChange={handleChange}/></form> }
+                {!editing ? <td data-label="Manufacturer" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="manufacturer" value={input.manufacturer} onChange={handleChange} ref={register}/></form> }
+
+                {!editing ? <td data-label="Part Number" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="partNumber" value={input.partNumber} onChange={handleChange} ref={register}/></form> }
+
+                {!editing ? <td data-label="Stock Code" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="stockCode" value={input.stockCode} onChange={handleChange} ref={register}/></form> }
+                <td data-label="Select Image">
+                      <DropboxChooser />
+                    </td>
+
+                {!editing ? <td data-label="Resources" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="resources" value={input.resources} onChange={handleChange} ref={register}/></form> }
+
+                {!editing ? <td data-label="Cutsheet" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="cutsheet" value={input.cutsheet} onChange={handleChange} ref={register}/></form> }
+
+                {!editing ? <td data-label="Stores Part #" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="storesPartNumber" value={input.storesPartNumber} onChange={handleChange} ref={register}/></form> } */}
 
                     <td data-label="Description" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td>
                     <td data-label="Manufacturer" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.manufacturer}</td>
@@ -215,6 +235,7 @@ const Components = (props) => {
                     <td data-label="Stores Part #">
                       {component.storesPartNumber}
                     </td>
+                    <td><button onClick>Edit</button></td>
                   </tr>
                 ))}
             </tbody>

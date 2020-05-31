@@ -133,11 +133,11 @@ const fetchComponents = (id, setComponents) => async (dispatch) => {
   }
 };
 
-const updateComponent = (id, name, setUpdate) => async (dispatch) => {
+const updateComponent = (id, formData, setUpdate) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
 
   try {
-    const updated = await axiosWithAuth().patch(`/jobsheets/${id}/components`, { name });
+    const updated = await axiosWithAuth().patch(`/jobsheets/${id}/components`, { formData });
     setUpdate(updated.data);
     console.log(updated.data);
     dispatch({ type: UPDATE_COMPONENT });
