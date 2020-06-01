@@ -27,6 +27,7 @@ const FirstLoginForm = (props) => {
   const { firstLogin } = dispatchers
 
   const onSubmit = (data) => {
+    console.log(data)
     dispatch(firstLogin(data = {...data, token: props.match.params.userToken }, history))
   }
 
@@ -36,7 +37,6 @@ const FirstLoginForm = (props) => {
         <Signin className="signin">First Time Log-in</Signin>
         <FormGroup>
           <StyledField
-            data-password
             type="password"
             name="newPassword"
             id="newPassword"
@@ -71,16 +71,15 @@ const FirstLoginForm = (props) => {
           <StyledField
           // @TODO: Finish Field for security answer:
           name="newAnswer"
-          id="answer"
-          ref={register({ required: true })}
+          ref={register}
           placeholder="Answer to Security Question"
           aria-label="Answer to Security Question"
           />
         </FormGroup>
         <FormRow>
           <FormColumn>
-            <Button data-button-continue variant="primary" type="submit">
-              Continue
+            <Button  type="submit">
+              Conyeetnue
             </Button>
           </FormColumn>
           <FormColumn style={{ textAlign: "right" }}>

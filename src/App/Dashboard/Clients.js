@@ -9,7 +9,8 @@ import {
   ClientCont,
   ClientBox,
   Spacer,
-  FlexEnd
+  FlexEnd,
+  FlexEnd2
 } from '../Styles/Dashboard'
 
 const { fetchClients } = dispatchers
@@ -17,18 +18,14 @@ const { fetchClients } = dispatchers
 const Clients = props => {
   const dispatch = useDispatch()
   const clients = useSelector(state => state.dashboard.clients)
-  const { currentProjects } = useSelector(state => state.dashboard)
 
-  const [complete, setComplete] = useState()
   console.log(clients)
 
   useEffect(() => {
     dispatch(fetchClients())
   }, [])
 
-  const getCompleted = completed => {
-    setComplete(completed);
-  };
+ 
   var clientArray;
   if (props.search.length > 0){
     clientArray = props.clientsSrc
@@ -52,7 +49,11 @@ const Clients = props => {
               >
                 {client.companyName}
               </ClientBox>
-              <FlexEnd>Incomplete</FlexEnd>
+              {client.completed !== 1  ? (
+                    <FlexEnd>Incomplete</FlexEnd>
+                  ) : (
+                    <FlexEnd2>Complete</FlexEnd2>
+                  )}
             </Spacer>
           ))}
         </ClientCont> 
