@@ -61,12 +61,8 @@ const CreateNewJobsheet = () => {
       setPreview(true);
       setValue("name", fileName)
     }
-    const [file2] = watch('pdf')
-    if (file2) {
-      const [fileName2] = file2.name.split(".")
-      setValue('name2', fileName2)
-    }
-  }, [watch("csv"), watch('pdf')])
+    
+  }, [watch("csv")])
 
   const onSubmit = data => {
     console.log(data, "HEEY")
@@ -144,13 +140,7 @@ const CreateNewJobsheet = () => {
             hidden={!isNew}
             ref={register({ required: true })}
           />
-          <input
-            name="name2"
-            placeholder="Schematic"
-            disabled={!bananas}
-            hidden={!bananas}
-            ref={register}
-          />
+          
       </div>
       <div>
         <table>
