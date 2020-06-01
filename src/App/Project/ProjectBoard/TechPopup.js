@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { Modal } from "reactstrap";
 import {
   NewProjBtn,
@@ -10,16 +11,18 @@ import {
   Container,
   Mod,
 } from "../../Styles/Jobsheets";
-
+import { dispatchers } from "../../../shared/actions/dashboardActions"
 import { FieldError } from "../../Styles/FormStyles";
 
+const {fetchAvailableTechs} = dispatchers;
+
 // TODO: currently hard-coded... need to pull from database instead.
-var availableTechs = [
-  "Adam",
-  "Tyler",
-  "Danni",
-  "Vincent"
-];
+// var availableTechs = [
+//   "Adam",
+//   "Tyler",
+//   "Danni",
+//   "Vincent"
+// ];
 
 const TechModal = (props) => {
   const { buttonLabel, className } = props;
@@ -27,6 +30,10 @@ const TechModal = (props) => {
   const [tech, setTech] = useState({ name: null, date: null });
   const toggle = () => setModal(!modal);
   const [page, setPage] = useState(0);
+
+  useEffect(() => {
+    props.fetchAvailableTechs();
+  }, [])
 
   const handleChange = (e) => {
     setTech({ ...tech, name: e.target.value });
@@ -66,14 +73,14 @@ const TechModal = (props) => {
           <>
             <MH1>Available technicians</MH1>
             <MBody>
-              {tech.name === null ? (
+              {props.availableTechs.name === null ? (
                 <Container>
                   <FieldError>Please assign a technician</FieldError>
                 </Container>
               ) : (
                 <></>
               )}
-              {availableTechs.map((ele) => {
+              {props.availableTechs.map((ele) => {
                 if (ele === tech.name) {
                   return (
                     <TechCont>
@@ -158,4 +165,10 @@ const TechModal = (props) => {
   );
 };
 
-export default TechModal;
+const mapStateToProps = state => {
+  return {
+      availableTechs: state.availableTechs
+  }
+}
+export default connect(mapStateToProps, { fetchAvailableTechs }) (TechModal);
+

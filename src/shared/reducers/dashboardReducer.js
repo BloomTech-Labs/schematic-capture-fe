@@ -2,6 +2,7 @@ import { actions } from "../actions/dashboardActions";
 
 const {
   FETCH_CLIENTS_SUCCESS,
+  SET_AVAILABLE_TECHS,
   SET_CURRENT_CLIENT,
   SET_CURRENT_PROJECTS,
   SET_CURRENT_PROJECT,
@@ -12,6 +13,7 @@ const {
 
 const initState = {
   clients: [],
+  availableTechs: [],
   currentProjects: [],
   currentClient: null,
   currentProject: null,
@@ -25,6 +27,11 @@ const dashboardReducer = (state = initState, action) => {
       return {
         ...state,
         clients: action.payload
+      };
+      case SET_AVAILABLE_TECHS:
+      return {
+        ...state,
+        availableTechs: action.payload
       };
     case SET_CURRENT_CLIENT:
       return {

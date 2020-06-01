@@ -3,6 +3,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 
 const FETCH_CLIENTS_SUCCESS = "FETCH_CLIENTS_SUCCESS";
+const SET_AVAILABLE_TECHS = "SET_AVAILABLE_TECHS";
 const SET_CURRENT_CLIENT = "SET_CURRENT_CLIENT";
 const SET_CURRENT_PROJECTS = "SET_CURRENT_PROJECTS";
 const SET_CURRENT_PROJECT = "SET_CURRENT_PROJECT";
@@ -17,6 +18,17 @@ const fetchClients = () => async (dispatch, getState) => {
     const clients = await axiosWithAuth().get("/clients");
     dispatch({ type: FETCH_CLIENTS_SUCCESS, payload: clients.data });
     dispatch({ type: APP_DONE_LOADING });
+  } catch (error) {
+    dispatch({ type: APP_ERROR, payload: error.message });
+  }
+};
+
+const fetchAvailableTechs = () => async dispatch => {
+  // dispatch({ type: APP_LOADING });
+
+  try {
+    const availableTechs = await axiosWithAuth().get("/techs/available");
+    dispatch({ type: SET_AVAILABLE_TECHS, payload: availableTechs.data });
   } catch (error) {
     dispatch({ type: APP_ERROR, payload: error.message });
   }
@@ -133,6 +145,7 @@ const fetchComponents = (id, setComponents) => async (dispatch) => {
 
 export const dispatchers = {
   fetchClients,
+  fetchAvailableTechs,
   addNewClient,
   fetchProjects,
   addNewProject,
