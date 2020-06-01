@@ -9,7 +9,7 @@ function Dropbox(props) {
     chooserOptions: { multiple: true, linkType: 'direct' },
     onSelected: files => {
         props.setImageFile(files[0].link)
-        console.log(props.ImageFile, "HEEY2")
+        console.log(props.imageFile, "HEEY2")
       console.log(files)
     },
   })
