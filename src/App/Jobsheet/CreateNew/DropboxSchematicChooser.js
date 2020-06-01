@@ -9,10 +9,11 @@ function Dropbox(props) {
     chooserOptions: { multiple: true, linkType: 'direct' },
     onSelected: files => {
         props.setImageFile(files[0].link)
-        console.log(props.ImageFile)
+        console.log(props.ImageFile, "HEEY2")
       console.log(files)
     },
   })
+  // props.setImageFile("https://cdn11.bigcommerce.com/s-sq9zkarfah/images/stencil/1280x1280/products/124372/117641/Coheed-And-Cambria-Keywork-Logo-Vinyl-Decal-Sticker__15918.1507850537.jpg?c=2?imbypass=on")
   return (
     <Button onClick={open} disabled={isOpen}>
       Add Schematic
