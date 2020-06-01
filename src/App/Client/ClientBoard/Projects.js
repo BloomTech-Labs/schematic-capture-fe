@@ -54,7 +54,7 @@ const Projects = props => {
     setCurrentClientAndProjectsSideEffect(dispatch, client, projects)
   }, [])
 
-  const fetchData = useCallback((e)=>dispatch(fetchJobsheets(projectID)),[dispatch])
+
   console.log('McSwaggies',currentProjects)
   const projIDArray = currentProjects.map((Proj) => 
         { return Proj.id; });
