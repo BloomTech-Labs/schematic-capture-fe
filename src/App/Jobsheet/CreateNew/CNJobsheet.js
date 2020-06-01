@@ -108,7 +108,7 @@ const CreateNewJobsheet = () => {
               </label>
             </div>
             <label type="button" htmlFor="pdf" hidden={!getValues().name}>
-               <SchematicChooser setImageFile={setImageFile}/>
+               <SchematicChooser imageFile={imageFile} setImageFile={setImageFile}/>
             </label>
             <input hidden name="components" ref={register} />
             <input
@@ -148,7 +148,7 @@ const CreateNewJobsheet = () => {
             placeholder="Schematic"
             disabled={!bananas}
             hidden={!bananas}
-            ref={register({ required: true })}
+            ref={register}
           />
       </div>
       <div>
