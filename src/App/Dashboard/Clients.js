@@ -17,6 +17,8 @@ const { fetchClients } = dispatchers
 const Clients = props => {
   const dispatch = useDispatch()
   const clients = useSelector(state => state.dashboard.clients)
+  const { currentProjects } = useSelector(state => state.dashboard)
+
   const [complete, setComplete] = useState()
   console.log(clients)
 
@@ -27,7 +29,6 @@ const Clients = props => {
   const getCompleted = completed => {
     setComplete(completed);
   };
-
   var clientArray;
   if (props.search.length > 0){
     clientArray = props.clientsSrc
