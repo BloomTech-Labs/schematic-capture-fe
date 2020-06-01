@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import SortDropDown from "../../../shared/components/Components/SortDropDown.js";
-
+import EditComponents from "./EditComponents.js"
 import {
   List,
   Table,
@@ -20,7 +20,7 @@ import DropboxChooser from "../CreateNew/Dropbox";
 
 const { fetchComponents, updateComponent } = dispatchers;
 const fetchComponentsSideEffect = async (dispatch, id, setComponents) => {
-  await dispatch(fetchComponents(id, setComponents));
+  await dispatch(fetchComponents(id));
 };
 
 const updateComponentSideEffects = async (dispatch, id, input, setUpdate) => {
@@ -29,12 +29,14 @@ const updateComponentSideEffects = async (dispatch, id, input, setUpdate) => {
 
 const Components = (props) => {
   const { register, getValues, setValue, handleSubmit, watch } = useForm();
-  const [components, setComponents] = useState([]);
+  // const [components, setComponents] = useState([]);
+  const components  = useSelector((state) => state.dashboard.components)
   const [sortingComponents, setSortingComponents] = useState([]);
   const [sortingAsc, setSortingAsc] = useState(false);
   const [sortingDesc, setSortingDesc] = useState(false);
   const [sortingNone, setSortingNone] = useState(true);
-  const [editing, setEditing] = useState(false)
+  const user = useSelector((state) => state.auth.user);
+  const [editing, setEditing] = useState(false);
   const [update, setUpdate] = useState([])
   const [input, setInput] = useState({
       description: '',
@@ -51,6 +53,7 @@ const Components = (props) => {
 
   const dispatch = useDispatch();
   const params = useParams();
+  const history = useHistory();
 
 
   const handleChange = e => {
@@ -68,10 +71,10 @@ const Components = (props) => {
 
   useEffect(() => {
     updateComponentSideEffects(dispatch, params.id, setUpdate)
-  }, [editing, update]);
+  }, []);
 
   useEffect(() => {
-    fetchComponentsSideEffect(dispatch, params.id, setComponents);
+    fetchComponentsSideEffect(dispatch, params.id, history);
   }, [sortingNone]);
 
   useEffect(() => {
@@ -144,7 +147,7 @@ const Components = (props) => {
 
   return (
     <section>
-      <Status>Incomplete({components.id})</Status>
+      <Status>Incomplete()</Status>
       <Wrapper>
         <List>List</List>
         <ImgWrapper>
@@ -200,15 +203,15 @@ const Components = (props) => {
 
                 {!editing ? <td data-label="Stores Part #" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="storesPartNumber" value={input.storesPartNumber} onChange={handleChange} ref={register}/></form> } */}
 
-                    <td data-label="Description" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td>
-                    <td data-label="Manufacturer" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.manufacturer}</td>
-                    <td data-label="Part Number" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.partNumber}</td>
-                    <td data-label="Stock Code" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.stockCode}</td>
+                    <td data-label="Description" >{component.descriptions}</td>
+                    <td data-label="Manufacturer" >{component.manufacturer}</td>
+                    <td data-label="Part Number" >{component.partNumber}</td>
+                    <td data-label="Stock Code" >{component.stockCode}</td>
                     <td data-label="Select Image">
                       <DropboxChooser />
                     </td>
-                    <td data-label="Resources" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.resources}</td>
-                    <td data-label="Cutsheet" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.cutsheet}</td>
+                    <td data-label="Resources" >{component.resources}</td>
+                    <td data-label="Cutsheet">{component.cutsheet}</td>
                     <td data-label="Stores Part #" >
                       {component.storesPartNumber}
                     </td>
@@ -235,7 +238,7 @@ const Components = (props) => {
                     <td data-label="Stores Part #">
                       {component.storesPartNumber}
                     </td>
-                    <td><button onClick>Edit</button></td>
+                    {user.roleId !== 3 && <EditComponents buttonLabel="Update" component={component}/>}
                   </tr>
                 ))}
             </tbody>
