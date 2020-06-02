@@ -79,7 +79,7 @@ const Projects = props => {
                 <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.technicians}</ProjectLink></StyledTableData>
                 <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.tally}</ProjectLink></StyledTableData>
                 <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}><StyledTableData>
-                {project.completed !== 1  ? (
+                {project.completed !== true  ? (
                     <FlexEnd>Incomplete</FlexEnd>
                   ) : (
                     <FlexEnd2>Complete</FlexEnd2>
