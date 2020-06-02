@@ -36,9 +36,7 @@ const Clients = props => {
   return (
     <Section>
       <Clientsh2>Clients</Clientsh2>
-      <LineBreak />
-      {/* Please make cleaner sometime */}
-      
+      <LineBreak />     
         <ClientCont>
         {clientArray.map(client => (
             <Spacer>
