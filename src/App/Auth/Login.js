@@ -12,12 +12,10 @@ import {
   FormColumn,
   FormGroup,
   StyledField,
-  FieldError,
-  Button,
-  LineOr,
-  Signin,
-  Button1
-} from "../Styles/Auth/loginStyles"
+  FieldError
+} from "../Styles/FormStyles"
+
+import { Button, Signin } from "../Styles/Auth/loginStyles"
 
 const Login = () => {
   const { register, handleSubmit, errors } = useForm()

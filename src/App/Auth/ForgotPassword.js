@@ -7,9 +7,10 @@ import {
   FormContainer,
   FormGroup,
   StyledField,
-  FieldError,
-  Button,
-} from "../Styles/Auth/loginStyles"
+  FieldError
+} from "../Styles/FormStyles"
+
+import { Button } from "../Styles/Auth/loginStyles"
 
 import { BackToLink } from "../../shared/components"
 

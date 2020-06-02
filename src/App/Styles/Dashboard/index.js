@@ -38,6 +38,22 @@ export const RightSide = styled.div`
     justify-content: space-between;
     max-height: 2.5rem;
 `
+export const NewClientBtn = styled(Link)`
+  text-decoration: none;
+  background-color: ${color.blue};
+  border-radius: 25px;
+  text-align: center;
+  color: white;
+  padding: 0.75rem;
+  width: 10rem;
+  font-size: ${font.small};
+  opacity: 1;
+  font-weight: bold;
+  :hover {
+    color: rgba(33, 36, 44, 0.6);
+    text-decoration: none;
+  }
+`;
 
 export const Greeting = styled.button`
     text-decoration: none;

@@ -2,16 +2,24 @@ import React, { useEffect } from "react"
 import { useHistory, Link } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
-
 import { dispatchers } from "../../../shared/actions/dashboardActions"
-import { Fields } from "../../../shared/components"
 
 import BackToLink from "../../../shared/components/Components/BackToLink"
+import { 
+  StyledField, 
+  FormContainer, 
+  FormGroup, 
+  Form, 
+  FieldError 
+} from "../../Styles/FormStyles"
 
 const { addNewClient } = dispatchers
 
 const CreateNewClient = () => {
   const { handleSubmit, register, errors } = useForm()
+
+  console.log(errors, ' errors')
+
   const dispatch = useDispatch()
   const history = useHistory()
   let inputElement
@@ -59,85 +67,87 @@ const CreateNewClient = () => {
 
   return (
     <>
-        {/*<form onSubmit={handleSubmit(onAddNewClient)}>*/}
-        {/*  <StyledFields fields={schema} register={register} errors={errors} />*/}
-        {/*  <button type="Submit">Save</button>*/}
-        {/*  <Link to="/dashboard">Cancel</Link>*/}
-        {/*</form>*/}
-      <form onSubmit={handleSubmit(onAddNewClient)}>
+        <Form onSubmit={handleSubmit(onAddNewClient)}>
+         <button type="Submit">Save</button>
+         <Link to="/dashboard">Cancel</Link>
+        </Form>
+      <Form onSubmit={handleSubmit(onAddNewClient)}>
         <h1>Create a New Client</h1>
-        <div>
-          <Fields
-            type="string"
-            name="companyName"
-            id="companyName"
-            placeholder="Company Name"
-            aria-label="Company Name"
-            ref={register({ required: true })}
-          />
-          <Fields
-            type="tel"
-            name="phone"
-            id="phone"
-            placeholder="Phone Number"
-            aria-label="Phone Number"
-            ref={register()}
-          />
-          <Fields
-            type="string"
-            name="street"
-            id="street"
-            placeholder="Street"
-            aria-label="Street"
-            ref={register({})}
-          />
-          <Fields
-            type="string"
-            name="city"
-            id="city"
-            placeholder="City"
-            aria-label="City"
-            ref={register({})}
-          />
-          <Fields
-            type="string"
-            name="state"
-            id="state"
-            placeholder="State"
-            aria-label="State"
-            ref={register({})}
-          />
-          <Fields
-            type="string"
-            name="zip"
-            id="zip"
-            placeholder="Zip Code"
-            aria-label="Zip Code"
-            ref={register({})}
-          />
+        <FormContainer>
+          <FormGroup>
+            <StyledField
+              type="string"
+              name="companyName"
+              id="companyName"
+              placeholder="Company Name*"
+              aria-label="Company Name"
+              ref={register({ required: true })}
+            />
+            <StyledField
+              type="tel"
+              name="phone"
+              id="phone"
+              placeholder="Phone Number*"
+              aria-label="Phone Number"
+              ref={register({ required: true })}
+            />
+          </FormGroup>
+          <FormGroup>
+            <StyledField
+              type="string"
+              name="street"
+              id="street"
+              placeholder="Street"
+              aria-label="Street"
+              ref={register({})}
+            />
+            <StyledField
+              type="string"
+              name="city"
+              id="city"
+              placeholder="City"
+              aria-label="City"
+              ref={register({})}
+            />
+            <StyledField
+              type="string"
+              name="state"
+              id="state"
+              placeholder="State"
+              aria-label="State"
+              ref={register({})}
+            />
+            <StyledField
+              type="string"
+              name="zip"
+              id="zip"
+              placeholder="Zip Code"
+              aria-label="Zip Code"
+              ref={register({})}
+            />
+          </FormGroup>
           <br />
           <br />
-          {errors.email && errors.email.type === "required" && (
-            <div id="error-email-required">
-              Please enter an email address.
-            </div>
+          {errors.companyName && errors.companyName.type === "required" && (
+              <FieldError id="error-name-required">
+                <p> NAME IS REQUIRED </p>
+              </FieldError>
           )}
-
-          {errors.name && errors.name.type === "required" && (
-            <div id="error-name-required">
-              Please enter a name.
-            </div>
+          {errors.phone && errors.phone.type === "required" && (
+            <FieldError id="error-phone-required">
+              <p> PHONE NUMBER IS REQUIRED. </p>
+            </FieldError>
           )}
-        </div>
+        </FormContainer>
         <div>
-          <button variant="primary" submit="button" btnBlock>
+          <button variant="primary" submit="button">
             Create
           </button>
         </div>
         <div>
           <BackToLink to="/dashboard" text="Back to Dashboard" />
         </div>
-      </form>
+      </Form>
     </>
   )
 }

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import SortDropDown from "../../../shared/components/Components/SortDropDown.js";
+import { CSVLink } from "react-csv";
 
 import {
   List,
@@ -60,6 +61,7 @@ const Components = (props) => {
       setSortingComponents(components);
     }
   }, [sortingComponents, sortingAsc, sortingDesc, components]);
+  console.log(components, "HEEY DATA!");
 
   useEffect(() => {
     if (sortingDesc === true) {
@@ -109,7 +111,7 @@ const Components = (props) => {
     <section>
       <Status>Incomplete({components.id})</Status>
       <Wrapper>
-        <List>List</List>
+        <CSVLink data={components}>Download CSV</CSVLink>
         <ImgWrapper>
           <Sorticon>
             <Buttin class="Sort">

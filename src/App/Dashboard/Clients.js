@@ -10,8 +10,16 @@ import {
   ClientBox,
   Spacer,
   FlexEnd,
-  FlexEnd2
+
+  FlexEnd2,
+
+  NewClientBtn,
+
 } from '../Styles/Dashboard'
+
+import {
+  ClientHeaderContain,
+} from '../Styles/Client';
 
 const { fetchClients } = dispatchers
 
@@ -35,8 +43,21 @@ const Clients = props => {
 
   return (
     <Section>
-      <Clientsh2>Clients</Clientsh2>
-      <LineBreak />     
+  
+
+        <ClientHeaderContain>
+          <Clientsh2>Clients</Clientsh2>
+            <NewClientBtn
+              to={`/client/new`}
+              variant="primary"
+              >
+              New&nbsp;Client
+            </NewClientBtn>
+        </ClientHeaderContain>
+      <LineBreak />
+      {/* @TODO: Please make cleaner sometime */}
+      {props.search.length>0 ? 
+
         <ClientCont>
         {clientArray.map(client => (
             <Spacer>

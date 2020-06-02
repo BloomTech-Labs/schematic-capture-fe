@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { useForm } from "react-hook-form"
 import csv from "csvtojson"
+import SchematicChooser from "./DropboxSchematicChooser"
+
 import { dispatchers } from "../../../shared/actions/dashboardActions"
 import { csvToApi } from "../../../shared/utils/componentMap"
 import Header from "./CNJobsheetHeader"
@@ -49,6 +51,7 @@ const CreateNewJobsheet = () => {
   const [isNew, setIsNew] = useState(false)
   const [bananas, setBananas] = useState(false)
   const [components, setComponents] = useState([])
+  const [imageFile, setImageFile] = useState(null)
 
   useEffect(() => {
     const [file] = watch("csv");
@@ -58,15 +61,13 @@ const CreateNewJobsheet = () => {
       setPreview(true);
       setValue("name", fileName)
     }
-    const [file2] = watch('pdf')
-    if (file2) {
-      const [fileName2] = file2.name.split(".")
-      setValue('name2', fileName2)
-    }
-  }, [watch("csv"), watch('pdf')])
+    
+  }, [watch("csv")])
 
   const onSubmit = data => {
+    console.log(data, "HEEY")
     delete data.csv
+    data.schematic = imageFile
     data.components = components
     dispatch(addNewJobsheet(data, history))
   }
@@ -104,7 +105,7 @@ const CreateNewJobsheet = () => {
               </label>
             </div>
             <label type="button" htmlFor="pdf" hidden={!getValues().name}>
-              <p onClick={() => setBananas(true)}>Add Schematic</p>
+               <SchematicChooser imageFile={imageFile} setImageFile={setImageFile}/>
             </label>
             <input hidden name="components" ref={register} />
             <input
@@ -139,13 +140,7 @@ const CreateNewJobsheet = () => {
             hidden={!isNew}
             ref={register({ required: true })}
           />
-          <input
-            name="name2"
-            placeholder="Schematic"
-            disabled={!bananas}
-            hidden={!bananas}
-            ref={register({ required: true })}
-          />
+          
       </div>
       <div>
         <table>
