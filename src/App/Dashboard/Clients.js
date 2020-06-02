@@ -10,7 +10,11 @@ import {
   ClientBox,
   Spacer,
   FlexEnd,
+
+  FlexEnd2,
+
   NewClientBtn,
+
 } from '../Styles/Dashboard'
 
 import {
@@ -22,14 +26,25 @@ const { fetchClients } = dispatchers
 const Clients = props => {
   const dispatch = useDispatch()
   const clients = useSelector(state => state.dashboard.clients)
+
   console.log(clients)
 
   useEffect(() => {
     dispatch(fetchClients())
   }, [])
 
+ 
+  var clientArray;
+  if (props.search.length > 0){
+    clientArray = props.clientsSrc
+  } else {
+    clientArray = clients
+  }
+
   return (
     <Section>
+  
+
         <ClientHeaderContain>
           <Clientsh2>Clients</Clientsh2>
             <NewClientBtn
@@ -42,9 +57,9 @@ const Clients = props => {
       <LineBreak />
       {/* @TODO: Please make cleaner sometime */}
       {props.search.length>0 ? 
+
         <ClientCont>
-        {props.clientsSrc &&
-          props.clientsSrc.map(client => (
+        {clientArray.map(client => (
             <Spacer>
               <ClientBox
                 data-client-name
@@ -53,26 +68,14 @@ const Clients = props => {
               >
                 {client.companyName}
               </ClientBox>
-              <FlexEnd>Incomplete</FlexEnd>
+              {client.completed !== 1  ? (
+                    <FlexEnd>Incomplete</FlexEnd>
+                  ) : (
+                    <FlexEnd2>Complete</FlexEnd2>
+                  )}
             </Spacer>
           ))}
-        </ClientCont> : 
-        <ClientCont>
-          {clients &&
-            clients.map(client => (
-              <Spacer>
-                <ClientBox
-                  data-client-name
-                  key={client.id}
-                  to={`/client/${client.id}`}
-                >
-                  {client.companyName}
-                </ClientBox>
-                <FlexEnd>Incomplete</FlexEnd>
-              </Spacer>
-          ))}
-        </ClientCont>
-      }
+        </ClientCont> 
       
     </Section>
   )
