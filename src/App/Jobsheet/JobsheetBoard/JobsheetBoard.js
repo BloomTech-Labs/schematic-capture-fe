@@ -28,6 +28,7 @@ const Board = () => {
   return (
     <>
       <Header />
+      
     </>
   );
 };
