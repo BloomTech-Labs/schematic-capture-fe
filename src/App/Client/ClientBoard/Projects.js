@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react"
+import React, { useEffect, useState } from "react"
 import { useParams, Redirect, Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 
@@ -18,15 +18,11 @@ import {
 
 import { dispatchers, actions } from "../../../shared/actions/dashboardActions"
 
-const { fetchProjects, fetchJobsheets } = dispatchers
+const { fetchProjects } = dispatchers
 const { SET_CURRENT_CLIENT, SET_CURRENT_PROJECTS } = actions
 
 const fetchProjectsSideEffect = async (dispatch, id, setProjects) => {
   await dispatch(fetchProjects(id, setProjects))
-}
-
-const fetchJobsheetsSideEffect = async (dispatch, id, setJobsheets) => {
-  await dispatch(fetchJobsheets(id, setJobsheets))
 }
 
 const setCurrentClientAndProjectsSideEffect = async (
