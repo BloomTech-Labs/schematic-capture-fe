@@ -56,7 +56,7 @@ const Clients = (props) => {
             >
               {client.companyName}
             </ClientBox>
-            {client.completed !== 1 ? (
+            {client.completed !== true ? (
               <FlexEnd>Incomplete</FlexEnd>
             ) : (
               <FlexEnd2>Complete</FlexEnd2>

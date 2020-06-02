@@ -103,7 +103,7 @@ const { currentClient, currentProject } = useSelector(
                   </ProjectLink>
                 </StyledTableData>
                 <StyledTableData>
-                {jobsheet.completed !== 1  ? (
+                {jobsheet.completed !== true  ? (
                     <FlexEnd>Incomplete</FlexEnd>
                   ) : (
                     <FlexEnd2>Complete</FlexEnd2>
