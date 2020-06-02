@@ -3,6 +3,7 @@ import { actions } from "../actions/dashboardActions";
 const {
   FETCH_CLIENTS_SUCCESS,
   SET_AVAILABLE_TECHS,
+  SET_ASSIGNED_PROJECTS,
   SET_CURRENT_CLIENT,
   SET_CURRENT_PROJECTS,
   SET_CURRENT_PROJECT,
@@ -28,7 +29,12 @@ const dashboardReducer = (state = initState, action) => {
         ...state,
         clients: action.payload
       };
-      case SET_AVAILABLE_TECHS:
+      case SET_ASSIGNED_PROJECTS:
+      return {
+        ...state,
+        currentProject: action.payload
+      };
+    case SET_AVAILABLE_TECHS:
       return {
         ...state,
         availableTechs: action.payload

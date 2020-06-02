@@ -14,25 +14,29 @@ import {
 import { dispatchers } from "../../../shared/actions/dashboardActions"
 import { FieldError } from "../../Styles/FormStyles";
 
-const {fetchAvailableTechs} = dispatchers;
+const { fetchAvailableTechs } = dispatchers;
 
 // TODO: currently hard-coded... need to pull from database instead.
-// var availableTechs = [
-//   "Adam",
-//   "Tyler",
-//   "Danni",
-//   "Vincent"
-// ];
+var availableTechs = [
+  "Adam",
+  "Tyler",
+  "Danni",
+  "Vincent"
+];
 
 const TechModal = (props) => {
-  const { buttonLabel, className } = props;
+
+  console.log(props, ' props in TechModal')
+
+  const { buttonLabel, className, fetchAssignedProjects, currentProjects } = props;
   const [modal, setModal] = useState(false);
   const [tech, setTech] = useState({ name: null, date: null });
   const toggle = () => setModal(!modal);
   const [page, setPage] = useState(0);
 
   useEffect(() => {
-    props.fetchAvailableTechs();
+    // fetchAssignedProjects();
+    fetchAvailableTechs();
   }, [])
 
   const handleChange = (e) => {
@@ -73,14 +77,14 @@ const TechModal = (props) => {
           <>
             <MH1>Available technicians</MH1>
             <MBody>
-              {props.availableTechs.name === null ? (
+              {availableTechs.name === null ? (
                 <Container>
                   <FieldError>Please assign a technician</FieldError>
                 </Container>
               ) : (
                 <></>
               )}
-              {props.availableTechs.map((ele) => {
+              {availableTechs.map((ele) => {
                 if (ele === tech.name) {
                   return (
                     <TechCont>
