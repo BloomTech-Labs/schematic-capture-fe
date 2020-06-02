@@ -65,7 +65,7 @@ const CreateNewJobsheet = () => {
   }, [watch("csv")])
 
   const onSubmit = data => {
-    console.log(data, "HEEY")
+    
     delete data.csv
     data.schematic = imageFile
     data.components = components
