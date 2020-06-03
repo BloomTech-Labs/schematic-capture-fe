@@ -30,20 +30,17 @@ const initState = {
 
 const dashboardReducer = (state = initState, action) => {
 
-  // console.log(state, ' is state in reducer')
-
   switch (action.type) {
-    case SET_AVAILABLE_TECHS:
-      console.log(action.payload, ' action.payload in SET_AVAILABLE_TECHS')
-      return {
-        ...state,
-        techs: action.payload
-      };
     case FETCH_CLIENTS_SUCCESS:
       return {
         ...state,
         clients: action.payload
       };
+      case SET_AVAILABLE_TECHS:
+        return {
+          ...state,
+          techs: action.payload
+        };
       case SET_ASSIGNED_PROJECTS:
       return {
         ...state,

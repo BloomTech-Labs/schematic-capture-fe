@@ -1,10 +1,8 @@
 import { actions as appActions } from "./appActions";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import axios from 'axios';
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 
 const FETCH_CLIENTS_SUCCESS = "FETCH_CLIENTS_SUCCESS";
-// const SET_ASSIGNED_PROJECTS = "SET_ASSIGNED_PROJECTS";
 const SET_AVAILABLE_TECHS = "SET_AVAILABLE_TECHS";
 const SET_CURRENT_CLIENT = "SET_CURRENT_CLIENT";
 const SET_CURRENT_PROJECTS = "SET_CURRENT_PROJECTS";
@@ -41,17 +39,6 @@ const fetchAvailableTechs = () => async dispatch => {
     dispatch({ type: APP_ERROR, payload: error.message });
   }
 };
-
-// const fetchAssignedProjects = () => async dispatch => {
-//   // dispatch({ type: APP_LOADING });
-
-//   try {
-//     const assignedProjects = await axiosWithAuth().get("/jobsheets/assigned");
-//     dispatch({ type: SET_ASSIGNED_PROJECTS, payload: assignedProjects.data });
-//   } catch (error) {
-//     dispatch({ type: APP_ERROR, payload: error.message });
-//   }
-// };
 
 const addNewClient = (data, history) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
@@ -164,7 +151,6 @@ const fetchComponents = (id) => async (dispatch) => {
 
 const updateComponent = (id, formData, setEditInfo, setComponents, history) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
-    // console.log(formData, "FORM DATA HERE!!!")
   try {
     const updated = await axiosWithAuth().put(`/components/${id}/update/`, formData);
    
@@ -186,7 +172,6 @@ const toggleEditing = (setEditing, dispatch) => {
 
 export const dispatchers = {
   fetchClients,
-  // fetchAssignedProjects,
   fetchAvailableTechs,
   addNewClient,
   fetchProjects,
@@ -201,7 +186,6 @@ export const dispatchers = {
 
 export const actions = {
   FETCH_CLIENTS_SUCCESS,
-  // SET_ASSIGNED_PROJECTS,
   SET_AVAILABLE_TECHS,
   SET_CURRENT_CLIENT,
   SET_CURRENT_PROJECTS,

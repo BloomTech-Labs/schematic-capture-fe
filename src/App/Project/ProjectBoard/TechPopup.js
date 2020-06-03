@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { Modal } from "reactstrap";
 import {
   NewProjBtn,
   NewProjBtn2,
@@ -32,7 +31,6 @@ const TechModal = (props) => {
   const [page, setPage] = useState(0);
 
   useEffect(() => {
-    // fetchAssignedProjects();
     fetchAvailableTechs();
   }, [])
 
@@ -166,10 +164,8 @@ const TechModal = (props) => {
 };
 
 const mapStateToProps = state => {
-  // console.log(state, ' is state in mapstatetoprops')
   return {
     techs: state.dashboard.techs
   }
 }
 export default connect(mapStateToProps, { fetchAvailableTechs }) (TechModal);
-// export default TechModal;
