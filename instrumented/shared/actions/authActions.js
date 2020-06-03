@@ -1085,7 +1085,7 @@ const firstLogin = (data, history) => {
       token
     } = (cov_1k1i1qr9co().s[21]++, data);
     cov_1k1i1qr9co().s[22]++;
-    console.log(data);
+    // console.log(data);
     cov_1k1i1qr9co().s[23]++;
     axiosWithAuth().post("auth/firstlogin", {
       newPassword,
@@ -1137,7 +1137,7 @@ const forgotPassword = (data, history) => {
     axiosWithAuth().post("/auth/forgotpassword", data).then(res => {
       cov_1k1i1qr9co().f[10]++;
       cov_1k1i1qr9co().s[35]++;
-      console.log("Password reset");
+      // console.log("Password reset");
       cov_1k1i1qr9co().s[36]++;
       dispatch({
         type: APP_DONE_LOADING
@@ -1172,7 +1172,7 @@ const sendInvite = (data, history) => {
       type: APP_LOADING
     });
     cov_1k1i1qr9co().s[43]++;
-    console.log(data);
+    // console.log(data);
     cov_1k1i1qr9co().s[44]++;
     axiosWithAuth().post("/auth/invite", data, {
       headers: {
@@ -1181,7 +1181,7 @@ const sendInvite = (data, history) => {
     }).then(res => {
       cov_1k1i1qr9co().f[14]++;
       cov_1k1i1qr9co().s[45]++;
-      console.log("Invite Sent");
+      // console.log("Invite Sent");
       cov_1k1i1qr9co().s[46]++;
       dispatch({
         type: APP_DONE_LOADING

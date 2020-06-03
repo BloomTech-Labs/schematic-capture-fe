@@ -64,7 +64,7 @@ const Projects = props => {
           <tbody>
             {props.project.map(project => (
               <StyledTableRow key={project.id}>
-                {console.log('project data in projects.map in Projects.js: ', project)}
+                {/* {console.log('project data in projects.map in Projects.js: ', project)} */}
                 <StyledTableData data-label="Project"><ProjectLinkName to={`/project/${project.id}`}>{project.name}</ProjectLinkName></StyledTableData>
                 <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.description}</ProjectLink></StyledTableData>
                 <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.technician}</ProjectLink></StyledTableData>
@@ -76,7 +76,7 @@ const Projects = props => {
           <tbody>
             {projects.map(project => (
               <StyledTableRow key={project.id}>
-                {console.log('project data in projects.map in Projects.js: ', project)}
+                {/* {console.log('project data in projects.map in Projects.js: ', project)} */}
                 <StyledTableData data-label="Project"><ProjectLinkName to={`/project/${project.id}`}>{project.name}</ProjectLinkName></StyledTableData>
                 <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.description}</ProjectLink></StyledTableData>
                 <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.technician}</ProjectLink></StyledTableData>

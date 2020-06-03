@@ -81,7 +81,7 @@ const PageHeader = () => {
   },[editing, search])
 
   useEffect(() => {
-    console.log('arraylist tyler look here for list of projects', projects1)
+    ('arraylist tyler look here for list of projects', projects1)
   },[projects1])
 
   const onLogout = () => {

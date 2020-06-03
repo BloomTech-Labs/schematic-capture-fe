@@ -49,7 +49,7 @@ const PageHeader = () => {
   }, [])
 
   useEffect(() => {
-    console.log(search)
+    // console.log(search)
     setComponents1(
       components.filter(input => {
         return input.descriptions.toLowerCase().includes(search.toLowerCase())

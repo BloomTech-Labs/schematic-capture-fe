@@ -1,5 +1,6 @@
 import { actions as appActions } from "./appActions";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import axios from 'axios';
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 
 const FETCH_CLIENTS_SUCCESS = "FETCH_CLIENTS_SUCCESS";
@@ -28,12 +29,14 @@ const fetchClients = () => async (dispatch, getState) => {
 };
 
 const fetchAvailableTechs = () => async dispatch => {
-  // dispatch({ type: APP_LOADING });
+  dispatch({ type: APP_LOADING });
 
   try {
-    const availableTechs = await axiosWithAuth()
-      .get("/users")
+    const availableTechs = await axiosWithAuth().get("/users/")
+    // @TODO: change to "/users/techs" after backend has been deployed.
+    console.log(availableTechs.data, ' availableTechs.data')
     dispatch({ type: SET_AVAILABLE_TECHS, payload: availableTechs.data });
+    dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
     dispatch({ type: APP_ERROR, payload: error.message });
   }

@@ -40,7 +40,7 @@ const Components = props => {
   useEffect(() => {
     const file = watch("jpg")
     if(file) {
-      console.log({file})
+      // console.log({file})
       if(file.length>0){
         setValue("name", file[0].name)
       }

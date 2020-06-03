@@ -28,7 +28,7 @@ const TechModal = (props) => {
 
   console.log(props, ' props in TechModal')
 
-  const { buttonLabel, className, fetchAssignedProjects, currentProjects } = props;
+  // const { buttonLabel, fetchAvailableTechs, techs } = props;
   const [modal, setModal] = useState(false);
   const [tech, setTech] = useState({ name: null, date: null });
   const toggle = () => setModal(!modal);
@@ -36,7 +36,7 @@ const TechModal = (props) => {
 
   useEffect(() => {
     // fetchAssignedProjects();
-    fetchAvailableTechs();
+    props.fetchAvailableTechs();
   }, [])
 
   const handleChange = (e) => {
@@ -159,7 +159,7 @@ const TechModal = (props) => {
 
   return (
     <ModalCont>
-      <NewProjBtn onClick={toggle}>{buttonLabel}</NewProjBtn>
+      <NewProjBtn onClick={toggle}>{props.buttonLabel}</NewProjBtn>
       <Mod isOpen={modal} toggle={toggle}>
         <MH1>Available technicians</MH1>
         <MBody>{pageNav(page)}</MBody>
@@ -171,8 +171,8 @@ const TechModal = (props) => {
 
 const mapStateToProps = state => {
   return {
-      availableTechs: state.availableTechs
+    techs: state.techs
   }
 }
 export default connect(mapStateToProps, { fetchAvailableTechs }) (TechModal);
-
+// export default TechModal;

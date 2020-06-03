@@ -11,7 +11,7 @@ const { addNewJobsheet } = dispatchers
 
 const reader = new FileReader()
 const readFile = (file, onload) => {
-  console.log(file)
+  // console.log(file)
   reader.onload = onload
   reader.readAsText(file)
 }

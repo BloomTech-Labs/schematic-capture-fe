@@ -1596,7 +1596,7 @@ const updateProjectName = (name, setIsEditing) => {
         payload: name
       });
       cov_w7ow70vwi().s[47]++;
-      console.log(UPDATE_CURRENT_PROJECT_NAME);
+      // console.log(UPDATE_CURRENT_PROJECT_NAME);
       cov_w7ow70vwi().s[48]++;
       setIsEditing(false);
       cov_w7ow70vwi().s[49]++;
@@ -1657,7 +1657,7 @@ const addNewJobsheet = (data, history) => {
   return async (dispatch, getState) => {
     cov_w7ow70vwi().f[13]++;
     cov_w7ow70vwi().s[62]++;
-    console.log("test");
+    // console.log("test");
     cov_w7ow70vwi().s[63]++;
     dispatch({
       type: APP_LOADING
@@ -1684,7 +1684,7 @@ const addNewJobsheet = (data, history) => {
       jobsheet = await axiosWithAuth().post("/jobsheets/create", payload);
     } catch (error) {
       cov_w7ow70vwi().s[70]++;
-      console.log(error);
+      // console.log(error);
       cov_w7ow70vwi().s[71]++;
       return dispatch({
         type: APP_ERROR,

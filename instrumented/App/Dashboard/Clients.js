@@ -17,7 +17,7 @@ const { fetchClients } = dispatchers
 const Clients = props => {
   const dispatch = useDispatch()
   const clients = useSelector(state => state.dashboard.clients)
-  console.log(clients)
+  // console.log(clients)
 
   useEffect(() => {
     dispatch(fetchClients())

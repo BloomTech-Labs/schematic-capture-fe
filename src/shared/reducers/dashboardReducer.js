@@ -17,7 +17,7 @@ const {
 
 const initState = {
   clients: [],
-  availableTechs: [],
+  techs: [],
   currentProjects: [],
   currentClient: null,
   currentProject: null,
@@ -30,6 +30,12 @@ const initState = {
 
 const dashboardReducer = (state = initState, action) => {
   switch (action.type) {
+    case SET_AVAILABLE_TECHS:
+      console.log(action.payload, ' action.payload in SET_AVAILABLE_TECHS')
+      return {
+        ...state,
+        techs: action.payload
+      };
     case FETCH_CLIENTS_SUCCESS:
       return {
         ...state,
@@ -39,11 +45,6 @@ const dashboardReducer = (state = initState, action) => {
       return {
         ...state,
         currentProject: action.payload
-      };
-    case SET_AVAILABLE_TECHS:
-      return {
-        ...state,
-        availableTechs: action.payload
       };
     case SET_CURRENT_CLIENT:
       return {

@@ -83,7 +83,7 @@ const InviteReg = ({ handleClose }) => {
         reset();
       }
     });
-    console.log(data);
+    // console.log(data);
   };
 
   return (

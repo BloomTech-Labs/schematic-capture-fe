@@ -39,7 +39,7 @@ const DashboardHeader = () => {
     })
   }
   useEffect(() => {
-    console.log(search)
+    // console.log(search)
     setClient(
       client.filter(input => {
         return input.companyName.toLowerCase().includes(search.toLowerCase())
