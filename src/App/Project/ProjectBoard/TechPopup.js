@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
+import { useSelector, connect, useDispatch } from "react-redux";
 import {
   NewProjBtn,
   NewProjBtn2,
@@ -10,29 +10,30 @@ import {
   Container,
   Mod,
 } from "../../Styles/Jobsheets";
-import { dispatchers } from "../../../shared/actions/dashboardActions"
+import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { FieldError } from "../../Styles/FormStyles";
 
 const { fetchAvailableTechs } = dispatchers;
 
 const TechModal = (props) => {
-
-  const { buttonLabel, fetchAvailableTechs, techs } = props;
-  
+  const { buttonLabel } = props;
+  const dispatch = useDispatch();
   var techNames = [];
 
-  techs.map(tech => {
-    techNames.push(tech.firstName)
-  })
-
   const [modal, setModal] = useState(false);
-  const [tech, setTech] = useState({ name: null, date: null });
+  const [tech, setTech] = useState({ name: null, date: null, jobsheet: null });
   const toggle = () => setModal(!modal);
   const [page, setPage] = useState(0);
 
   useEffect(() => {
-    fetchAvailableTechs();
-  }, [])
+    dispatch(fetchAvailableTechs());
+  }, []);
+
+  const techs = useSelector((state) => state.dashboard.techs);
+
+  techs.map((tech) => {
+    techNames.push(tech.firstName);
+  });
 
   const handleChange = (e) => {
     setTech({ ...tech, name: e.target.value });
@@ -41,6 +42,11 @@ const TechModal = (props) => {
 
   const handleDateChange = (e) => {
     setTech({ ...tech, date: e.target.value });
+    console.log(e.target.value);
+  };
+
+  const handleJobChange = (e) => {
+    setTech({ ...tech, jobsheet: e.target.value });
     console.log(e.target.value);
   };
 
@@ -64,6 +70,7 @@ const TechModal = (props) => {
       }
     }
   };
+  const { currentJobsheets } = useSelector((state) => state.dashboard);
 
   const pageNav = (num) => {
     switch (num) {
@@ -113,6 +120,49 @@ const TechModal = (props) => {
       case 1:
         return (
           <>
+            <MBody>
+              {tech.jobsheet === null ? (
+                <Container>
+                  <FieldError>Please assign a jobsheet</FieldError>
+                </Container>
+              ) : (
+                <></>
+              )}
+              {currentJobsheets.map((ele) => {
+                if (ele === tech.jobsheet) {
+                  return (
+                    <TechCont>
+                      <input
+                        type="checkbox"
+                        name={tech.jobsheet}
+                        value={ele}
+                        checked={true}
+                        onChange={handleJobChange}
+                      />
+                      <label for={ele}>{ele}</label>
+                    </TechCont>
+                  );
+                } else {
+                  return (
+                    <TechCont>
+                      <input
+                        type="checkbox"
+                        name={tech.jobsheet}
+                        checked={false}
+                        value={ele}
+                        onChange={handleJobChange}
+                      />
+                      <label for={ele}>{ele}</label>
+                    </TechCont>
+                  );
+                }
+              })}
+            </MBody>
+          </>
+        );
+      case 2:
+        return (
+          <>
             <MH1>Select Date</MH1>
             <MBody>
               <Container>
@@ -133,7 +183,7 @@ const TechModal = (props) => {
             </MBody>
           </>
         );
-      case 2:
+      case 3:
         return (
           <>
             <MH1>Finalize</MH1>
@@ -163,9 +213,4 @@ const TechModal = (props) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    techs: state.dashboard.techs
-  }
-}
-export default connect(mapStateToProps, { fetchAvailableTechs }) (TechModal);
+export default TechModal;
