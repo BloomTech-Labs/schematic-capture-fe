@@ -16,19 +16,16 @@ import { FieldError } from "../../Styles/FormStyles";
 
 const { fetchAvailableTechs } = dispatchers;
 
-// TODO: currently hard-coded... need to pull from database instead.
-var availableTechs = [
-  "Adam",
-  "Tyler",
-  "Danni",
-  "Vincent"
-];
+var techNames = [];
 
 const TechModal = (props) => {
 
-  console.log(props, ' props in TechModal')
+  const { buttonLabel, fetchAvailableTechs, techs } = props;
 
-  // const { buttonLabel, fetchAvailableTechs, techs } = props;
+  techs.map(tech => {
+    techNames.push(tech.firstName)
+  })
+
   const [modal, setModal] = useState(false);
   const [tech, setTech] = useState({ name: null, date: null });
   const toggle = () => setModal(!modal);
@@ -36,7 +33,7 @@ const TechModal = (props) => {
 
   useEffect(() => {
     // fetchAssignedProjects();
-    props.fetchAvailableTechs();
+    fetchAvailableTechs();
   }, [])
 
   const handleChange = (e) => {
@@ -75,16 +72,15 @@ const TechModal = (props) => {
       case 0:
         return (
           <>
-            <MH1>Available technicians</MH1>
             <MBody>
-              {availableTechs.name === null ? (
+              {techNames.name === null ? (
                 <Container>
                   <FieldError>Please assign a technician</FieldError>
                 </Container>
               ) : (
                 <></>
               )}
-              {availableTechs.map((ele) => {
+              {techNames.map((ele) => {
                 if (ele === tech.name) {
                   return (
                     <TechCont>
@@ -159,7 +155,7 @@ const TechModal = (props) => {
 
   return (
     <ModalCont>
-      <NewProjBtn onClick={toggle}>{props.buttonLabel}</NewProjBtn>
+      <NewProjBtn onClick={toggle}>{buttonLabel}</NewProjBtn>
       <Mod isOpen={modal} toggle={toggle}>
         <MH1>Available technicians</MH1>
         <MBody>{pageNav(page)}</MBody>
@@ -170,8 +166,9 @@ const TechModal = (props) => {
 };
 
 const mapStateToProps = state => {
+  // console.log(state, ' is state in mapstatetoprops')
   return {
-    techs: state.techs
+    techs: state.dashboard.techs
   }
 }
 export default connect(mapStateToProps, { fetchAvailableTechs }) (TechModal);
