@@ -15,11 +15,11 @@ import { FieldError } from "../../Styles/FormStyles";
 
 const { fetchAvailableTechs } = dispatchers;
 
-var techNames = [];
-
 const TechModal = (props) => {
 
   const { buttonLabel, fetchAvailableTechs, techs } = props;
+  
+  var techNames = [];
 
   techs.map(tech => {
     techNames.push(tech.firstName)
