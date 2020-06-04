@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "react-hook-form"
 import csv from "csvtojson"
 import { dispatchers } from "../../../shared/actions/dashboardActions"
@@ -39,6 +39,8 @@ const csvComponentsToJson = async (components, setComponents) => {
   }
 }
 
+
+
 const CreateNewJobsheet = () => {
   const { register, getValues, setValue, handleSubmit, watch } = useForm()
 
@@ -48,7 +50,15 @@ const CreateNewJobsheet = () => {
   const [preview, setPreview] = useState(false)
   const [isNew, setIsNew] = useState(false)
   const [bananas, setBananas] = useState(false)
-  const [components, setComponents] = useState([])
+  // const [components, setComponents] = useState([])
+  const component  = useSelector((state) => state.dashboard.components)
+  const [components, setComponents] = useState(component);
+
+
+  // useEffect(() => {
+
+  // },[])
+
 
   useEffect(() => {
     const [file] = watch("csv");
