@@ -9,6 +9,9 @@ const SET_CURRENT_PROJECT = "SET_CURRENT_PROJECT";
 const SET_CURRENT_JOBSHEETS = "SET_CURRENT_JOBSHEETS";
 const SET_CURRENT_JOBSHEET = "SET_CURRENT_JOBSHEET";
 const UPDATE_CURRENT_PROJECT_NAME = "UPDATE_CURRENT_PROJECT_NAME";
+const FETCH_COMPONENTS_SUCCESS = "FETCH_COMPONENTS_SUCCESS";
+const TOGGLE_COMPONENT_EDIT = "TOGGLE_COMPONENT_EDIT";
+const UPDATE_COMPONENT = "UPDATE_COMPONENT";
 
 const fetchClients = () => async (dispatch, getState) => {
   dispatch({ type: APP_LOADING });
@@ -119,16 +122,38 @@ const addNewJobsheet = (data, history) => async (dispatch, getState) => {
   dispatch({ type: APP_DONE_LOADING });
 };
 
-const fetchComponents = (id, setComponents) => async (dispatch) => {
+const fetchComponents = (id) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
 
   try {
     const components = await axiosWithAuth().get(`/jobsheets/${id}/components`);
-    setComponents(components.data);
+    dispatch({ type: FETCH_COMPONENTS_SUCCESS, payload: components.data });
     dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
     return dispatch({ type: APP_ERROR, payload: error.message });
   }
+};
+
+const updateComponent = (id, formData) => async (dispatch) => {
+  dispatch({ type: APP_LOADING });
+  // console.log(formData, "FORM DATA HERE!!!")
+  try {
+    const updated = await axiosWithAuth().put(
+      `/components/${id}/update/`,
+      formData
+    );
+
+    console.log(updated, "UPDATE!!!!!");
+    dispatch({ type: UPDATE_COMPONENT, payload: updated.data });
+    dispatch({ type: APP_DONE_LOADING });
+  } catch (error) {
+    return dispatch({ type: APP_ERROR, payload: error.message });
+  }
+};
+
+const toggleEditing = (setEditing, dispatch) => {
+  const edit = setEditing(true);
+  dispatch({ type: TOGGLE_COMPONENT_EDIT, payload: edit });
 };
 
 export const dispatchers = {
@@ -140,6 +165,8 @@ export const dispatchers = {
   fetchJobsheets,
   addNewJobsheet,
   fetchComponents,
+  updateComponent,
+  toggleEditing,
 };
 
 export const actions = {
@@ -149,4 +176,7 @@ export const actions = {
   SET_CURRENT_PROJECT,
   SET_CURRENT_JOBSHEETS,
   SET_CURRENT_JOBSHEET,
+  FETCH_COMPONENTS_SUCCESS,
+  TOGGLE_COMPONENT_EDIT,
+  UPDATE_COMPONENT,
 };

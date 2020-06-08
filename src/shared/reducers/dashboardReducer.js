@@ -7,7 +7,10 @@ const {
   SET_CURRENT_PROJECT,
   SET_CURRENT_JOBSHEETS,
   SET_CURRENT_JOBSHEET,
-  UPDATE_CURRENT_PROJECT_NAME
+  UPDATE_CURRENT_PROJECT_NAME,
+  FETCH_COMPONENTS_SUCCESS,
+  TOGGLE_COMPONENT_EDIT,
+  UPDATE_COMPONENT
 } = actions;
 
 const initState = {
@@ -16,7 +19,10 @@ const initState = {
   currentClient: null,
   currentProject: null,
   currentJobsheets: [],
-  currentJobsheet: null
+  currentJobsheet: null,
+  edit: false,
+  currentComponent: null,
+  components: []
 };
 
 const dashboardReducer = (state = initState, action) => {
@@ -60,6 +66,27 @@ const dashboardReducer = (state = initState, action) => {
       return {
         ...state,
         currentJobsheet: action.payload
+      };
+      case TOGGLE_COMPONENT_EDIT:
+      return {
+        ...state,
+        editing: action.payload
+      };
+      case FETCH_COMPONENTS_SUCCESS:
+        console.log(action.payload, "FETCH_COMPONENTS_SUCCESS!!!")
+      return {
+        ...state,
+        components: action.payload
+      };
+      case UPDATE_COMPONENT:
+      return {
+        ...state,
+        components: state.components.map(component => {
+                    if(component.id === action.payload.id) {
+                      return action.payload;
+                    }
+                    return component;
+        })
       };
     default:
       return state;
