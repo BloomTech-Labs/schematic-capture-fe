@@ -1,6 +1,6 @@
-import React, { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { dispatchers } from "../../shared/actions/dashboardActions"
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { dispatchers } from "../../shared/actions/dashboardActions";
 
 import {
   Section,
@@ -9,60 +9,63 @@ import {
   ClientCont,
   ClientBox,
   Spacer,
-  FlexEnd
-} from '../Styles/Dashboard'
+  FlexEnd,
+  FlexEnd2,
+  NewClientBtn,
+} from "../Styles/Dashboard";
 
-const { fetchClients } = dispatchers
+import { ClientHeaderContain } from "../Styles/Client";
 
-const Clients = props => {
-  const dispatch = useDispatch()
-  const clients = useSelector(state => state.dashboard.clients)
-  console.log(clients)
+const { fetchClients } = dispatchers;
+
+const Clients = (props) => {
+  const dispatch = useDispatch();
+  const clients = useSelector((state) => state.dashboard.clients);
+
+  console.log(clients);
 
   useEffect(() => {
-    dispatch(fetchClients())
-  }, [])
+    dispatch(fetchClients());
+  }, []);
+
+  var clientArray;
+  if (props.search.length > 0) {
+    clientArray = props.clientsSrc;
+  } else {
+    clientArray = clients;
+  }
 
   return (
     <Section>
-      <Clientsh2>Clients</Clientsh2>
+      <ClientHeaderContain>
+        <Clientsh2>Clients</Clientsh2>
+        <NewClientBtn to={`/client/new`} variant="primary">
+          New&nbsp;Client
+        </NewClientBtn>
+      </ClientHeaderContain>
       <LineBreak />
-      {/* Please make cleaner sometime */}
-      {props.search.length>0 ? 
-        <ClientCont>
-        {props.clientsSrc &&
-          props.clientsSrc.map(client => (
-            <Spacer>
-              <ClientBox
-                data-client-name
-                key={client.id}
-                to={`/client/${client.id}`}
-              >
-                {client.companyName}
-              </ClientBox>
-              <FlexEnd>Incomplete</FlexEnd>
-            </Spacer>
-          ))}
-        </ClientCont> : 
-        <ClientCont>
-          {clients &&
-            clients.map(client => (
-              <Spacer>
-                <ClientBox
-                  data-client-name
-                  key={client.id}
-                  to={`/client/${client.id}`}
-                >
-                  {client.companyName}
-                </ClientBox>
-                <FlexEnd>Incomplete</FlexEnd>
-              </Spacer>
-          ))}
-        </ClientCont>
-      }
-      
-    </Section>
-  )
-}
+      {/* @TODO: Please make cleaner sometime */}
 
-export default Clients
+      <ClientCont>
+        {clientArray.map((client) => (
+          <Spacer>
+            <ClientBox
+              data-client-name
+              key={client.id}
+              to={`/client/${client.id}`}
+            >
+              {client.companyName}
+            </ClientBox>
+            {client.completed !== true ? (
+              <FlexEnd>Incomplete</FlexEnd>
+            ) : (
+              <FlexEnd2>Complete</FlexEnd2>
+            )}
+          </Spacer>
+        ))}
+      </ClientCont>
+    </Section>
+  );
+};
+
+export default Clients;

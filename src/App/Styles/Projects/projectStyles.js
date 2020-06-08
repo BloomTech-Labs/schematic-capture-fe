@@ -1,10 +1,11 @@
+// @TODO: form styling in this file AND FormStyles.js. Need to DRY.
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import { font, color } from "../../../shared/styles";
 import { buttonStyle } from "../../../shared/components/Styles/Button-Styles";
 import Input from "../../../shared/components/Components/Input";
-import Fields from "../../../shared/components/Components/Fields";
 
 export const Header = styled.div`
   display: flex;
@@ -72,5 +73,3 @@ export const Text = styled.p`
 `;
 
 export const Form = styled.form``;
-
-export const StyledFields = styled(Fields)``;

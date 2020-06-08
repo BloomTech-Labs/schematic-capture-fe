@@ -79,6 +79,7 @@ export const NewUserBtn = styled(Link)`
     text-decoration: none;
   }
 `;
+
 export const ClientHeaderContain = styled.div`
   display: flex;
   justify-content: space-between;
@@ -120,5 +121,76 @@ export const ProjectLinkName = styled(Link)`
     text-decoration: none;
     color: ${color.black};
     opacity: 0.5;
+  }
+`;
+
+export const FlexEnd = styled.button`
+  top: 15rem;
+  left: 29rem;
+  background-color: ${color.red};
+  padding: 0.75rem;
+  width: 10rem;
+  font-size: ${font.small};
+  border-radius: 15px;
+  color: white;
+  opacity: 1;
+  font-weight: bold;
+  :hover {
+    color: rgba(33, 36, 44, 0.5);
+  }
+  @media (max-width: 1750px) {
+    top: 13.5rem;
+    left: 25rem;
+  }
+  @media (max-width: 1700px) {
+    top: 13.5rem;
+    left: 23.5rem;
+  }
+  @media (max-width: 1650px) {
+    top: 35%;
+    left: 67%;
+  }
+  @media (max-width: 1600px) {
+    top: 35%;
+    left: 65%;
+  }
+  @media (max-width: 1300px) {
+    top: 35%;
+    left: 61%;
+  }
+`;
+export const FlexEnd2 = styled.button`
+  top: 15rem;
+  left: 29rem;
+  background-color: ${color.blue};
+  padding: 0.75rem;
+  width: 10rem;
+  font-size: ${font.small};
+  border-radius: 15px;
+  color: white;
+  opacity: 1;
+  font-weight: bold;
+  :hover {
+    color: rgba(33, 36, 44, 0.5);
+  }
+  @media (max-width: 1750px) {
+    top: 13.5rem;
+    left: 25rem;
+  }
+  @media (max-width: 1700px) {
+    top: 13.5rem;
+    left: 23.5rem;
+  }
+  @media (max-width: 1650px) {
+    top: 35%;
+    left: 67%;
+  }
+  @media (max-width: 1600px) {
+    top: 35%;
+    left: 65%;
+  }
+  @media (max-width: 1300px) {
+    top: 35%;
+    left: 61%;
   }
 `;

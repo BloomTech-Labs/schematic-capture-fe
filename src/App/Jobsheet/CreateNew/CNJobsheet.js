@@ -1,72 +1,73 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useForm } from "react-hook-form"
 import csv from "csvtojson"
+import SchematicChooser from "./DropboxSchematicChooser"
+
 import { dispatchers } from "../../../shared/actions/dashboardActions"
 import { csvToApi } from "../../../shared/utils/componentMap"
 import Header from "./CNJobsheetHeader"
 
-const { addNewJobsheet } = dispatchers
 
-const reader = new FileReader()
+const { addNewJobsheet } = dispatchers;
+
+const reader = new FileReader();
 const readFile = (file, onload) => {
-  console.log(file)
-  reader.onload = onload
-  reader.readAsText(file)
-}
+  console.log(file);
+  reader.onload = onload;
+  reader.readAsText(file);
+};
 
 const csvComponentsToJson = async (components, setComponents) => {
   try {
-    const jsoned = await csv().fromString(components)
-    const sanitizedComponents = jsoned.map(component => {
-      const entries = Object.entries(component)
-      const sanitizedComponent = {}
+    const jsoned = await csv().fromString(components);
+    const sanitizedComponents = jsoned.map((component) => {
+      const entries = Object.entries(component);
+      const sanitizedComponent = {};
 
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry[0] in csvToApi) {
-          sanitizedComponent[csvToApi[entry[0]]] = entry[1]
+          sanitizedComponent[csvToApi[entry[0]]] = entry[1];
         } else {
-          sanitizedComponent.custom = entry[1]
+          sanitizedComponent.custom = entry[1];
         }
-      })
-      return sanitizedComponent
-    })
+      });
+      return sanitizedComponent;
+    });
 
-    setComponents(sanitizedComponents)
+    setComponents(sanitizedComponents);
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
-}
+};
 
 const CreateNewJobsheet = () => {
-  const { register, getValues, setValue, handleSubmit, watch } = useForm()
+  const { register, getValues, setValue, handleSubmit, watch } = useForm();
 
-  const dispatch = useDispatch()
-  const history = useHistory()
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const [preview, setPreview] = useState(false)
   const [isNew, setIsNew] = useState(false)
   const [bananas, setBananas] = useState(false)
   const [components, setComponents] = useState([])
+  const [imageFile, setImageFile] = useState(null)
 
   useEffect(() => {
     const [file] = watch("csv");
     if (file) {
-      const [fileName] = file.name.split(".")
-      readFile(file, () => csvComponentsToJson(reader.result, setComponents))
+      const [fileName] = file.name.split(".");
+      readFile(file, () => csvComponentsToJson(reader.result, setComponents));
       setPreview(true);
-      setValue("name", fileName)
+      setValue("name", fileName);
     }
-    const [file2] = watch('pdf')
-    if (file2) {
-      const [fileName2] = file2.name.split(".")
-      setValue('name2', fileName2)
-    }
-  }, [watch("csv"), watch('pdf')])
+  }, [watch("csv")])
 
   const onSubmit = data => {
+    
     delete data.csv
+    data.schematic = imageFile
     data.components = components
     dispatch(addNewJobsheet(data, history))
   }
@@ -87,9 +88,7 @@ const CreateNewJobsheet = () => {
                   htmlFor="csv"
                   onClick={() => setIsNew(true)}
                 >
-                  <p onClick={() => setIsNew(true)}>
-                    Import CSV
-                  </p>
+                  <p onClick={() => setIsNew(true)}>Import CSV</p>
                 </label>
                 <div hidden={getValues().name}> or </div>
                 <button
@@ -100,11 +99,10 @@ const CreateNewJobsheet = () => {
                   Create A Blank Job Sheet
                 </button>
               </div>
-              <label htmlFor="name">
-              </label>
+              <label htmlFor="name"></label>
             </div>
             <label type="button" htmlFor="pdf" hidden={!getValues().name}>
-              <p onClick={() => setBananas(true)}>Add Schematic</p>
+               <SchematicChooser imageFile={imageFile} setImageFile={setImageFile}/>
             </label>
             <input hidden name="components" ref={register} />
             <input
@@ -121,7 +119,7 @@ const CreateNewJobsheet = () => {
             </button>
           </div>
         </form>
-      </div> 
+      </div>
       <input
         hidden
         id="pdf"
@@ -137,13 +135,6 @@ const CreateNewJobsheet = () => {
             placeholder="JobSheet Name"
             disabled={!isNew}
             hidden={!isNew}
-            ref={register({ required: true })}
-          />
-          <input
-            name="name2"
-            placeholder="Schematic"
-            disabled={!bananas}
-            hidden={!bananas}
             ref={register({ required: true })}
           />
       </div>
@@ -170,7 +161,7 @@ const CreateNewJobsheet = () => {
             <th>Maintenance Video</th>
             <th>Stores Part #</th>
           </tr>
-          {components.map(item => {
+          {components.map((item) => {
             return (
               <tr>
                 <td>{item.componentId}</td>
@@ -190,12 +181,12 @@ const CreateNewJobsheet = () => {
                 <td>{item.maintenanceVideo}</td>
                 <td>{item.custom}</td>
               </tr>
-            )
+            );
           })}
         </table>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default CreateNewJobsheet
+export default CreateNewJobsheet;

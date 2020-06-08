@@ -11,7 +11,7 @@ import {
   Mod,
 } from "../../Styles/Jobsheets";
 
-import { FieldError } from "../../Styles/Auth/loginStyles";
+import { FieldError } from "../../Styles/FormStyles";
 
 var people = [
   "Adam",

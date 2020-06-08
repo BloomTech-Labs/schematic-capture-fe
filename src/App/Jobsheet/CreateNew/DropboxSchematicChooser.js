@@ -3,17 +3,20 @@ import { useDropboxChooser } from "use-dropbox-chooser";
 import styled from "styled-components";
 import Picture from "../JobsheetBoard/Camera.png";
 import { axiosWithAuth } from "../../../shared/utils/axiosWithAuth";
-
-function Dropbox({ componentID, setComponents }) {
+function Dropbox(props) {
   const { open, isOpen } = useDropboxChooser({
     appKey: "t5i27y2t3fzkiqj",
     chooserOptions: { multiple: true },
-    onSelected: (files) => {},
+    onSelected: (files) => {
+      props.setImageFile(files[0].link);
+      console.log(props.imageFile, "HEEY2");
+      console.log(files);
+    },
   });
 
   return (
     <Button onClick={open} disabled={isOpen}>
-      <img src={Picture} className="image" alt="dropbox" />
+      Add Schematic
     </Button>
   );
 }
