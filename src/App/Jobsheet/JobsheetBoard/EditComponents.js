@@ -18,7 +18,7 @@ import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { FieldError } from "../../Styles/Auth/loginStyles";
 import { useForm } from "react-hook-form";
 
-const EditComponents = ({ buttonLabel, component, setComponents }) => {
+const EditComponents = ({ buttonLabel, component }) => {
   console.log(component);
   const { id } = useParams();
   // const { buttonLabel, className } = props;
@@ -38,7 +38,6 @@ const EditComponents = ({ buttonLabel, component, setComponents }) => {
   });
   const { updateComponent } = dispatchers;
 
-
   useEffect(() => {
     setEditInfo({
       id: component.id,
@@ -57,7 +56,8 @@ const EditComponents = ({ buttonLabel, component, setComponents }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(editInfo, "DATA!!!");
-    dispatch(updateComponent(editInfo.id, editInfo, setEditInfo, setComponents, history))
+    dispatch(updateComponent(editInfo.id, editInfo));
+    toggle();
   };
 
   //   const handleSubmit = e => {
