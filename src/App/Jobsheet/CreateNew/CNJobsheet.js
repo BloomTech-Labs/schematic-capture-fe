@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useForm } from "react-hook-form";
-import csv from "csvtojson";
-import { dispatchers } from "../../../shared/actions/dashboardActions";
-import { csvToApi } from "../../../shared/utils/componentMap";
-import Header from "./CNJobsheetHeader";
+import React, { useState, useEffect } from "react"
+import { useHistory } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { useForm } from "react-hook-form"
+import csv from "csvtojson"
+import SchematicChooser from "./DropboxSchematicChooser"
+
+import { dispatchers } from "../../../shared/actions/dashboardActions"
+import { csvToApi } from "../../../shared/utils/componentMap"
+import Header from "./CNJobsheetHeader"
+
 
 const { addNewJobsheet } = dispatchers;
 
@@ -45,14 +48,11 @@ const CreateNewJobsheet = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [preview, setPreview] = useState(false);
-  const [isNew, setIsNew] = useState(false);
-  const [bananas, setBananas] = useState(false);
-  const [components, setComponents] = useState([]);
-
-  // useEffect(() => {
-
-  // },[])
+  const [preview, setPreview] = useState(false)
+  const [isNew, setIsNew] = useState(false)
+  const [bananas, setBananas] = useState(false)
+  const [components, setComponents] = useState([])
+  const [imageFile, setImageFile] = useState(null)
 
   useEffect(() => {
     const [file] = watch("csv");
@@ -62,18 +62,15 @@ const CreateNewJobsheet = () => {
       setPreview(true);
       setValue("name", fileName);
     }
-    const [file2] = watch("pdf");
-    if (file2) {
-      const [fileName2] = file2.name.split(".");
-      setValue("name2", fileName2);
-    }
-  }, [watch("csv"), watch("pdf")]);
+  }, [watch("csv")])
 
-  const onSubmit = (data) => {
-    delete data.csv;
-    data.components = components;
-    dispatch(addNewJobsheet(data, history));
-  };
+  const onSubmit = data => {
+    
+    delete data.csv
+    data.schematic = imageFile
+    data.components = components
+    dispatch(addNewJobsheet(data, history))
+  }
 
   return (
     <>
@@ -105,7 +102,7 @@ const CreateNewJobsheet = () => {
               <label htmlFor="name"></label>
             </div>
             <label type="button" htmlFor="pdf" hidden={!getValues().name}>
-              <p onClick={() => setBananas(true)}>Add Schematic</p>
+               <SchematicChooser imageFile={imageFile} setImageFile={setImageFile}/>
             </label>
             <input hidden name="components" ref={register} />
             <input
@@ -134,19 +131,12 @@ const CreateNewJobsheet = () => {
       />
       <div>
         <input
-          name="name"
-          placeholder="JobSheet Name"
-          disabled={!isNew}
-          hidden={!isNew}
-          ref={register({ required: true })}
-        />
-        <input
-          name="name2"
-          placeholder="Schematic"
-          disabled={!bananas}
-          hidden={!bananas}
-          ref={register({ required: true })}
-        />
+            name="name"
+            placeholder="JobSheet Name"
+            disabled={!isNew}
+            hidden={!isNew}
+            ref={register({ required: true })}
+          />
       </div>
       <div>
         <table>

@@ -18,7 +18,7 @@ export default ({ firstName, lastName }) => {
 
     return (
         <Container>
-            <img src={Unknown} />
+            <img src={Unknown} alt='profile'/>
             <p>{firstName} {lastName}</p>
             <hr/>
             <a onClick={onLogout}>Log out</a>

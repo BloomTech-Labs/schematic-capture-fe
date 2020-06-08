@@ -31,7 +31,7 @@ const fetchComponentsSideEffect = async (dispatch, id) => {
   await dispatch(fetchComponents(id));
 };
 
-const PageHeader = () => {
+const PageHeader = (props) => {
   const { currentProject, currentJobsheet, currentClient } = useSelector(
     (state) => state.dashboard
   );
@@ -119,6 +119,7 @@ const PageHeader = () => {
         {!!currentJobsheet && (
           <>
             <h1 className="Currentjobsheet">{currentJobsheet.name}</h1>
+            <a href={currentJobsheet.schematic}>Link to Schematic</a>
           </>
         )}
       </div>
