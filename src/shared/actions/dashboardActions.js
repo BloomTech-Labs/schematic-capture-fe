@@ -17,7 +17,6 @@ const UPDATE_COMPONENT = "UPDATE_COMPONENT";
 
 const ASSIGN_TECH_PROJECT = "ASSIGN_TECH_PROJECT";
 
-
 const fetchClients = () => async (dispatch, getState) => {
   dispatch({ type: APP_LOADING });
 
@@ -154,39 +153,16 @@ const fetchComponents = (id) => async (dispatch) => {
   }
 };
 
-const updateComponent = (
-  id,
-  formData,
-  setEditInfo,
-  setComponents,
-  history
-) => async (dispatch) => {
-  dispatch({ type: APP_LOADING });
-  try {
-    const updated = await axiosWithAuth().put(
-      `/components/${id}/update/`,
-      formData
-    );
-
-    console.log(updated, "UPDATE!!!!!");
-    dispatch({ type: UPDATE_COMPONENT, payload: updated.data });
-
-    dispatch({ type: APP_DONE_LOADING });
-  } catch (error) {
-    return dispatch({ type: APP_ERROR, payload: error.message });
-  }
-};
-
-
 const assignTechProject = (id, email, date) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
- console.log(id, "ID!!!!")
-let body = {email: email, date: date}
+  console.log(id, "ID!!!!");
+  let body = { email: email, date: date };
   try {
     const assignedTech = await axiosWithAuth().put(
-      `/projects/${id}/assignuser`, body
+      `/projects/${id}/assignuser`,
+      body
     );
-    dispatch({ type: ASSIGN_TECH_PROJECT, payload: assignedTech.data});
+    dispatch({ type: ASSIGN_TECH_PROJECT, payload: assignedTech.data });
     dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
     return dispatch({ type: APP_ERROR, payload: error.message });
@@ -227,7 +203,7 @@ export const dispatchers = {
   fetchComponents,
   updateComponent,
   toggleEditing,
-  assignTechProject
+  assignTechProject,
 };
 
 export const actions = {
@@ -241,5 +217,5 @@ export const actions = {
   FETCH_COMPONENTS_SUCCESS,
   TOGGLE_COMPONENT_EDIT,
   UPDATE_COMPONENT,
-  ASSIGN_TECH_PROJECT
+  ASSIGN_TECH_PROJECT,
 };
