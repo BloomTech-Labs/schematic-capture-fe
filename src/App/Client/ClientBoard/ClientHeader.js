@@ -38,6 +38,8 @@ import { dispatchers, actions } from "../../../shared/actions/dashboardActions";
 const { fetchProjects } = dispatchers;
 const { SET_CURRENT_CLIENT, SET_CURRENT_PROJECTS } = actions;
 
+
+
 const fetchProjectsSideEffect = async (dispatch, id, setProjects) => {
   await dispatch(fetchProjects(id, setProjects));
 };

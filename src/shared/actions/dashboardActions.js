@@ -1,5 +1,6 @@
 import { actions as appActions } from "./appActions";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+// import { useParams } from "react-router-dom"
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 
 const FETCH_CLIENTS_SUCCESS = "FETCH_CLIENTS_SUCCESS";
@@ -172,14 +173,16 @@ const updateComponent = (
   }
 };
 
-const assignTechProject = (email, id) => async (dispatch) => {
+const assignTechProject = (id, email, date) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
+ console.log(id, "ID!!!!")
+let body = {email: email, date: date}
   try {
     const assignedTech = await axiosWithAuth().put(
-      `/projects/${id}/assignuser`, email
+      `/projects/${id}/assignuser`, body
     );
-    dispatch({ type: ASSIGN_TECH_PROJECT, payload: assignedTech.data });
-    console.log(assignedTech.data, "PAYLOAD!!!!")
+    dispatch({ type: ASSIGN_TECH_PROJECT, payload: assignedTech.data});
+    dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
     return dispatch({ type: APP_ERROR, payload: error.message });
   }

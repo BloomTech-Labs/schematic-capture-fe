@@ -60,6 +60,7 @@ const PageHeader = ({ counter, setCounter }) => {
     event.preventDefault();
     dispatch(updateProjectName(projectName, setIsEditing));
   };
+  
 
   useEffect(() => {
     fetchJobsheetsSideEffect(dispatch, params.id, setJobsheets);

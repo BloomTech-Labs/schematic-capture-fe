@@ -12,33 +12,44 @@ import {
 } from "../../Styles/Jobsheets";
 import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { FieldError } from "../../Styles/FormStyles";
+import { useParams } from "react-router-dom";
 
-const { fetchAvailableTechs, assignTechProject } = dispatchers;
-console.log(assignTechProject(), "ASSIGN TECHS")
+const assignTechsSideEffect = async (dispatch, id, setTech) => {
+  await dispatch(assignTechProject(id, setTech));
+};
+
+const { assignTechProject, fetchAvailableTechs } = dispatchers;
+console.log(assignTechProject(), "ASSIGN TECHS");
 const TechModal = (props) => {
   const { buttonLabel } = props;
   const dispatch = useDispatch();
   var techNames = [];
+
+  const params = useParams();
+  console.log(params, "PARAMS");
 
   const [modal, setModal] = useState(false);
   const [tech, setTech] = useState({
     name: null,
     date: null,
     project: null,
+    email: null
   });
   const toggle = () => setModal(!modal);
   const [page, setPage] = useState(0);
 
   useEffect(() => {
     dispatch(fetchAvailableTechs());
-     dispatch(assignTechProject())
+    dispatch(assignTechProject());
   }, []);
 
-  const handleChange = (e) => {
-    setTech({ ...tech, name: e.target.value });
-    console.log(e.target.value);
-  };
 
+  const handleChange = (e) => {
+   let techObject = techs.find(technician => technician.firstName == e.target.value);
+    setTech({ ...tech, name: e.target.value, email: techObject.email });
+    console.log(e.target.value);
+    console.log(techObject, "TECHOBJ")
+  };
   const handleDateChange = (e) => {
     setTech({ ...tech, date: e.target.value });
     console.log(e.target.value);
@@ -46,10 +57,8 @@ const TechModal = (props) => {
 
   const handleJobChange = (e) => {
     setTech({ ...tech, project: e.target.value });
-    console.log(e.target.value)
+    console.log(e.target.value);
   };
-console.log(tech, "TECH!")
-  // const toggleCheckbox =
 
   const changePage = () => {
     var num = page;
@@ -57,6 +66,7 @@ console.log(tech, "TECH!")
       setPage(0);
       toggle();
       console.log(tech);
+      assignTechsSideEffect(dispatch, tech.project, tech.email, tech.date);
     } else if (page === 2) {
       if (tech.date === null) {
       } else {
@@ -64,7 +74,7 @@ console.log(tech, "TECH!")
         setPage(num);
       }
     } else if (page === 1) {
-      if (tech.jobsheet === null) {
+      if (tech.project === null) {
       } else {
         num += 1;
         setPage(num);
@@ -81,6 +91,7 @@ console.log(tech, "TECH!")
   techs.map((tech) => {
     techNames.push(tech.firstName);
   });
+  console.log(tech, "TECH")
 
   // const { currentJobsheets } = useSelector((state) => state.dashboard);
   const { currentProjects } = useSelector((state) => state.dashboard);
