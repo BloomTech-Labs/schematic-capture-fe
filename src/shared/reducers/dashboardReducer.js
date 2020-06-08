@@ -1,4 +1,5 @@
 import { actions } from "../actions/dashboardActions";
+// import state from "sweetalert/typings/modules/state";
 
 const {
   FETCH_CLIENTS_SUCCESS,
@@ -12,7 +13,8 @@ const {
   UPDATE_CURRENT_PROJECT_NAME,
   FETCH_COMPONENTS_SUCCESS,
   TOGGLE_COMPONENT_EDIT,
-  UPDATE_COMPONENT
+  UPDATE_COMPONENT,
+  ASSIGN_TECH_PROJECT,
 } = actions;
 
 const initState = {
@@ -25,41 +27,40 @@ const initState = {
   currentJobsheet: null,
   edit: false,
   currentComponent: null,
-  components: []
+  components: [],
 };
 
 const dashboardReducer = (state = initState, action) => {
-
   switch (action.type) {
     case FETCH_CLIENTS_SUCCESS:
       return {
         ...state,
-        clients: action.payload
+        clients: action.payload,
       };
-      case SET_AVAILABLE_TECHS:
-        return {
-          ...state,
-          techs: action.payload
-        };
-      case SET_ASSIGNED_PROJECTS:
+    case SET_AVAILABLE_TECHS:
       return {
         ...state,
-        currentProject: action.payload
+        techs: action.payload,
+      };
+    case SET_ASSIGNED_PROJECTS:
+      return {
+        ...state,
+        currentProject: action.payload,
       };
     case SET_CURRENT_CLIENT:
       return {
         ...state,
-        currentClient: action.payload
+        currentClient: action.payload,
       };
     case SET_CURRENT_PROJECTS:
       return {
         ...state,
-        currentProjects: action.payload
+        currentProjects: action.payload,
       };
     case SET_CURRENT_PROJECT:
       return {
         ...state,
-        currentProject: action.payload
+        currentProject: action.payload,
       };
     case UPDATE_CURRENT_PROJECT_NAME:
       console.log("update current project");
@@ -68,39 +69,44 @@ const dashboardReducer = (state = initState, action) => {
         ...state,
         currentProject: {
           ...state.currentProject,
-          name: action.payload
-        }
+          name: action.payload,
+        },
       };
     case SET_CURRENT_JOBSHEETS:
       return {
         ...state,
-        currentJobsheets: action.payload
+        currentJobsheets: action.payload,
       };
     case SET_CURRENT_JOBSHEET:
       return {
         ...state,
-        currentJobsheet: action.payload
+        currentJobsheet: action.payload,
       };
-      case TOGGLE_COMPONENT_EDIT:
+    case TOGGLE_COMPONENT_EDIT:
       return {
         ...state,
-        editing: action.payload
+        editing: action.payload,
       };
-      case FETCH_COMPONENTS_SUCCESS:
-        console.log(action.payload, "FETCH_COMPONENTS_SUCCESS!!!")
+    case FETCH_COMPONENTS_SUCCESS:
+      console.log(action.payload, "FETCH_COMPONENTS_SUCCESS!!!");
       return {
         ...state,
-        components: action.payload
+        components: action.payload,
       };
-      case UPDATE_COMPONENT:
+    case UPDATE_COMPONENT:
       return {
         ...state,
-        components: state.components.map(component => {
-                    if(component.id === action.payload.id) {
-                      return action.payload;
-                    }
-                    return component;
-        })
+        components: state.components.map((component) => {
+          if (component.id === action.payload.id) {
+            return action.payload;
+          }
+          return component;
+        }),
+      };
+    case ASSIGN_TECH_PROJECT:
+      return {
+        ...state,
+        techs: [...state.techs, action.payload],
       };
     default:
       return state;

@@ -31,6 +31,8 @@ const Components = (props) => {
   const { register, getValues, setValue, handleSubmit, watch } = useForm();
   // const [components, setComponents] = useState([]);
   const components  = useSelector((state) => state.dashboard.components)
+
+  console.log(components, "COMPONENTS!")
   const [sortingComponents, setSortingComponents] = useState([]);
   const [sortingAsc, setSortingAsc] = useState(false);
   const [sortingDesc, setSortingDesc] = useState(false);
@@ -75,7 +77,7 @@ const Components = (props) => {
 
   useEffect(() => {
     fetchComponentsSideEffect(dispatch, params.id, history);
-  }, [sortingNone]);
+  }, []);
 
   useEffect(() => {
     const file = watch("jpg");

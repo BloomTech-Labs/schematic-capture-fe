@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, connect, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   NewProjBtn,
   NewProjBtn2,
@@ -13,27 +13,26 @@ import {
 import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { FieldError } from "../../Styles/FormStyles";
 
-const { fetchAvailableTechs } = dispatchers;
-
+const { fetchAvailableTechs, assignTechProject } = dispatchers;
+console.log(assignTechProject(), "ASSIGN TECHS")
 const TechModal = (props) => {
   const { buttonLabel } = props;
   const dispatch = useDispatch();
   var techNames = [];
 
   const [modal, setModal] = useState(false);
-  const [tech, setTech] = useState({ name: null, date: null, jobsheet: null });
+  const [tech, setTech] = useState({
+    name: null,
+    date: null,
+    project: null,
+  });
   const toggle = () => setModal(!modal);
   const [page, setPage] = useState(0);
 
   useEffect(() => {
     dispatch(fetchAvailableTechs());
+     dispatch(assignTechProject())
   }, []);
-
-  const techs = useSelector((state) => state.dashboard.techs);
-
-  techs.map((tech) => {
-    techNames.push(tech.firstName);
-  });
 
   const handleChange = (e) => {
     setTech({ ...tech, name: e.target.value });
@@ -46,18 +45,26 @@ const TechModal = (props) => {
   };
 
   const handleJobChange = (e) => {
-    setTech({ ...tech, jobsheet: e.target.value });
-    console.log(e.target.value);
+    setTech({ ...tech, project: e.target.value });
+    console.log(e.target.value)
   };
+console.log(tech, "TECH!")
+  // const toggleCheckbox =
 
   const changePage = () => {
     var num = page;
-    if (page >= 2) {
+    if (page >= 3) {
       setPage(0);
       toggle();
       console.log(tech);
-    } else if (page === 1) {
+    } else if (page === 2) {
       if (tech.date === null) {
+      } else {
+        num += 1;
+        setPage(num);
+      }
+    } else if (page === 1) {
+      if (tech.jobsheet === null) {
       } else {
         num += 1;
         setPage(num);
@@ -70,7 +77,13 @@ const TechModal = (props) => {
       }
     }
   };
-  const { currentJobsheets } = useSelector((state) => state.dashboard);
+  const techs = useSelector((state) => state.dashboard.techs);
+  techs.map((tech) => {
+    techNames.push(tech.firstName);
+  });
+
+  // const { currentJobsheets } = useSelector((state) => state.dashboard);
+  const { currentProjects } = useSelector((state) => state.dashboard);
 
   const pageNav = (num) => {
     switch (num) {
@@ -120,26 +133,27 @@ const TechModal = (props) => {
       case 1:
         return (
           <>
+            <MH1>Select Project</MH1>
             <MBody>
-              {tech.jobsheet === null ? (
+              {tech.project === null ? (
                 <Container>
-                  <FieldError>Please assign a jobsheet</FieldError>
+                  <FieldError>Please assign a project</FieldError>
                 </Container>
               ) : (
                 <></>
               )}
-              {currentJobsheets.map((ele) => {
-                if (ele === tech.jobsheet) {
+              {currentProjects.map((ele) => {
+                if (ele.id === Number(tech.project)) {
                   return (
                     <TechCont>
                       <input
                         type="checkbox"
-                        name={tech.jobsheet}
-                        value={ele}
+                        name={tech.project}
+                        value={ele.id}
                         checked={true}
                         onChange={handleJobChange}
                       />
-                      <label for={ele}>{ele}</label>
+                      <label for={ele}>{ele.name}</label>
                     </TechCont>
                   );
                 } else {
@@ -147,12 +161,12 @@ const TechModal = (props) => {
                     <TechCont>
                       <input
                         type="checkbox"
-                        name={tech.jobsheet}
+                        name={tech.project}
                         checked={false}
-                        value={ele}
+                        value={ele.id}
                         onChange={handleJobChange}
                       />
-                      <label for={ele}>{ele}</label>
+                      <label for={ele}>{ele.name}</label>
                     </TechCont>
                   );
                 }
@@ -205,9 +219,9 @@ const TechModal = (props) => {
     <ModalCont>
       <NewProjBtn onClick={toggle}>{buttonLabel}</NewProjBtn>
       <Mod isOpen={modal} toggle={toggle}>
-        <MH1>Available technicians</MH1>
+        <MH1>Assign Technician</MH1>
         <MBody>{pageNav(page)}</MBody>
-        <NewProjBtn2 onClick={changePage}>Assign Technician</NewProjBtn2>
+        <NewProjBtn2 onClick={changePage}>Next</NewProjBtn2>
       </Mod>
     </ModalCont>
   );

@@ -13,6 +13,7 @@ const UPDATE_CURRENT_PROJECT_NAME = "UPDATE_CURRENT_PROJECT_NAME";
 const FETCH_COMPONENTS_SUCCESS = "FETCH_COMPONENTS_SUCCESS";
 const TOGGLE_COMPONENT_EDIT = "TOGGLE_COMPONENT_EDIT";
 const UPDATE_COMPONENT = "UPDATE_COMPONENT";
+const ASSIGN_TECH_PROJECT = "ASSIGN_TECH_PROJECT";
 
 const fetchClients = () => async (dispatch, getState) => {
   dispatch({ type: APP_LOADING });
@@ -26,13 +27,13 @@ const fetchClients = () => async (dispatch, getState) => {
   }
 };
 
-const fetchAvailableTechs = () => async dispatch => {
+const fetchAvailableTechs = () => async (dispatch) => {
   dispatch({ type: APP_LOADING });
 
   try {
-    const availableTechs = await axiosWithAuth().get("/users")
+    const availableTechs = await axiosWithAuth().get("/users");
     // @TODO: change to "/users/techs" after backend has been deployed.
-    console.log(availableTechs.data, ' availableTechs.data')
+    console.log(availableTechs.data, " availableTechs.data");
     dispatch({ type: SET_AVAILABLE_TECHS, payload: availableTechs.data });
     dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
@@ -142,33 +143,52 @@ const fetchComponents = (id) => async (dispatch) => {
 
   try {
     const components = await axiosWithAuth().get(`/jobsheets/${id}/components`);
-    dispatch({ type: FETCH_COMPONENTS_SUCCESS, payload: components.data })
+    dispatch({ type: FETCH_COMPONENTS_SUCCESS, payload: components.data });
     dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
     return dispatch({ type: APP_ERROR, payload: error.message });
   }
 };
 
-const updateComponent = (id, formData, setEditInfo, setComponents, history) => async (dispatch) => {
+const updateComponent = (
+  id,
+  formData,
+  setEditInfo,
+  setComponents,
+  history
+) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
   try {
-    const updated = await axiosWithAuth().put(`/components/${id}/update/`, formData);
-   
-    console.log(updated, "UPDATE!!!!!");
-    dispatch({ type: UPDATE_COMPONENT, payload: updated.data})
-    dispatch({ type: APP_DONE_LOADING});
+    const updated = await axiosWithAuth().put(
+      `/components/${id}/update/`,
+      formData
+    );
 
+    console.log(updated, "UPDATE!!!!!");
+    dispatch({ type: UPDATE_COMPONENT, payload: updated.data });
+    dispatch({ type: APP_DONE_LOADING });
+  } catch (error) {
+    return dispatch({ type: APP_ERROR, payload: error.message });
+  }
+};
+
+const assignTechProject = (email, id) => async (dispatch) => {
+  dispatch({ type: APP_LOADING });
+  try {
+    const assignedTech = await axiosWithAuth().put(
+      `/projects/${id}/assignuser`, email
+    );
+    dispatch({ type: ASSIGN_TECH_PROJECT, payload: assignedTech.data });
+    console.log(assignedTech.data, "PAYLOAD!!!!")
   } catch (error) {
     return dispatch({ type: APP_ERROR, payload: error.message });
   }
 };
 
 const toggleEditing = (setEditing, dispatch) => {
-  const edit = setEditing(true)
-  dispatch({ type: TOGGLE_COMPONENT_EDIT, payload: edit})
-}
-
-
+  const edit = setEditing(true);
+  dispatch({ type: TOGGLE_COMPONENT_EDIT, payload: edit });
+};
 
 export const dispatchers = {
   fetchClients,
@@ -181,7 +201,8 @@ export const dispatchers = {
   addNewJobsheet,
   fetchComponents,
   updateComponent,
-  toggleEditing
+  toggleEditing,
+  assignTechProject
 };
 
 export const actions = {
@@ -194,5 +215,6 @@ export const actions = {
   SET_CURRENT_JOBSHEET,
   FETCH_COMPONENTS_SUCCESS,
   TOGGLE_COMPONENT_EDIT,
-  UPDATE_COMPONENT
+  UPDATE_COMPONENT,
+  ASSIGN_TECH_PROJECT
 };
