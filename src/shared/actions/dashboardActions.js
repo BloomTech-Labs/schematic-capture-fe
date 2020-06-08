@@ -14,7 +14,9 @@ const UPDATE_CURRENT_PROJECT_NAME = "UPDATE_CURRENT_PROJECT_NAME";
 const FETCH_COMPONENTS_SUCCESS = "FETCH_COMPONENTS_SUCCESS";
 const TOGGLE_COMPONENT_EDIT = "TOGGLE_COMPONENT_EDIT";
 const UPDATE_COMPONENT = "UPDATE_COMPONENT";
+
 const ASSIGN_TECH_PROJECT = "ASSIGN_TECH_PROJECT";
+
 
 const fetchClients = () => async (dispatch, getState) => {
   dispatch({ type: APP_LOADING });
@@ -145,6 +147,7 @@ const fetchComponents = (id) => async (dispatch) => {
   try {
     const components = await axiosWithAuth().get(`/jobsheets/${id}/components`);
     dispatch({ type: FETCH_COMPONENTS_SUCCESS, payload: components.data });
+
     dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
     return dispatch({ type: APP_ERROR, payload: error.message });
@@ -167,11 +170,13 @@ const updateComponent = (
 
     console.log(updated, "UPDATE!!!!!");
     dispatch({ type: UPDATE_COMPONENT, payload: updated.data });
+
     dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
     return dispatch({ type: APP_ERROR, payload: error.message });
   }
 };
+
 
 const assignTechProject = (id, email, date) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
@@ -182,6 +187,23 @@ let body = {email: email, date: date}
       `/projects/${id}/assignuser`, body
     );
     dispatch({ type: ASSIGN_TECH_PROJECT, payload: assignedTech.data});
+    dispatch({ type: APP_DONE_LOADING });
+  } catch (error) {
+    return dispatch({ type: APP_ERROR, payload: error.message });
+  }
+};
+
+const updateComponent = (id, formData) => async (dispatch) => {
+  dispatch({ type: APP_LOADING });
+  // console.log(formData, "FORM DATA HERE!!!")
+  try {
+    const updated = await axiosWithAuth().put(
+      `/components/${id}/update/`,
+      formData
+    );
+
+    console.log(updated, "UPDATE!!!!!");
+    dispatch({ type: UPDATE_COMPONENT, payload: updated.data });
     dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
     return dispatch({ type: APP_ERROR, payload: error.message });

@@ -108,6 +108,27 @@ const dashboardReducer = (state = initState, action) => {
         ...state,
         techs: [...state.techs, action.payload],
       };
+      case TOGGLE_COMPONENT_EDIT:
+      return {
+        ...state,
+        editing: action.payload
+      };
+      case FETCH_COMPONENTS_SUCCESS:
+        console.log(action.payload, "FETCH_COMPONENTS_SUCCESS!!!")
+      return {
+        ...state,
+        components: action.payload
+      };
+      case UPDATE_COMPONENT:
+      return {
+        ...state,
+        components: state.components.map(component => {
+                    if(component.id === action.payload.id) {
+                      return action.payload;
+                    }
+                    return component;
+        })
+      };
     default:
       return state;
   }
