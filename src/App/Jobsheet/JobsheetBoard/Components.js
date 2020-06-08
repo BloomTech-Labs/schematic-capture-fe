@@ -3,8 +3,13 @@ import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import SortDropDown from "../../../shared/components/Components/SortDropDown.js";
-import EditComponents from "./EditComponents.js";
+
+import EditComponents from "./EditComponents.js"
+
 import { CSVLink } from "react-csv";
+
+
+
 import {
   List,
   Table,
@@ -19,6 +24,10 @@ import sort from "./Sort.png";
 import { dispatchers, actions } from "../../../shared/actions/dashboardActions";
 import DropboxChooser from "../CreateNew/Dropbox";
 
+const updateComponentSideEffects = async (dispatch, id, input, setUpdate) => {
+  await dispatch(updateComponent(id, input, setUpdate))
+}
+
 const { fetchComponents } = dispatchers;
 const fetchComponentsSideEffect = async (dispatch, id) => {
   await dispatch(fetchComponents(id));
@@ -27,12 +36,16 @@ const fetchComponentsSideEffect = async (dispatch, id) => {
 const Components = (props) => {
   const { register, getValues, setValue, handleSubmit, watch } = useForm();
   const components = useSelector((state) => state.dashboard.components);
+
   const [sortingComponents, setSortingComponents] = useState([]);
   const [sortingAsc, setSortingAsc] = useState(false);
   const [sortingDesc, setSortingDesc] = useState(false);
   const [sortingNone, setSortingNone] = useState(true);
   const user = useSelector((state) => state.auth.user);
   const [editing, setEditing] = useState(false);
+
+
+
   const [update, setUpdate] = useState([]);
   const [input, setInput] = useState({
     description: "",
@@ -44,9 +57,11 @@ const Components = (props) => {
     storesPartNumber: "",
   });
 
+
   const dispatch = useDispatch();
   const params = useParams();
   const history = useHistory();
+
 
   const handleChange = (e) => {
     setInput({
@@ -63,6 +78,7 @@ const Components = (props) => {
   useEffect(() => {
     fetchComponentsSideEffect(dispatch, params.id, history);
   }, [sortingNone]);
+
 
   useEffect(() => {
     const file = watch("jpg");
@@ -168,10 +184,14 @@ const Components = (props) => {
           </thead>
           {props.search.length > 0 ? (
             <tbody>
-              {props.component.length &&
+             {props.component.length &&
                 props.component.map((component) => (
                   <tr key={component.id}>
-                    {/* 
+
+{/* 
+
+    
+
                 {!editing ? <td data-label="Component" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.componentId}</td> : <form onSubmit={handleSubmit(onSubmit)}><input type="text" value={input} onChange={handleChange} ref={register}/></form> }
 
                 {!editing ? <td data-label="Description" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="description" value={input.description} onChange={handleChange} ref={register}/></form> }
@@ -191,20 +211,24 @@ const Components = (props) => {
 
                 {!editing ? <td data-label="Stores Part #" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="storesPartNumber" value={input.storesPartNumber} onChange={handleChange} ref={register}/></form> } */}
 
-                    <td data-label="Description">{component.descriptions}</td>
-                    <td data-label="Manufacturer">{component.manufacturer}</td>
-                    <td data-label="Part Number">{component.partNumber}</td>
-                    <td data-label="Stock Code">{component.stockCode}</td>
+
+                    <td data-label="Description" >{component.descriptions}</td>
+                    <td data-label="Manufacturer" >{component.manufacturer}</td>
+                    <td data-label="Part Number" >{component.partNumber}</td>
+                    <td data-label="Stock Code" >{component.stockCode}</td>
+
                     <td data-label="Select Image">
                       <DropboxChooser />
                     </td>
-                    <td data-label="Resources">{component.resources}</td>
+                    <td data-label="Resources" >{component.resources}</td>
                     <td data-label="Cutsheet">{component.cutsheet}</td>
-                    <td data-label="Stores Part #">
+                    <td data-label="Stores Part #" >
                       {component.storesPartNumber}
                     </td>
                   </tr>
-                ))}
+                )) 
+                }
+              
             </tbody>
           ) : (
             <tbody>
@@ -224,12 +248,9 @@ const Components = (props) => {
                     <td data-label="Stores Part #">
                       {component.storesPartNumber}
                     </td>
-                    {user.roleId !== 3 && (
-                      <EditComponents
-                        buttonLabel="Update"
-                        component={component}
-                      />
-                    )}
+
+                    {user.roleId !== 3 && <EditComponents buttonLabel="Update" component={component}/>}
+
                   </tr>
                 ))}
             </tbody>

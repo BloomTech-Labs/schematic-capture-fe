@@ -5,6 +5,7 @@ import Projects from "./Projects";
 
 import { BackToLink } from "../../../shared/components";
 import { useParams } from "react-router-dom";
+import  TechModal  from "../../Project/ProjectBoard/TechPopup";
 
 import {
   Projectsh1,
@@ -25,6 +26,7 @@ import {
   Buttion,
 } from "../../Styles/Dashboard";
 import { Bread } from "../../Styles/Project";
+import { BtnCont, NewProjBtn2 } from "../../Styles/Jobsheets";
 
 import NameDropDownMenu from "../../../shared/components/Components/NameDropDownMenu";
 import Search from "../../Styles/Dashboard/Search.png";
@@ -35,6 +37,8 @@ import { dispatchers, actions } from "../../../shared/actions/dashboardActions";
 
 const { fetchProjects } = dispatchers;
 const { SET_CURRENT_CLIENT, SET_CURRENT_PROJECTS } = actions;
+
+
 
 const fetchProjectsSideEffect = async (dispatch, id, setProjects) => {
   await dispatch(fetchProjects(id, setProjects));
@@ -135,12 +139,17 @@ const PageHeader = () => {
           <Section2>
             <Projectsh1>{currentClient.companyName}</Projectsh1>
             {user.roleId !== 3 && (
-              <NewProjBtn
+                <BtnCont>
+              {user.roleId !== 3 && <TechModal buttonLabel="Assign Techs" />}
+          <NewProjBtn2
                 to={`/client/${currentClient.id}/project/new`}
                 variant="primary"
               >
                 New&nbsp;Project
-              </NewProjBtn>
+              </NewProjBtn2>
+                
+            </BtnCont>
+              
             )}
           </Section2>
         )}
