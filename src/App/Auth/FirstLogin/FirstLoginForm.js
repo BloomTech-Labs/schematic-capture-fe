@@ -44,9 +44,9 @@ const FirstLoginForm = (props) => {
             aria-describedby="error-password-required"
             ref={register({ required: true })}
           />
-          {errors.password && errors.password.type === "required" && (
+          {errors.newPassword && errors.newPassword.type === "required" && (
             <FieldError id="error-password-required">
-              That's an incorrect password. Try again.
+              Please enter a new password
             </FieldError>
           )}
         </FormGroup>
@@ -74,15 +74,17 @@ const FirstLoginForm = (props) => {
           placeholder="Answer to Security Question"
           aria-label="Answer to Security Question"
           />
+          {errors.newAnswer && errors.newAnswer.type === "required" && (
+            <FieldError id="error-answer-required">
+              Please answer the security question
+            </FieldError>
+          )}
         </FormGroup>
         <FormRow>
           <FormColumn>
             <Button data-button-continue variant="primary" type="submit">
               Continue
             </Button>
-          </FormColumn>
-          <FormColumn style={{ textAlign: "right" }}>
-            <Link to="/forgotpassword">Forgot password?</Link>
           </FormColumn>
         </FormRow>
       </form>
