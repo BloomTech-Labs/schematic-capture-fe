@@ -140,7 +140,8 @@ const EditComponents = ({ buttonLabel, component }) => {
               {/* display the last part of the image URL which is the name of the image */}
               <p>
                 Currently:{" "}
-                {editInfo.image.split("/").slice(-1)[0].split("?")[0]}
+                {editInfo.image &&
+                  editInfo.image.split("/").slice(-1)[0].split("?")[0]}
               </p>
               <DropboxChooser
                 inPopup={true}
