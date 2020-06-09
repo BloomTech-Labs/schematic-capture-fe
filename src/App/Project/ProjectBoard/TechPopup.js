@@ -33,14 +33,13 @@ const TechModal = (props) => {
     name: null,
     date: null,
     project: null,
-    email: null
+    email: null,
   });
   const toggle = () => setModal(!modal);
   const [page, setPage] = useState(0);
 
   useEffect(() => {
     dispatch(fetchAvailableTechs());
-    dispatch(assignTechProject());
   }, []);
 
   const handleChange = (e) => {
@@ -49,7 +48,6 @@ const TechModal = (props) => {
     // console.log(techObject, "TECHOBJ")
     setTech({ ...tech, name: `${techObject.firstName} ${techObject.lastName}`, email: e.target.value });
     // console.log(e.target.value, ' e.target.value in handleChange');
-   
   };
 
   const handleDateChange = (e) => {
@@ -231,7 +229,9 @@ const TechModal = (props) => {
 
   return (
     <ModalCont>
-      <NewProjBtn onClick={toggle}>{buttonLabel}</NewProjBtn>
+      <NewProjBtn data-cy="assign-techs" onClick={toggle}>
+        {buttonLabel}
+      </NewProjBtn>
       <Mod isOpen={modal} toggle={toggle}>
         <MH1>Assign Technician</MH1>
         <MBody>{pageNav(page)}</MBody>

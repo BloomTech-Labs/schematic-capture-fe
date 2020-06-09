@@ -14,7 +14,7 @@ import {
   ProjectLinkName,
   FlexEnd,
   FlexEnd2,
-} from "../../Styles/Client"
+} from "../../Styles/Client";
 
 import { dispatchers, actions } from "../../../shared/actions/dashboardActions";
 
@@ -47,47 +47,79 @@ const Projects = (props) => {
     setCurrentClientAndProjectsSideEffect(dispatch, client, projects);
   }, []);
 
-
   //Assigns project array value either from dispatch or from search
   var projectArray;
-  if (props.search.length > 0){
-    projectArray = props.project
+  if (props.search.length > 0) {
+    projectArray = props.project;
   } else {
-    projectArray = projects
+    projectArray = projects;
   }
   return client ? (
     <Section>
-      <Projectsh2>Projects</Projectsh2>
+      <Projectsh2 data-cy="projects-title-bar">Projects</Projectsh2>
       <LineBreak />
       <ProjectsTable>
         <thead>
           <StyledTableRow>
-            <StyledTableHead scope="col">Name</StyledTableHead>
-            <StyledTableHead scope="col">Description</StyledTableHead>
-            <StyledTableHead scope="col">Technician/s</StyledTableHead>
-            <StyledTableHead scope="col">Jobsheets</StyledTableHead>
-            <StyledTableHead scope="col">Status</StyledTableHead>
+            <StyledTableHead scope="col" data-cy="name-header">
+              Name
+            </StyledTableHead>
+            <StyledTableHead scope="col" data-cy="description-header">
+              Description
+            </StyledTableHead>
+            <StyledTableHead scope="col" data-cy="technician-header">
+              Technician/s
+            </StyledTableHead>
+            <StyledTableHead scope="col" data-cy="jobsheet-header">
+              Jobsheets
+            </StyledTableHead>
+            <StyledTableHead scope="col" data-cy="status-header">
+              Status
+            </StyledTableHead>
           </StyledTableRow>
         </thead>
         {/* Please make cleaner */}
-          <tbody>
-            {projectArray.map(project => (
-              <StyledTableRow key={project.id}>
-                {/* {console.log('project data in projects.map in Projects.js: ', project)} */}
-                <StyledTableData data-label="Project"><ProjectLinkName to={`/project/${project.id}`}>{project.name}</ProjectLinkName></StyledTableData>
-                <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.description}</ProjectLink></StyledTableData>
-                <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.technicians}</ProjectLink></StyledTableData>
-                <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}>{project.tally}</ProjectLink></StyledTableData>
-                <StyledTableData data-label="Project"><ProjectLink to={`/project/${project.id}`}><StyledTableData>
-                {project.completed !== true  ? (
-                    <FlexEnd>Incomplete</FlexEnd>
-                  ) : (
-                    <FlexEnd2>Complete</FlexEnd2>
-                  )}
-                </StyledTableData></ProjectLink></StyledTableData>
-              </StyledTableRow>
-            ))}
-          </tbody> 
+        <tbody>
+          {projectArray.map((project) => (
+            <StyledTableRow data-cy={`projects-${project.id}`} key={project.id}>
+              {console.log(
+                "project data in projects.map in Projects.js: ",
+                project
+              )}
+              <StyledTableData data-label="Project">
+                <ProjectLinkName to={`/project/${project.id}`}>
+                  {project.name}
+                </ProjectLinkName>
+              </StyledTableData>
+              <StyledTableData data-label="Project">
+                <ProjectLink to={`/project/${project.id}`}>
+                  {project.description}
+                </ProjectLink>
+              </StyledTableData>
+              <StyledTableData data-label="Project">
+                <ProjectLink to={`/project/${project.id}`}>
+                  {project.technicians}
+                </ProjectLink>
+              </StyledTableData>
+              <StyledTableData data-label="Project">
+                <ProjectLink to={`/project/${project.id}`}>
+                  {project.tally}
+                </ProjectLink>
+              </StyledTableData>
+              <StyledTableData data-label="Project">
+                <ProjectLink to={`/project/${project.id}`}>
+                  <StyledTableData>
+                    {project.completed !== true ? (
+                      <FlexEnd>Incomplete</FlexEnd>
+                    ) : (
+                      <FlexEnd2>Complete</FlexEnd2>
+                    )}
+                  </StyledTableData>
+                </ProjectLink>
+              </StyledTableData>
+            </StyledTableRow>
+          ))}
+        </tbody>
       </ProjectsTable>
     </Section>
   ) : (

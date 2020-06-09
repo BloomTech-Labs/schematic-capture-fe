@@ -36,7 +36,7 @@ Cypress.Commands.add("loginScript", () => {
 // Log in using the front end and then navigate to Test Client 1 from dashboard
 Cypress.Commands.add("dashboardToClient", () => {
   cy.loginScript();
-  cy.contains("Evraz").click();
+  cy.contains("Test Client 1").click();
 });
 
 Cypress.Commands.add("projectToJobsheet", () => {

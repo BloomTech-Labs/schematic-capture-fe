@@ -21,18 +21,21 @@ import { useFormContext } from "react-hook-form";
 const InviteNewUserModal = (props) => {
   const { buttonLabel, className } = props;
   const [modal, setModal] = useState(false);
-  const [user, setUser] = useState({ name: null, email: null, role: "technician" });
+  const [user, setUser] = useState({
+    name: null,
+    email: null,
+    role: "technician",
+  });
   const toggle = () => setModal(!modal);
   const dispatch = useDispatch();
   const history = useHistory();
   const { sendInvite } = dispatchers;
 
   const onSubmit = (e) => {
-    e.preventDefault()
-    dispatch(sendInvite(user, history))
-  }
-    
-  
+    e.preventDefault();
+    dispatch(sendInvite(user, history));
+  };
+
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
     console.log(e.target.value);
@@ -102,7 +105,9 @@ const InviteNewUserModal = (props) => {
 
   return (
     <ModalCont>
-      <NewProjBtn onClick={toggle}>{buttonLabel}</NewProjBtn>
+      <NewProjBtn data-cy="invite-user-btn" onClick={toggle}>
+        {buttonLabel}
+      </NewProjBtn>
       <Mod isOpen={modal} toggle={toggle}>
         <MH1>Invite New User</MH1>
         <MBody>{Invite(user)}</MBody>

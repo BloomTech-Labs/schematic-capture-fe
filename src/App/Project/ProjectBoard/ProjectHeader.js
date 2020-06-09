@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 
 import Jobsheets from "./Jobsheets";
 import { Section2 } from "../../Styles/Client";
-import { NewProjBtn, BtnCont,  } from "../../Styles/Jobsheets";
-import InviteNewUserModal from "./InvitePopup"
+import { NewProjBtn, BtnCont } from "../../Styles/Jobsheets";
+import InviteNewUserModal from "./InvitePopup";
 import {
   Title,
   Greeting,
@@ -60,7 +60,6 @@ const PageHeader = ({ counter, setCounter }) => {
     event.preventDefault();
     dispatch(updateProjectName(projectName, setIsEditing));
   };
-  
 
   useEffect(() => {
     fetchJobsheetsSideEffect(dispatch, params.id, setJobsheets);
@@ -90,7 +89,7 @@ const PageHeader = ({ counter, setCounter }) => {
     <>
       <Seperate2>
         <Column>
-          <Title>Schematic Capture</Title>
+          <Title data-cy="schematic-capture-heading">Schematic Capture</Title>
           <Bread>
             <BackToLink
               style={{ marginBottom: "2rem" }}
@@ -106,7 +105,7 @@ const PageHeader = ({ counter, setCounter }) => {
         </Column>
         <br />
         <RightSide>
-          <Buttion onClick={() => setEditing(!editing)}>
+          <Buttion data-cy="search" onClick={() => setEditing(!editing)}>
             <Hover src={Search} />
           </Buttion>
           {editing ? (
@@ -118,7 +117,7 @@ const PageHeader = ({ counter, setCounter }) => {
           ) : (
             <></>
           )}
-          <Greeting onClick={onLogout} variant="primary">
+          <Greeting data-cy="greeting" onClick={onLogout} variant="primary">
             Hi, {user.firstName}
             <Profile src={Unknown} />
             <NameDropDownMenu
@@ -129,7 +128,7 @@ const PageHeader = ({ counter, setCounter }) => {
         </RightSide>
       </Seperate2>
 
-      <div>
+      <div data-cy="top-container">
         {!!currentProject && (
           <Section2>
             {isEditing ? (
@@ -146,16 +145,18 @@ const PageHeader = ({ counter, setCounter }) => {
               </div>
             ) : (
               <div>
-                <h1 onClick={() => setIsEditing(true)}>{currentProject.name}</h1>
+                <h1 onClick={() => setIsEditing(true)}>
+                  {currentProject.name}
+                </h1>
 
-                <h4>
-                  Incomplete ({counter.incomplete}/{counter.total})
-                </h4>
+                <h4>Complete: ({currentProject.tally})</h4>
               </div>
             )}
-            <BtnCont>
-              {user.roleId !== 3 && <InviteNewUserModal buttonLabel="Invite User" />}
-              
+            <BtnCont data-cy="button-container">
+              {user.roleId !== 3 && (
+                <InviteNewUserModal buttonLabel="Invite User" />
+              )}
+
               {user.roleId === 1 && (
                 <NewProjBtn
                   to={`/project/${currentClient.id}/jobsheet/new`}

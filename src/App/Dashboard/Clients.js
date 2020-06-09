@@ -38,7 +38,7 @@ const Clients = (props) => {
   return (
     <Section>
       <ClientHeaderContain>
-        <Clientsh2>Clients</Clientsh2>
+        <Clientsh2 data-cy="clients-header">Clients</Clientsh2>
         <NewClientBtn to={`/client/new`} variant="primary">
           New&nbsp;Client
         </NewClientBtn>
@@ -50,6 +50,7 @@ const Clients = (props) => {
         {clientArray.map((client) => (
           <Spacer>
             <ClientBox
+              data-cy={`client-name-${client.id}`}
               data-client-name
               key={client.id}
               to={`/client/${client.id}`}
@@ -57,9 +58,13 @@ const Clients = (props) => {
               {client.companyName}
             </ClientBox>
             {client.completed !== true ? (
-              <FlexEnd>Incomplete</FlexEnd>
+              <FlexEnd data-cy={`client-complete-${client.id}`}>
+                Incomplete
+              </FlexEnd>
             ) : (
-              <FlexEnd2>Complete</FlexEnd2>
+              <FlexEnd2 data-cy={`client-complete-${client.id}`}>
+                Complete
+              </FlexEnd2>
             )}
           </Spacer>
         ))}
