@@ -54,3 +54,9 @@ Cypress.Commands.add("projectsToNewJobsheet", () => {
   cy.contains("Test Project 1").click();
   cy.contains("New Jobsheet").click();
 });
+
+Cypress.Commands.add("projectsToAssignTech", () => {
+  cy.dashboardToClient();
+  // cy.contains("Test Project 1").click();
+  cy.contains("Assign Techs").click();
+});
