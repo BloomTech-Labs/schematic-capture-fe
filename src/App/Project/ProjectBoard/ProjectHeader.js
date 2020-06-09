@@ -28,7 +28,7 @@ import Search from "../../Styles/Dashboard/Search.png";
 import Unknown from "../../Styles/Dashboard/unknown.jpg";
 
 import swal from "sweetalert";
-import TechModal from "./TechPopup";
+// import TechModal from "./TechPopup";
 
 const { updateProjectName, fetchJobsheets } = dispatchers;
 
@@ -60,6 +60,7 @@ const PageHeader = ({ counter, setCounter }) => {
     event.preventDefault();
     dispatch(updateProjectName(projectName, setIsEditing));
   };
+  
 
   useEffect(() => {
     fetchJobsheetsSideEffect(dispatch, params.id, setJobsheets);
@@ -154,7 +155,7 @@ const PageHeader = ({ counter, setCounter }) => {
             )}
             <BtnCont>
               {user.roleId !== 3 && <InviteNewUserModal buttonLabel="Invite User" />}
-              {user.roleId !== 3 && <TechModal buttonLabel="Assign Techs" />}
+              
               {user.roleId === 1 && (
                 <NewProjBtn
                   to={`/project/${currentClient.id}/jobsheet/new`}

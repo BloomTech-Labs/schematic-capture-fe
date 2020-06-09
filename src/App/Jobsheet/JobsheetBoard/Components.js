@@ -3,8 +3,11 @@ import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import SortDropDown from "../../../shared/components/Components/SortDropDown.js";
+
 import EditComponents from "./EditComponents.js";
+
 import { CSVLink } from "react-csv";
+
 import {
   List,
   Table,
@@ -27,12 +30,14 @@ const fetchComponentsSideEffect = async (dispatch, id) => {
 const Components = (props) => {
   const { register, getValues, setValue, handleSubmit, watch } = useForm();
   const components = useSelector((state) => state.dashboard.components);
+
   const [sortingComponents, setSortingComponents] = useState([]);
   const [sortingAsc, setSortingAsc] = useState(false);
   const [sortingDesc, setSortingDesc] = useState(false);
   const [sortingNone, setSortingNone] = useState(true);
   const user = useSelector((state) => state.auth.user);
   const [editing, setEditing] = useState(false);
+
   const [update, setUpdate] = useState([]);
   const [input, setInput] = useState({
     description: "",
@@ -174,6 +179,9 @@ const Components = (props) => {
                 props.component.map((component) => (
                   <tr key={component.id}>
                     {/* 
+
+    
+
                 {!editing ? <td data-label="Component" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.componentId}</td> : <form onSubmit={handleSubmit(onSubmit)}><input type="text" value={input} onChange={handleChange} ref={register}/></form> }
 
                 {!editing ? <td data-label="Description" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="description" value={input.description} onChange={handleChange} ref={register}/></form> }
@@ -197,6 +205,7 @@ const Components = (props) => {
                     <td data-label="Manufacturer">{component.manufacturer}</td>
                     <td data-label="Part Number">{component.partNumber}</td>
                     <td data-label="Stock Code">{component.stockCode}</td>
+
                     <td data-label="Select Image">
                       {component.image ? (
                         <a href={component.image}>View Image</a>
@@ -234,6 +243,7 @@ const Components = (props) => {
                     <td data-label="Stores Part #">
                       {component.storesPartNumber}
                     </td>
+
                     {user.roleId !== 3 && (
                       <EditComponents
                         buttonLabel="Update"

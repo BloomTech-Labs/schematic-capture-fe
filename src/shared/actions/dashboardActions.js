@@ -1,8 +1,10 @@
 import { actions as appActions } from "./appActions";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+// import { useParams } from "react-router-dom"
 const { APP_LOADING, APP_DONE_LOADING, APP_ERROR } = appActions;
 
 const FETCH_CLIENTS_SUCCESS = "FETCH_CLIENTS_SUCCESS";
+const SET_AVAILABLE_TECHS = "SET_AVAILABLE_TECHS";
 const SET_CURRENT_CLIENT = "SET_CURRENT_CLIENT";
 const SET_CURRENT_PROJECTS = "SET_CURRENT_PROJECTS";
 const SET_CURRENT_PROJECT = "SET_CURRENT_PROJECT";
@@ -13,12 +15,28 @@ const FETCH_COMPONENTS_SUCCESS = "FETCH_COMPONENTS_SUCCESS";
 const TOGGLE_COMPONENT_EDIT = "TOGGLE_COMPONENT_EDIT";
 const UPDATE_COMPONENT = "UPDATE_COMPONENT";
 
+const ASSIGN_TECH_PROJECT = "ASSIGN_TECH_PROJECT";
+
 const fetchClients = () => async (dispatch, getState) => {
   dispatch({ type: APP_LOADING });
 
   try {
     const clients = await axiosWithAuth().get("/clients");
     dispatch({ type: FETCH_CLIENTS_SUCCESS, payload: clients.data });
+    dispatch({ type: APP_DONE_LOADING });
+  } catch (error) {
+    dispatch({ type: APP_ERROR, payload: error.message });
+  }
+};
+
+const fetchAvailableTechs = () => async (dispatch) => {
+  dispatch({ type: APP_LOADING });
+
+  try {
+    const availableTechs = await axiosWithAuth().get("/users");
+    // @TODO: change to "/users/techs" after backend has been deployed.
+    console.log(availableTechs.data, " availableTechs.data");
+    dispatch({ type: SET_AVAILABLE_TECHS, payload: availableTechs.data });
     dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
     dispatch({ type: APP_ERROR, payload: error.message });
@@ -128,6 +146,23 @@ const fetchComponents = (id) => async (dispatch) => {
   try {
     const components = await axiosWithAuth().get(`/jobsheets/${id}/components`);
     dispatch({ type: FETCH_COMPONENTS_SUCCESS, payload: components.data });
+
+    dispatch({ type: APP_DONE_LOADING });
+  } catch (error) {
+    return dispatch({ type: APP_ERROR, payload: error.message });
+  }
+};
+
+const assignTechProject = (id, email, date) => async (dispatch) => {
+  dispatch({ type: APP_LOADING });
+  console.log(id, "ID!!!!");
+  let body = { email: email, date: date };
+  try {
+    const assignedTech = await axiosWithAuth().put(
+      `/projects/${id}/assignuser`,
+      body
+    );
+    dispatch({ type: ASSIGN_TECH_PROJECT, payload: assignedTech.data });
     dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
     return dispatch({ type: APP_ERROR, payload: error.message });
@@ -158,6 +193,7 @@ const toggleEditing = (setEditing, dispatch) => {
 
 export const dispatchers = {
   fetchClients,
+  fetchAvailableTechs,
   addNewClient,
   fetchProjects,
   addNewProject,
@@ -167,10 +203,12 @@ export const dispatchers = {
   fetchComponents,
   updateComponent,
   toggleEditing,
+  assignTechProject,
 };
 
 export const actions = {
   FETCH_CLIENTS_SUCCESS,
+  SET_AVAILABLE_TECHS,
   SET_CURRENT_CLIENT,
   SET_CURRENT_PROJECTS,
   SET_CURRENT_PROJECT,
@@ -179,4 +217,5 @@ export const actions = {
   FETCH_COMPONENTS_SUCCESS,
   TOGGLE_COMPONENT_EDIT,
   UPDATE_COMPONENT,
+  ASSIGN_TECH_PROJECT,
 };
