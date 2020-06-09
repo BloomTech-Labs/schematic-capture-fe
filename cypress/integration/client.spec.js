@@ -1,49 +1,49 @@
-describe('Test client page functionality', function() {
-  context('Select items from client page', function() {
+describe("Test client page functionality", function () {
+  context("Select items from client page", function () {
     // first need to log in, get to dashboard, then navigate to client page
-    beforeEach(function() {
+    beforeEach(function () {
       cy.dashboardToClient();
     });
 
-    it('navigates to Test Client 1 and displays correct content', function() {
+    it("navigates to Test Client 1 and displays correct content", function () {
       // Schematic capture header
-      cy.get('.sc-fzqPZZ')
+      cy.get("[data-cy=schematic-capture-heading]");
       // search widget
-      cy.get('.sc-fzqAbL')
+      cy.get("[data-cy=search]");
       // user widget
-      cy.get('.sc-fzpkJw')
+      cy.get("[data-cy=greeting]");
       // client name
-      cy.get('.sc-fzqARJ')
+      cy.get("[data-cy=client-name]");
+      // Assign techs button
+      cy.get("[data-cy=assign-techs]");
       // New Project button
-      cy.get('.sc-fzoNJl')
+      cy.get("[data-cy=new-project]");
       // Projects title bar
-      cy.get('.sc-fzqNqU')
+      cy.get("[data-cy=projects-title-bar]");
       // Name header
-      cy.get('thead > .sc-fznMAR > :nth-child(1)')
+      cy.get("[data-cy=name-header]");
       // Description header
-      cy.get('thead > .sc-fznMAR > :nth-child(1)')
+      cy.get("[data-cy=description-header]");
       // Technician header
-      cy.get('thead > .sc-fznMAR > :nth-child(3)')
+      cy.get("[data-cy=technician-header]");
       // Jobsheet header
-      cy.get('thead > .sc-fznMAR > :nth-child(4)')
+      cy.get("[data-cy=jobsheet-header]");
       // Status header
-      cy.get('thead > .sc-fznMAR > :nth-child(5)')
+      cy.get("[data-cy=status-header]");
       // First entry in projects table
-      cy.get(':nth-child(1) > :nth-child(1) > .sc-fzqBkg')
+      cy.get("[data-cy=projects-1]");
       // Second entry in projects table
-      cy.get(':nth-child(1) > :nth-child(1) > .sc-fzqBkg')
-      // Table row
-      cy.get('tbody > :nth-child(1) > :nth-child(1)')
-      cy.url().should('include', '/client')
-    }) 
+      cy.get("[data-cy=projects-2]");
+      cy.url().should("include", "/client");
+    });
 
-    it('captures correct location information', function() {
+    it("captures correct location information", function () {
       cy.location().should((location) => {
-        expect(location.port).to.eq('3000')
-        expect(location.protocol).to.eq('http:')
-        expect(location.hostname).to.eq('localhost')
-        expect(location.pathname).to.eq('/client/1')
-      })
-    })
-  })
-})
+        expect(location.port).to.eq("3000");
+        expect(location.protocol).to.eq("http:");
+        expect(location.hostname).to.eq("localhost");
+        expect(location.pathname).to.eq("/client/1");
+      });
+    });
+  });
+});

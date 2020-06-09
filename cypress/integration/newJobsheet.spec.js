@@ -8,9 +8,9 @@ describe("Testing new jobsheet component", function () {
 
       it("displays the header component correctly", function () {
         // Schematic Capture page title
-        cy.get(".sc-fzqPZZ");
+        cy.get("[data-cy=schematic-capture-heading]");
         // breadcrumb container
-        cy.get(".sc-fzqPZZ");
+        cy.get("[data-cy=breadcrumb]");
         // home breadcrumb
         cy.get('[href="/dashboard"] > div');
         // clients breadcrumb
@@ -18,9 +18,9 @@ describe("Testing new jobsheet component", function () {
         // projects breadcrumb
         cy.get('[href="/project/1"] > div');
         // user container
-        cy.get(".sc-fzpkJw");
+        cy.get("[data-cy=greeting]");
         // user profile
-        cy.get(".sc-fzoYHE");
+        cy.get("[data-cy=user-profile]");
       });
 
       it("displays the new jobsheet component correctly", function () {

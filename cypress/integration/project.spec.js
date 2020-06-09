@@ -8,15 +8,11 @@ describe("Test project page functionality", function () {
     it("Displays items on the project page correctly", function () {
       cy.url().should("include", "/project");
       // Top container
-      cy.get(".sc-fzoiQi");
-      // Completed status container
-      cy.get(".sc-fzoiQi > :nth-child(1)");
+      cy.get("[data-cy=top-container]");
       // Overall completed status indicator
       cy.get("h4");
       // Button container
-      cy.get(".sc-fzqOul");
-      // Assign techs button
-      cy.get('[href=""]');
+      cy.get("[data-cy=button-container]");
       // New jobsheet button
       cy.get('[variant="primary"]');
     });
