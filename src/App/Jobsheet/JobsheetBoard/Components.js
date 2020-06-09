@@ -30,7 +30,7 @@ const fetchComponentsSideEffect = async (dispatch, id) => {
 const Components = (props) => {
   const { register, getValues, setValue, handleSubmit, watch } = useForm();
   const components = useSelector((state) => state.dashboard.components);
-
+  const {currentJobsheet} = useSelector((state) => state.dashboard);
   const [sortingComponents, setSortingComponents] = useState([]);
   const [sortingAsc, setSortingAsc] = useState(false);
   const [sortingDesc, setSortingDesc] = useState(false);
@@ -140,7 +140,7 @@ const Components = (props) => {
 
   return (
     <section>
-      <Status>Incomplete()</Status>
+      <Status>Complete: {currentJobsheet.tally}</Status>
       <Wrapper>
         <CSVLink data={components}>Download CSV</CSVLink>
         <ImgWrapper>

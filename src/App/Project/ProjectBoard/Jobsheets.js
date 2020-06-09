@@ -67,6 +67,7 @@ const { currentClient, currentProject } = useSelector(
             <StyledTableHead scope="col">Name</StyledTableHead>
             <StyledTableHead scope="col">Description</StyledTableHead>
             <StyledTableHead scope="col">Techs</StyledTableHead>
+            <StyledTableHead scope="col">Components</StyledTableHead>
             <StyledTableHead scope="col">Status</StyledTableHead>
           </StyledTableRow>
         </thead>
@@ -100,6 +101,15 @@ const { currentClient, currentProject } = useSelector(
                   >
                   {/* Revise: Possibly change jobsheet.userEmail to map through an array is more than 1 tech */}
                   {jobsheet.userEmail}
+                  </ProjectLink>
+                </StyledTableData>
+                <StyledTableData>
+                  <ProjectLink
+                    data-button-jobsheet
+                    key={jobsheet.id}
+                    to={`/jobsheet/${jobsheet.id}`}
+                  >
+                  {jobsheet.tally}
                   </ProjectLink>
                 </StyledTableData>
                 <StyledTableData>
