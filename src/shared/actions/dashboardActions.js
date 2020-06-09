@@ -169,13 +169,13 @@ const assignTechProject = (id, email, date) => async (dispatch) => {
   }
 };
 
-const updateComponent = (id, formData) => async (dispatch) => {
+const updateComponent = (id, changes) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
   // console.log(formData, "FORM DATA HERE!!!")
   try {
     const updated = await axiosWithAuth().put(
       `/components/${id}/update/`,
-      formData
+      changes
     );
 
     console.log(updated, "UPDATE!!!!!");

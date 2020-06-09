@@ -22,9 +22,13 @@ import sort from "./Sort.png";
 import { dispatchers, actions } from "../../../shared/actions/dashboardActions";
 import DropboxChooser from "../CreateNew/Dropbox";
 
-const { fetchComponents } = dispatchers;
+const { fetchComponents, updateComponent } = dispatchers;
 const fetchComponentsSideEffect = async (dispatch, id) => {
   await dispatch(fetchComponents(id));
+};
+
+const updateComponentSideEffect = async (dispatch, id, changes) => {
+  await dispatch(updateComponent(id, changes));
 };
 
 const Components = (props) => {
@@ -178,29 +182,6 @@ const Components = (props) => {
               {props.component.length &&
                 props.component.map((component) => (
                   <tr key={component.id}>
-                    {/* 
-
-    
-
-                {!editing ? <td data-label="Component" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.componentId}</td> : <form onSubmit={handleSubmit(onSubmit)}><input type="text" value={input} onChange={handleChange} ref={register}/></form> }
-
-                {!editing ? <td data-label="Description" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="description" value={input.description} onChange={handleChange} ref={register}/></form> }
-
-                {!editing ? <td data-label="Manufacturer" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="manufacturer" value={input.manufacturer} onChange={handleChange} ref={register}/></form> }
-
-                {!editing ? <td data-label="Part Number" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="partNumber" value={input.partNumber} onChange={handleChange} ref={register}/></form> }
-
-                {!editing ? <td data-label="Stock Code" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="stockCode" value={input.stockCode} onChange={handleChange} ref={register}/></form> }
-                <td data-label="Select Image">
-                      <DropboxChooser />
-                    </td>
-
-                {!editing ? <td data-label="Resources" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="resources" value={input.resources} onChange={handleChange} ref={register}/></form> }
-
-                {!editing ? <td data-label="Cutsheet" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="cutsheet" value={input.cutsheet} onChange={handleChange} ref={register}/></form> }
-
-                {!editing ? <td data-label="Stores Part #" onClick={() => dispatch(dispatchers.toggleEditing)}>{component.descriptions}</td> : <form><input type="text" name="storesPartNumber" value={input.storesPartNumber} onChange={handleChange} ref={register}/></form> } */}
-
                     <td data-label="Description">{component.descriptions}</td>
                     <td data-label="Manufacturer">{component.manufacturer}</td>
                     <td data-label="Part Number">{component.partNumber}</td>
@@ -210,7 +191,12 @@ const Components = (props) => {
                       {component.image ? (
                         <a href={component.image}>View Image</a>
                       ) : (
-                        <DropboxChooser />
+                        <DropboxChooser
+                          inPopup={false}
+                          handleSelected={updateComponentSideEffect}
+                          componentId={component.id}
+                          dispatch={dispatch}
+                        />
                       )}
                     </td>
                     <td data-label="Resources">{component.resources}</td>
@@ -235,7 +221,12 @@ const Components = (props) => {
                       {component.image ? (
                         <a href={component.image}>View Image</a>
                       ) : (
-                        <DropboxChooser />
+                        <DropboxChooser
+                          inPopup={false}
+                          handleSelected={updateComponentSideEffect}
+                          componentId={component.id}
+                          dispatch={dispatch}
+                        />
                       )}
                     </td>
                     <td data-label="Resources">{component.resources}</td>

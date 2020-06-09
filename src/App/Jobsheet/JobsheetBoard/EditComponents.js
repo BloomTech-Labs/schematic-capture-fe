@@ -1,46 +1,36 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Form, FormGroup, Input, Label } from "reactstrap";
-import { useHistory, useParams } from "react-router-dom";
+import { Form, FormGroup, Input, Label } from "reactstrap";
 import { useDispatch } from "react-redux";
 import {
-  NewProjBtn2,
   NewProjBtn,
-  TechCont,
   MBody,
   MH1,
   ModalCont,
   Container,
   Mod,
-  BtnCont,
 } from "../../Styles/Jobsheets";
 import { dispatchers } from "../../../shared/actions/dashboardActions";
 
-import { FieldError } from "../../Styles/Auth/loginStyles";
 import { useForm } from "react-hook-form";
-
-
+import DropboxChooser from "../CreateNew/Dropbox";
 
 const EditComponents = ({ buttonLabel, component }) => {
-
-  console.log(component);
-  const { id } = useParams();
-  // const { buttonLabel, className } = props;
+  // console.log(component);
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const dispatch = useDispatch();
-  const history = useHistory();
   const [editInfo, setEditInfo] = useState({
     id: "",
     descriptions: "",
     manufacturer: "",
     partNumber: "",
     stockCode: "",
+    image: "",
     resources: "",
     cutsheet: "",
     storesPartNumber: "",
   });
   const { updateComponent } = dispatchers;
-
 
   useEffect(() => {
     setEditInfo({
@@ -49,13 +39,14 @@ const EditComponents = ({ buttonLabel, component }) => {
       manufacturer: component.manufacturer,
       partNumber: component.partNumber,
       stockCode: component.stockCode,
+      image: component.image,
       resources: component.resources,
       cutsheet: component.cutsheet,
       storesPartNumber: component.storesPartNumber,
     });
   }, []);
 
-  const { register, handleSubmit, errors } = useForm();
+  const { register } = useForm();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -63,24 +54,14 @@ const EditComponents = ({ buttonLabel, component }) => {
 
     dispatch(updateComponent(editInfo.id, editInfo));
     toggle();
-
   };
-
-  //   const handleSubmit = e => {
-  //     e.preventDefault()
-  //     axios
-  //         .put(`http://localhost:5000/api/movies/${id}`, item)
-  //         .then(res => {
-  //             console.log(res.data)
-  //             props.setMovieList([res.data].concat(props.movieList.filter(item => `${item.id}` !== id)))
-  //             push(`/`)
-  //         })
-
-  // }
 
   const handleChange = (e) => {
     setEditInfo({ ...editInfo, [e.target.name]: e.target.value });
-    // console.log(e.target.value);
+  };
+
+  const handleImageChange = (url) => {
+    setEditInfo({ ...editInfo, image: url });
   };
 
   const Update = () => {
@@ -151,6 +132,19 @@ const EditComponents = ({ buttonLabel, component }) => {
                 onChange={handleChange}
                 autoComplete="off"
                 ref={register}
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="image">Image</Label>
+              {/* display the last part of the image URL which is the name of the image */}
+              <p>
+                Currently:{" "}
+                {editInfo.image.split("/").slice(-1)[0].split("?")[0]}
+              </p>
+              <DropboxChooser
+                inPopup={true}
+                handleSelected={handleImageChange}
               />
             </FormGroup>
 
