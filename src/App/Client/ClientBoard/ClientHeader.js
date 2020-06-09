@@ -5,14 +5,14 @@ import Projects from "./Projects";
 
 import { BackToLink } from "../../../shared/components";
 import { useParams } from "react-router-dom";
-import  TechModal  from "../../Project/ProjectBoard/TechPopup";
+import TechModal from "../../Project/ProjectBoard/TechPopup";
 
 import {
   Projectsh1,
   NewProjBtn,
   Column,
   ClientHeaderContain,
-  Section2
+  Section2,
 } from "../../Styles/Client";
 
 import {
@@ -37,8 +37,6 @@ import { dispatchers, actions } from "../../../shared/actions/dashboardActions";
 
 const { fetchProjects } = dispatchers;
 const { SET_CURRENT_CLIENT, SET_CURRENT_PROJECTS } = actions;
-
-
 
 const fetchProjectsSideEffect = async (dispatch, id, setProjects) => {
   await dispatch(fetchProjects(id, setProjects));
@@ -82,10 +80,6 @@ const PageHeader = () => {
     );
   }, [editing, search]);
 
-  useEffect(() => {
-    console.log("arraylist tyler look here for list of projects", projects1);
-  }, [projects1]);
-
   const onLogout = () => {
     localStorage.removeItem("idToken");
     localStorage.removeItem("user");
@@ -101,7 +95,7 @@ const PageHeader = () => {
     <>
       <Seperate2>
         <Column>
-          <Title>Schematic Capture</Title>
+          <Title data-cy="schematic-capture-heading">Schematic Capture</Title>
           <Bread>
             <BackToLink
               style={{ marginBottom: "2rem" }}
@@ -112,7 +106,7 @@ const PageHeader = () => {
         </Column>
         <br />
         <RightSide>
-          <Buttion onClick={() => setEditing(!editing)}>
+          <Buttion data-cy="search" onClick={() => setEditing(!editing)}>
             <Hover src={Search} />
           </Buttion>
           {editing ? (
@@ -124,7 +118,7 @@ const PageHeader = () => {
           ) : (
             <></>
           )}
-          <Greeting onClick={onLogout} variant="primary">
+          <Greeting data-cy="greeting" onClick={onLogout} variant="primary">
             Hi, {user.firstName}
             <Profile src={Unknown} />
             <NameDropDownMenu
@@ -137,19 +131,20 @@ const PageHeader = () => {
       <ClientHeaderContain>
         {!!currentClient && (
           <Section2>
-            <Projectsh1>{currentClient.companyName}</Projectsh1>
+            <Projectsh1 data-cy="client-name">
+              {currentClient.companyName}
+            </Projectsh1>
             {user.roleId !== 3 && (
-                <BtnCont>
-              {user.roleId !== 3 && <TechModal buttonLabel="Assign Techs" />}
-          <NewProjBtn2
-                to={`/client/${currentClient.id}/project/new`}
-                variant="primary"
-              >
-                New&nbsp;Project
-              </NewProjBtn2>
-                
-            </BtnCont>
-              
+              <BtnCont>
+                {user.roleId !== 3 && <TechModal buttonLabel="Assign Techs" />}
+                <NewProjBtn2
+                  data-cy="new-project"
+                  to={`/client/${currentClient.id}/project/new`}
+                  variant="primary"
+                >
+                  New&nbsp;Project
+                </NewProjBtn2>
+              </BtnCont>
             )}
           </Section2>
         )}

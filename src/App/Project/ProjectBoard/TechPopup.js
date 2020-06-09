@@ -33,7 +33,7 @@ const TechModal = (props) => {
     name: null,
     date: null,
     project: null,
-    email: null
+    email: null,
   });
   const toggle = () => setModal(!modal);
   const [page, setPage] = useState(0);
@@ -43,12 +43,13 @@ const TechModal = (props) => {
     dispatch(assignTechProject());
   }, []);
 
-
   const handleChange = (e) => {
-   let techObject = techs.find(technician => technician.firstName == e.target.value);
+    let techObject = techs.find(
+      (technician) => technician.firstName == e.target.value
+    );
     setTech({ ...tech, name: e.target.value, email: techObject.email });
     console.log(e.target.value);
-    console.log(techObject, "TECHOBJ")
+    console.log(techObject, "TECHOBJ");
   };
   const handleDateChange = (e) => {
     setTech({ ...tech, date: e.target.value });
@@ -91,7 +92,7 @@ const TechModal = (props) => {
   techs.map((tech) => {
     techNames.push(tech.firstName);
   });
-  console.log(tech, "TECH")
+  console.log(tech, "TECH");
 
   // const { currentJobsheets } = useSelector((state) => state.dashboard);
   const { currentProjects } = useSelector((state) => state.dashboard);
@@ -228,7 +229,9 @@ const TechModal = (props) => {
 
   return (
     <ModalCont>
-      <NewProjBtn onClick={toggle}>{buttonLabel}</NewProjBtn>
+      <NewProjBtn data-cy="assign-techs" onClick={toggle}>
+        {buttonLabel}
+      </NewProjBtn>
       <Mod isOpen={modal} toggle={toggle}>
         <MH1>Assign Technician</MH1>
         <MBody>{pageNav(page)}</MBody>
