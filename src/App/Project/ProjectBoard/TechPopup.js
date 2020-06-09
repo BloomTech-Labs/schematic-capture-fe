@@ -19,14 +19,14 @@ const assignTechsSideEffect = async (dispatch, id, setTech) => {
 };
 
 const { assignTechProject, fetchAvailableTechs } = dispatchers;
-console.log(assignTechProject(), "ASSIGN TECHS");
+// console.log(assignTechProject(), "ASSIGN TECHS");
 const TechModal = (props) => {
   const { buttonLabel } = props;
   const dispatch = useDispatch();
-  var techNames = [];
+  var techEmails = [];
 
   const params = useParams();
-  console.log(params, "PARAMS");
+  // console.log(params, "PARAMS");
 
   const [modal, setModal] = useState(false);
   const [tech, setTech] = useState({
@@ -40,17 +40,16 @@ const TechModal = (props) => {
 
   useEffect(() => {
     dispatch(fetchAvailableTechs());
-    dispatch(assignTechProject());
   }, []);
 
   const handleChange = (e) => {
-    let techObject = techs.find(
-      (technician) => technician.firstName == e.target.value
-    );
-    setTech({ ...tech, name: e.target.value, email: techObject.email });
-    console.log(e.target.value);
-    console.log(techObject, "TECHOBJ");
+    let techObject = techs.find(technician => technician.email == e.target.value);
+    // console.log(techObject.firstName, ' techObject.firstName')
+    // console.log(techObject, "TECHOBJ")
+    setTech({ ...tech, name: `${techObject.firstName} ${techObject.lastName}`, email: e.target.value });
+    // console.log(e.target.value, ' e.target.value in handleChange');
   };
+
   const handleDateChange = (e) => {
     setTech({ ...tech, date: e.target.value });
     console.log(e.target.value);
@@ -90,9 +89,9 @@ const TechModal = (props) => {
   };
   const techs = useSelector((state) => state.dashboard.techs);
   techs.map((tech) => {
-    techNames.push(tech.firstName);
+    techEmails.push(tech.email);
   });
-  console.log(tech, "TECH");
+  // console.log(tech, "TECH")
 
   // const { currentJobsheets } = useSelector((state) => state.dashboard);
   const { currentProjects } = useSelector((state) => state.dashboard);
@@ -103,25 +102,26 @@ const TechModal = (props) => {
         return (
           <>
             <MBody>
-              {techNames.name === null ? (
+              {techEmails.name === null ? (
                 <Container>
                   <FieldError>Please assign a technician</FieldError>
                 </Container>
               ) : (
                 <></>
               )}
-              {techNames.map((ele) => {
-                if (ele === tech.name) {
+              {techEmails.map((email) => {
+                if (email === tech.email) {
+                  console.log(tech, ' is tech in techEmails.map')
                   return (
                     <TechCont>
                       <input
                         type="checkbox"
                         name={tech.name}
-                        value={ele}
+                        value={email}
                         checked={true}
                         onChange={handleChange}
                       />
-                      <label for={ele}>{ele}</label>
+                      <label htmlFor={tech.name}>{tech.name}</label>
                     </TechCont>
                   );
                 } else {
@@ -131,10 +131,10 @@ const TechModal = (props) => {
                         type="checkbox"
                         name={tech.name}
                         checked={false}
-                        value={ele}
+                        value={email}
                         onChange={handleChange}
                       />
-                      <label for={ele}>{ele}</label>
+                      <label htmlFor={tech.name}>{email}</label>
                     </TechCont>
                   );
                 }
