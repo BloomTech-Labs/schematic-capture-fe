@@ -17,7 +17,7 @@ const FirstLogin = () => {
     <AuthContainer>
       <GlobalStyle />
       <Container>
-        <PageTitle>Schematic Capture</PageTitle>
+        <PageTitle data-cy="schematic-capture-title">Schematic Capture</PageTitle>
           <Route exact path="/firstlogin/:userToken" component={FirstLoginForm} />
       </Container>
       <Footer />
