@@ -119,6 +119,9 @@ const PageHeader = (props) => {
         {!!currentJobsheet && (
           <>
             <h1 className="Currentjobsheet">{currentJobsheet.name}</h1>
+            <h4>
+                  Complete: ({currentJobsheet.tally})
+                </h4>
             <a href={currentJobsheet.schematic}>Link to Schematic</a>
           </>
         )}
