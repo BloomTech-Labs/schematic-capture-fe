@@ -210,7 +210,7 @@ const Components = (props) => {
             <tbody>
               {components.length &&
                 components.map((component) => (
-                  <tr key={component.id}>
+                  <tr data-cy={`component-${component.id}`} key={component.id}>
                     <td data-label="Component">{component.componentId}</td>
                     <td data-label="Description">{component.descriptions}</td>
                     <td data-label="Manufacturer">{component.manufacturer}</td>

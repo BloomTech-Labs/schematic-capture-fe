@@ -2,7 +2,7 @@ describe("Test project page functionality", function () {
   context("Select items from the project page", function () {
     // first need to log in and navigate to project page
     beforeEach(function () {
-      cy.projectToJobsheet();
+      cy.clientToProject();
     });
 
     it("Displays items on the project page correctly", function () {

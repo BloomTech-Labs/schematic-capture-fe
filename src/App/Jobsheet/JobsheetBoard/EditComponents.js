@@ -207,9 +207,14 @@ const EditComponents = ({ buttonLabel, component }) => {
 
   return (
     <ModalCont>
-      <NewProjBtn onClick={toggle}>{buttonLabel}</NewProjBtn>
+      <NewProjBtn data-cy="update-component-btn" onClick={toggle}>
+        {buttonLabel}
+      </NewProjBtn>
       <Mod isOpen={modal} toggle={toggle}>
-        <h2 style={{ textAlign: "center", padding: "2rem 0" }}>
+        <h2
+          data-cy="edit-component-header"
+          style={{ textAlign: "center", padding: "2rem 0" }}
+        >
           Edit Component
         </h2>
         <MBody>{Update(editInfo)}</MBody>

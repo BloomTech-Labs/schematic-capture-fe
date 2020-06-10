@@ -39,9 +39,14 @@ Cypress.Commands.add("dashboardToClient", () => {
   cy.contains("Test Client 1").click();
 });
 
-Cypress.Commands.add("projectToJobsheet", () => {
+Cypress.Commands.add("clientToProject", () => {
   cy.dashboardToClient();
   cy.contains("Test Project 1").click();
+});
+
+Cypress.Commands.add("projectToJobsheet", () => {
+  cy.clientToProject();
+  cy.contains("HPU_Manifolds Jobsheet 1.csv").click();
 });
 
 Cypress.Commands.add("clientToNewProject", () => {

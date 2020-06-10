@@ -2,7 +2,7 @@ describe("test jobsheet component", function () {
   context("select elements from the jobsheet component", function () {
     // login and navigate to project
     beforeEach(function () {
-      cy.projectToJobsheet();
+      cy.clientToProject();
     });
 
     it("displays elements correctly on the jobsheet page", function () {
