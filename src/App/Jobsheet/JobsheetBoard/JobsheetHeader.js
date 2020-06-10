@@ -72,7 +72,7 @@ const PageHeader = (props) => {
     <>
       <Seperate>
         <Column>
-          <Title>Schematic Capture</Title>
+          <Title data-cy="schematic-capture-heading">Schematic Capture</Title>
           <Bread>
             <BackToLink
               style={{ marginBottom: "2rem" }}
@@ -93,7 +93,7 @@ const PageHeader = (props) => {
         </Column>
         <br />
         <RightSide>
-          <Buttion onClick={() => setEditing(!editing)}>
+          <Buttion data-cy="search" onClick={() => setEditing(!editing)}>
             <Hover src={Search} />
           </Buttion>
           {editing ? (
@@ -105,7 +105,7 @@ const PageHeader = (props) => {
           ) : (
             <></>
           )}
-          <Greeting onClick={onLogout} variant="primary">
+          <Greeting data-cy="greeting" onClick={onLogout} variant="primary">
             Hi, {user.firstName}
             <Profile src={Unknown} />
             <NameDropDownMenu
@@ -119,9 +119,7 @@ const PageHeader = (props) => {
         {!!currentJobsheet && (
           <>
             <h1 className="Currentjobsheet">{currentJobsheet.name}</h1>
-            <h4>
-                  Complete: ({currentJobsheet.tally})
-                </h4>
+            <h4>Complete: ({currentJobsheet.tally})</h4>
             <a href={currentJobsheet.schematic}>Link to Schematic</a>
           </>
         )}

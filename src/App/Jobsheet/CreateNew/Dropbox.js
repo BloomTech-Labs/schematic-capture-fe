@@ -20,6 +20,7 @@ function Dropbox({ inPopup, handleSelected, componentId, dispatch }) {
     <>
       {inPopup ? (
         <NewProjBtn
+          data-cy="dropbox-change-image"
           style={{ margin: "5px 0", height: "25px" }}
           onClick={open}
           disabled={isOpen}
