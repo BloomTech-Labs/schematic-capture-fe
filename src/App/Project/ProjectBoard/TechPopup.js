@@ -113,7 +113,7 @@ const TechModal = (props) => {
               {techNames.map((ele) => {
                 if (ele === tech.name) {
                   return (
-                    <TechCont>
+                    <TechCont data-cy="checkboxes-for-techs">
                       <input
                         type="checkbox"
                         name={tech.name}
@@ -126,7 +126,7 @@ const TechModal = (props) => {
                   );
                 } else {
                   return (
-                    <TechCont>
+                    <TechCont  data-cy="checkboxes-for-techs">
                       <input
                         type="checkbox"
                         name={tech.name}
@@ -233,9 +233,9 @@ const TechModal = (props) => {
         {buttonLabel}
       </NewProjBtn>
       <Mod isOpen={modal} toggle={toggle}>
-        <MH1>Assign Technician</MH1>
+        <MH1 data-cy="assign-tech-header" >Assign Technician</MH1>
         <MBody>{pageNav(page)}</MBody>
-        <NewProjBtn2 onClick={changePage}>Next</NewProjBtn2>
+        <NewProjBtn2 data-cy="next-button" onClick={changePage}>Next</NewProjBtn2>
       </Mod>
     </ModalCont>
   );
