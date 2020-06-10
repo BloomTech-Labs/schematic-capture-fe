@@ -97,7 +97,7 @@ const Projects = (props) => {
                 </ProjectLink>
               </StyledTableData>
               <StyledTableData data-label="Project">
-                <ProjectLink to={`/project/${project.id}`}>
+                <ProjectLink data-cy="technician-email" to={`/project/${project.id}`}>
                   {project.technicians}
                 </ProjectLink>
               </StyledTableData>
