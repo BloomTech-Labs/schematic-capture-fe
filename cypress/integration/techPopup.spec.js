@@ -1,5 +1,7 @@
 describe("test techModal", function () {
+
     context("Assigns technician to project", function () {
+
       // login and navigate to project
       beforeEach(function () {
         cy.projectsToAssignTech();
@@ -36,6 +38,12 @@ describe("test techModal", function () {
         // shows header to form:
         cy.get("[data-cy=assign-tech-header]")
 
+      })
+
+      it("Should display tech's email in project after assignment", function () {
+
+        // barne272@msu.edu	under project 1:
+        cy.get("[data-cy=technician-email]").contains('barne272@msu.edu')
       })
 
     })
