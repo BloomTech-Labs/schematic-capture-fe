@@ -13,12 +13,9 @@ import {
 import { useSelector } from "react-redux"
 import Search from "../Styles/Dashboard/Search.png"
 import Unknown from "../Styles/Dashboard/unknown.jpg"
-import  Activity   from "./Activity"
 
 import swal from "sweetalert";
 import Clients from "./Clients"
-
-console.log(Activity, "Render Activity")
 
 const DashboardHeader = () => {
   const user = useSelector((state) => state.auth.user)
@@ -74,7 +71,6 @@ const DashboardHeader = () => {
           </Greeting>
         </RightSide>
       </Seperate>
-          <Activity />
       <Clients clientsSrc={clientout} search={search} />
     </>
   )

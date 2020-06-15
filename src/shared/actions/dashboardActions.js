@@ -14,7 +14,7 @@ const UPDATE_CURRENT_PROJECT_NAME = "UPDATE_CURRENT_PROJECT_NAME";
 const FETCH_COMPONENTS_SUCCESS = "FETCH_COMPONENTS_SUCCESS";
 const TOGGLE_COMPONENT_EDIT = "TOGGLE_COMPONENT_EDIT";
 const UPDATE_COMPONENT = "UPDATE_COMPONENT";
-
+const FETCH_ACTIVITIES = "FETCH_ACTIVITIES";
 const ASSIGN_TECH_PROJECT = "ASSIGN_TECH_PROJECT";
 
 const fetchClients = () => async (dispatch, getState) => {
@@ -191,6 +191,20 @@ const toggleEditing = (setEditing, dispatch) => {
   dispatch({ type: TOGGLE_COMPONENT_EDIT, payload: edit });
 };
 
+const fetchActivities = () => async (dispatch) => {
+  dispatch({ type: APP_LOADING });
+
+  
+  try {
+    const activities = await axiosWithAuth().get(`/activity`);
+    dispatch({ type: FETCH_ACTIVITIES, payload: activities.data });
+
+    dispatch({ type: APP_DONE_LOADING });
+  } catch (error) {
+    return dispatch({ type: APP_ERROR, payload: error.message });
+  }
+}
+
 export const dispatchers = {
   fetchClients,
   fetchAvailableTechs,
@@ -203,6 +217,7 @@ export const dispatchers = {
   fetchComponents,
   updateComponent,
   toggleEditing,
+  fetchActivities,
   assignTechProject,
 };
 
@@ -217,5 +232,6 @@ export const actions = {
   FETCH_COMPONENTS_SUCCESS,
   TOGGLE_COMPONENT_EDIT,
   UPDATE_COMPONENT,
+  FETCH_ACTIVITIES,
   ASSIGN_TECH_PROJECT,
 };
