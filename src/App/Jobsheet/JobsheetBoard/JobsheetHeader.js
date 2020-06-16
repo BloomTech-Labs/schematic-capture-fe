@@ -126,9 +126,9 @@ const PageHeader = (props) => {
         )}
         
       </div>
-      <CSVButton>
-          <a href={currentJobsheet.schematic}>View Schematic</a>
-        </CSVButton>
+     
+          <a href={currentJobsheet.schematic}> <CSVButton>View Schematic</CSVButton></a>
+        
       <Components component={components1} search={search} />
     </>
   );
