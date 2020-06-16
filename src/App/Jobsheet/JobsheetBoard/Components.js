@@ -8,6 +8,8 @@ import EditComponents from "./EditComponents.js";
 
 import { CSVLink } from "react-csv";
 
+import { CSVButton } from "../../Styles/Jobsheet/ComponetStyle";
+
 import {
   List,
   Table,
@@ -147,7 +149,10 @@ const Components = (props) => {
     <section>
       {/* <Status>Complete: {currentJobsheet.tally}</Status> */}
       <Wrapper>
-        <CSVLink data={components}>Download CSV</CSVLink>
+        <CSVLink data={components}>
+          <CSVButton> Download CSV</CSVButton>
+        </CSVLink>
+
         <ImgWrapper>
           <Sorticon>
             <Buttin className="Sort">
