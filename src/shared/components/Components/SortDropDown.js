@@ -5,9 +5,9 @@ export default props => {
 
     return (
         <Container>
-            <Buttion onClick={props.sortAscending}> Ascending</Buttion>
-            <Buttion onClick={props.sortDescending}> Descening</Buttion>
-            <Buttion onClick={props.sortNone}> None</Buttion>
+            <Buttion onClick={props.sortAscending}>Description Asc</Buttion>
+            <Buttion onClick={props.sortDescending}>Description Desc</Buttion>
+            <Buttion onClick={props.sortNone}>By ID</Buttion>
         </Container>
     );
 }
