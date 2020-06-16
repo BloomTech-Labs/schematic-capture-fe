@@ -124,11 +124,12 @@ const PageHeader = (props) => {
             <h4>Complete: ({currentJobsheet.tally})</h4>
           </>
         )}
-        
       </div>
-     
-          <a href={currentJobsheet.schematic}> <CSVButton>View Schematic</CSVButton></a>
-        
+
+      <CSVButton>
+        <a href={currentJobsheet.schematic}> View Schematic</a>
+      </CSVButton>
+
       <Components component={components1} search={search} />
     </>
   );

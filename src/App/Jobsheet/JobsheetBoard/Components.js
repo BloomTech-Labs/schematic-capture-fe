@@ -96,7 +96,7 @@ const Components = (props) => {
       });
       setSortingComponents(components);
     }
-  }, [sortingComponents, sortingAsc, sortingDesc, components]);
+  }, [sortingComponents, sortingAsc, sortingDesc, sortingNone, components]);
   console.log(components, "HEEY DATA!");
 
   useEffect(() => {
@@ -111,7 +111,21 @@ const Components = (props) => {
       });
       setSortingComponents(components);
     }
-  }, [sortingComponents, sortingDesc, sortingAsc, components]);
+  }, [sortingComponents, sortingDesc, sortingAsc, sortingNone, components]);
+
+  useEffect(() => {
+    if (sortingNone === true) {
+      components.sort((a, b) => {
+        if (a.componentId < b.componentId) {
+          return -1;
+        }
+        if (a.componentId > b.componentId) {
+          return 1;
+        }
+      });
+      setSortingComponents(components);
+    }
+  }, [sortingComponents, sortingNone, sortingAsc, sortingDesc, components]);
 
   function sortAscending() {
     if (sortingDesc === true) {
@@ -149,9 +163,9 @@ const Components = (props) => {
     <section>
       {/* <Status>Complete: {currentJobsheet.tally}</Status> */}
       <Wrapper>
-        <CSVLink data={components}>
-          <CSVButton> Download CSV</CSVButton>
-        </CSVLink>
+        <CSVButton>
+          <CSVLink data={components}>Download CSV</CSVLink>
+        </CSVButton>
 
         <ImgWrapper>
           <Sorticon>
