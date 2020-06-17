@@ -186,9 +186,29 @@ const updateComponent = (id, changes) => async (dispatch) => {
   }
 };
 
-const toggleEditing = (setEditing, dispatch) => {
-  const edit = setEditing(true);
-  dispatch({ type: TOGGLE_COMPONENT_EDIT, payload: edit });
+const sortComponents = (sortType, components) => (dispatch) => {
+  let sortedComponents;
+  switch (sortType) {
+    case "idDesc":
+      sortedComponents = components.sort(
+        (a, b) => parseInt(a.componentId) - parseInt(b.componentId)
+      );
+      break;
+    case "descriptionAsc":
+      sortedComponents = components.sort((a, b) => {
+        if (a.descriptions === b.descriptions) return 0;
+        return a.descriptions > b.descriptions ? 1 : -1;
+      });
+      break;
+    case "descriptionDesc":
+      sortedComponents = components.sort((a, b) => {
+        if (a.descriptions === b.descriptions) return 0;
+        return a.descriptions < b.descriptions ? 1 : -1;
+      });
+      break;
+  }
+
+  dispatch({ type: FETCH_COMPONENTS_SUCCESS, payload: sortedComponents });
 };
 
 export const dispatchers = {
@@ -202,8 +222,8 @@ export const dispatchers = {
   addNewJobsheet,
   fetchComponents,
   updateComponent,
-  toggleEditing,
   assignTechProject,
+  sortComponents,
 };
 
 export const actions = {
