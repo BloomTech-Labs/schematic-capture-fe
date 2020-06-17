@@ -68,7 +68,9 @@ const DashboardHeader = () => {
             /> :
             <></>
           }
+          {user.roleId !== 3 && (
             <ActivityModal />
+          )}
           <Greeting onClick={onLogout} variant="primary">
             Hi, {user.firstName}
             <Profile src={Unknown} />

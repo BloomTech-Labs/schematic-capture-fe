@@ -19,7 +19,7 @@ const Activity = () => {
  return (
      <div>
          {activities.map((activity) => (
-             <ActivityList>{activity.action}&nbsp;</ActivityList>
+             <ActivityList>{activity.action}</ActivityList>
              
              )
          )}
