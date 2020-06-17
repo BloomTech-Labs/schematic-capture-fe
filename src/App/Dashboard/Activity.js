@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dispatchers } from "../../shared/actions/dashboardActions";
 
+import { ActivityList } from "../Styles/Dashboard/index"
 const { fetchActivities } = dispatchers;
 
 const Activity = () => {
@@ -18,7 +19,8 @@ const Activity = () => {
  return (
      <div>
          {activities.map((activity) => (
-             <p>{activity.action}</p>
+             <ActivityList>{activity.action}&nbsp;</ActivityList>
+             
              )
          )}
      </div>
