@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import BackToLink from "../../../shared/components/Components/BackToLink";
 import Components from "./Components";
+import Help from "../../../shared/components/Components/Help";
+
 
 import {
   Title,
@@ -125,6 +127,7 @@ const PageHeader = (props) => {
         )}
       </div>
       <Components component={components1} search={search} />
+      <Help linkTo="JobsheetsHelp" thisPage={PageHeader} />
     </>
   );
 };

@@ -11,12 +11,20 @@ const HelpModal = (props) => {
         switch (type) {
             case "ClientsListHelp":
                 return (
-                    <p>help for Clients List:</p>
+                    <p>This is how you use the Clients Page....</p>
                 )
             case "ProjectListHelp":
                 return (
-                    <p>help for Projects list:</p>
+                    <p>This is how you use the Projects Page...</p>
                 )
+            case "ProjectHelp":
+                return (
+                    <p>This is how you use the Project Page...</p>
+                )
+            case "JobsheetsHelp":
+                    return (
+                        <p>This is how you use the Jobsheets Page...</p>
+                    )
             default:
                 break;
         }

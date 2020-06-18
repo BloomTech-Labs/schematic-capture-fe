@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import NameDropDownMenu from "../../../shared/components/Components/NameDropDownMenu";
+import Help from "../../../shared/components/Components/Help";
+
 
 import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { BackToLink } from "../../../shared/components";
@@ -174,6 +176,7 @@ const PageHeader = ({ counter, setCounter }) => {
         search={search}
         setCounter={setCounter}
       />
+      <Help linkTo="ProjectHelp" thisPage={PageHeader} />
     </>
   );
 };
