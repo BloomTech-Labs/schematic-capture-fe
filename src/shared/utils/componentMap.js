@@ -13,7 +13,7 @@ export const apiToDisplay = {
   image: "Image",
   resources: "Resources",
   cutsheet: "Cutsheet",
-  maintenanceVideo: "Maintenance Video"
+  maintenanceVideo: "Maintenance Video",
 };
 
 export const csvToApi = {
@@ -31,5 +31,23 @@ export const csvToApi = {
   Image: "image",
   Resources: "resources",
   Cutsheet: "cutsheet",
-  "Maintenance Video": "maintenanceVideo"
+  "Maintenance Video": "maintenanceVideo",
 };
+
+export const headerKeys = [
+  { key: "componentId", label: "Component" },
+  { key: "rlCategory", label: "RL Category" },
+  { key: "rlNumber", label: "RL Number" },
+  { key: "descriptions", label: "Description" },
+  { key: "manufacturer", label: "Manufacturer" },
+  { key: "partNumber", label: "Part Number" },
+  { key: "stockCode", label: "Stock Code" },
+  { key: "electricalAddress", label: "Electrical Address" },
+  { key: "componentApplication", label: "Component Application" },
+  { key: "referenceTag", label: "Reference Tag" },
+  { key: "settings", label: "Settings" },
+  { key: "image", label: "Image" },
+  { key: "resources", label: "Resources" },
+  { key: "cutsheet", label: "Cutsheet" },
+  { key: "maintenanceVideo", label: "Maintenance Video" },
+];
