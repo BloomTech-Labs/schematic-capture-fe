@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import { color, font } from "../../Styles/index";
+import SchematicChooser from "../../Jobsheet/CreateNew/DropboxSchematicChooser";
 
 export const NewSection2 = styled.section`
   margin: 0 25rem;
@@ -13,4 +16,81 @@ export const NewSection2 = styled.section`
   }
 `;
 
-// export const 
+export const NewBtnCont = styled.div`
+  height: 33vh;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: space-evenly;
+`;
+
+
+
+export const NewProjBtn1 = styled.p`
+  display: flex;
+  margin: 1.5rem;
+  border-radius: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: 2px solid ${color.blue};
+  color: ${color.blue};
+  padding: 0.2rem 0.5rem;
+  width: 15rem;
+  height: 4.5rem;
+  opacity: 1;
+  font-weight: bold;
+  :hover {
+    text-decoration: none;
+    color: white;
+    background-color: ${color.blue};
+  }
+`;
+
+export const NewProjBtn2 = styled.button`
+  display: flex;
+  margin: 1.5rem;
+  border-radius: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: 2px solid ${color.blue};
+  color: ${color.blue};
+  padding: 0.2rem 0.5rem;
+  width: 15rem;
+  height: 4.5rem;
+  opacity: 1;
+  font-weight: bold;
+  :hover {
+    text-decoration: none;
+    color: white;
+    background-color: ${color.blue};
+  }
+`;
+
+export const NewProjBtn3 = styled.button`
+  display: flex;
+  margin: 1.5rem;
+  border-radius: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: 2px solid ${color.blue};
+  color: ${color.blue};
+  padding: 0.2rem 0.5rem;
+  width: 15rem;
+  height: 4.5rem;
+  opacity: 1;
+  font-weight: bold;
+  :hover {
+    text-decoration: none;
+    color: white;
+    background-color: ${color.blue};
+  }
+`;
+
+export const JobsheetInput = styled.div`
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 3.3rem;
+`;

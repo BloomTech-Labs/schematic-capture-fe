@@ -11,7 +11,14 @@ import Header from "./CNJobsheetHeader";
 
 import {
   NewSection2,
+  NewBtnCont,
+  NewProjBtn1,
+  NewProjBtn2,
+  NewProjBtn3,
+  JobsheetInput
+  
 } from "../../Styles/Jobsheet/NewJobsheetStyle";
+// import { NewProjBtn } from "../../Styles/Jobsheets";
 
 const { addNewJobsheet } = dispatchers;
 
@@ -80,9 +87,31 @@ const CreateNewJobsheet = () => {
       <NewSection2>
         <div>
           <h1>Schematic Capture</h1>
+              <JobsheetInput>
+                  <input
+                  hidden
+                  id="pdf"
+                  name="pdf"
+                  multiple={false}
+                  type="file"
+                  accept=".pdf"
+                  ref={register}
+                />
+                
+              </JobsheetInput>
+                <input
+                  name="name"
+                  placeholder="JobSheet Name"
+                  disabled={!isNew}
+                  hidden={!isNew}
+                  ref={register({ required: true })}
+                />
+
+            
+            
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div>
+          <NewBtnCont>
             <div>
               <div>
                 <label
@@ -90,7 +119,7 @@ const CreateNewJobsheet = () => {
                   htmlFor="csv"
                   onClick={() => setIsNew(true)}
                 >
-                  <p onClick={() => setIsNew(true)}>Import CSV</p>
+                  <NewProjBtn1 onClick={() => setIsNew(true)}>Import CSV</NewProjBtn1>
                 </label>
                 {/* <div hidden={getValues().name}> or </div>
                 <button
@@ -104,10 +133,12 @@ const CreateNewJobsheet = () => {
               <label htmlFor="name"></label>
             </div>
             <label type="button" htmlFor="pdf" hidden={!getValues().name}>
-              <SchematicChooser
-                imageFile={imageFile}
-                setImageFile={setImageFile}
-              />
+              <NewProjBtn3>
+                <SchematicChooser
+                  imageFile={imageFile}
+                  setImageFile={setImageFile}
+                />
+              </NewProjBtn3>
             </label>
             <input hidden name="components" ref={register} />
             <input
@@ -119,30 +150,13 @@ const CreateNewJobsheet = () => {
               accept=".csv"
               ref={register}
             />
-            <button type="submit" hidden={!getValues().name}>
+            <NewProjBtn2 type="submit" hidden={!getValues().name}>
               Submit Jobsheet
-            </button>
-          </div>
+            </NewProjBtn2>
+          </NewBtnCont>
         </form>
       </NewSection2>
-      <input
-        hidden
-        id="pdf"
-        name="pdf"
-        multiple={false}
-        type="file"
-        accept=".pdf"
-        ref={register}
-      />
-      <NewSection2>
-        <input
-          name="name"
-          placeholder="JobSheet Name"
-          disabled={!isNew}
-          hidden={!isNew}
-          ref={register({ required: true })}
-        />
-      </NewSection2>
+      
       <div>
         <table>
           <div hidden={preview} style={{textAlign: "center", fontSize: "60%"}}>
