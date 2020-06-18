@@ -1,25 +1,33 @@
 import React from "react"
 import { HelpButton, Footer } from "../../../App/Styles/Dashboard/index.js"
+import TechModal from "../../../App/Project/ProjectBoard/TechPopup"
+
 
 const Help = props => {
     console.log(props, ' is props in Help')
 
-    // let relevantHelp = "";
+    let imgURL = "";
 
-    // if (props.linkTo === "ClientsListHelp") {
-    //     let relevantHelp = "?"
-    //     console.log("You would like help with the Clients List")
-    //     return relevantHelp;
-    // } if (props.linkTo === "ProjectListHelp") {
-    //     let relevantHelp = "??"
-    //     console.log("You would like help with the Projects List")
-    //     return relevantHelp
-    // }
+    const findRelevantHelp = () => {
+        if (props.linkTo === "ClientsListHelp") {
+            console.log("You would like help with the Clients List")
+            return (
+                <TechModal />
+            );
+
+        } if (props.linkTo === "ProjectListHelp") {
+            console.log("You would like help with the Projects List")
+            return (
+                <p>HELP ON THE PROJECTS LIST</p>
+            )
+        }
+    }
+
 
     return (
         <>
         <Footer>
-            <HelpButton> ?</HelpButton>
+            <HelpButton to={findRelevantHelp}> ?</HelpButton>
         </Footer>
         </>
     )

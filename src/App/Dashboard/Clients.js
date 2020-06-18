@@ -72,7 +72,7 @@ const Clients = (props) => {
           ))}
         </ClientCont>
       </Section>
-      <Help linkTo="ClientsListHelp" />
+      <Help linkTo="ClientsListHelp" thisPage={Clients}/>
     </>
   );
 };
