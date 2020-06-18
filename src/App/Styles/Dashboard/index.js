@@ -241,9 +241,22 @@ export const Buttion = styled.button`
 `;
 // Activity modal styles
 
-export const ActivityList = styled.li`
+export const ActivityList = styled.p`
   font-size: 11px;
-  line-height: 18px;
+  line-height: 20px;
   font-weight: bold;
+  margin-left: 4px;
   font-family: Open Sans;
-`;
+  `;
+  
+  export const ActivityTime = styled.p`
+  font-size: 11px;
+  line-height: 15px;
+  text-align: right;
+  font-family: Open Sans;
+`
+export const ActivityCard = styled.div`
+  border: solid black 1px;
+  border-radius: 3px;
+  margin-bottom: 5px
+`
