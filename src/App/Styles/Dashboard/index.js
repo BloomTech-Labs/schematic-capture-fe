@@ -58,6 +58,7 @@ export const NewClientBtn = styled(Link)`
 export const Footer = styled.footer`
     margin-right: 16rem;
     padding-top: 5%;
+    padding-bottom: 5%;
     display: flex;
     justify-content: flex-end;
 `
