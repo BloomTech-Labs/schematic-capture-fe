@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import SortDropDown from "../../../shared/components/Components/SortDropDown.js";
+import { headerKeys } from "../../../shared/utils/componentMap";
 
 import EditComponents from "./EditComponents.js";
 
@@ -63,9 +64,8 @@ const Components = (props) => {
       {/* <Status>Complete: {currentJobsheet.tally}</Status> */}
       <Wrapper>
         <CSVButton>
-          <CSVLink data={components}>Download CSV</CSVLink>
+          <CSVLink data={components} headers={headerKeys}>Download CSV</CSVLink>
         </CSVButton>
-
         <ImgWrapper>
           <Sorticon>
             <Buttin className="Sort">
