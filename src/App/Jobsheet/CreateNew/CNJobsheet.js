@@ -9,6 +9,10 @@ import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { csvToApi } from "../../../shared/utils/componentMap";
 import Header from "./CNJobsheetHeader";
 
+import {
+  NewSection2,
+} from "../../Styles/Jobsheet/NewJobsheetStyle";
+
 const { addNewJobsheet } = dispatchers;
 
 const reader = new FileReader();
@@ -73,7 +77,7 @@ const CreateNewJobsheet = () => {
   return (
     <>
       <Header />
-      <div>
+      <NewSection2>
         <div>
           <h1>Schematic Capture</h1>
         </div>
@@ -88,14 +92,14 @@ const CreateNewJobsheet = () => {
                 >
                   <p onClick={() => setIsNew(true)}>Import CSV</p>
                 </label>
-                <div hidden={getValues().name}> or </div>
+                {/* <div hidden={getValues().name}> or </div>
                 <button
                   type="button"
                   hidden={getValues().name}
                   onClick={() => setIsNew(true)}
                 >
                   Create A Blank Job Sheet
-                </button>
+                </button> */}
               </div>
               <label htmlFor="name"></label>
             </div>
@@ -120,7 +124,7 @@ const CreateNewJobsheet = () => {
             </button>
           </div>
         </form>
-      </div>
+      </NewSection2>
       <input
         hidden
         id="pdf"
@@ -130,7 +134,7 @@ const CreateNewJobsheet = () => {
         accept=".pdf"
         ref={register}
       />
-      <div>
+      <NewSection2>
         <input
           name="name"
           placeholder="JobSheet Name"
@@ -138,10 +142,10 @@ const CreateNewJobsheet = () => {
           hidden={!isNew}
           ref={register({ required: true })}
         />
-      </div>
+      </NewSection2>
       <div>
         <table>
-          <div hidden={preview}>
+          <div hidden={preview} style={{textAlign: "center", fontSize: "60%"}}>
             <h1>Please import a CSV to render a preview.</h1>
           </div>
           <tr hidden={!preview}>
