@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dispatchers } from "../../shared/actions/dashboardActions";
-import 
+import moment from "moment"
 
 import { ActivityList, ActivityTime, ActivityCard } from "../Styles/Dashboard/index";
 const { fetchActivities } = dispatchers;
@@ -21,7 +21,7 @@ const Activity = () => {
         {activities.map((activity) => (
           <ActivityCard>
             <ActivityList>{activity.action}</ActivityList>
-            <ActivityTime>{activity.timestamp}</ActivityTime>
+            <ActivityTime>{moment(activity.timestamp).format('MMMM Do YYYY, h:mm:ss a')}</ActivityTime>
             </ActivityCard>
         ))}
    
