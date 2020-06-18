@@ -23,8 +23,6 @@ const Clients = (props) => {
   const dispatch = useDispatch();
   const clients = useSelector((state) => state.dashboard.clients);
 
-  // console.log(clients);
-
   useEffect(() => {
     dispatch(fetchClients());
   }, []);
@@ -46,7 +44,6 @@ const Clients = (props) => {
           </NewClientBtn>
         </ClientHeaderContain>
         <LineBreak />
-        {/* @TODO: Please make cleaner sometime */}
 
         <ClientCont>
           {clientArray.map((client) => (

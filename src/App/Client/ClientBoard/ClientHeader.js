@@ -151,7 +151,7 @@ const PageHeader = () => {
         )}
       </ClientHeaderContain>
       <Projects project={projects1} search={search} />
-      <Help linkTo="ProjectListHelp" thisPage={PageHeader} />
+      <Help linkTo="ProjectListHelp" />
     </>
   );
 };
