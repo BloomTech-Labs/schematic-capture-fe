@@ -127,7 +127,7 @@ const PageHeader = (props) => {
         )}
       </div>
       <Components component={components1} search={search} />
-      <Help linkTo="JobsheetsHelp" thisPage={PageHeader} />
+      <Help linkTo="JobsheetsHelp" />
     </>
   );
 };

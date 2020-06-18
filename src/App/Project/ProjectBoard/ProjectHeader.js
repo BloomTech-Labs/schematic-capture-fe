@@ -176,7 +176,7 @@ const PageHeader = ({ counter, setCounter }) => {
         search={search}
         setCounter={setCounter}
       />
-      <Help linkTo="ProjectHelp" thisPage={PageHeader} />
+      <Help linkTo="ProjectHelp" />
     </>
   );
 };
