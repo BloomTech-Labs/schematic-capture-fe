@@ -9,11 +9,11 @@ import EditComponents from "./EditComponents.js";
 
 import { CSVLink } from "react-csv";
 
+import { CSVButton } from "../../Styles/Jobsheet/ComponetStyle";
+
 import {
-  List,
   Table,
   Wrapper,
-  Status,
   ImgWrapper,
   Sorticon,
   Buttin,
@@ -23,7 +23,7 @@ import sort from "./Sort.png";
 import { dispatchers, actions } from "../../../shared/actions/dashboardActions";
 import DropboxChooser from "../CreateNew/Dropbox";
 
-const { fetchComponents, updateComponent } = dispatchers;
+const { fetchComponents, updateComponent, sortComponents } = dispatchers;
 const fetchComponentsSideEffect = async (dispatch, id) => {
   await dispatch(fetchComponents(id));
 };
@@ -32,46 +32,22 @@ const updateComponentSideEffect = async (dispatch, id, changes) => {
   await dispatch(updateComponent(id, changes));
 };
 
+const sortComponentsSideEffect = (dispatch, sortType, components) => {
+  dispatch(sortComponents(sortType, components));
+};
+
 const Components = (props) => {
   const { register, getValues, setValue, handleSubmit, watch } = useForm();
   const components = useSelector((state) => state.dashboard.components);
-  const [sortingComponents, setSortingComponents] = useState([]);
-  const [sortingAsc, setSortingAsc] = useState(false);
-  const [sortingDesc, setSortingDesc] = useState(false);
-  const [sortingNone, setSortingNone] = useState(true);
   const user = useSelector((state) => state.auth.user);
-  const [editing, setEditing] = useState(false);
-
-  const [update, setUpdate] = useState([]);
-  const [input, setInput] = useState({
-    description: "",
-    manufacturer: "",
-    partNumber: "",
-    stockCode: "",
-    resources: "",
-    cutsheet: "",
-    storesPartNumber: "",
-  });
 
   const dispatch = useDispatch();
   const params = useParams();
   const history = useHistory();
 
-  const handleChange = (e) => {
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const onSubmit = (data) => {
-    setUpdate();
-    console.log();
-  };
-
   useEffect(() => {
     fetchComponentsSideEffect(dispatch, params.id, history);
-  }, [sortingNone]);
+  }, []);
 
   useEffect(() => {
     const file = watch("jpg");
@@ -83,82 +59,35 @@ const Components = (props) => {
     }
   }, [watch("jpg")]);
 
-  useEffect(() => {
-    if (sortingAsc === true) {
-      components.sort((a, b) => {
-        if (a.descriptions < b.descriptions) {
-          return -1;
-        }
-        if (a.descriptions > b.descriptions) {
-          return 1;
-        }
-      });
-      setSortingComponents(components);
-    }
-  }, [sortingComponents, sortingAsc, sortingDesc, components]);
-  console.log(components, "HEEY DATA!");
-
-  useEffect(() => {
-    if (sortingDesc === true) {
-      components.sort((a, b) => {
-        if (a.descriptions < b.descriptions) {
-          return 1;
-        }
-        if (a.descriptions > b.descriptions) {
-          return -1;
-        }
-      });
-      setSortingComponents(components);
-    }
-  }, [sortingComponents, sortingDesc, sortingAsc, components]);
-
-  function sortAscending() {
-    if (sortingDesc === true) {
-      setSortingDesc(!sortingDesc);
-    }
-    if (sortingNone === true) {
-      setSortingNone(!sortingNone);
-    }
-    setSortingAsc(!sortingAsc);
-  }
-
-  function sortDescending() {
-    if (sortingAsc === true) {
-      setSortingAsc(!sortingAsc);
-    }
-    if (sortingNone === true) {
-      setSortingNone(!sortingNone);
-    }
-    setSortingDesc(!sortingDesc);
-  }
-
-  function sortNone() {
-    if (sortingAsc === true) {
-      setSortingAsc(!sortingAsc);
-    }
-    if (sortingDesc === true) {
-      setSortingDesc(!sortingDesc);
-    }
-    setSortingNone(!sortingNone);
-  }
-
-  console.log(components);
-
   return (
     <section>
       {/* <Status>Complete: {currentJobsheet.tally}</Status> */}
       <Wrapper>
-        <CSVLink data={components} headers={headerKeys}>
-          Download CSV
-        </CSVLink>
+        <CSVButton>
+          <CSVLink data={components} headers={headerKeys}>Download CSV</CSVLink>
+        </CSVButton>
         <ImgWrapper>
           <Sorticon>
             <Buttin className="Sort">
               <img src={sort} />
               <SortDropDown
-                sortAscending={sortAscending}
-                sortDescending={sortDescending}
-                sortNone={sortNone}
+                sortAscending={() =>
+                  sortComponentsSideEffect(
+                    dispatch,
+                    "descriptionAsc",
+                    components
+                  )
+                }
+                sortDescending={() =>
+                  sortComponentsSideEffect(
+                    dispatch,
+                    "descriptionDesc",
+                    components
+                  )
+                }
+                sortNone={() =>
+                  sortComponentsSideEffect(dispatch, "idDesc", components)
+                }
               />
             </Buttin>
           </Sorticon>

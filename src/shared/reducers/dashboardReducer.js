@@ -25,7 +25,7 @@ const initState = {
   currentClient: null,
   currentProject: null,
   currentJobsheets: [],
-  currentJobsheet: null,
+  currentJobsheet: {},
   edit: false,
   currentComponent: null,
   components: [],
@@ -110,33 +110,12 @@ const dashboardReducer = (state = initState, action) => {
         ...state,
         techs: [...state.techs, action.payload],
       };
-      case FETCH_ACTIVITIES:
-        console.log(action.payload, "FETCH_ACTIVITIES!!!");
-        return {
-          ...state,
-          activities: action.payload,
-        }
-      // case TOGGLE_COMPONENT_EDIT:
-      // return {
-      //   ...state,
-      //   editing: action.payload
-      // };
-      // case FETCH_COMPONENTS_SUCCESS:
-      //   console.log(action.payload, "FETCH_COMPONENTS_SUCCESS!!!")
-      // return {
-      //   ...state,
-      //   components: action.payload
-      // };
-      // case UPDATE_COMPONENT:
-      // return {
-      //   ...state,
-      //   components: state.components.map(component => {
-      //               if(component.id === action.payload.id) {
-      //                 return action.payload;
-      //               }
-      //               return component;
-      //   })
-      // };
+    case FETCH_ACTIVITIES:
+      console.log(action.payload, "FETCH_ACTIVITIES!!!");
+      return {
+        ...state,
+        activities: action.payload,
+      };
     default:
       return state;
   }
