@@ -12,6 +12,7 @@
     "dotenv": "^8.2.0",
     "js-file-download": "^0.4.11",
     "lodash.throttle": "^4.1.1",
+    "moment": "^2.26.0",
     "react": "^16.13.1",
     "react-csv": "^2.0.3",
     "react-dom": "^16.13.1",
