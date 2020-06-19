@@ -4,8 +4,10 @@ import { color, font } from "../../Styles/index";
 import SchematicChooser from "../../Jobsheet/CreateNew/DropboxSchematicChooser";
 
 export const NewSection2 = styled.section`
-  margin: 0 25rem;
+  margin: 0 10rem;
+  margin-top: 3rem;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   width: 70%;
   @media (max-width: 1500px) {
@@ -16,12 +18,17 @@ export const NewSection2 = styled.section`
   }
 `;
 
+export const SchematicWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const NewBtnCont = styled.div`
   height: 33vh;
+  margin-top: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: space-between;
-  justify-content: space-evenly;
+  justify-content: space-between;
+ 
 `;
 
 
@@ -29,6 +36,7 @@ export const NewBtnCont = styled.div`
 export const NewProjBtn1 = styled.p`
   display: flex;
   margin: 1.5rem;
+  margin-left: 0;
   border-radius: 0.7rem;
   justify-content: center;
   align-items: center;
@@ -50,6 +58,7 @@ export const NewProjBtn1 = styled.p`
 export const NewProjBtn2 = styled.button`
   display: flex;
   margin: 1.5rem;
+  margin-left: 0;
   border-radius: 0.7rem;
   justify-content: center;
   align-items: center;
@@ -71,6 +80,7 @@ export const NewProjBtn2 = styled.button`
 export const NewProjBtn3 = styled.button`
   display: flex;
   margin: 1.5rem;
+  margin-left: 0;
   border-radius: 0.7rem;
   justify-content: center;
   align-items: center;
@@ -90,7 +100,9 @@ export const NewProjBtn3 = styled.button`
 `;
 
 export const JobsheetInput = styled.div`
-  width: 100%;
-  margin-top: 2rem;
-  margin-bottom: 3.3rem;
+  
+`;
+
+export const SchematicTable = styled.table`
+  margin-top: -20vh;
 `;

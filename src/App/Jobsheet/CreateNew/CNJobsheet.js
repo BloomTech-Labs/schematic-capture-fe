@@ -15,8 +15,9 @@ import {
   NewProjBtn1,
   NewProjBtn2,
   NewProjBtn3,
-  JobsheetInput
-  
+  JobsheetInput,
+  SchematicWrapper,
+  SchematicTable,
 } from "../../Styles/Jobsheet/NewJobsheetStyle";
 // import { NewProjBtn } from "../../Styles/Jobsheets";
 
@@ -85,42 +86,48 @@ const CreateNewJobsheet = () => {
     <>
       <Header />
       <NewSection2>
-        <div>
+        <SchematicWrapper>
           <h1>Schematic Capture</h1>
-              <JobsheetInput>
-                  <input
-                  hidden
-                  id="pdf"
-                  name="pdf"
-                  multiple={false}
-                  type="file"
-                  accept=".pdf"
-                  ref={register}
-                />
-                
-              </JobsheetInput>
-                <input
-                  name="name"
-                  placeholder="JobSheet Name"
-                  disabled={!isNew}
-                  hidden={!isNew}
-                  ref={register({ required: true })}
-                />
-
-            
-            
-        </div>
+          <JobsheetInput>
+            <input
+              hidden
+              id="pdf"
+              name="pdf"
+              multiple={false}
+              type="file"
+              accept=".pdf"
+              ref={register}
+            />
+          </JobsheetInput>
+          <input
+            style={{
+              border: "1px solid lightgray",
+              borderRadius: "3px",
+              paddingLeft: "0.9rem",
+              color: "gray",
+              fontWeight: "lighter"
+            }}
+            autoComplete="off"
+            name="name"
+            placeholder="JobSheet Name"
+            disabled={!isNew}
+            hidden={!isNew}
+            ref={register({ required: true })}
+          />
+        </SchematicWrapper>
         <form onSubmit={handleSubmit(onSubmit)}>
           <NewBtnCont>
             <div>
               <div>
-                <label
-                  type="button"
-                  htmlFor="csv"
-                  onClick={() => setIsNew(true)}
-                >
-                  <NewProjBtn1 onClick={() => setIsNew(true)}>Import CSV</NewProjBtn1>
-                </label>
+                <NewProjBtn1 onClick={() => setIsNew(true)}>
+                  <label
+                    type="button"
+                    htmlFor="csv"
+                    onClick={() => setIsNew(true)}
+                  >
+                    Import CSV
+                  </label>
+                </NewProjBtn1>
                 {/* <div hidden={getValues().name}> or </div>
                 <button
                   type="button"
@@ -132,14 +139,14 @@ const CreateNewJobsheet = () => {
               </div>
               <label htmlFor="name"></label>
             </div>
-            <label type="button" htmlFor="pdf" hidden={!getValues().name}>
-              <NewProjBtn3>
+           
+              <NewProjBtn3 type="button" htmlFor="pdf" hidden={!getValues().name}>
                 <SchematicChooser
                   imageFile={imageFile}
                   setImageFile={setImageFile}
                 />
               </NewProjBtn3>
-            </label>
+            
             <input hidden name="components" ref={register} />
             <input
               hidden
@@ -156,10 +163,13 @@ const CreateNewJobsheet = () => {
           </NewBtnCont>
         </form>
       </NewSection2>
-      
+
       <div>
-        <table>
-          <div hidden={preview} style={{textAlign: "center", fontSize: "60%"}}>
+        <SchematicTable>
+          <div
+            hidden={preview}
+            style={{ textAlign: "center", fontSize: "60%" }}
+          >
             <h1>Please import a CSV to render a preview.</h1>
           </div>
           <tr hidden={!preview}>
@@ -202,7 +212,7 @@ const CreateNewJobsheet = () => {
               </tr>
             );
           })}
-        </table>
+        </SchematicTable>
       </div>
     </>
   );
