@@ -245,11 +245,39 @@ export const Container = styled.div`
   }
 `;
 
+export const BorderedDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 2%;
+  padding: 4%;
+  border: gray 1px solid;
+  border-radius: 1rem;
+`
+
 export const MBody = styled(ModalBody)`
-  height: 20rem;
+  height: 50rem;
   overflow-y: scroll;
   
 `;
+
+export const MButton = styled.button`
+  width: 100%;
+  background-color: ${color.blue};
+  padding: 1rem;
+  color: white;
+  font-size: 2rem;
+`
+
+export const MDiv = styled.div`
+  width: 80%;
+`
+
+export const SpaceBetween = styled.div `
+  display: flex;
+  height: 75%;
+  flex-direction: column;
+  justify-content: space-between;
+`
 
 export const ModalCont = styled.div`
   border-radius: 10rem;

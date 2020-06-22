@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { ModalCont, Mod, MH1, MBody, DetailsBtn, DetailsBtn2 } from "../Styles/Jobsheets"
+import { SpaceBetween, Container, Mod, MH1, MBody, DetailsBtn, DetailsBtn2, BorderedDiv, MDiv, MButton } from "../Styles/Jobsheets";
+import { faHome, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const ClientInfo = (props) => {
@@ -17,6 +19,10 @@ const ClientInfo = (props) => {
         const middle = phone.substring(3, 6)
         const last = phone.substring(6, 10)
 
+        if (phone.length !== 10) {
+            return phone;
+        }
+
         return `(${zip}) ${middle}-${last}`
     }
 
@@ -27,19 +33,40 @@ const ClientInfo = (props) => {
         return (
             <>
             <DetailsBtn2 onClick={toggle}>View Details</DetailsBtn2>
-            <ModalCont>
+            <Container>
                 <Mod isOpen={details} toggle={toggle}> 
                 <MH1 data-cy="assign-tech-header">{clientInfo.companyName}</MH1>
+                <hr></hr>
                 <MBody>
-                    <p>{phone}</p>
-                    <br></br>
-                    <p>{clientInfo.street}</p>
-                    <p>{clientInfo.city}</p>
-                    <p>{clientInfo.state}</p>
-                    <p>{clientInfo.zip}</p>
+                    <SpaceBetween>
+                        <div>
+                            <BorderedDiv>
+                                <FontAwesomeIcon icon={faPhone} />
+                                <MDiv>
+                                    <p>{phone}</p>
+                                </MDiv>
+                            </BorderedDiv>
+                            <BorderedDiv>
+                                <FontAwesomeIcon icon={faHome} />
+                                <MDiv>
+                                    <p>{clientInfo.street}</p>
+                                    <p>{clientInfo.city}</p>
+                                    <p>{clientInfo.state}</p>
+                                    <p>{clientInfo.zip}</p>
+                                </MDiv>
+                            </BorderedDiv>
+                            <BorderedDiv>
+                            <FontAwesomeIcon icon={faUser} />
+                                <MDiv>
+                                    <p>CONTACT PERSON'S NAME AND EMAIL WILL GO HERE!</p>
+                                </MDiv>
+                            </BorderedDiv>
+                        </div>
+                    </SpaceBetween>
+                    <MButton onClick={toggle}>Done</MButton>
                 </MBody>
                 </Mod>
-            </ModalCont>
+            </Container>
             </>
         )
     } else {
