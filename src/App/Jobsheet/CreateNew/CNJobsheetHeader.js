@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { BackToLink } from "../../../shared/components";
+import NameDropDownMenu from "../../../shared/components/Components/NameDropDownMenu";
 
 import {
   Title,
@@ -18,24 +19,11 @@ import Search from "../../Styles/Dashboard/Search.png";
 import Swirl from "../../Styles/Dashboard/synchronize 1.png";
 import Unknown from "../../Styles/Dashboard/unknown.jpg";
 
-import swal from "sweetalert";
-
 const PageHeader = () => {
   const { currentProject, currentClient } = useSelector(
     (state) => state.dashboard
   );
   const user = useSelector((state) => state.auth.user);
-
-  const onLogout = () => {
-    localStorage.removeItem("idToken");
-    localStorage.removeItem("user");
-    localStorage.removeItem("state");
-    window.location.reload(false);
-    return swal("Logged out successfully!", {
-      icon: "success",
-      timer: 4000,
-    });
-  };
 
   return (
     <>
@@ -64,9 +52,13 @@ const PageHeader = () => {
         <RightSide>
           <Hover src={Swirl} />
           <Hover src={Search} />
-          <Greeting data-cy="greeting" onClick={onLogout} variant="primary">
+          <Greeting data-cy="greeting" variant="primary">
             Hi, {user.firstName}
             <Profile data-cy="user-profile" src={Unknown} />
+            <NameDropDownMenu
+              firstName={user.firstName}
+              lastName={user.lastName}
+            />
           </Greeting>
         </RightSide>
       </Seperate>

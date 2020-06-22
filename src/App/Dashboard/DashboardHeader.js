@@ -32,16 +32,6 @@ const DashboardHeader = () => {
     window.location.reload(false);
   }
 
-  const onLogout = () => {
-    localStorage.removeItem("idToken");
-    localStorage.removeItem("user");
-    localStorage.removeItem("state");
-    window.location.reload(false);
-    return swal("Logged out successfully!", {
-      icon: "success",
-      timer: 4000,
-    });
-  };
   useEffect(() => {
     console.log(search);
     setClient(
