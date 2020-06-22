@@ -170,9 +170,46 @@ export const Spacer = styled.div`
     }
 `
 
+export const FlexStart = styled.div`
+    position: relative;
+    top: -11rem;
+    left: 1rem;
+    text-decoration: none;
+    padding: .75rem;
+    width: 10rem;
+    font-size: ${font.small};
+    border-radius:15px;
+    color: white;
+    opacity: 1;
+    font-weight: bold;
+    :hover{
+        color: rgba(33,36,44,0.5);
+    }
+    @media (max-width: 1750px) {
+        top: -8rem;
+        left: 1rem;
+    }
+    @media (max-width: 1700px) {
+        top: -8rem;
+        left: 1rem;
+    }
+    @media (max-width: 1650px) {
+        top: -20%;
+        left: 1%;
+    }
+    @media (max-width: 1600px) {
+        top: -20%;
+        left: 1%;
+    }
+    @media (max-width: 1300px) {
+        top: -20%;
+        left: 1%;
+    }
+`
+
 export const FlexEnd = styled.button`
     position: relative;
-    top: 15rem;
+    top: 12rem;
     left: 29rem;
     background-color: ${color.red};
     padding: .75rem;
@@ -186,11 +223,11 @@ export const FlexEnd = styled.button`
         color: rgba(33,36,44,0.5);
     }
     @media (max-width: 1750px) {
-        top: 13.5rem;
+        top: 10.5rem;
         left: 25rem;
     }
     @media (max-width: 1700px) {
-        top: 13.5rem;
+        top: 10.5rem;
         left: 23.5rem;
     }
     @media (max-width: 1650px) {
@@ -208,7 +245,7 @@ export const FlexEnd = styled.button`
 `
 export const FlexEnd2 = styled.button`
     position: relative;
-    top: 15rem;
+    top: 12rem;
     left: 29rem;
     background-color: ${color.blue};
     padding: .75rem;
@@ -222,11 +259,11 @@ export const FlexEnd2 = styled.button`
         color: rgba(33,36,44,0.5);
     }
     @media (max-width: 1750px) {
-        top: 13.5rem;
+        top: 10.5rem;
         left: 25rem;
     }
     @media (max-width: 1700px) {
-        top: 13.5rem;
+        top: 10.5rem;
         left: 23.5rem;
     }
     @media (max-width: 1650px) {
@@ -260,4 +297,10 @@ export const SearchIn = styled.input`
 
 export const Buttion = styled.button`
     margin-right: 2rem;
+`
+export const InfoBox = styled.div`
+    border: black;
+    color: red;
+    font-size: 50%;
+    padding: 5%;
 `
