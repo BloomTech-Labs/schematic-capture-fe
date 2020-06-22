@@ -170,7 +170,7 @@ export const Spacer = styled.div`
     }
 `
 
-export const FlexStart = styled.div`
+export const FlexStart = styled.button`
     position: relative;
     top: -11rem;
     left: 1rem;
@@ -182,9 +182,6 @@ export const FlexStart = styled.div`
     color: white;
     opacity: 1;
     font-weight: bold;
-    :hover{
-        color: rgba(33,36,44,0.5);
-    }
     @media (max-width: 1750px) {
         top: -8rem;
         left: 1rem;

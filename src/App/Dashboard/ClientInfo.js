@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ModalCont, Mod, MH1, DetailsBtn } from "../Styles/Jobsheets"
+import { ModalCont, Mod, MH1, MBody, DetailsBtn, DetailsBtn2 } from "../Styles/Jobsheets"
 
 
 const ClientInfo = (props) => {
@@ -23,14 +23,23 @@ const ClientInfo = (props) => {
     let phone = formatToPhone(clientInfo.phone)
 
 
-    if (details == true) {
+    if (details === true) {
         return (
             <>
-            <DetailsBtn onClick={toggle}>Hide Details</DetailsBtn>
-            <p>{phone}</p>
-            <p>{clientInfo.street}</p>
-            <p>{clientInfo.state}</p>
-            <p>{clientInfo.zip}</p>
+            <DetailsBtn2 onClick={toggle}>View Details</DetailsBtn2>
+            <ModalCont>
+                <Mod isOpen={details} toggle={toggle}> 
+                <MH1 data-cy="assign-tech-header">{clientInfo.companyName}</MH1>
+                <MBody>
+                    <p>{phone}</p>
+                    <br></br>
+                    <p>{clientInfo.street}</p>
+                    <p>{clientInfo.city}</p>
+                    <p>{clientInfo.state}</p>
+                    <p>{clientInfo.zip}</p>
+                </MBody>
+                </Mod>
+            </ModalCont>
             </>
         )
     } else {

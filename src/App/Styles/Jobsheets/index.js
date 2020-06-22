@@ -186,6 +186,25 @@ export const DetailsBtn = styled(Link)`
   }
 `;
 
+export const DetailsBtn2 = styled(Link)`
+  
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  color: ${color.red};
+  padding: 0.2rem 0.5rem;
+  width: 95%;
+  height: 4.5rem;
+  opacity: 1;
+  font-weight: bold;
+  :hover {
+    text-decoration: none;
+    color: white;
+    background-color: ${color.blue};
+  }
+`;
+
 export const BtnCont = styled.div`
   display: flex;
   flex-direction: column;
