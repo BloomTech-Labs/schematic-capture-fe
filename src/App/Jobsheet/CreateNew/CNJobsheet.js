@@ -99,21 +99,28 @@ const CreateNewJobsheet = () => {
               ref={register}
             />
           </JobsheetInput>
+          {/* <label style={{fontSize: "2rem"}}>Enter New Jobsheet Name: </label> */}
           <input
             style={{
-              border: "1px solid lightgray",
-              borderRadius: "3px",
-              paddingLeft: "0.9rem",
-              color: "gray",
-              fontWeight: "lighter"
+              width: "30vh",
+              height: "4rem",
+              border: "1px solid #3079BC",
+              borderRadius: "5px",
+              padding: "0 1.2rem",
+              color: "black",
+              fontWeight: "",
+              fontSize: "90%",
+              fontWeight: ""
             }}
             autoComplete="off"
             name="name"
-            placeholder="JobSheet Name"
+            placeholder="Enter Jobsheet Name"
             disabled={!isNew}
             hidden={!isNew}
             ref={register({ required: true })}
           />
+          
+          
         </SchematicWrapper>
         <form onSubmit={handleSubmit(onSubmit)}>
           <NewBtnCont>
@@ -170,7 +177,7 @@ const CreateNewJobsheet = () => {
             hidden={preview}
             style={{ textAlign: "center", fontSize: "60%" }}
           >
-            <h1>Please import a CSV to render a preview.</h1>
+            <h1 style={{fontWeight: "lighter", marginBottom: "20px"}}>Please import a CSV to render a preview.</h1>
           </div>
           <tr hidden={!preview}>
             <th>Component</th>
