@@ -166,6 +166,25 @@ export const NewProjBtn2 = styled(Link)`
     background-color: ${color.blue};
   }
 `;
+export const NewProjBtn3 = styled.button`
+display: flex;
+  margin: 2rem auto;
+  border-radius: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: 2px solid ${color.blue};
+  color: ${color.blue};
+  padding: 0.2rem 0.5rem;
+  width: 15rem;
+  height: 4.5rem;
+  opacity: 1;
+  font-weight: bold;
+  :hover {
+    text-decoration: none;
+    color: white;
+    background-color: ${color.blue};
+`
 
 export const BtnCont = styled.div`
   display: flex;
@@ -212,6 +231,11 @@ export const MBody = styled(ModalBody)`
   overflow-y: scroll;
   
 `;
+export const NewProjectModalCont = styled.div`
+  display:flex;
+  justify-content:center;
+  margin-top:2.5rem;
+`
 
 export const ModalCont = styled.div`
   border-radius: 10rem;

@@ -14,6 +14,7 @@ const UPDATE_CURRENT_PROJECT_NAME = "UPDATE_CURRENT_PROJECT_NAME";
 const FETCH_COMPONENTS_SUCCESS = "FETCH_COMPONENTS_SUCCESS";
 const TOGGLE_COMPONENT_EDIT = "TOGGLE_COMPONENT_EDIT";
 const UPDATE_COMPONENT = "UPDATE_COMPONENT";
+const ADD_PROJECT = "ADD_PROJECT";
 
 const ASSIGN_TECH_PROJECT = "ASSIGN_TECH_PROJECT";
 
@@ -55,11 +56,11 @@ const addNewClient = (data, history) => async (dispatch) => {
   }
 };
 
-const fetchProjects = (clientId, setProjects) => async (dispatch) => {
+const fetchProjects = (clientId) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
   try {
     const projects = await axiosWithAuth().get(`/clients/${clientId}/projects`);
-    setProjects(projects.data);
+    // setProjects(projects.data);
     dispatch({ type: SET_CURRENT_PROJECTS, payload: projects.data });
     dispatch({ type: APP_DONE_LOADING });
   } catch (error) {
@@ -67,11 +68,15 @@ const fetchProjects = (clientId, setProjects) => async (dispatch) => {
   }
 };
 
-const addNewProject = (data, clientId, history) => async (dispatch) => {
+const addNewProject = (data, clientId, setProjects, history) => async (dispatch) => {
   dispatch({ type: APP_LOADING });
   try {
-    await axiosWithAuth().post(`/clients/${clientId}/projects`, data);
-    history.push(`/client/${clientId}`);
+    const projects = await axiosWithAuth().post(`/clients/${clientId}/projects`, data);
+    console.log(projects)
+    dispatch({ type: ADD_PROJECT,  payload: projects.data})
+    // dispatch(fetchProjects(clientId, setProjects))
+    dispatch({ type: APP_DONE_LOADING });
+    // history.push(`/client/${clientId}`);
   } catch (error) {
     dispatch({ type: APP_ERROR, payload: error.message });
   }
@@ -218,4 +223,5 @@ export const actions = {
   TOGGLE_COMPONENT_EDIT,
   UPDATE_COMPONENT,
   ASSIGN_TECH_PROJECT,
+  ADD_PROJECT
 };
