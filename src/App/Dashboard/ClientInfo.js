@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { SpaceBetween, Container, Mod, MH1, MBody, DetailsBtn, DetailsBtn2, BorderedDiv, MDiv, MButton } from "../Styles/Jobsheets";
-import { faHome, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -47,7 +47,7 @@ const ClientInfo = (props) => {
                                 </MDiv>
                             </BorderedDiv>
                             <BorderedDiv>
-                                <FontAwesomeIcon icon={faHome} />
+                                <FontAwesomeIcon icon={faMapMarkerAlt} />
                                 <MDiv>
                                     <p>{clientInfo.street}</p>
                                     <p>{clientInfo.city}</p>
@@ -58,7 +58,7 @@ const ClientInfo = (props) => {
                             <BorderedDiv>
                             <FontAwesomeIcon icon={faUser} />
                                 <MDiv>
-                                    <p>CONTACT PERSON'S NAME AND EMAIL WILL GO HERE!</p>
+                                    <p>Contact Person</p>
                                 </MDiv>
                             </BorderedDiv>
                         </div>
