@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import NewProjectPopup from "../../Project/CreateNewProject/NewProjectPopup"
 
 import Projects from "./Projects";
 
@@ -62,12 +63,13 @@ const PageHeader = () => {
   const client = clients.find((client) => client.id === Number(params.id));
 
   const [editing, setEditing] = useState(false);
-  const [projects, setProjects] = useState([]);
+  // const [projects, setProjects] = useState([]);
+  const projects = useSelector((state) => state.dashboard.currentProjects)
   const [projects1, setProjects1] = useState([]);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetchProjectsSideEffect(dispatch, params.id, setProjects);
+    fetchProjectsSideEffect(dispatch, params.id);
     setCurrentClientAndProjectsSideEffect(dispatch, client, projects);
   }, []);
 
@@ -137,13 +139,14 @@ const PageHeader = () => {
             {user.roleId !== 3 && (
               <BtnCont>
                 {user.roleId !== 3 && <TechModal buttonLabel="Assign Techs" />}
-                <NewProjBtn2
+                {/* <NewProjBtn2 
                   data-cy="new-project"
-                  to={`/client/${currentClient.id}/project/new`}
+                  
                   variant="primary"
-                >
-                  New&nbsp;Project
-                </NewProjBtn2>
+                  >
+                  </NewProjBtn2> */}
+                  <NewProjectPopup to={`/client/${currentClient.id}/project/new`}/>
+               
               </BtnCont>
             )}
           </Section2>

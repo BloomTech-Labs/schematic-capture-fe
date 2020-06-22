@@ -1,7 +1,7 @@
 import React from "react";
 
 import Header from "./CNProjectHeader";
-import Form from "./Form";
+import NewProjectPopup from "./NewProjectPopup";
 
 import { Area } from "../../Styles/Projects/projectStyles";
 
@@ -9,7 +9,7 @@ const NewProject = () => {
   return (
     <>
       <Header />
-      <Form />
+      <NewProjectPopup />
     </>
   );
 };

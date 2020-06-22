@@ -145,8 +145,8 @@ const TechModal = (props) => {
       case 1:
         return (
           <>
-            <MH1>Select Project</MH1>
-            <MBody>
+            <MH1 style={{marginLeft: "100px"}}>Select Project</MH1>
+            <MBody style={{marginLeft: "100px"}}>
               {tech.project === null ? (
                 <Container>
                   <FieldError>Please assign a project</FieldError>
@@ -189,8 +189,8 @@ const TechModal = (props) => {
       case 2:
         return (
           <>
-            <MH1>Select Date</MH1>
-            <MBody>
+            <MH1 style={{marginLeft: "100px"}}>Select Date</MH1>
+            <MBody style={{marginLeft: "100px"}}>
               <Container>
                 <h1>Enter Date Here</h1>
                 {tech.date === null ? (
@@ -212,10 +212,10 @@ const TechModal = (props) => {
       case 3:
         return (
           <>
-            <MH1>Finalize</MH1>
-            <MBody>
+            <MH1 style={{marginLeft: "100px"}}>Finalize</MH1>
+            <MBody style={{marginLeft: "100px"}}>
               <Container>
-                <h1>Technician: {tech.name}</h1>
+                <h1 style={{marginLeft: "10px"}}>Technician - {tech.name}</h1>
                 <h2>Date: {tech.date}</h2>
               </Container>
             </MBody>
@@ -234,7 +234,7 @@ const TechModal = (props) => {
       </NewProjBtn>
       <Mod isOpen={modal} toggle={toggle}>
         <MH1 data-cy="assign-tech-header" >Assign Technician</MH1>
-        <MBody>{pageNav(page)}</MBody>
+        <MBody style={{marginLeft: "-100px"}}>{pageNav(page)}</MBody>
         <NewProjBtn2 data-cy="next-button" onClick={changePage}>Next</NewProjBtn2>
       </Mod>
     </ModalCont>

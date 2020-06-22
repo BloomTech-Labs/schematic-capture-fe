@@ -15,6 +15,7 @@ const {
   TOGGLE_COMPONENT_EDIT,
   UPDATE_COMPONENT,
   ASSIGN_TECH_PROJECT,
+  ADD_PROJECT
 } = actions;
 
 const initState = {
@@ -108,27 +109,12 @@ const dashboardReducer = (state = initState, action) => {
         ...state,
         techs: [...state.techs, action.payload],
       };
-      case TOGGLE_COMPONENT_EDIT:
-      return {
-        ...state,
-        editing: action.payload
-      };
-      case FETCH_COMPONENTS_SUCCESS:
-        console.log(action.payload, "FETCH_COMPONENTS_SUCCESS!!!")
-      return {
-        ...state,
-        components: action.payload
-      };
-      case UPDATE_COMPONENT:
-      return {
-        ...state,
-        components: state.components.map(component => {
-                    if(component.id === action.payload.id) {
-                      return action.payload;
-                    }
-                    return component;
-        })
-      };
+      case ADD_PROJECT:
+        console.log("add project", action.payload)
+        return {
+          ...state,
+          currentProjects: [...state.currentProjects, action.payload]
+        }
     default:
       return state;
   }

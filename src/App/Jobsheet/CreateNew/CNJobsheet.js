@@ -102,15 +102,16 @@ const CreateNewJobsheet = () => {
           {/* <label style={{fontSize: "2rem"}}>Enter New Jobsheet Name: </label> */}
           <input
             style={{
-              width: "30vh",
+              width: "35vh",
               height: "4rem",
-              border: "1px solid #3079BC",
+              border: "1px solid lightgray",
               borderRadius: "5px",
               padding: "0 1.2rem",
               color: "black",
               fontWeight: "",
-              fontSize: "90%",
-              fontWeight: ""
+              fontSize: "100%",
+              fontWeight: "",
+              letterSpacing: "0.04rem"
             }}
             autoComplete="off"
             name="name"
