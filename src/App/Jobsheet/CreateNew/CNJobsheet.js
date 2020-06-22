@@ -104,9 +104,9 @@ const CreateNewJobsheet = () => {
             style={{
               width: "35vh",
               height: "4rem",
-              border: "1px solid lightgray",
+              border: "1px solid gray",
               borderRadius: "5px",
-              padding: "0 1.2rem",
+              padding: "0 1.5rem",
               color: "black",
               fontWeight: "",
               fontSize: "100%",
