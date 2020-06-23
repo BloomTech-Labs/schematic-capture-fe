@@ -21,8 +21,8 @@ import { dispatchers, actions } from "../../../shared/actions/dashboardActions";
 const { fetchProjects } = dispatchers;
 const { SET_CURRENT_CLIENT, SET_CURRENT_PROJECTS } = actions;
 
-const fetchProjectsSideEffect = async (dispatch, id, setProjects) => {
-  await dispatch(fetchProjects(id, setProjects));
+const fetchProjectsSideEffect = async (dispatch, id,) => {
+  await dispatch(fetchProjects(id,));
 };
 
 const setCurrentClientAndProjectsSideEffect = async (
@@ -35,15 +35,16 @@ const setCurrentClientAndProjectsSideEffect = async (
 };
 
 const Projects = (props) => {
-  const [projects, setProjects] = useState([]);
+  // const [projects, setProjects] = useState([]);
   const params = useParams();
   const dispatch = useDispatch();
 
   const clients = useSelector((state) => state.dashboard.clients);
+  const projects = useSelector((state) => state.dashboard.currentProjects);
   const client = clients.find((client) => client.id === Number(params.id));
 
   useEffect(() => {
-    fetchProjectsSideEffect(dispatch, params.id, setProjects);
+    fetchProjectsSideEffect(dispatch, params.id);
     setCurrentClientAndProjectsSideEffect(dispatch, client, projects);
   }, []);
 

@@ -16,6 +16,7 @@ const {
   UPDATE_COMPONENT,
   FETCH_ACTIVITIES,
   ASSIGN_TECH_PROJECT,
+  ADD_PROJECT
 } = actions;
 
 const initState = {
@@ -110,6 +111,12 @@ const dashboardReducer = (state = initState, action) => {
         ...state,
         techs: [...state.techs, action.payload],
       };
+    case ADD_PROJECT:
+      console.log("add project", action.payload)
+      return {
+        ...state,
+        currentProjects: [...state.currentProjects, action.payload]
+      }
     case FETCH_ACTIVITIES:
       console.log(action.payload, "FETCH_ACTIVITIES!!!");
       return {

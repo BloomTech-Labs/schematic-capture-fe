@@ -9,6 +9,18 @@ import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { csvToApi } from "../../../shared/utils/componentMap";
 import Header from "./CNJobsheetHeader";
 
+import {
+  NewSection2,
+  NewBtnCont,
+  NewProjBtn1,
+  NewProjBtn2,
+  NewProjBtn3,
+  JobsheetInput,
+  SchematicWrapper,
+  SchematicTable,
+} from "../../Styles/Jobsheet/NewJobsheetStyle";
+// import { NewProjBtn } from "../../Styles/Jobsheets";
+
 const { addNewJobsheet } = dispatchers;
 
 const reader = new FileReader();
@@ -73,38 +85,76 @@ const CreateNewJobsheet = () => {
   return (
     <>
       <Header />
-      <div>
-        <div>
+      <NewSection2>
+        <SchematicWrapper>
           <h1>Schematic Capture</h1>
-        </div>
+          <JobsheetInput>
+            <input
+              hidden
+              id="pdf"
+              name="pdf"
+              multiple={false}
+              type="file"
+              accept=".pdf"
+              ref={register}
+            />
+          </JobsheetInput>
+          {/* <label style={{fontSize: "2rem"}}>Enter New Jobsheet Name: </label> */}
+          <input
+            style={{
+              width: "35vh",
+              height: "4rem",
+              border: "1px solid gray",
+              borderRadius: "5px",
+              padding: "0 1.5rem",
+              color: "black",
+              fontWeight: "",
+              fontSize: "100%",
+              fontWeight: "",
+              letterSpacing: "0.04rem"
+            }}
+            autoComplete="off"
+            name="name"
+            placeholder="Enter Jobsheet Name"
+            disabled={!isNew}
+            hidden={!isNew}
+            ref={register({ required: true })}
+          />
+          
+          
+        </SchematicWrapper>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div>
+          <NewBtnCont>
             <div>
               <div>
-                <label
-                  type="button"
-                  htmlFor="csv"
-                  onClick={() => setIsNew(true)}
-                >
-                  <p onClick={() => setIsNew(true)}>Import CSV</p>
-                </label>
-                <div hidden={getValues().name}> or </div>
+                <NewProjBtn1 onClick={() => setIsNew(true)}>
+                  <label
+                    type="button"
+                    htmlFor="csv"
+                    onClick={() => setIsNew(true)}
+                  >
+                    Import CSV
+                  </label>
+                </NewProjBtn1>
+                {/* <div hidden={getValues().name}> or </div>
                 <button
                   type="button"
                   hidden={getValues().name}
                   onClick={() => setIsNew(true)}
                 >
                   Create A Blank Job Sheet
-                </button>
+                </button> */}
               </div>
               <label htmlFor="name"></label>
             </div>
-            <label type="button" htmlFor="pdf" hidden={!getValues().name}>
-              <SchematicChooser
-                imageFile={imageFile}
-                setImageFile={setImageFile}
-              />
-            </label>
+           
+              <NewProjBtn3 type="button" htmlFor="pdf" hidden={!getValues().name}>
+                <SchematicChooser
+                  imageFile={imageFile}
+                  setImageFile={setImageFile}
+                />
+              </NewProjBtn3>
+            
             <input hidden name="components" ref={register} />
             <input
               hidden
@@ -115,34 +165,20 @@ const CreateNewJobsheet = () => {
               accept=".csv"
               ref={register}
             />
-            <button type="submit" hidden={!getValues().name}>
+            <NewProjBtn2 type="submit" hidden={!getValues().name}>
               Submit Jobsheet
-            </button>
-          </div>
+            </NewProjBtn2>
+          </NewBtnCont>
         </form>
-      </div>
-      <input
-        hidden
-        id="pdf"
-        name="pdf"
-        multiple={false}
-        type="file"
-        accept=".pdf"
-        ref={register}
-      />
+      </NewSection2>
+
       <div>
-        <input
-          name="name"
-          placeholder="JobSheet Name"
-          disabled={!isNew}
-          hidden={!isNew}
-          ref={register({ required: true })}
-        />
-      </div>
-      <div>
-        <table>
-          <div hidden={preview}>
-            <h1>Please import a CSV to render a preview.</h1>
+        <SchematicTable>
+          <div
+            hidden={preview}
+            style={{ textAlign: "center", fontSize: "60%" }}
+          >
+            <h1 style={{fontWeight: "lighter", marginBottom: "20px"}}>Please import a CSV to render a preview.</h1>
           </div>
           <tr hidden={!preview}>
             <th>Component</th>
@@ -184,7 +220,7 @@ const CreateNewJobsheet = () => {
               </tr>
             );
           })}
-        </table>
+        </SchematicTable>
       </div>
     </>
   );

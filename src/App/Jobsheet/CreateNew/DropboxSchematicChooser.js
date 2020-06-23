@@ -1,5 +1,6 @@
 import React from "react";
 import { useDropboxChooser } from "use-dropbox-chooser";
+import { color, font } from "../../Styles/index";
 import styled from "styled-components";
 import Picture from "../JobsheetBoard/Camera.png";
 import { axiosWithAuth } from "../../../shared/utils/axiosWithAuth";
@@ -24,9 +25,16 @@ export default Dropbox;
 
 const Button = styled.button`
   width: 45%;
+  color: ${color.blue};
+  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
+  :hover {
+    text-decoration: none;
+    color: white;
+    background-color: ${color.blue};
+  }
   img {
     width: 100%;
   }
