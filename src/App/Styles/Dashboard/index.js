@@ -145,7 +145,7 @@ export const LineBreak = styled.hr`
 export const Spacer = styled.div`
   width: 40rem;
   height: 40rem;
-  border: 2px solid rgba(33, 36, 44, 0.1);
+  border: 1px solid rgba(33, 36, 44, 0.1);
   margin-bottom: 6rem;
   border-radius: 10px;
   display: flex;

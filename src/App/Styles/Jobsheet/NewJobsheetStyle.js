@@ -31,6 +31,12 @@ export const NewBtnCont = styled.div`
  
 `;
 
+export const ImportAdd = styled.div`
+  width: 100%;
+  display: flex;
+
+`;
+
 
 
 export const NewProjBtn1 = styled.p`
@@ -57,6 +63,7 @@ export const NewProjBtn1 = styled.p`
 
 export const NewProjBtn2 = styled.button`
   display: flex;
+  flex-direction: row;
   margin: 1.5rem;
   margin-left: 0;
   border-radius: 0.7rem;
@@ -105,4 +112,6 @@ export const JobsheetInput = styled.div`
 
 export const SchematicTable = styled.table`
   margin-top: -20vh;
+  margin-left: hidden;
+  margin-right: hidden;
 `;

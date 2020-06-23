@@ -61,6 +61,16 @@ const InviteNewUserModal = ({ buttonLabel, className }) => {
             <FormGroup>
               <Label for="Name">Full Name</Label>
               <Input
+               style={{
+                height: "4rem",
+                width: "30rem",
+                border: "1px solid gray",
+                borderRadius: "5px",
+                paddingLeft: "0.9rem",
+                color: "black",
+                fontSize: "90%",
+                
+              }} 
                 type="Name"
                 value={user.name}
                 id="name"
@@ -72,6 +82,16 @@ const InviteNewUserModal = ({ buttonLabel, className }) => {
             <FormGroup>
               <Label for="exampleEmail">Email</Label>
               <Input
+               style={{
+                height: "4rem",
+                width: "30rem",
+                border: "1px solid gray",
+                borderRadius: "5px",
+                paddingLeft: "0.9rem",
+                color: "black",
+                fontSize: "90%",
+                
+              }} 
                 type="email"
                 value={user.email}
                 id="exampleEmail"
@@ -84,6 +104,16 @@ const InviteNewUserModal = ({ buttonLabel, className }) => {
             <FormGroup>
               <Label for="exampleSelect">Select Role</Label>
               <Input
+               style={{
+                height: "4rem",
+                width: "30rem",
+                border: "1px solid gray",
+                borderRadius: "5px",
+                paddingLeft: "0.9rem",
+                color: "black",
+                fontSize: "90%",
+                
+              }} 
                 type="select"
                 name="role"
                 id="exampleSelect"
@@ -95,7 +125,7 @@ const InviteNewUserModal = ({ buttonLabel, className }) => {
                 <option value="employee">Employee</option>
               </Input>
             </FormGroup>
-            <button type="submit">Send Invite</button>
+            <NewProjBtn2 type="submit">Send Invite</NewProjBtn2>
           </Form>
         </MBody>{" "}
       </>

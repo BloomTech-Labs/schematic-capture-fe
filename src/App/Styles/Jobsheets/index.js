@@ -309,8 +309,13 @@ export const BorderedDiv2 = styled.div`
 export const MBody = styled(ModalBody)`
   height: 50rem;
   overflow-y: scroll;
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
+
+
 export const NewProjectModalCont = styled.div`
   display:flex;
   justify-content:center;
