@@ -172,7 +172,7 @@ const CreateNewJobsheet = () => {
         </form>
       </NewSection2>
 
-      <div>
+      <div style={{ margin: "0 20rem"}}>
         <SchematicTable>
           <div
             hidden={preview}

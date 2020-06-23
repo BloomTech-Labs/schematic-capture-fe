@@ -105,4 +105,6 @@ export const JobsheetInput = styled.div`
 
 export const SchematicTable = styled.table`
   margin-top: -20vh;
+  margin-left: hidden;
+  margin-right: hidden;
 `;
