@@ -7,6 +7,7 @@ import Projects from "./Projects";
 import { BackToLink } from "../../../shared/components";
 import { useParams } from "react-router-dom";
 import TechModal from "../../Project/ProjectBoard/TechPopup";
+import Help from "../../../shared/components/Components/Help";
 
 import {
   Projectsh1,
@@ -153,6 +154,7 @@ const PageHeader = () => {
         )}
       </ClientHeaderContain>
       <Projects project={projects1} search={search} />
+      <Help linkTo="ProjectListHelp" />
     </>
   );
 };

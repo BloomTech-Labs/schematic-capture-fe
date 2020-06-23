@@ -14,6 +14,7 @@ const {
   FETCH_COMPONENTS_SUCCESS,
   TOGGLE_COMPONENT_EDIT,
   UPDATE_COMPONENT,
+  FETCH_ACTIVITIES,
   ASSIGN_TECH_PROJECT,
   ADD_PROJECT
 } = actions;
@@ -25,10 +26,11 @@ const initState = {
   currentClient: null,
   currentProject: null,
   currentJobsheets: [],
-  currentJobsheet: null,
+  currentJobsheet: {},
   edit: false,
   currentComponent: null,
   components: [],
+  activities: []
 };
 
 const dashboardReducer = (state = initState, action) => {
@@ -109,12 +111,18 @@ const dashboardReducer = (state = initState, action) => {
         ...state,
         techs: [...state.techs, action.payload],
       };
-      case ADD_PROJECT:
-        console.log("add project", action.payload)
-        return {
-          ...state,
-          currentProjects: [...state.currentProjects, action.payload]
-        }
+    case ADD_PROJECT:
+      console.log("add project", action.payload)
+      return {
+        ...state,
+        currentProjects: [...state.currentProjects, action.payload]
+      }
+    case FETCH_ACTIVITIES:
+      console.log(action.payload, "FETCH_ACTIVITIES!!!");
+      return {
+        ...state,
+        activities: action.payload,
+      };
     default:
       return state;
   }

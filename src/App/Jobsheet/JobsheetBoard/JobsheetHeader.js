@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
+import { CSVButton } from "../../Styles/Jobsheet/ComponetStyle";
+
 import BackToLink from "../../../shared/components/Components/BackToLink";
 import Components from "./Components";
+import Help from "../../../shared/components/Components/Help";
 
 import {
   Title,
@@ -120,11 +123,16 @@ const PageHeader = (props) => {
           <>
             <h1 className="Currentjobsheet">{currentJobsheet.name}</h1>
             <h4>Complete: ({currentJobsheet.tally})</h4>
-            <a href={currentJobsheet.schematic}>Link to Schematic</a>
           </>
         )}
       </div>
+
+      <CSVButton>
+        <a href={currentJobsheet.schematic}> View Schematic</a>
+      </CSVButton>
+
       <Components component={components1} search={search} />
+      <Help linkTo="JobsheetsHelp" />
     </>
   );
 };

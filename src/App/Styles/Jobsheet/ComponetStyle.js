@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import {ModalBody, Modal} from "reactstrap"
+import { color, font } from "../../Styles/index";
 
 
 export const Header = styled.h2`
@@ -47,7 +48,7 @@ export const List = styled.h1`
 
 export const ImgWrapper = styled.div`
    display: flex;
-   margin-left: 1200px;
+   margin-left: 50px;
    padding-bottom: 10px;
    `;
 
@@ -98,3 +99,23 @@ export const Status = styled.h1`
    margin-left:25px;
 `;
 
+export const CSVButton = styled.button`
+  display: flex;
+  margin: 2rem auto;
+  border-radius: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: 2px solid ${color.blue};
+  color: ${color.blue};
+  padding: 0.2rem 0.5rem;
+  width: 15rem;
+  height: 4.5rem;
+  opacity: 1;
+  font-weight: bold;
+  :hover {
+    text-decoration: none;
+    color: white;
+    background-color: ${color.blue};
+  }
+`;
