@@ -13,6 +13,9 @@ import {
   FieldError 
 } from "../../Styles/FormStyles"
 
+import { Section } from "../../Styles/Dashboard"
+import { NewProjBtn, CreateNewClientBtn } from "../../Styles/Jobsheets"
+
 const { addNewClient } = dispatchers
 
 const CreateNewClient = () => {
@@ -66,10 +69,10 @@ const CreateNewClient = () => {
   }
 
   return (
-    <>
+    <Section>
         <Form onSubmit={handleSubmit(onAddNewClient)}>
-         <button type="Submit">Save</button>
-         <Link to="/dashboard">Cancel</Link>
+         <NewProjBtn type="Submit">Save</NewProjBtn>
+         <NewProjBtn to="/dashboard">Cancel</NewProjBtn>
         </Form>
       <Form onSubmit={handleSubmit(onAddNewClient)}>
         <h1>Create a New Client</h1>
@@ -158,15 +161,15 @@ const CreateNewClient = () => {
           )}
         </FormContainer>
         <div>
-          <button variant="primary" submit="button">
+          <CreateNewClientBtn variant="primary" submit="button">
             Create
-          </button>
+          </CreateNewClientBtn>
         </div>
         <div>
           <BackToLink to="/dashboard" text="Back to Dashboard" />
         </div>
       </Form>
-    </>
+    </Section>
   )
 }
 

@@ -224,6 +224,28 @@ export const DetailsBtn2 = styled(Link)`
   }
 `;
 
+export const CreateNewClientBtn = styled(Link)`
+  display: flex;
+  
+  border-radius: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: 2px solid ${color.blue};
+  color: white;
+  background-color: ${color.blue};
+  padding: 0.2rem 0.5rem;
+  width: 25rem;
+  height: 4.5rem;
+  opacity: 1;
+  font-weight: bold;
+  :hover {
+    text-decoration: none;
+    color: white;
+    background-color: ${color.blue};
+  }
+`
+
 export const BtnCont = styled.div`
   display: flex;
   flex-direction: column;

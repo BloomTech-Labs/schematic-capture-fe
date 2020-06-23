@@ -10,8 +10,6 @@ const ClientInfo = (props) => {
     const [details, setDetails] = useState(false);
     const toggle = () => setDetails(!details);
 
-    console.log(props, ' is props in ClientInfo')
-
     const clientInfo = props.info
 
     const formatToPhone = phone => {
