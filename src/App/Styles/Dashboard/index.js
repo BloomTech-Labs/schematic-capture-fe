@@ -55,6 +55,28 @@ export const NewClientBtn = styled(Link)`
   }
 `;
 
+export const Footer = styled.footer`
+    margin-right: 16rem;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    display: flex;
+    justify-content: flex-end;
+`
+
+export const HelpButton = styled(Link) `
+    color: black;
+    font-size: 30px;
+    text-decoration: none;
+    text-align: center;
+    border: ${color.blue} 2px solid;
+    border-radius: 1000%;
+    width: 40px;
+    height: 40px;
+    :hover {
+        background-color: rgba(33, 36, 44, 0.6);
+        text-decoration: none;
+`
+
 export const Greeting = styled.button`
   text-decoration: none;
   color: ${color.black};
