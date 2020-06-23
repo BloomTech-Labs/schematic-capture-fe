@@ -67,7 +67,7 @@ const EditComponents = ({ buttonLabel, component }) => {
   const Update = () => {
     return (
       <>
-        <MH1></MH1>
+        <MH1>Update Components</MH1>
         <MBody>
           {editInfo.descriptions === null || editInfo.manufacturer === null ? (
             <Container>
@@ -215,7 +215,7 @@ const EditComponents = ({ buttonLabel, component }) => {
           data-cy="edit-component-header"
           style={{ textAlign: "center", padding: "2rem 0" }}
         >
-          Edit Component
+          
         </h2>
         <MBody>{Update(editInfo)}</MBody>
       </Mod>

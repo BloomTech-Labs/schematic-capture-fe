@@ -59,11 +59,16 @@ const Components = (props) => {
     }
   }, [watch("jpg")]);
 
+  const edit = {
+    marginLeft: "40px",
+    width: "1rem",
+  }
+
   return (
-    <section>
+    <section style={{ margin: "0 20rem"}}>
       {/* <Status>Complete: {currentJobsheet.tally}</Status> */}
-      <Wrapper>
-        <CSVButton>
+      <Wrapper >
+        <CSVButton style={{position: "relative", left: "40rem", top: "-3.8rem"}}>
           <CSVLink data={components} headers={headerKeys}>Download CSV</CSVLink>
         </CSVButton>
         <ImgWrapper>
@@ -93,9 +98,9 @@ const Components = (props) => {
           </Sorticon>
         </ImgWrapper>
       </Wrapper>
-      <div style={{ marginRight: "2.5rem", marginBottom: "2.5rem" }}>
+      <div>
         <Table className="Table" sorting={true} style={{ color: "black" }}>
-          <thead>
+          <thead style={{ color: "black", opacity: "1"}}>
             <tr>
               <th scope="col">Component</th>
               <th scope="col">Description</th>
@@ -168,8 +173,10 @@ const Components = (props) => {
 
                     {user.roleId !== 3 && (
                       <EditComponents
+                        style={edit}
                         buttonLabel="Update"
                         component={component}
+                        
                       />
                     )}
                   </tr>

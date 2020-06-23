@@ -108,7 +108,7 @@ const PageHeader = (props) => {
           </Greeting>
         </RightSide>
       </Seperate>
-      <div style={{ marginLeft: "35px" }}>
+      <div style={{ margin: "0 20rem"}}>
         {!!currentJobsheet && (
           <>
             <h1 className="Currentjobsheet">{currentJobsheet.name}</h1>
@@ -117,7 +117,7 @@ const PageHeader = (props) => {
         )}
       </div>
 
-      <CSVButton>
+      <CSVButton style={{position: "relative", left: "40rem", top: "-5.8rem"}}>
         <a href={currentJobsheet.schematic}> View Schematic</a>
       </CSVButton>
 
