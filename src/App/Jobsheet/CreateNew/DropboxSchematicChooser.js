@@ -9,8 +9,8 @@ function Dropbox(props) {
     appKey: "t5i27y2t3fzkiqj",
     chooserOptions: { multiple: true },
     onSelected: (files) => {
-      props.setImageFile(files[0].link);
-      console.log(props.imageFile, "HEEY2");
+      // props.setImageFile(files[0].link);
+      // console.log(props.imageFile, "HEEY2");
       console.log(files);
     },
   });

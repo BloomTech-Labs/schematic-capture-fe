@@ -50,7 +50,7 @@ const EditComponents = ({ buttonLabel, component }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(editInfo, "DATA!!!");
+    // console.log(editInfo, "DATA!!!");
 
     dispatch(updateComponent(editInfo.id, editInfo));
     toggle();

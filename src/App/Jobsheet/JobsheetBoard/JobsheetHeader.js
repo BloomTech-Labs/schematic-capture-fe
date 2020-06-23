@@ -35,9 +35,15 @@ const fetchComponentsSideEffect = async (dispatch, id) => {
 };
 
 const PageHeader = (props) => {
-  const { currentProject, currentJobsheet, currentClient } = useSelector(
+  const { currentProject, currentJobsheets, currentClient } = useSelector(
     (state) => state.dashboard
   );
+
+    console.log(currentProject, ' is the currentProject in JobsheetHeader')
+    console.log(currentJobsheets, ' is the currentJobsheet in JobsheetHeader')
+
+
+
   const dispatch = useDispatch();
   const params = useParams();
   const user = useSelector((state) => state.auth.user);
@@ -109,16 +115,16 @@ const PageHeader = (props) => {
         </RightSide>
       </Seperate>
       <div style={{ marginLeft: "35px" }}>
-        {!!currentJobsheet && (
+        {!!currentJobsheets && (
           <>
-            <h1 className="Currentjobsheet">{currentJobsheet.name}</h1>
-            <h4>Complete: ({currentJobsheet.tally})</h4>
+            <h1 className="Currentjobsheet">{currentJobsheets.name}</h1>
+            <h4>Complete: ({currentJobsheets.tally})</h4>
           </>
         )}
       </div>
 
       <CSVButton>
-        <a href={currentJobsheet.schematic}> View Schematic</a>
+        <a href={currentJobsheets.schematic}> View Schematic</a>
       </CSVButton>
 
       <Components component={components1} search={search} />

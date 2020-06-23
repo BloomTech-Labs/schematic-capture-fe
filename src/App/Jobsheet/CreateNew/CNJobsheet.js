@@ -61,7 +61,6 @@ const CreateNewJobsheet = () => {
 
   const [preview, setPreview] = useState(false);
   const [isNew, setIsNew] = useState(false);
-  const [bananas, setBananas] = useState(false);
   const [components, setComponents] = useState([]);
   const [imageFile, setImageFile] = useState(null);
 

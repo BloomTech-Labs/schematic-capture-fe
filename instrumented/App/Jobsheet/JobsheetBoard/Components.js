@@ -95,7 +95,7 @@ const Components = (props) => {
       setSortingComponents(components);
     }
   }, [sortingComponents, sortingAsc, sortingDesc, components]);
-  console.log(components, "HEEY DATA!");
+
 
   useEffect(() => {
     if (sortingDesc === true) {
