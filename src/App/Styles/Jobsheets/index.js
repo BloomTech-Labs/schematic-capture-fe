@@ -294,6 +294,17 @@ export const BorderedDiv = styled.div`
   border: gray 1px solid;
   border-radius: 1rem;
 `
+export const BorderedDiv2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3%;
+  width: 500px;
+  padding: 4%;
+  border: gray 1px solid;
+  border-radius: 1rem;
+`
 
 export const MBody = styled(ModalBody)`
   height: 50rem;

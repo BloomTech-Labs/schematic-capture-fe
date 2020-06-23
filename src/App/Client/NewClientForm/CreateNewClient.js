@@ -14,7 +14,7 @@ import {
 } from "../../Styles/FormStyles"
 
 import { Section } from "../../Styles/Dashboard"
-import { NewProjBtn, CreateNewClientBtn, BorderedDiv } from "../../Styles/Jobsheets"
+import { NewProjBtn, CreateNewClientBtn, BorderedDiv2 } from "../../Styles/Jobsheets"
 
 const { addNewClient } = dispatchers
 
@@ -75,8 +75,9 @@ const CreateNewClient = () => {
          <NewProjBtn to="/dashboard">Cancel</NewProjBtn>
         </Form>
       <Form onSubmit={handleSubmit(onAddNewClient)}>
-        <BorderedDiv>
           <h1>Create a New Client</h1>
+        <BorderedDiv2>
+
           <FormContainer>
             <FormGroup>
               <StyledField
@@ -163,7 +164,7 @@ const CreateNewClient = () => {
             </FieldError>
           )}
         </FormContainer>
-        </BorderedDiv>
+             </BorderedDiv2>
         <div>
           <CreateNewClientBtn variant="primary" submit="button">
             Create
