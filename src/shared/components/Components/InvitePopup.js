@@ -12,14 +12,13 @@ import {
   Container,
   Mod,
   BtnCont,
-} from "../../Styles/Jobsheets";
-import { dispatchers } from "../../../shared/actions/authActions";
+} from "../../../App/Styles/Jobsheets";
+import { dispatchers } from "../../actions/authActions";
 
-import { FieldError } from "../../Styles/FormStyles";
+import { FieldError } from "../../../App/Styles/FormStyles";
 import { useFormContext } from "react-hook-form";
 
-const InviteNewUserModal = (props) => {
-  const { buttonLabel, className } = props;
+const InviteNewUserModal = ({ buttonLabel, className }) => {
   const [modal, setModal] = useState(false);
   const [user, setUser] = useState({
     name: null,
@@ -104,10 +103,13 @@ const InviteNewUserModal = (props) => {
   };
 
   return (
-    <ModalCont>
-      <NewProjBtn data-cy="invite-user-btn" onClick={toggle}>
+    <ModalCont className="testerino">
+      {/* <NewProjBtn data-cy="invite-user-btn" onClick={toggle}>
         {buttonLabel}
-      </NewProjBtn>
+      </NewProjBtn> */}
+      <a className="user-modal-btn" onClick={toggle}>
+        Invite User
+      </a>
       <Mod isOpen={modal} toggle={toggle}>
         <MH1>Invite New User</MH1>
         <MBody>{Invite(user)}</MBody>

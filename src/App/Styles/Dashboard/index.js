@@ -87,10 +87,9 @@ export const Greeting = styled.button`
   min-width: 100px;
   :hover {
     text-decoration: none;
-    opacity: 0.75;
     div {
       visibility: visible;
-      height: 130px;
+      height: auto;
     }
   }
 `;
@@ -303,25 +302,24 @@ export const ActivityList = styled.p`
   font-weight: bold;
   margin-left: 4px;
   font-family: Open Sans;
-  `;
-  
-  export const ActivityTime = styled.p`
+`;
+
+export const ActivityTime = styled.p`
   font-size: 11px;
   line-height: 15px;
   text-align: right;
   font-family: Open Sans;
-`
+`;
 
 export const InfoBox = styled.div`
     border: black;
     color: red;
     font-size: 50%;
     padding: 5%;
-`
+`;
 
 export const ActivityCard = styled.div`
   border: solid black 1px;
   border-radius: 3px;
   margin-bottom: 5px
-`
-
+`;

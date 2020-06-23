@@ -60,17 +60,6 @@ const PageHeader = (props) => {
     );
   }, [editing, search]);
 
-  const onLogout = () => {
-    localStorage.removeItem("idToken");
-    localStorage.removeItem("user");
-    localStorage.removeItem("state");
-    window.location.reload(false);
-    return swal("Logged out successfully!", {
-      icon: "success",
-      timer: 4000,
-    });
-  };
-
   return (
     <>
       <Seperate>
@@ -108,12 +97,13 @@ const PageHeader = (props) => {
           ) : (
             <></>
           )}
-          <Greeting data-cy="greeting" onClick={onLogout} variant="primary">
+          <Greeting data-cy="greeting" variant="primary">
             Hi, {user.firstName}
             <Profile src={Unknown} />
             <NameDropDownMenu
               firstName={user.firstName}
               lastName={user.lastName}
+              roleId={user.roleId}
             />
           </Greeting>
         </RightSide>
