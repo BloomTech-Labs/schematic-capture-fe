@@ -59,8 +59,8 @@ const ClientInfo = (props) => {
                             <FontAwesomeIcon icon={faUser} />
                                 <MDiv>
                                     {/* @TODO: Pull this info from props */}
-                                    <p>contact person's name</p>
-                                    <p>and email</p>
+                                    <p>{clientInfo.contactName}</p>
+                                    <p>{clientInfo.contactEmail}</p>
                                 </MDiv>
                             </BorderedDiv>
                         </div>

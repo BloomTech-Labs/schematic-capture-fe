@@ -126,6 +126,24 @@ const CreateNewClient = () => {
               ref={register({})}
             />
           </FormGroup>
+          <FormGroup>
+            <StyledField
+              type="string"
+              name="contactName"
+              id="contactName"
+              placeholder="Contact Name"
+              aria-label="Company Name"
+              ref={register({})}
+            />
+            <StyledField
+              type="tel"
+              name="contactEmail"
+              id="contactEmail"
+              placeholder="Contact's Email"
+              aria-label="Contact's Email"
+              ref={register({})}
+            />
+          </FormGroup>
           <br />
           <br />
           {errors.companyName && errors.companyName.type === "required" && (
