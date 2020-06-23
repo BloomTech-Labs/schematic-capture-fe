@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dispatchers } from "../../shared/actions/dashboardActions";
 import Help from "../../shared/components/Components/Help"
@@ -12,10 +12,13 @@ import {
   Spacer,
   FlexEnd,
   FlexEnd2,
+  FlexStart,
   NewClientBtn,
+  InfoBox
 } from "../Styles/Dashboard";
 
 import { ClientHeaderContain } from "../Styles/Client";
+import ClientInfo from "./ClientInfo";
 
 const { fetchClients } = dispatchers;
 
@@ -34,6 +37,7 @@ const Clients = (props) => {
     clientArray = clients;
   }
 
+
   return (
     <>
       <Section>
@@ -48,6 +52,9 @@ const Clients = (props) => {
         <ClientCont>
           {clientArray.map((client) => (
             <Spacer>
+              <FlexStart>
+              <ClientInfo info={client} />
+              </FlexStart>
               <ClientBox
                 data-cy={`client-name-${client.id}`}
                 data-client-name
