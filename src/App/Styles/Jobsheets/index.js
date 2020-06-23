@@ -184,10 +184,9 @@ display: flex;
     text-decoration: none;
     color: white;
     background-color: ${color.blue};
-`
+`;
 
 export const DetailsBtn = styled(Link)`
-  
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -206,7 +205,6 @@ export const DetailsBtn = styled(Link)`
 `;
 
 export const DetailsBtn2 = styled(Link)`
-  
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -271,18 +269,17 @@ export const BorderedDiv = styled.div`
   padding: 4%;
   border: gray 1px solid;
   border-radius: 1rem;
-`
+`;
 
 export const MBody = styled(ModalBody)`
   height: 50rem;
   overflow-y: scroll;
-  
 `;
 export const NewProjectModalCont = styled.div`
-  display:flex;
-  justify-content:center;
-  margin-top:2.5rem;
-`
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+`;
 
 export const MButton = styled.button`
   width: 100%;
@@ -290,33 +287,33 @@ export const MButton = styled.button`
   padding: 1rem;
   color: white;
   font-size: 2rem;
-`
+`;
 
 export const MDiv = styled.div`
   width: 80%;
-`
+`;
 
-export const SpaceBetween = styled.div `
+export const SpaceBetween = styled.div`
   display: flex;
   height: 75%;
   flex-direction: column;
   justify-content: space-between;
-`
+`;
 
 export const ModalCont = styled.div`
   border-radius: 10rem;
 `;
 
 export const Mod = styled(Modal)`
-  display:flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  width:30%;
-`
+  width: 30%;
+`;
 
 export const MH1 = styled.h1`
   font-family: Open Sans;
   color: black;
-  text-align:center;
-  margin-top:2rem;
+  text-align: center;
+  margin-top: 2rem;
 `;
