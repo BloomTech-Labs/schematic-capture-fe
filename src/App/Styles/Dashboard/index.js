@@ -160,11 +160,11 @@ export const Spacer = styled.div`
     height: 40rem;
   }
   @media (max-width: 1325px) {
-    width: 37.5%;
-    height: 35rem;
+    width: 35.5%;
+    height: 30rem;
   }
   @media (max-width: 1200px) {
-    width: 37.5%;
+    width: 35.5%;
     height: 30rem;
   }
 `;
@@ -231,11 +231,11 @@ export const FlexEnd = styled.button`
         left: 67%;
     }
     @media (max-width: 1600px) {
-        top: 35%;
+        top: 28%;
         left: 65%;
     }
     @media (max-width: 1300px) {
-        top: 35%;
+        top: 24%;
         left: 61%;
     }
 `
@@ -267,11 +267,11 @@ export const FlexEnd2 = styled.button`
         left: 67%;
     }
     @media (max-width: 1600px) {
-        top: 35%;
+        top: 28%;
         left: 65%;
     }
     @media (max-width: 1300px) {
-        top: 35%;
+        top: 24%;
         left: 61%;
     };
     `
