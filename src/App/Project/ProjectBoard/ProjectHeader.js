@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import Jobsheets from "./Jobsheets";
 import { Section2 } from "../../Styles/Client";
 import { NewProjBtn, BtnCont } from "../../Styles/Jobsheets";
-import InviteNewUserModal from "./InvitePopup";
 import {
   Title,
   Greeting,
@@ -112,6 +111,7 @@ const PageHeader = ({ counter, setCounter }) => {
             <NameDropDownMenu
               firstName={user.firstName}
               lastName={user.lastName}
+              roleId={user.roleId}
             />
           </Greeting>
         </RightSide>
@@ -142,10 +142,6 @@ const PageHeader = ({ counter, setCounter }) => {
               </div>
             )}
             <BtnCont data-cy="button-container">
-              {user.roleId !== 3 && (
-                <InviteNewUserModal buttonLabel="Invite User" />
-              )}
-
               {user.roleId === 1 && (
                 <NewProjBtn
                   to={`/project/${currentClient.id}/jobsheet/new`}

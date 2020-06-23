@@ -56,7 +56,7 @@ const PageHeader = () => {
   const dispatch = useDispatch();
   const { currentClient } = useSelector((state) => state.dashboard);
   const user = useSelector((state) => state.auth.user);
-  console.log(user.roleId);
+  console.log(user, "user");
 
   const clients = useSelector((state) => state.dashboard.clients);
   const client = clients.find((client) => client.id === Number(params.id));
@@ -113,6 +113,7 @@ const PageHeader = () => {
             <NameDropDownMenu
               firstName={user.firstName}
               lastName={user.lastName}
+              roleId={user.roleId}
             />
           </Greeting>
         </RightSide>

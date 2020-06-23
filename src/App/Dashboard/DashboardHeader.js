@@ -66,6 +66,7 @@ const DashboardHeader = () => {
             <NameDropDownMenu
               firstName={user.firstName}
               lastName={user.lastName}
+              roleId={user.roleId}
             />
           </Greeting>
         </RightSide>

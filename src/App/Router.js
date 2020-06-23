@@ -9,7 +9,6 @@ import JobsheetBoard from "./Jobsheet/JobsheetBoard/JobsheetBoard.js";
 import ProjectBoard from "./Project/ProjectBoard/ProjectBoard.js";
 import PageError from "../shared/components/Components/PageError";
 import NewProject from "./Project/CreateNewProject/CreateNewProject";
-import SendInvite from "../shared/components/Components/SendInvite";
 import NewJobSheet from "./Jobsheet/CreateNew/CNJobsheet";
 import FirstLogin from "./Auth/FirstLogin/FirstLogin.js";
 const Router = () => {
@@ -18,7 +17,6 @@ const Router = () => {
       <Switch>
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <PrivateRoute path="/client/new" component={CreateNewClient} />
-        <PrivateRoute path="/invite" component={SendInvite} />
         <PrivateRoute path="/client/:id/project/new" component={NewProject} />
         <PrivateRoute
           path="/project/:id/jobsheet/new"

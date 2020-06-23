@@ -67,7 +67,7 @@ export const Greeting = styled.button`
     text-decoration: none;
     div {
       visibility: visible;
-      height: 130px;
+      height: auto;
     }
   }
 `;
