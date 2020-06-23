@@ -39,20 +39,24 @@ export const RightSide = styled.div`
   max-height: 2.5rem;
 `;
 export const NewClientBtn = styled(Link)`
+display: flex;
+margin: 1.5rem;
+border-radius: 0.7rem;
+justify-content: center;
+align-items: center;
+text-decoration: none;
+border: 2px solid ${color.blue};
+color: ${color.blue};
+padding: 0.2rem 0.5rem;
+width: 15rem;
+height: 4.5rem;
+opacity: 1;
+font-weight: bold;
+:hover {
   text-decoration: none;
-  background-color: ${color.blue};
-  border-radius: 25px;
-  text-align: center;
   color: white;
-  padding: 0.75rem;
-  width: 10rem;
-  font-size: ${font.small};
-  opacity: 1;
-  font-weight: bold;
-  :hover {
-    color: rgba(33, 36, 44, 0.6);
-    text-decoration: none;
-  }
+  background-color: ${color.blue};
+}
 `;
 
 export const Footer = styled.footer`
