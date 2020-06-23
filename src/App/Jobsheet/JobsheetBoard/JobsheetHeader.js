@@ -18,6 +18,7 @@ import {
   SearchIn,
   Buttion,
 } from "../../Styles/Dashboard";
+
 import { Bread } from "../../Styles/Project";
 import { Column } from "../../Styles/Client";
 import { dispatchers } from "../../../shared/actions/dashboardActions";
@@ -26,15 +27,13 @@ import NameDropDownMenu from "../../../shared/components/Components/NameDropDown
 import Search from "../../Styles/Dashboard/Search.png";
 import Unknown from "../../Styles/Dashboard/unknown.jpg";
 
-import swal from "sweetalert";
-
 const { fetchComponents } = dispatchers;
 
 const fetchComponentsSideEffect = async (dispatch, id) => {
   await dispatch(fetchComponents(id));
 };
 
-const PageHeader = (props) => {
+const PageHeader = () => {
   const { currentProject, currentJobsheet, currentClient } = useSelector(
     (state) => state.dashboard
   );

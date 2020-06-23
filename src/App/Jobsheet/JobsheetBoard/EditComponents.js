@@ -15,7 +15,7 @@ import { useForm } from "react-hook-form";
 import DropboxChooser from "../CreateNew/Dropbox";
 
 const EditComponents = ({ buttonLabel, component }) => {
-  // console.log(component);
+
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const dispatch = useDispatch();
@@ -71,7 +71,6 @@ const EditComponents = ({ buttonLabel, component }) => {
         <MBody>
           {editInfo.descriptions === null || editInfo.manufacturer === null ? (
             <Container>
-              {/* <FieldError>All Fields Required.</FieldError> */}
             </Container>
           ) : (
             <></>
@@ -137,7 +136,6 @@ const EditComponents = ({ buttonLabel, component }) => {
 
             <FormGroup>
               <Label for="image">Image</Label>
-              {/* display the last part of the image URL which is the name of the image */}
               <p>
                 Currently:{" "}
                 {editInfo.image &&

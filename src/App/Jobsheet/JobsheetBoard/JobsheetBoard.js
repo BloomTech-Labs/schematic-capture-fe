@@ -18,7 +18,6 @@ const setCurrentJobsheetSideEffect = async (dispatch, currentJobsheets, id) => {
 const Board = () => {
   const params = useParams();
   const dispatch = useDispatch();
-
   const { currentJobsheets } = useSelector((state) => state.dashboard);
 
   useEffect(() => {
@@ -28,7 +27,6 @@ const Board = () => {
   return (
     <>
       <Header />
-      
     </>
   );
 };

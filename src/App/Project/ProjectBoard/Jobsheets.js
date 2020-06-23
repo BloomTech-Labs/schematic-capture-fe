@@ -48,7 +48,7 @@ const Jobsheets = (props) => {
     });
   }
 
-  //Assigns jobsheet array value either from dispatch or from search
+  // Assigns jobsheet array value either from dispatch or from search:
   var jobsheetArray;
   if (props.search.length > 0) {
     jobsheetArray = props.jobsheet;
@@ -60,7 +60,6 @@ const Jobsheets = (props) => {
     <Section>
       <Projectsh2 data-cy="all-jobsheets-header">All Jobsheets</Projectsh2>
       <LineBreak />
-
       <ProjectsTable>
         <thead>
           <StyledTableRow>
@@ -81,7 +80,7 @@ const Jobsheets = (props) => {
                   data-button-jobsheet
                   key={jobsheet.id}
                   to={`/jobsheet/${jobsheet.id}`}
-                >
+                  >
                   {jobsheet.name}
                 </ProjectLink>
               </StyledTableData>
@@ -90,7 +89,7 @@ const Jobsheets = (props) => {
                   data-button-jobsheet
                   key={jobsheet.id}
                   to={`/jobsheet/${jobsheet.id}`}
-                >
+                  >
                   {jobsheet.description}
                 </ProjectLink>
               </StyledTableData>
@@ -99,8 +98,7 @@ const Jobsheets = (props) => {
                   data-button-jobsheet
                   key={jobsheet.id}
                   to={`/jobsheet/${jobsheet.id}`}
-                >
-                  {/* Revise: Possibly change jobsheet.userEmail to map through an array is more than 1 tech */}
+                  >
                   {jobsheet.userEmail}
                 </ProjectLink>
               </StyledTableData>
@@ -109,7 +107,7 @@ const Jobsheets = (props) => {
                   data-button-jobsheet
                   key={jobsheet.id}
                   to={`/jobsheet/${jobsheet.id}`}
-                >
+                  >
                   {jobsheet.tally}
                 </ProjectLink>
               </StyledTableData>

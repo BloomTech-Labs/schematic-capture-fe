@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -20,7 +20,7 @@ import {
 } from "../../Styles/Jobsheet/ComponetStyle";
 
 import sort from "./Sort.png";
-import { dispatchers, actions } from "../../../shared/actions/dashboardActions";
+import { dispatchers } from "../../../shared/actions/dashboardActions";
 import DropboxChooser from "../CreateNew/Dropbox";
 
 const { fetchComponents, updateComponent, sortComponents } = dispatchers;
@@ -37,7 +37,7 @@ const sortComponentsSideEffect = (dispatch, sortType, components) => {
 };
 
 const Components = (props) => {
-  const { register, getValues, setValue, handleSubmit, watch } = useForm();
+  const { setValue, watch } = useForm();
   const components = useSelector((state) => state.dashboard.components);
   const user = useSelector((state) => state.auth.user);
 
@@ -61,7 +61,6 @@ const Components = (props) => {
 
   return (
     <section>
-      {/* <Status>Complete: {currentJobsheet.tally}</Status> */}
       <Wrapper>
         <CSVButton>
           <CSVLink data={components} headers={headerKeys}>Download CSV</CSVLink>

@@ -1,9 +1,8 @@
 import React from "react";
 import { useDropboxChooser } from "use-dropbox-chooser";
-import { color, font } from "../../Styles/index";
+import { color } from "../../Styles/index";
 import styled from "styled-components";
-import Picture from "../JobsheetBoard/Camera.png";
-import { axiosWithAuth } from "../../../shared/utils/axiosWithAuth";
+
 function Dropbox(props) {
   const { open, isOpen } = useDropboxChooser({
     appKey: "t5i27y2t3fzkiqj",

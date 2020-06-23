@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -13,15 +13,10 @@ const CreateNewProject = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-
   const onAddNewProject = (data) => {
-    
     dispatch(addNewProject(data, params.id, props.setProjects, history));
     props.toggle()
   };
-
-
-  
 
   return (
     <div>
@@ -51,8 +46,7 @@ const CreateNewProject = (props) => {
             variant="primary"
             submit="button"
             btnBlock
-          
-          >
+            >
             Create
           </NewProjBtn3>
         </div>

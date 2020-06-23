@@ -27,8 +27,6 @@ import { Column } from "../../Styles/Client";
 import Search from "../../Styles/Dashboard/Search.png";
 import Unknown from "../../Styles/Dashboard/unknown.jpg";
 
-import swal from "sweetalert";
-
 const { updateProjectName, fetchJobsheets } = dispatchers;
 
 const fetchJobsheetsSideEffect = async (dispatch, id, setJobsheets) => {
