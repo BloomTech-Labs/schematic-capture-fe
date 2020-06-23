@@ -1,4 +1,3 @@
-// @TODO: form styling in this file AND FormStyles.js. Need to DRY.
 
 import styled from "styled-components";
 import { Link } from "react-router-dom";

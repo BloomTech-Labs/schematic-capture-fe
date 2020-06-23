@@ -67,7 +67,6 @@ const FirstLoginForm = (props) => {
         </FormGroup>
         <FormGroup>
           <StyledField
-          // @TODO: Finish Field for security answer:
           name="newAnswer"
           id="answer"
           ref={register({ required: true })}

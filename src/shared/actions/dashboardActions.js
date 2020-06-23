@@ -34,8 +34,7 @@ const fetchAvailableTechs = () => async (dispatch) => {
   dispatch({ type: APP_LOADING });
 
   try {
-    const availableTechs = await axiosWithAuth().get("/users");
-    // @TODO: change to "/users/techs" after backend has been deployed.
+    const availableTechs = await axiosWithAuth().get("/users/techs");
     console.log(availableTechs.data, " availableTechs.data");
     dispatch({ type: SET_AVAILABLE_TECHS, payload: availableTechs.data });
     dispatch({ type: APP_DONE_LOADING });

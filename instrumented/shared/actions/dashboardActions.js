@@ -2067,7 +2067,7 @@ const fetchAvailableTechs = () => {
     cov_2cqsu8e94n().s[24]++;
 
     try {
-      const availableTechs = (cov_2cqsu8e94n().s[25]++, await axiosWithAuth().get("/users")); // @TODO: change to "/users/techs" after backend has been deployed.
+      const availableTechs = (cov_2cqsu8e94n().s[25]++, await axiosWithAuth().get("/users/techs")); 
 
       cov_2cqsu8e94n().s[26]++;
       console.log(availableTechs.data, " availableTechs.data");

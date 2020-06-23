@@ -44,8 +44,6 @@ const Clients = (props) => {
         </NewClientBtn>
       </ClientHeaderContain>
       <LineBreak />
-      {/* @TODO: Please make cleaner sometime */}
-
       <ClientCont>
         {clientArray.map((client) => (
           <Spacer>

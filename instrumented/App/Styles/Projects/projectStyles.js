@@ -121,7 +121,6 @@ function cov_sflbd7hou() {
 }
 
 cov_sflbd7hou();
-// @TODO: form styling in this file AND FormStyles.js. Need to DRY.
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { font, color } from "../../../shared/styles";
