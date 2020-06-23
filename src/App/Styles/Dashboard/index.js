@@ -275,6 +275,7 @@ export const FlexEnd2 = styled.button`
         top: 35%;
         left: 61%;
     };
+    `
 
 export const Profile = styled.img`
   width: 24px;
