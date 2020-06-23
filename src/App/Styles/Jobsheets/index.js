@@ -279,9 +279,10 @@ export const MBody = styled(ModalBody)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
   align-items: center;
 `;
+
+
 export const NewProjectModalCont = styled.div`
   display:flex;
   justify-content:center;

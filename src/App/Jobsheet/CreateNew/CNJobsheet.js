@@ -15,6 +15,7 @@ import {
   NewProjBtn1,
   NewProjBtn2,
   NewProjBtn3,
+  ImportAdd,
   JobsheetInput,
   SchematicWrapper,
   SchematicTable,
@@ -125,36 +126,37 @@ const CreateNewJobsheet = () => {
         </SchematicWrapper>
         <form onSubmit={handleSubmit(onSubmit)}>
           <NewBtnCont>
-            <div>
-              <div>
-                <NewProjBtn1 onClick={() => setIsNew(true)}>
-                  <label
-                    type="button"
-                    htmlFor="csv"
-                    onClick={() => setIsNew(true)}
-                  >
-                    Import CSV
-                  </label>
-                </NewProjBtn1>
-                {/* <div hidden={getValues().name}> or </div>
-                <button
-                  type="button"
-                  hidden={getValues().name}
-                  onClick={() => setIsNew(true)}
-                >
-                  Create A Blank Job Sheet
-                </button> */}
-              </div>
-              <label htmlFor="name"></label>
-            </div>
-           
-              <NewProjBtn3 type="button" htmlFor="pdf" hidden={!getValues().name}>
-                <SchematicChooser
-                  imageFile={imageFile}
-                  setImageFile={setImageFile}
-                />
-              </NewProjBtn3>
-            
+            <ImportAdd>
+                  <div>
+                    <div>
+                      <NewProjBtn1 onClick={() => setIsNew(true)}>
+                        <label
+                          type="button"
+                          htmlFor="csv"
+                          onClick={() => setIsNew(true)}
+                        >
+                          Import CSV
+                        </label>
+                      </NewProjBtn1>
+                      {/* <div hidden={getValues().name}> or </div>
+                      <button
+                        type="button"
+                        hidden={getValues().name}
+                        onClick={() => setIsNew(true)}
+                      >
+                        Create A Blank Job Sheet
+                      </button> */}
+                    </div>
+                    <label htmlFor="name"></label>
+                  </div>
+                
+                    <NewProjBtn3 type="button" htmlFor="pdf" hidden={!getValues().name}>
+                      <SchematicChooser
+                        imageFile={imageFile}
+                        setImageFile={setImageFile}
+                      />
+                    </NewProjBtn3>
+              </ImportAdd>
             <input hidden name="components" ref={register} />
             <input
               hidden
@@ -200,7 +202,7 @@ const CreateNewJobsheet = () => {
           </tr>
           {components.map((item) => {
             return (
-              <tr>
+              <tr style={{borderLeft: "hidden", borderRight: "hidden", height: "7rem"}}>
                 <td>{item.componentId}</td>
                 <td>{item.rlCategory}</td>
                 <td>{item.rlNumber}</td>

@@ -77,7 +77,13 @@ const EditComponents = ({ buttonLabel, component }) => {
           ) : (
             <></>
           )}
-          <Form onSubmit={onSubmit} style={{marginTop: "290px"}}>
+          <Form onSubmit={onSubmit} 
+              style={{
+                width: "90%",
+                marginRight: "30px",
+                marginLeft: "180px",
+                marginTop: "30rem"
+                }}>
             <FormGroup >
               <Label for="descriptions">Description</Label>
 
@@ -89,7 +95,6 @@ const EditComponents = ({ buttonLabel, component }) => {
                     borderRadius: "5px",
                     paddingLeft: "0.9rem",
                     color: "black",
-                    fontWeight: "",
                     fontSize: "90%",
                     
                   }} 
@@ -114,7 +119,6 @@ const EditComponents = ({ buttonLabel, component }) => {
                     borderRadius: "5px",
                     paddingLeft: "0.9rem",
                     color: "black",
-                    fontWeight: "",
                     fontSize: "90%",
                   }}
                 type="text"
@@ -138,7 +142,6 @@ const EditComponents = ({ buttonLabel, component }) => {
                     borderRadius: "5px",
                     paddingLeft: "0.9rem",
                     color: "black",
-                    fontWeight: "",
                     fontSize: "90%",
                   }}
                 type="text"
@@ -163,7 +166,6 @@ const EditComponents = ({ buttonLabel, component }) => {
                     borderRadius: "5px",
                     paddingLeft: "0.9rem",
                     color: "black",
-                    fontWeight: "",
                     fontSize: "90%",
                   }}
                 type="text"
@@ -202,7 +204,6 @@ const EditComponents = ({ buttonLabel, component }) => {
                     borderRadius: "5px",
                     paddingLeft: "0.9rem",
                     color: "black",
-                    fontWeight: "",
                     fontSize: "90%",
                   }}
                 type="text"
@@ -227,7 +228,6 @@ const EditComponents = ({ buttonLabel, component }) => {
                     borderRadius: "5px",
                     paddingLeft: "0.9rem",
                     color: "black",
-                    fontWeight: "",
                     fontSize: "90%",
                   }}
                 type="text"
@@ -266,7 +266,7 @@ const EditComponents = ({ buttonLabel, component }) => {
             </FormGroup>
 
             <NewProjBtn3
-              style={{marginTop: "35px"}}
+              style={{marginTop: "35px", position: "relative", left: "-8rem"}}
               type="submit"
             >
               Update 
@@ -279,7 +279,7 @@ const EditComponents = ({ buttonLabel, component }) => {
 
   return (
     <ModalCont>
-      <NewProjBtn data-cy="update-component-btn" onClick={toggle}>
+      <NewProjBtn data-cy="update-component-btn" onClick={toggle} style={{width: "70%", fontSize: "80%"}}>
         {buttonLabel}
       </NewProjBtn>
       <Mod isOpen={modal} toggle={toggle}>

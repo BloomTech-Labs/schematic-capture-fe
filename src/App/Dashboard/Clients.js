@@ -51,7 +51,7 @@ const Clients = (props) => {
 
         <ClientCont>
           {clientArray.map((client) => (
-            <Spacer>
+            <Spacer style={{border: "1px solid #3078bcce"}}>
               <FlexStart>
               <ClientInfo info={client} />
               </FlexStart>

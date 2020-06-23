@@ -100,7 +100,7 @@ const Components = (props) => {
       </Wrapper>
       <div>
         <Table className="Table" sorting={true} style={{ color: "black" }}>
-          <thead style={{ color: "black", opacity: "1"}}>
+          <thead style={{ color: "black", opacity: "0.8"}}>
             <tr>
               <th scope="col">Component</th>
               <th scope="col">Description</th>
@@ -147,7 +147,7 @@ const Components = (props) => {
             <tbody>
               {components.length &&
                 components.map((component) => (
-                  <tr data-cy={`component-${component.id}`} key={component.id}>
+                  <tr data-cy={`component-${component.id}`} key={component.id} style={{height: "9.3rem"}}>
                     <td data-label="Component">{component.componentId}</td>
                     <td data-label="Description">{component.descriptions}</td>
                     <td data-label="Manufacturer">{component.manufacturer}</td>
