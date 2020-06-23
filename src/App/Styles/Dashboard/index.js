@@ -55,6 +55,28 @@ export const NewClientBtn = styled(Link)`
   }
 `;
 
+export const Footer = styled.footer`
+    margin-right: 16rem;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    display: flex;
+    justify-content: flex-end;
+`
+
+export const HelpButton = styled(Link) `
+    color: black;
+    font-size: 30px;
+    text-decoration: none;
+    text-align: center;
+    border: ${color.blue} 2px solid;
+    border-radius: 1000%;
+    width: 40px;
+    height: 40px;
+    :hover {
+        background-color: rgba(33, 36, 44, 0.6);
+        text-decoration: none;
+`
+
 export const Greeting = styled.button`
   text-decoration: none;
   color: ${color.black};
@@ -147,78 +169,112 @@ export const Spacer = styled.div`
   }
 `;
 
+export const FlexStart = styled.button`
+    position: relative;
+    top: -11rem;
+    left: 1rem;
+    text-decoration: none;
+    padding: .75rem;
+    width: 10rem;
+    font-size: ${font.small};
+    border-radius:15px;
+    color: white;
+    opacity: 1;
+    font-weight: bold;
+    @media (max-width: 1750px) {
+        top: -8rem;
+        left: 1rem;
+    }
+    @media (max-width: 1700px) {
+        top: -8rem;
+        left: 1rem;
+    }
+    @media (max-width: 1650px) {
+        top: -20%;
+        left: 1%;
+    }
+    @media (max-width: 1600px) {
+        top: -20%;
+        left: 1%;
+    }
+    @media (max-width: 1300px) {
+        top: -20%;
+        left: 1%;
+    }
+`
+
 export const FlexEnd = styled.button`
-  position: relative;
-  top: 15rem;
-  left: 29rem;
-  background-color: ${color.red};
-  padding: 0.75rem;
-  width: 10rem;
-  font-size: ${font.small};
-  border-radius: 15px;
-  color: white;
-  opacity: 1;
-  font-weight: bold;
-  :hover {
-    color: rgba(33, 36, 44, 0.5);
-  }
-  @media (max-width: 1750px) {
-    top: 13.5rem;
-    left: 25rem;
-  }
-  @media (max-width: 1700px) {
-    top: 13.5rem;
-    left: 23.5rem;
-  }
-  @media (max-width: 1650px) {
-    top: 35%;
-    left: 67%;
-  }
-  @media (max-width: 1600px) {
-    top: 35%;
-    left: 65%;
-  }
-  @media (max-width: 1300px) {
-    top: 35%;
-    left: 61%;
-  }
-`;
+    position: relative;
+    top: 12rem;
+    left: 29rem;
+    background-color: ${color.red};
+    padding: .75rem;
+    width: 10rem;
+    font-size: ${font.small};
+    border-radius:15px;
+    color: white;
+    opacity: 1;
+    font-weight: bold;
+    :hover{
+        color: rgba(33,36,44,0.5);
+    }
+    @media (max-width: 1750px) {
+        top: 10.5rem;
+        left: 25rem;
+    }
+    @media (max-width: 1700px) {
+        top: 10.5rem;
+        left: 23.5rem;
+    }
+    @media (max-width: 1650px) {
+        top: 35%;
+        left: 67%;
+    }
+    @media (max-width: 1600px) {
+        top: 35%;
+        left: 65%;
+    }
+    @media (max-width: 1300px) {
+        top: 35%;
+        left: 61%;
+    }
+`
 export const FlexEnd2 = styled.button`
-  position: relative;
-  top: 15rem;
-  left: 29rem;
-  background-color: ${color.blue};
-  padding: 0.75rem;
-  width: 10rem;
-  font-size: ${font.small};
-  border-radius: 15px;
-  color: white;
-  opacity: 1;
-  font-weight: bold;
-  :hover {
-    color: rgba(33, 36, 44, 0.5);
-  }
-  @media (max-width: 1750px) {
-    top: 13.5rem;
-    left: 25rem;
-  }
-  @media (max-width: 1700px) {
-    top: 13.5rem;
-    left: 23.5rem;
-  }
-  @media (max-width: 1650px) {
-    top: 35%;
-    left: 67%;
-  }
-  @media (max-width: 1600px) {
-    top: 35%;
-    left: 65%;
-  }
-  @media (max-width: 1300px) {
-    top: 35%;
-    left: 61%;
-  }
-`;
+    position: relative;
+    top: 12rem;
+    left: 29rem;
+    background-color: ${color.blue};
+    padding: .75rem;
+    width: 10rem;
+    font-size: ${font.small};
+    border-radius:15px;
+    color: white;
+    opacity: 1;
+    font-weight: bold;
+    :hover{
+        color: rgba(33,36,44,0.5);
+    }
+    @media (max-width: 1750px) {
+        top: 10.5rem;
+        left: 25rem;
+    }
+    @media (max-width: 1700px) {
+        top: 10.5rem;
+        left: 23.5rem;
+    }
+    @media (max-width: 1650px) {
+        top: 35%;
+        left: 67%;
+    }
+    @media (max-width: 1600px) {
+        top: 35%;
+        left: 65%;
+    }
+    @media (max-width: 1300px) {
+        top: 35%;
+        left: 61%;
+    };
+    `
 
 export const Profile = styled.img`
   width: 24px;
@@ -254,8 +310,16 @@ export const ActivityTime = styled.p`
   text-align: right;
   font-family: Open Sans;
 `;
+
+export const InfoBox = styled.div`
+    border: black;
+    color: red;
+    font-size: 50%;
+    padding: 5%;
+`;
+
 export const ActivityCard = styled.div`
   border: solid black 1px;
   border-radius: 3px;
-  margin-bottom: 5px;
+  margin-bottom: 5px
 `;

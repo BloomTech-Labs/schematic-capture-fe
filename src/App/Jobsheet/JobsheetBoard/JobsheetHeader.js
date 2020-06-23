@@ -6,6 +6,7 @@ import { CSVButton } from "../../Styles/Jobsheet/ComponetStyle";
 
 import BackToLink from "../../../shared/components/Components/BackToLink";
 import Components from "./Components";
+import Help from "../../../shared/components/Components/Help";
 
 import {
   Title,
@@ -121,6 +122,7 @@ const PageHeader = (props) => {
       </CSVButton>
 
       <Components component={components1} search={search} />
+      <Help linkTo="JobsheetsHelp" />
     </>
   );
 };

@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.29",
+    "@fortawesome/free-solid-svg-icons": "^5.13.1",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "@sentry/browser": "^5.15.4",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
@@ -24,7 +27,7 @@
     "reactstrap": "^8.4.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.1.0",
+    "styled-components": "^5.1.1",
     "sweetalert": "^2.1.2",
     "use-dropbox-chooser": "^0.0.4"
   },
