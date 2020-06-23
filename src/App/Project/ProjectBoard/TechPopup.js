@@ -14,8 +14,8 @@ import { dispatchers } from "../../../shared/actions/dashboardActions";
 import { FieldError } from "../../Styles/FormStyles";
 import { useParams } from "react-router-dom";
 
-const assignTechsSideEffect = async (dispatch, id, setTech) => {
-  await dispatch(assignTechProject(id, setTech));
+const assignTechsSideEffect = async (dispatch, id, email, date) => {
+  await dispatch(assignTechProject(id, email, date));
 };
 
 const { assignTechProject, fetchAvailableTechs } = dispatchers;
