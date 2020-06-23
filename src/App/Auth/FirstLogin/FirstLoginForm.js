@@ -42,11 +42,16 @@ const FirstLoginForm = (props) => {
             aria-label="New Password"
             aria-invalid={errors.password ? "true" : "false"}
             aria-describedby="error-password-required"
-            ref={register({ required: true })}
+            ref={register({pattern: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/i, required: true})}
           />
           {errors.newPassword && errors.newPassword.type === "required" && (
             <FieldError id="error-password-required">
               Please enter a new password
+            </FieldError>
+          )}
+          {errors.newPassword && errors.newPassword.type === "pattern" && (
+            <FieldError id="error-password-required">
+              Password must be at least 8 characters long, have at least one uppercase letter and number
             </FieldError>
           )}
         </FormGroup>
