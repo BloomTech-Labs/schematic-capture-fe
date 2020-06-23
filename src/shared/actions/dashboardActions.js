@@ -14,7 +14,7 @@ const UPDATE_CURRENT_PROJECT_NAME = "UPDATE_CURRENT_PROJECT_NAME";
 const FETCH_COMPONENTS_SUCCESS = "FETCH_COMPONENTS_SUCCESS";
 const TOGGLE_COMPONENT_EDIT = "TOGGLE_COMPONENT_EDIT";
 const UPDATE_COMPONENT = "UPDATE_COMPONENT";
-
+const FETCH_ACTIVITIES = "FETCH_ACTIVITIES";
 const ASSIGN_TECH_PROJECT = "ASSIGN_TECH_PROJECT";
 
 const fetchClients = () => async (dispatch, getState) => {
@@ -186,10 +186,44 @@ const updateComponent = (id, changes) => async (dispatch) => {
   }
 };
 
-const toggleEditing = (setEditing, dispatch) => {
-  const edit = setEditing(true);
-  dispatch({ type: TOGGLE_COMPONENT_EDIT, payload: edit });
+const sortComponents = (sortType, components) => (dispatch) => {
+  let sortedComponents;
+  switch (sortType) {
+    case "idDesc":
+      sortedComponents = components.sort(
+        (a, b) => parseInt(a.componentId) - parseInt(b.componentId)
+      );
+      break;
+    case "descriptionAsc":
+      sortedComponents = components.sort((a, b) => {
+        if (a.descriptions === b.descriptions) return 0;
+        return a.descriptions > b.descriptions ? 1 : -1;
+      });
+      break;
+    case "descriptionDesc":
+      sortedComponents = components.sort((a, b) => {
+        if (a.descriptions === b.descriptions) return 0;
+        return a.descriptions < b.descriptions ? 1 : -1;
+      });
+      break;
+  }
+
+  dispatch({ type: FETCH_COMPONENTS_SUCCESS, payload: sortedComponents });
 };
+
+const fetchActivities = () => async (dispatch) => {
+  dispatch({ type: APP_LOADING });
+
+  
+  try {
+    const activities = await axiosWithAuth().get(`/activity`);
+    dispatch({ type: FETCH_ACTIVITIES, payload: activities.data });
+
+    dispatch({ type: APP_DONE_LOADING });
+  } catch (error) {
+    return dispatch({ type: APP_ERROR, payload: error.message });
+  }
+}
 
 export const dispatchers = {
   fetchClients,
@@ -202,8 +236,9 @@ export const dispatchers = {
   addNewJobsheet,
   fetchComponents,
   updateComponent,
-  toggleEditing,
+  fetchActivities,
   assignTechProject,
+  sortComponents,
 };
 
 export const actions = {
@@ -217,5 +252,6 @@ export const actions = {
   FETCH_COMPONENTS_SUCCESS,
   TOGGLE_COMPONENT_EDIT,
   UPDATE_COMPONENT,
+  FETCH_ACTIVITIES,
   ASSIGN_TECH_PROJECT,
 };

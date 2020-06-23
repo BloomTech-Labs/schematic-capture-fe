@@ -44,7 +44,7 @@ const firstLogin = (data, history) => (dispatch) => {
       localStorage.setItem("user", JSON.stringify(user));
       dispatch({ type: APP_DONE_LOADING });
       dispatch({ type: LOGIN_SUCCESS, payload: user });
-      history.push("/dashboard");
+      history.push("/");
     })
     .catch((err) => dispatch({ type: APP_ERROR, payload: err.message }));
 };

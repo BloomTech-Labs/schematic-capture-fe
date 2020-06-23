@@ -14,6 +14,7 @@ const {
   FETCH_COMPONENTS_SUCCESS,
   TOGGLE_COMPONENT_EDIT,
   UPDATE_COMPONENT,
+  FETCH_ACTIVITIES,
   ASSIGN_TECH_PROJECT,
 } = actions;
 
@@ -24,10 +25,11 @@ const initState = {
   currentClient: null,
   currentProject: null,
   currentJobsheets: [],
-  currentJobsheet: null,
+  currentJobsheet: {},
   edit: false,
   currentComponent: null,
   components: [],
+  activities: []
 };
 
 const dashboardReducer = (state = initState, action) => {
@@ -108,26 +110,11 @@ const dashboardReducer = (state = initState, action) => {
         ...state,
         techs: [...state.techs, action.payload],
       };
-      case TOGGLE_COMPONENT_EDIT:
+    case FETCH_ACTIVITIES:
+      console.log(action.payload, "FETCH_ACTIVITIES!!!");
       return {
         ...state,
-        editing: action.payload
-      };
-      case FETCH_COMPONENTS_SUCCESS:
-        console.log(action.payload, "FETCH_COMPONENTS_SUCCESS!!!")
-      return {
-        ...state,
-        components: action.payload
-      };
-      case UPDATE_COMPONENT:
-      return {
-        ...state,
-        components: state.components.map(component => {
-                    if(component.id === action.payload.id) {
-                      return action.payload;
-                    }
-                    return component;
-        })
+        activities: action.payload,
       };
     default:
       return state;
