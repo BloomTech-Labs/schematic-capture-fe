@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Redirect, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -35,7 +35,6 @@ const setCurrentClientAndProjectsSideEffect = async (
 };
 
 const Projects = (props) => {
-  // const [projects, setProjects] = useState([]);
   const params = useParams();
   const dispatch = useDispatch();
 
@@ -48,7 +47,6 @@ const Projects = (props) => {
     setCurrentClientAndProjectsSideEffect(dispatch, client, projects);
   }, []);
 
-  //Assigns project array value either from dispatch or from search
   var projectArray;
   if (props.search.length > 0) {
     projectArray = props.project;
@@ -79,7 +77,6 @@ const Projects = (props) => {
             </StyledTableHead>
           </StyledTableRow>
         </thead>
-        {/* Please make cleaner */}
         <tbody>
           {projectArray.map((project) => (
             <StyledTableRow data-cy={`projects-${project.id}`} key={project.id}>

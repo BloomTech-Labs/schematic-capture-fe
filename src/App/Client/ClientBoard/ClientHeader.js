@@ -11,7 +11,6 @@ import Help from "../../../shared/components/Components/Help";
 
 import {
   Projectsh1,
-  NewProjBtn,
   Column,
   ClientHeaderContain,
   Section2,
@@ -28,13 +27,12 @@ import {
   Buttion,
 } from "../../Styles/Dashboard";
 import { Bread } from "../../Styles/Project";
-import { BtnCont, NewProjBtn2 } from "../../Styles/Jobsheets";
+import { BtnCont } from "../../Styles/Jobsheets";
 
 import NameDropDownMenu from "../../../shared/components/Components/NameDropDownMenu";
 import Search from "../../Styles/Dashboard/Search.png";
 import Unknown from "../../Styles/Dashboard/unknown.jpg";
 
-import swal from "sweetalert";
 import { dispatchers, actions } from "../../../shared/actions/dashboardActions";
 
 const { fetchProjects } = dispatchers;
@@ -64,7 +62,6 @@ const PageHeader = () => {
   const client = clients.find((client) => client.id === Number(params.id));
 
   const [editing, setEditing] = useState(false);
-  // const [projects, setProjects] = useState([]);
   const projects = useSelector((state) => state.dashboard.currentProjects)
   const [projects1, setProjects1] = useState([]);
   const [search, setSearch] = useState("");
@@ -130,14 +127,7 @@ const PageHeader = () => {
             {user.roleId !== 3 && (
               <BtnCont>
                 {user.roleId !== 3 && <TechModal buttonLabel="Assign Techs" />}
-                {/* <NewProjBtn2 
-                  data-cy="new-project"
-                  
-                  variant="primary"
-                  >
-                  </NewProjBtn2> */}
                   <NewProjectPopup to={`/client/${currentClient.id}/project/new`}/>
-               
               </BtnCont>
             )}
           </Section2>

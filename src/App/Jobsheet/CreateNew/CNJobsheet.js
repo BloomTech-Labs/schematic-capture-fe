@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import csv from "csvtojson";
 import SchematicChooser from "./DropboxSchematicChooser";
@@ -19,7 +19,6 @@ import {
   SchematicWrapper,
   SchematicTable,
 } from "../../Styles/Jobsheet/NewJobsheetStyle";
-// import { NewProjBtn } from "../../Styles/Jobsheets";
 
 const { addNewJobsheet } = dispatchers;
 
@@ -61,7 +60,6 @@ const CreateNewJobsheet = () => {
 
   const [preview, setPreview] = useState(false);
   const [isNew, setIsNew] = useState(false);
-  const [bananas, setBananas] = useState(false);
   const [components, setComponents] = useState([]);
   const [imageFile, setImageFile] = useState(null);
 
@@ -99,7 +97,6 @@ const CreateNewJobsheet = () => {
               ref={register}
             />
           </JobsheetInput>
-          {/* <label style={{fontSize: "2rem"}}>Enter New Jobsheet Name: </label> */}
           <input
             style={{
               width: "35vh",
@@ -136,25 +133,15 @@ const CreateNewJobsheet = () => {
                     Import CSV
                   </label>
                 </NewProjBtn1>
-                {/* <div hidden={getValues().name}> or </div>
-                <button
-                  type="button"
-                  hidden={getValues().name}
-                  onClick={() => setIsNew(true)}
-                >
-                  Create A Blank Job Sheet
-                </button> */}
               </div>
               <label htmlFor="name"></label>
             </div>
-           
               <NewProjBtn3 type="button" htmlFor="pdf" hidden={!getValues().name}>
                 <SchematicChooser
                   imageFile={imageFile}
                   setImageFile={setImageFile}
                 />
               </NewProjBtn3>
-            
             <input hidden name="components" ref={register} />
             <input
               hidden

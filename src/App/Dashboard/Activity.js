@@ -17,14 +17,12 @@ const Activity = () => {
   }, []);
   return (
     <div>
-     
-        {activities.map((activity) => (
-          <ActivityCard>
-            <ActivityList>{activity.action}</ActivityList>
-            <ActivityTime>{moment(activity.timestamp).format('MMMM Do YYYY, h:mm:ss a')}</ActivityTime>
-            </ActivityCard>
-        ))}
-   
+      {activities.map((activity) => (
+        <ActivityCard>
+          <ActivityList>{activity.action}</ActivityList>
+          <ActivityTime>{moment(activity.timestamp).format('MMMM Do YYYY, h:mm:ss a')}</ActivityTime>
+        </ActivityCard>
+      ))}
     </div>
   );
 };

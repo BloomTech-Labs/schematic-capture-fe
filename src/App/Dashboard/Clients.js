@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dispatchers } from "../../shared/actions/dashboardActions";
 import Help from "../../shared/components/Components/Help"
@@ -13,8 +13,7 @@ import {
   FlexEnd,
   FlexEnd2,
   FlexStart,
-  NewClientBtn,
-  InfoBox
+  NewClientBtn
 } from "../Styles/Dashboard";
 
 import { ClientHeaderContain } from "../Styles/Client";
@@ -38,28 +37,23 @@ const Clients = (props) => {
     clientArray = clients;
   }
 
-
   return (
     <>
       <Section>
         <ClientHeaderContain>
           <Clientsh2 data-cy="clients-header">Clients</Clientsh2>
-
-          {/* Conditionally render for only Admins... */}
-          {user.roleId !== 3 && 
-          <NewClientBtn to={`/client/new`} variant="primary">
-            New&nbsp;Client
-          </NewClientBtn>
-          }
-
+            {user.roleId !== 3 && 
+              <NewClientBtn to={`/client/new`} variant="primary">
+                New&nbsp;Client
+              </NewClientBtn>
+            }
         </ClientHeaderContain>
         <LineBreak />
-
         <ClientCont>
           {clientArray.map((client) => (
             <Spacer>
               <FlexStart>
-              <ClientInfo info={client} />
+                <ClientInfo info={client} />
               </FlexStart>
               <ClientBox
                 data-cy={`client-name-${client.id}`}

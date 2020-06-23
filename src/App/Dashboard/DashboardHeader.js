@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NameDropDownMenu from "../../shared/components/Components/NameDropDownMenu";
+
 import {
   Title,
   Greeting,
@@ -10,16 +11,14 @@ import {
   SearchIn,
   Buttion,
 } from "../Styles/Dashboard";
+
 import { useSelector } from "react-redux";
 import Search from "../Styles/Dashboard/Search.png";
 import Unknown from "../Styles/Dashboard/unknown.jpg";
 import Activity from "./Activity";
 import ActivityModal from "./activityPopup";
 
-import swal from "sweetalert";
 import Clients from "./Clients";
-
-console.log(Activity, "Render Activity");
 
 const DashboardHeader = () => {
   const user = useSelector((state) => state.auth.user);
@@ -28,7 +27,7 @@ const DashboardHeader = () => {
   const [clientout, setClient] = useState([]);
   const [search, setSearch] = useState("");
 
-  if (user.firstName == undefined) {
+  if (user.firstName === undefined) {
     window.location.reload(false);
   }
 

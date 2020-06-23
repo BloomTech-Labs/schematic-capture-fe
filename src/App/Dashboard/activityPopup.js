@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Activity from "./Activity"
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const ActivityModal = (props) => {
   const {
