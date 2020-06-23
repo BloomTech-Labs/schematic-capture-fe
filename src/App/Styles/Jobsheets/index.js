@@ -226,7 +226,7 @@ export const DetailsBtn2 = styled(Link)`
 
 export const CreateNewClientBtn = styled(Link)`
   display: flex;
-  
+  margin: 1.5rem;
   border-radius: 0.7rem;
   justify-content: center;
   align-items: center;
