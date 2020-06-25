@@ -25,6 +25,7 @@ const { fetchClients } = dispatchers;
 const Clients = (props) => {
   const dispatch = useDispatch();
   const clients = useSelector((state) => state.dashboard.clients);
+  const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     dispatch(fetchClients());
@@ -43,15 +44,20 @@ const Clients = (props) => {
       <Section>
         <ClientHeaderContain>
           <Clientsh2 data-cy="clients-header">Clients</Clientsh2>
+
+          {/* Conditionally render for only Admins... */}
+          {user.roleId !== 3 && 
           <NewClientBtn to={`/client/new`} variant="primary">
             New&nbsp;Client
           </NewClientBtn>
+          }
+
         </ClientHeaderContain>
         <LineBreak />
 
         <ClientCont>
           {clientArray.map((client) => (
-            <Spacer>
+            <Spacer style={{border: "1px solid #3078bcce"}}>
               <FlexStart>
               <ClientInfo info={client} />
               </FlexStart>

@@ -10,8 +10,6 @@ const ClientInfo = (props) => {
     const [details, setDetails] = useState(false);
     const toggle = () => setDetails(!details);
 
-    console.log(props, ' is props in ClientInfo')
-
     const clientInfo = props.info
 
     const formatToPhone = phone => {
@@ -59,8 +57,8 @@ const ClientInfo = (props) => {
                             <FontAwesomeIcon icon={faUser} />
                                 <MDiv>
                                     {/* @TODO: Pull this info from props */}
-                                    <p>contact person's name</p>
-                                    <p>and email</p>
+                                    <p>{clientInfo.contactName}</p>
+                                    <p>{clientInfo.contactEmail}</p>
                                 </MDiv>
                             </BorderedDiv>
                         </div>

@@ -8,6 +8,7 @@ import {
   ModalCont,
   Container,
   Mod,
+  NewProjBtn3
 } from "../../Styles/Jobsheets";
 import { dispatchers } from "../../../shared/actions/dashboardActions";
 
@@ -67,7 +68,7 @@ const EditComponents = ({ buttonLabel, component }) => {
   const Update = () => {
     return (
       <>
-        <MH1></MH1>
+        <MH1>Update Components</MH1>
         <MBody>
           {editInfo.descriptions === null || editInfo.manufacturer === null ? (
             <Container>
@@ -76,11 +77,27 @@ const EditComponents = ({ buttonLabel, component }) => {
           ) : (
             <></>
           )}
-          <Form onSubmit={onSubmit}>
-            <FormGroup>
+          <Form onSubmit={onSubmit} 
+              style={{
+                width: "90%",
+                marginRight: "30px",
+                marginLeft: "180px",
+                marginTop: "30rem"
+                }}>
+            <FormGroup >
               <Label for="descriptions">Description</Label>
 
               <Input
+                   style={{
+                    height: "4rem",
+                    width: "30rem",
+                    border: "1px solid gray",
+                    borderRadius: "5px",
+                    paddingLeft: "0.9rem",
+                    color: "black",
+                    fontSize: "90%",
+                    
+                  }} 
                 type="text"
                 value={editInfo.descriptions}
                 id="descriptions"
@@ -95,6 +112,15 @@ const EditComponents = ({ buttonLabel, component }) => {
               <Label for="manufacturer">Manufacturer</Label>
 
               <Input
+                  style={{
+                    height: "4rem",
+                    width: "30rem",
+                    border: "1px solid gray",
+                    borderRadius: "5px",
+                    paddingLeft: "0.9rem",
+                    color: "black",
+                    fontSize: "90%",
+                  }}
                 type="text"
                 value={editInfo.manufacturer}
                 id="manufacturer"
@@ -109,6 +135,15 @@ const EditComponents = ({ buttonLabel, component }) => {
               <Label for="partNumber">Part Number</Label>
 
               <Input
+                  style={{
+                    height: "4rem",
+                    width: "30rem",
+                    border: "1px solid gray",
+                    borderRadius: "5px",
+                    paddingLeft: "0.9rem",
+                    color: "black",
+                    fontSize: "90%",
+                  }}
                 type="text"
                 value={editInfo.partNumber}
                 id="partNumber"
@@ -124,6 +159,15 @@ const EditComponents = ({ buttonLabel, component }) => {
               <Label for="stockCode">Stock Code</Label>
 
               <Input
+                  style={{
+                    height: "4rem",
+                    width: "30rem",
+                    border: "1px solid gray",
+                    borderRadius: "5px",
+                    paddingLeft: "0.9rem",
+                    color: "black",
+                    fontSize: "90%",
+                  }}
                 type="text"
                 value={editInfo.stockCode}
                 id="stockCode"
@@ -153,6 +197,15 @@ const EditComponents = ({ buttonLabel, component }) => {
               <Label for="resources">Resource</Label>
 
               <Input
+                  style={{
+                    height: "4rem",
+                    width: "30rem",
+                    border: "1px solid gray",
+                    borderRadius: "5px",
+                    paddingLeft: "0.9rem",
+                    color: "black",
+                    fontSize: "90%",
+                  }}
                 type="text"
                 value={editInfo.resources}
                 id="resources"
@@ -168,6 +221,15 @@ const EditComponents = ({ buttonLabel, component }) => {
               <Label for="cutsheet">Cutsheet</Label>
 
               <Input
+                  style={{
+                    height: "4rem",
+                    width: "30rem",
+                    border: "1px solid gray",
+                    borderRadius: "5px",
+                    paddingLeft: "0.9rem",
+                    color: "black",
+                    fontSize: "90%",
+                  }}
                 type="text"
                 value={editInfo.cutsheet}
                 id="cutsheet"
@@ -182,6 +244,16 @@ const EditComponents = ({ buttonLabel, component }) => {
               <Label for="storespart#">Stores Part #</Label>
 
               <Input
+                  style={{
+                    height: "4rem",
+                    width: "30rem",
+                    border: "1px solid gray",
+                    borderRadius: "5px",
+                    paddingLeft: "0.9rem",
+                    color: "black",
+                    fontWeight: "",
+                    fontSize: "90%",
+                  }}
                 type="text"
                 value={editInfo.storesPartNumber}
                 id="storespart#"
@@ -193,12 +265,12 @@ const EditComponents = ({ buttonLabel, component }) => {
               />
             </FormGroup>
 
-            <button
+            <NewProjBtn3
+              style={{marginTop: "35px", position: "relative", left: "-8rem"}}
               type="submit"
-              style={{ border: "1px solid gray", borderRadius: "5px" }}
             >
-              Update Component
-            </button>
+              Update 
+            </NewProjBtn3>
           </Form>
         </MBody>{" "}
       </>
@@ -207,7 +279,7 @@ const EditComponents = ({ buttonLabel, component }) => {
 
   return (
     <ModalCont>
-      <NewProjBtn data-cy="update-component-btn" onClick={toggle}>
+      <NewProjBtn data-cy="update-component-btn" onClick={toggle} style={{width: "70%", fontSize: "80%"}}>
         {buttonLabel}
       </NewProjBtn>
       <Mod isOpen={modal} toggle={toggle}>
@@ -215,7 +287,7 @@ const EditComponents = ({ buttonLabel, component }) => {
           data-cy="edit-component-header"
           style={{ textAlign: "center", padding: "2rem 0" }}
         >
-          Edit Component
+          
         </h2>
         <MBody>{Update(editInfo)}</MBody>
       </Mod>

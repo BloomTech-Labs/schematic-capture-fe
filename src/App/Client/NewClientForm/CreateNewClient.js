@@ -13,6 +13,9 @@ import {
   FieldError 
 } from "../../Styles/FormStyles"
 
+import { Section } from "../../Styles/Dashboard"
+import { NewProjBtn, CreateNewClientBtn, BorderedDiv2 } from "../../Styles/Jobsheets"
+
 const { addNewClient } = dispatchers
 
 const CreateNewClient = () => {
@@ -66,66 +69,88 @@ const CreateNewClient = () => {
   }
 
   return (
-    <>
+    <Section>
         <Form onSubmit={handleSubmit(onAddNewClient)}>
-         <button type="Submit">Save</button>
-         <Link to="/dashboard">Cancel</Link>
+         <NewProjBtn type="Submit">Save</NewProjBtn>
+         <NewProjBtn to="/dashboard">Cancel</NewProjBtn>
         </Form>
       <Form onSubmit={handleSubmit(onAddNewClient)}>
-        <h1>Create a New Client</h1>
-        <FormContainer>
-          <FormGroup>
-            <StyledField
-              type="string"
-              name="companyName"
-              id="companyName"
-              placeholder="Company Name*"
-              aria-label="Company Name"
-              ref={register({ required: true })}
-            />
-            <StyledField
-              type="tel"
-              name="phone"
-              id="phone"
-              placeholder="Phone Number*"
-              aria-label="Phone Number"
-              ref={register({ required: true })}
-            />
-          </FormGroup>
-          <FormGroup>
-            <StyledField
-              type="string"
-              name="street"
-              id="street"
-              placeholder="Street"
-              aria-label="Street"
-              ref={register({})}
-            />
-            <StyledField
-              type="string"
-              name="city"
-              id="city"
-              placeholder="City"
-              aria-label="City"
-              ref={register({})}
-            />
-            <StyledField
-              type="string"
-              name="state"
-              id="state"
-              placeholder="State"
-              aria-label="State"
-              ref={register({})}
-            />
-            <StyledField
-              type="string"
-              name="zip"
-              id="zip"
-              placeholder="Zip Code"
-              aria-label="Zip Code"
-              ref={register({})}
-            />
-          </FormGroup>
+          <h1>Create a New Client</h1>
+        <BorderedDiv2>
+
+          <FormContainer>
+            <FormGroup>
+              <StyledField
+                type="string"
+                name="companyName"
+                id="companyName"
+                placeholder="Company Name*"
+                aria-label="Company Name"
+                ref={register({ required: true })}
+              />
+              <StyledField
+                type="tel"
+                name="phone"
+                id="phone"
+                placeholder="Phone Number*"
+                aria-label="Phone Number"
+                ref={register({ required: true })}
+              />
+            </FormGroup>
+            <br></br>
+            <FormGroup>
+              <StyledField
+                type="string"
+                name="street"
+                id="street"
+                placeholder="Street"
+                aria-label="Street"
+                ref={register({})}
+              />
+              <StyledField
+                type="string"
+                name="city"
+                id="city"
+                placeholder="City"
+                aria-label="City"
+                ref={register({})}
+              />
+              <StyledField
+                type="string"
+                name="state"
+                id="state"
+                placeholder="State"
+                aria-label="State"
+                ref={register({})}
+              />
+              <StyledField
+                type="string"
+                name="zip"
+                id="zip"
+                placeholder="Zip Code"
+                aria-label="Zip Code"
+                ref={register({})}
+              />
+            </FormGroup>
+            <br></br>
+            <FormGroup>
+              <StyledField
+                type="string"
+                name="contactName"
+                id="contactName"
+                placeholder="Contact Name"
+                aria-label="Company Name"
+                ref={register({})}
+              />
+              <StyledField
+                type="tel"
+                name="contactEmail"
+                id="contactEmail"
+                placeholder="Contact's Email"
+                aria-label="Contact's Email"
+                ref={register({})}
+              />
+            </FormGroup>
           <br />
           <br />
           {errors.companyName && errors.companyName.type === "required" && (
@@ -139,16 +164,17 @@ const CreateNewClient = () => {
             </FieldError>
           )}
         </FormContainer>
+             </BorderedDiv2>
         <div>
-          <button variant="primary" submit="button">
+          <CreateNewClientBtn variant="primary" submit="button">
             Create
-          </button>
+          </CreateNewClientBtn>
         </div>
         <div>
           <BackToLink to="/dashboard" text="Back to Dashboard" />
         </div>
       </Form>
-    </>
+    </Section>
   )
 }
 

@@ -71,8 +71,9 @@ export const Table = styled.table`
    margin-left:10px;
    border-left:hidden;
    border-right:hidden;
+   margin-top: -1.3rem;
    color: #21242C;
-   opacity: 0.5 ;
+   opacity: 0.7 ;
 
    table:hover{
       color: black;

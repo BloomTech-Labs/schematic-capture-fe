@@ -222,6 +222,28 @@ export const DetailsBtn2 = styled(Link)`
   }
 `;
 
+export const CreateNewClientBtn = styled(Link)`
+  display: flex;
+  margin: 1.5rem;
+  border-radius: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: 2px solid ${color.blue};
+  color: white;
+  background-color: ${color.blue};
+  padding: 0.2rem 0.5rem;
+  width: 25rem;
+  height: 4.5rem;
+  opacity: 1;
+  font-weight: bold;
+  :hover {
+    text-decoration: none;
+    color: white;
+    background-color: ${color.blue};
+  }
+`
+
 export const BtnCont = styled.div`
   display: flex;
   flex-direction: column;
@@ -271,10 +293,28 @@ export const BorderedDiv = styled.div`
   border-radius: 1rem;
 `;
 
+export const BorderedDiv2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3%;
+  width: 500px;
+  padding: 4%;
+  border: gray 1px solid;
+  border-radius: 1rem;
+`
+
 export const MBody = styled(ModalBody)`
   height: 50rem;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
+
+
 export const NewProjectModalCont = styled.div`
   display: flex;
   justify-content: center;
