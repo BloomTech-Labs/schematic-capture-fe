@@ -136,10 +136,13 @@ const TechModal = (props) => {
                 <></>
               )}
               {techs.map((techi) => {
+                let techColor = "#3079BC";
+                if (techi.hasOwnProperty("assignedDates")) {
+                  techColor = techi.assignedDates.includes(today)
+                    ? "#FA5656"
+                    : "#3079BC";
+                }
                 if (techi.email === tech.email) {
-                  console.log(tech, " is tech in techEmails.map");
-                  console.log(techi.assignedDates);
-                  console.log(today === "");
                   return (
                     <TechCont data-cy="checkboxes-for-techs">
                       <input
@@ -151,9 +154,7 @@ const TechModal = (props) => {
                       />
                       <label
                         style={{
-                          color: techi.assignedDates.includes(today)
-                            ? "#FA5656"
-                            : "#3079BC",
+                          color: techColor,
                         }}
                         htmlFor={tech.name}
                       >
@@ -173,9 +174,7 @@ const TechModal = (props) => {
                       />
                       <label
                         style={{
-                          color: techi.assignedDates.includes(today)
-                            ? "#FA5656"
-                            : "#3079BC",
+                          color: techColor,
                         }}
                         htmlFor={tech.name}
                       >
