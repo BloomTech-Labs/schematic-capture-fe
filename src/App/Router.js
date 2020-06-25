@@ -25,8 +25,8 @@ const Router = () => {
         <PrivateRoute path="/client/:id" component={ClientBoard} />
         <PrivateRoute path="/project/:id" component={ProjectBoard} />
         <PrivateRoute path="/jobsheet/:id" component={JobsheetBoard} />
+        <Route exact path="/" component={Auth} />
         <Route path="/firstlogin/:userToken" component={FirstLogin} />
-        <Route path="/" component={Auth} />
         <Route path="*" component={PageError} />
       </Switch>
     </>
