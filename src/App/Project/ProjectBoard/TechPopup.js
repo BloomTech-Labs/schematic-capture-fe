@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import moment from "moment";
 import {
   NewProjBtn,
   NewProjBtn2,
@@ -23,6 +24,7 @@ const { assignTechProject, fetchAvailableTechs } = dispatchers;
 const TechModal = (props) => {
   const { buttonLabel } = props;
   const dispatch = useDispatch();
+  const today = `${moment(new Date()).format("YYYY-MM-DD")}T00:00:00.000Z`;
   var techEmails = [];
 
   const params = useParams();
@@ -35,7 +37,16 @@ const TechModal = (props) => {
     project: null,
     email: null,
   });
-  const toggle = () => setModal(!modal);
+  const toggle = () => {
+    setModal(!modal);
+    setTech({
+      name: null,
+      date: null,
+      project: null,
+      email: null,
+    });
+    setPage(0);
+  };
   const [page, setPage] = useState(0);
 
   useEffect(() => {
@@ -43,11 +54,25 @@ const TechModal = (props) => {
   }, []);
 
   const handleChange = (e) => {
-    let techObject = techs.find(technician => technician.email == e.target.value);
-    // console.log(techObject.firstName, ' techObject.firstName')
-    // console.log(techObject, "TECHOBJ")
-    setTech({ ...tech, name: `${techObject.firstName} ${techObject.lastName}`, email: e.target.value });
-    // console.log(e.target.value, ' e.target.value in handleChange');
+    if (e.target.value === tech.email) {
+      setTech({
+        ...tech,
+        name: null,
+        email: null,
+      });
+    } else {
+      let techObject = techs.find(
+        (technician) => technician.email == e.target.value
+      );
+      // console.log(techObject.firstName, ' techObject.firstName')
+      // console.log(techObject, "TECHOBJ")
+      setTech({
+        ...tech,
+        name: `${techObject.firstName} ${techObject.lastName}`,
+        email: e.target.value,
+      });
+      // console.log(e.target.value, ' e.target.value in handleChange');
+    }
   };
 
   const handleDateChange = (e) => {
@@ -56,7 +81,8 @@ const TechModal = (props) => {
   };
 
   const handleJobChange = (e) => {
-    setTech({ ...tech, project: e.target.value });
+    const newProject = e.target.value === tech.project ? null : e.target.value;
+    setTech({ ...tech, project: newProject });
     console.log(e.target.value);
   };
 
@@ -102,39 +128,59 @@ const TechModal = (props) => {
         return (
           <>
             <MBody>
-              {techEmails.name === null ? (
+              {tech.name === null ? (
                 <Container>
                   <FieldError>Please assign a technician</FieldError>
                 </Container>
               ) : (
                 <></>
               )}
-              {techEmails.map((email) => {
-                if (email === tech.email) {
-                  console.log(tech, ' is tech in techEmails.map')
+              {techs.map((techi) => {
+                if (techi.email === tech.email) {
+                  console.log(tech, " is tech in techEmails.map");
+                  console.log(techi.assignedDates);
+                  console.log(today === "");
                   return (
                     <TechCont data-cy="checkboxes-for-techs">
                       <input
                         type="checkbox"
                         name={tech.name}
-                        value={email}
+                        value={techi.email}
                         checked={true}
                         onChange={handleChange}
                       />
-                      <label htmlFor={tech.name}>{tech.name}</label>
+                      <label
+                        style={{
+                          color: techi.assignedDates.includes(today)
+                            ? "#FA5656"
+                            : "#3079BC",
+                        }}
+                        htmlFor={tech.name}
+                      >
+                        {tech.name}
+                      </label>
                     </TechCont>
                   );
                 } else {
                   return (
-                    <TechCont  data-cy="checkboxes-for-techs">
+                    <TechCont data-cy="checkboxes-for-techs">
                       <input
                         type="checkbox"
                         name={tech.name}
                         checked={false}
-                        value={email}
+                        value={techi.email}
                         onChange={handleChange}
                       />
-                      <label htmlFor={tech.name}>{email}</label>
+                      <label
+                        style={{
+                          color: techi.assignedDates.includes(today)
+                            ? "#FA5656"
+                            : "#3079BC",
+                        }}
+                        htmlFor={tech.name}
+                      >
+                        {techi.email}
+                      </label>
                     </TechCont>
                   );
                 }
@@ -145,8 +191,8 @@ const TechModal = (props) => {
       case 1:
         return (
           <>
-            <MH1 style={{marginLeft: "100px"}}>Select Project</MH1>
-            <MBody style={{marginLeft: "100px"}}>
+            <MH1 style={{ marginLeft: "100px" }}>Select Project</MH1>
+            <MBody style={{ marginLeft: "100px" }}>
               {tech.project === null ? (
                 <Container>
                   <FieldError>Please assign a project</FieldError>
@@ -189,8 +235,8 @@ const TechModal = (props) => {
       case 2:
         return (
           <>
-            <MH1 style={{marginLeft: "100px"}}>Select Date</MH1>
-            <MBody style={{marginLeft: "100px"}}>
+            <MH1 style={{ marginLeft: "100px" }}>Select Date</MH1>
+            <MBody style={{ marginLeft: "100px" }}>
               <Container>
                 <h1>Enter Date Here</h1>
                 {tech.date === null ? (
@@ -212,10 +258,10 @@ const TechModal = (props) => {
       case 3:
         return (
           <>
-            <MH1 style={{marginLeft: "100px"}}>Finalize</MH1>
-            <MBody style={{marginLeft: "100px"}}>
+            <MH1 style={{ marginLeft: "100px" }}>Finalize</MH1>
+            <MBody style={{ marginLeft: "100px" }}>
               <Container>
-                <h1 style={{marginLeft: "10px"}}>Technician - {tech.name}</h1>
+                <h1 style={{ marginLeft: "10px" }}>Technician - {tech.name}</h1>
                 <h2>Date: {tech.date}</h2>
               </Container>
             </MBody>
@@ -233,9 +279,11 @@ const TechModal = (props) => {
         {buttonLabel}
       </NewProjBtn>
       <Mod isOpen={modal} toggle={toggle}>
-        <MH1 data-cy="assign-tech-header" >Assign Technician</MH1>
-        <MBody style={{marginLeft: "-100px"}}>{pageNav(page)}</MBody>
-        <NewProjBtn2 data-cy="next-button" onClick={changePage}>Next</NewProjBtn2>
+        <MH1 data-cy="assign-tech-header">Assign Technician</MH1>
+        <MBody style={{ marginLeft: "-100px" }}>{pageNav(page)}</MBody>
+        <NewProjBtn2 data-cy="next-button" onClick={changePage}>
+          Next
+        </NewProjBtn2>
       </Mod>
     </ModalCont>
   );
